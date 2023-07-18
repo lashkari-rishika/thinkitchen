@@ -23,6 +23,7 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+import BannerSection from '../components/about_us';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
@@ -46,6 +47,10 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
+          <div>
+          <BannerSection/>
+          </div>
+        {/* <main role="main" id="mainContent" className="flex-grow"> */}
         <main role="main" id="mainContent" className="flex-grow px-10">
           <div className='main_video_banner '>
             <div className='video_banner p-6 place-contant-center'>
