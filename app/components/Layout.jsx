@@ -48,17 +48,15 @@ export function Layout({children, layout}) {
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
           <div>
-          <BannerSection/>
+          {/* <BannerSection/> */}
           </div>
-        {/* <main role="main" id="mainContent" className="flex-grow"> */}
-        <main role="main" id="mainContent" className="flex-grow px-10">
-          <div className='main_video_banner '>
+        <main role="main" id="mainContent" className="flex-grow">
+          {/* <div className='main_video_banner '>
             <div className='video_banner p-6 place-contant-center'>
-              {/* <img src={img1}></img> */}
               <ShopByCategory images={images}/>
               <ShopByBrands images={images}/>
             </div>
-          </div>
+          </div> */}
           {children}
         </main>
       </div>

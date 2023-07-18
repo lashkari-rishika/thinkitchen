@@ -5,6 +5,7 @@ import {useState} from 'react';
 import {getInputStyleClasses} from '~/lib/utils';
 import {Link} from '~/components';
 
+import login_img from '../asset/login.png';
 export const handle = {
   isPublic: true,
 };
@@ -79,9 +80,20 @@ export default function Login() {
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
   return (
-    <div className="flex justify-center my-24 px-4">
-      <div className="max-w-md w-full">
-        <h1 className="text-4xl">Sign in.</h1>
+    <div className="grid grid-cols-2 gap-2 flex items-start">
+      <div>
+        <img src={login_img} alt="logins" />
+      </div>
+      <div className=" py-20 max-w-md w-full mx-auto text-center">
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Account</a>
+          </li>
+        </ul>
+        <h1 className="text-4xl font-medium">Login</h1>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
         <Form
           method="post"
@@ -156,7 +168,7 @@ export default function Login() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+              className="bg-primary text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError)}
             >

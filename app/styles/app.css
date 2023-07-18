@@ -63,11 +63,15 @@ shop-pay-button {
   }
 
   body {
+    /* font-family: 'Ubuntu', sans-serif !important; */
     @apply border-primary/10 bg-contrast text-primary/90 antialiased;
+
   }
 
   html {
     scroll-padding-top: 10rem;
+  font-family: 'Ubuntu', sans-serif !important;
+
   }
 
   model-viewer::part(default-progress-mask) {
@@ -179,4 +183,29 @@ shop-pay-button {
       @apply aspect-[inherit] w-full object-cover;
     }
   }
+}
+
+/* Style the list */
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  font-size: 12px;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "|";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #7B7B7B;
+  text-decoration: none;
 }
