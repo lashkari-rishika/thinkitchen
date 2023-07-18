@@ -24,9 +24,20 @@ import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
+import ShopByCategory from './custom-components/ShopByCategory';
+import ShopByBrands from './custom-components/ShopByBrands';
+import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
+  const images = [
+    img2,
+    img2,
+    img2,
+    img2,
+    img2,
+    img2,
+];
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -39,7 +50,15 @@ export function Layout({children, layout}) {
           <div>
           <BannerSection/>
           </div>
-        <main role="main" id="mainContent" className="flex-grow">
+        {/* <main role="main" id="mainContent" className="flex-grow"> */}
+        <main role="main" id="mainContent" className="flex-grow px-10">
+          <div className='main_video_banner '>
+            <div className='video_banner p-6 place-contant-center'>
+              {/* <img src={img1}></img> */}
+              <ShopByCategory images={images}/>
+              <ShopByBrands images={images}/>
+            </div>
+          </div>
           {children}
         </main>
       </div>
