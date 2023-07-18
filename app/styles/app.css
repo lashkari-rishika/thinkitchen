@@ -180,3 +180,119 @@ shop-pay-button {
     }
   }
 }
+
+
+
+
+
+a {
+  text-decoration: none;
+}
+
+nav {
+	font-family: monospace;
+}
+
+ul { 
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+.sub-menu{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+li {
+	color: #131212;
+	display: block;
+	float: left;
+	padding: 0.4rem 1rem;
+	position: relative;
+	text-decoration: none;
+  transition-duration: 0.5s;
+}
+  
+li a {
+  color: #131212;
+}
+.sub-menu{
+  padding: 1rem;
+}
+.sub-menu:hover {
+	
+  color: #0c0b0b;
+	cursor: pointer;
+  border-bottom: 1px solid #000;
+
+}
+.menu-hover ul{
+  margin-top: 20px;
+  width: 100%;
+}
+
+ul li ul {
+	background: black;
+	visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+	position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+	left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  color: #0c0b0b;
+  background-color: rgb(245, 243, 243);
+  margin-top: 20px;
+  
+}
+.second-sub-menu{
+  column-count: 2;
+}
+.menu-hover ul{
+  margin-top: 20px;
+}
+.sub-menu ul{
+  width: max-content;
+}
+
+ul li ul li {
+	clear: both;
+  width: 100%;
+}
+.menu-header{
+  font-weight: 600;
+  font-size: 14px;
+}
+.menu-sub-header{
+  font-size: 12px;
+  margin: 0;
+  
+}
+.frist-sub-menu{
+  column-count: 6;
+  height: auto;
+}
+.header-icon{
+  margin: 0 15px;
+}
+.header-logo{
+  height: auto;
+  width: auto;
+}
+.footer-frist h3{
+  font-size: 20px;
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+  opacity: 1
+}
+.footer-frist p{
+  font-size: 14px;
+}
