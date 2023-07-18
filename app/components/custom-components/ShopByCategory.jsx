@@ -1,58 +1,83 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Link } from '@remix-run/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import '../../components/css/swiper.css'
+import r1 from '../../asset/Rectangle-6003.png'
+import r2 from '../../asset/Rectangle-6004.png'
+import r3 from '../../asset/Rectangle-6005.png'
+import r4 from '../../asset/Rectangle-6006.png'
+import r5 from '../../asset/Rectangle-6007.png'
+import r6 from '../../asset/Rectangle-6008.png'
 
 const ShopByCategory = ({ images }) => {
-  const containerRef = useRef(null);
-  const [scrolling, setScrolling] = useState(false);
-  const [scrollX, setScrollX] = useState(0);
-  const [startX, setStartX] = useState(0);
-
-  const handleMouseDown = (e) => {
-    setScrolling(true);
-    setStartX(e.pageX - containerRef.current.offsetLeft);
-    setScrollX(containerRef.current.scrollLeft);
-  };
-
-  const handleMouseUp = () => {
-    setScrolling(false);
-  };
-
-  const handleMouseMove = (e) => {
-    if (!scrolling) return;
-    e.preventDefault();
-    const x = e.pageX - containerRef.current.offsetLeft;
-    const walk = (x - startX) * 3; // Increase the scrolling speed by adjusting the multiplier
-    containerRef.current.scrollLeft = scrollX - walk;
-  };
-
+ 
   return (
-    <div className="text-center pb-4 px-10">
-      <div>
-        <h1 className="text-4xl pb-4">SHOP BY CATEGORY</h1>
-      </div>
-      <div
-        className="flex overflow-x-auto whitespace-nowrap"
-        ref={containerRef}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onMouseMove={handleMouseMove}
+    <div className='category_section'>
+      <div className="text-center pb-4">
+          <div>
+            <h1 className="text-4xl pb-4">SHOP BY CATEGORY</h1>
+          </div>
+
+          <Swiper 
+           style={{display:"flex"}}
+            className=''
+            spaceBetween={10}
+            slidesPerView={6} // Display 6 slides in one row
+            loop={true} // Enable looping
+            loopedSlides={6}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            <SwiperSlide>
+              <img src={r1} alt="Image 1" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={r2}alt="Image 2" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={r3} alt="Image 3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={r4} alt="Image 4" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={r5} alt="Image 5" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={r6} alt="Image 6" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={r1} alt="Image 7" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={r2} alt="Image 8" />
+            </SwiperSlide>
+      ...
+    </Swiper>
+      {/* <div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1"
+        style={{ overflowY: 'auto' }}
       >
         {images.map((image, index) => (
-          <div key={index} className="flex-shrink-0 mx-1">
-            <Link href="https://www.google.com/" target="_blank">
+          <div
+            key={index}
+            className="flex flex-col items-center"
+          >
+            <Link href="https://www.google.com/" className='w-full' target="_blank">
               <img
                 src={image}
                 alt={`Image ${index + 1}`}
-                className="w-full h-40 object-cover"
+                className="w-full "
               />
             </Link>
             <h2 className="mt-2">IMAGE {index + 1}</h2>
           </div>
         ))}
-      </div>
+      </div> */}
+    </div>
     </div>
   );
 };
 
 export default ShopByCategory;
+
