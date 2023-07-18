@@ -36,6 +36,8 @@ export function Layout({children, layout}) {
     img2,
     img2,
     img2,
+    img2,
+    img2,
 ];
   return (
     <>
