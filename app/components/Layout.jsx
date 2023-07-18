@@ -23,6 +23,7 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+import BannerSection from '../components/about_us';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -35,6 +36,9 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
+          <div>
+          <BannerSection/>
+          </div>
         <main role="main" id="mainContent" className="flex-grow">
           {children}
         </main>
