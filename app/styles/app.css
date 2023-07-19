@@ -287,7 +287,7 @@ ul li ul li {
   height: auto;
   width: auto;
 }
-.footer-frist h3{
+/* .footer-frist h3{
   font-size: 20px;
   margin-bottom: 0.2rem;
   font-weight: 500;
@@ -295,4 +295,28 @@ ul li ul li {
 }
 .footer-frist p{
   font-size: 14px;
+} */
+
+/* .follow-us{
+  display: flex;
+  align-items: center;
+  position: absolute;
+} */
+/* .follow-us-icon{
+  display: flex;
+  align-items: center;
+}
+.follow-us-icon .icon{
+  margin-left: 20px;
+} */
+/* .up-icon{
+  position: absolute;
+    right: 50%;
+    border: 2px solid white;
+    padding: 1rem;
+    border-radius: 60rem;
+    box-shadow: 0px 3px 6px #00000029;
+} */
+.serach-section{
+  background-color: #f3f4f6;
 }

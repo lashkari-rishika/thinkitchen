@@ -777,8 +777,8 @@ function Footer({menu}) {
       divider={isHome ? 'none' : 'top'}
       as="footer"
       role="contentinfo"
-      className={`grid min-h-[25rem] items-start grid-flow-row w-full gap-6 py-8 px-6 md:px-8 lg:px-12 md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-1 lg:grid-cols-
-        bg-primary dark:bg text-black mb-0.5 light:text-primary text-contrast overflow-hidden bg-slate-100`}
+      className="w-full gap-4  grid  border-none w-full gap-4  grid border-none grid min-h-[25rem] items-start grid-flow-row w-full gap-6 grid-cols-1 md:grid-cols-1 lg:grid-cols-
+      bg-primary bg-gray-100 text-black mb-0.5 light:text-primary text-contrast overflow-hidden bg-slate-100"
     >
       {/* <FooterMenu menu={menu} />
       <CountrySelector />
@@ -810,10 +810,10 @@ function FooterLink({item}) {
 }
 
 function FooterMenu({menu}) {
-  const styles = {
-    section: 'grid gap-4',
-    nav: 'grid gap-2 pb-6',
-  };
+  // const styles = {
+  //   section: 'grid gap-4',
+  //   nav: 'grid gap-2',
+  // };
 
   return (
     <>
