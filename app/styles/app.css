@@ -180,3 +180,61 @@ shop-pay-button {
     }
   }
 }
+
+
+
+
+/* ------------------------brand css ----------------------- */
+.brand-section .all_brand_text{
+  
+  position: absolute;
+  /* content: ''; */
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+  font-weight: 400;
+ }
+ .brand-section .all-brand-image {
+  position: relative;
+  width: 100%;
+}
+
+
+.all-brand-hidden {
+  position: absolute;
+  bottom: 0;
+  color: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity: 0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  /* text-align: center; */
+  top: 60%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.all-brand-image:hover .all-brand-hidden {
+  opacity: 1;
+  transition: all .5s;
+  transform: translateY(-40px);
+  /* transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .15s; */
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.all-brand-image:hover .all_brand_text h1{
+  text-decoration: solid;
+}
+/* ----------------------brand css end ---------------------- */
