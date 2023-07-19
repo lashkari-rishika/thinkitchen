@@ -26,9 +26,9 @@ import {useCartFetchers} from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
-import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
+import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp';
 import logo_img from '../asset/logo.svg';
-import user_img from '../asset/Icon-feather-user.png'
+import user_img from '../asset/Icon-feather-user.png';
 import heart_img from '../asset/heart.png';
 import location_img from '../asset/Untitled-1-01.png';
 import cart_img from '../asset/cart.png';
@@ -36,14 +36,7 @@ import union1_img from '../asset/Union 1.png';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
-  const images = [
-    img2,
-    img2,
-    img2,
-    img2,
-    img2,
-    img2,
-];
+  const images = [img2, img2, img2, img2, img2, img2];
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -53,16 +46,16 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
-          <div>
-          <BannerSection/>
-          </div>
+        <div>
+          <BannerSection />
+        </div>
         {/* <main role="main" id="mainContent" className="flex-grow"> */}
         <main role="main" id="mainContent" className="flex-grow px-10">
-          <div className='main_video_banner '>
-            <div className='video_banner p-6 place-contant-center'>
+          <div className="main_video_banner ">
+            <div className="video_banner p-6 place-contant-center">
               {/* <img src={img1}></img> */}
-              <ShopByCategory images={images}/>
-              <ShopByBrands images={images}/>
+              <ShopByCategory images={images} />
+              <ShopByBrands images={images} />
             </div>
           </div>
           {children}
@@ -248,404 +241,72 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         !isHome && y > 50 && ' shadow-lightHeader'
       } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-30 top-0 m-0 justify-between w-full leading-none gap-5 px-12 py-0`}
     >
-      {/* <div className='header-logo'>
-        <h1>thinKitchen</h1>
-      </div> */}
       <div className="flex gap-16 p-0">
         <Link className="header-logo" to="/" prefetch="intent">
           <img src={logo_img} alt="" />
         </Link>
-        <nav className="flex flex-auto">
+        <nav className="flex gap-8">
           {/* Top level menu items */}
-          {/* {(menu?.items || []).map((item) => (
-            <Link
-              key={item.id}
-              to={item.to}
-              target={item.target}
-              prefetch="intent"
-              className={({isActive}) =>
-                isActive ? 'pb-1 mt-4	 border-b -mb-px' : 'pb-1 mt-4'
-              }
-            >
-              {item.title}
-            </Link>
-          ))} */}
-          {/* <Link
-            className={({isActive}) =>
-              isActive
-                ? 'pb-1 mt-4	 border-b -mb-px font-semibold'
-                : 'pb-1 mt-4 font-semibold'
-            }
-          >
-            SHOP BY CATEGORIES
-          </Link> */}
+
           <ul className="header-manu">
-            {/* Frist menu */}
-            <li className="sub-menu">
-              <Link href=" " className="menu-hover">
-                SHOP BY CATEGORIES
-              </Link>
-              <ul className="frist-sub-menu">
-                <div className='first-drop-down'>
-                  <li className="menu-header">
-                    <a href=" ">Propware</a>
-                  </li>
-                  <li className="menu-sub-header">
+            {console.log(menu, 'menu')}
+            {(menu?.items || []).map((item) => (
+              <>
+                <li className="sub-menu">
+                  <Link
+                    key={item.id}
+                    to={item.to}
+                    target={item.target}
+                    prefetch="intent"
+                    className={({isActive}) =>
+                      isActive ? 'pb-1 -mb-px' : 'pb-1'
+                    }
+                  >
+                    {item.title}
+                  </Link>
+                  <ul className="nav_drodown">
+                    {(item?.items || []).map((nav) => (
+                      <>
+                        <li className="menu-header">
+                          <Link
+                            key={nav.id}
+                            to={nav.to}
+                            target={nav.target}
+                            prefetch="intent"
+                            className={({isActive}) =>
+                              isActive ? 'pb-1 -mb-px' : 'pb-1'
+                            }
+                          >
+                            {nav.title}
+                          </Link>
+                        </li>
+                        {(nav?.items || []).map((d) => (
+                          <>
+                            <li className="menu-sub-header">
+                              <Link
+                                key={d.id}
+                                to={d.to}
+                                target={d.target}
+                                prefetch="intent"
+                                className={({isActive}) =>
+                                  isActive ? 'pb-1 -mb-px' : 'pb-1'
+                                }
+                              >
+                                {d.title}
+                              </Link>
+                            </li>
+                          </>
+                        ))}
+                        {/* <li className="menu-sub-header">
                     <a href=" ">Knives</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Cutter</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Grater</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Utensils</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Masher</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Spatula</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Drinkware</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Bottles</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Tea & Coffee</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Mugs</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Tea Pot</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Expresso Maker</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Coffee Grinder</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Dineware</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Plate </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Platter </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Bowls</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Ramekin</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Cake Stand</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Barware</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Cocktails Set</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Decanter</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Stemware</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">All Barware Glasses</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Barware Accessories</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Ice Cube Trays</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Ice Mold</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Storageware</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Storage Jar </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Food Container</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Lunch Box </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Canister</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Homeware</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Dust Bins </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Vases</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Planter </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Cleaning & Organisation</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Drying Rack</a>
-                  </li>
-                </div>
-                <div className='first-drop-down'>
-                  <li className="menu-header">
-                    <a href=" ">Tableware</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Cutlery </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" "> Salt And Papper</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Bakeware </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Baking Set</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Cake Pan</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Loaf Pan</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Whisk</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">All Accessories</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Kids </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Kids Lunch Box</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Kids Bottles</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Pop Mold</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Pocket Straw</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Ice Cream Maker</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Pocket Utensils</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Cookware </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Saucepan</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Casserole</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Grilled Pan</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Wok </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" "> Frying Pan Etc.</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Bath </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Toilet Brush</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Bathroom Caddy</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Soap Dispenser</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Soap Dish</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" "> Squeegee</a>
-                  </li>
-
-                  <li className="menu-header">
-                    <a href=" ">Others </a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" ">Iron Board</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" "> Laundry Bin</a>
-                  </li>
-                  <li className="menu-sub-header">
-                    <a href=" "> Iron Board Cover</a>
-                  </li>
-                </div>
-                <img src={union1_img} alt="" />
-              </ul>
-            </li>
-
-            <li className="sub-menu">
-              <Link href=" " className="menu-hover">
-                SHOP BY BRANDS
-              </Link>
-              <ul className="second-sub-menu">
-                <li className="menu-header">
-                  <a href=" ">View All Brand</a>
+                  </li> */}
+                      </>
+                    ))}
+                  </ul>
                 </li>
-                <li className="menu-sub-header">
-                  <a href=" ">BergHOFF</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Amefa</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Brabantia</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Burleigh</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Cole & Mason</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Dartington</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Denby</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Jamie Oliver</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">john Beswick</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Joseph Joseph</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Kambukka</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Ken Hon</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Kilner</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Kitchen Craft</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">La Cafetiere</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">London Pottery</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Luigi Bormioli</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">MasterClass</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Mikasa</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Monno</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Richerdson Sheffield</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Royal Brierly</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">The Kitchen Company</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Typhoon</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">zoku</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Zyliss</a>
-                </li>
-                <li className="menu-sub-header">
-                  <a href=" ">Kilner</a>
-                </li>
-              </ul>
-            </li>
-
-            <li className="sub-menu">
-              <Link href=" " className="menu-hover">
-                KNOW US
-              </Link>
-              <ul>
-                <li>
-                  <a href=" " className="menu-header">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href=" " className="menu-sub-header">
-                    Career
-                  </a>
-                </li>
-              </ul>
-            </li>
+              </>
+            ))}
           </ul>
-
-          {/* <Link
-            className={({isActive}) =>
-              isActive
-                ? 'pb-1 mt-4	 border-b -mb-px font-semibold'
-                : 'pb-1 mt-4 font-semibold'
-            }
-          >
-            SHOP BY BRANDS
-          </Link>
-          <Link
-            className={({isActive}) =>
-              isActive
-                ? 'pb-1 mt-4	 border-b -mb-px font-semibold'
-                : 'pb-1 mt-4 font-semibold'
-            }
-          >
-            KNOW US
-          </Link> */}
         </nav>
       </div>
       <div className="flex items-center gap-1">
@@ -674,17 +335,17 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         </Form>
         {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
         {/* <CartCount isHome={isHome} openCart={openCart} /> */}
-        <div className='header-icon'>
+        <div className="header-icon">
           <img src={location_img} alt="" />
         </div>
-        <div className='header-icon'>
+        <div className="header-icon">
           <img src={heart_img} alt="" />
         </div>
-        <div className='header-icon'>
+        <div className="header-icon">
           {/* <AccountLink /> */}
           <img src={user_img} alt="" />
         </div>
-        <div className='header-icon'>
+        <div className="header-icon">
           <img src={cart_img} alt="" />
         </div>
       </div>

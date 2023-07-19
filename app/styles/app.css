@@ -232,29 +232,37 @@ li a {
   margin-top: 20px;
   width: 100%;
 }
+.nav_drodown{
+  display: none;
+  position: absolute;
+  top: 60px;
+  background-color: #fff;
+  left: 0px;
+  content: '';
+  width: 100%;
+}
+.sub-menu:hover .nav_drodown{
+  display: block;
+}
 
-ul li ul {
-	background: black;
-	visibility: hidden;
-  opacity: 0;
+/* ul li ul {
+
   min-width: 5rem;
 	position: absolute;
   transition: all 0.5s ease;
   margin-top: 1rem;
 	left: 0;
   display: none;
-}
+} */
 
-ul li:hover > ul,
+/* ul li:hover > ul,
 ul li ul:hover {
   visibility: visible;
-  opacity: 1;
   display: block;
   color: #0c0b0b;
   background-color: rgb(245, 243, 243);
   margin-top: 20px;
-  
-}
+} */
 .second-sub-menu{
   column-count: 2;
 }
