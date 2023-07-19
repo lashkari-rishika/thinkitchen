@@ -24,6 +24,7 @@ import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
+import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
@@ -48,7 +49,10 @@ export function Layout({children, layout}) {
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
           <div>
-          <BannerSection/>
+          {/* <BannerSection/> */}
+         
+            <Contactsection/>
+           
           </div>
         {/* <main role="main" id="mainContent" className="flex-grow"> */}
         <main role="main" id="mainContent" className="flex-grow px-10">
