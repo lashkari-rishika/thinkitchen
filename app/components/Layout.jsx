@@ -26,18 +26,17 @@ import {useCartFetchers} from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
-import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
+import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp';
+import logo_img from '../asset/logo.svg';
+import user_img from '../asset/Icon-feather-user.png';
+import heart_img from '../asset/heart.png';
+import location_img from '../asset/Untitled-1-01.png';
+import cart_img from '../asset/cart.png';
+import union1_img from '../asset/Union 1.png';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
-  const images = [
-    img2,
-    img2,
-    img2,
-    img2,
-    img2,
-    img2,
-];
+  const images = [img2, img2, img2, img2, img2, img2];
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -47,16 +46,16 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
-          <div>
-          <BannerSection/>
-          </div>
+        <div>
+          <BannerSection />
+        </div>
         {/* <main role="main" id="mainContent" className="flex-grow"> */}
         <main role="main" id="mainContent" className="flex-grow px-10">
-          <div className='main_video_banner '>
-            <div className='video_banner p-6 place-contant-center'>
+          <div className="main_video_banner ">
+            <div className="video_banner p-6 place-contant-center">
               {/* <img src={img1}></img> */}
-              <ShopByCategory images={images}/>
-              <ShopByBrands images={images}/>
+              <ShopByCategory images={images} />
+              <ShopByBrands images={images} />
             </div>
           </div>
           {children}
@@ -236,31 +235,78 @@ function DesktopHeader({isHome, menu, openCart, title}) {
       role="banner"
       className={`${
         isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
+          ? 'bg-contrast/90  text-black bg-light'
           : 'bg-contrast/80 text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-30 top-0 m-0 justify-between w-full leading-none gap-5 px-12 py-0`}
     >
-      <div className="flex gap-12">
-        <Link className="font-bold" to="/" prefetch="intent">
-          {title}
+      <div className="flex gap-16 p-0">
+        <Link className="header-logo" to="/" prefetch="intent">
+          <img src={logo_img} alt="" />
         </Link>
         <nav className="flex gap-8">
           {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link
-              key={item.id}
-              to={item.to}
-              target={item.target}
-              prefetch="intent"
-              className={({isActive}) =>
-                isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-              }
-            >
-              {item.title}
-            </Link>
-          ))}
+
+          <ul className="header-manu">
+            {console.log(menu, 'menu')}
+            {(menu?.items || []).map((item) => (
+              <>
+                <li className="sub-menu">
+                  <Link
+                    key={item.id}
+                    to={item.to}
+                    target={item.target}
+                    prefetch="intent"
+                    className={({isActive}) =>
+                      isActive ? 'pb-1 -mb-px' : 'pb-1'
+                    }
+                  >
+                    {item.title}
+                  </Link>
+                  <ul className="nav_drodown">
+                    {(item?.items || []).map((nav) => (
+                      <>
+                        <li className="menu-header">
+                          <Link
+                            key={nav.id}
+                            to={nav.to}
+                            target={nav.target}
+                            prefetch="intent"
+                            className={({isActive}) =>
+                              isActive ? 'pb-1 -mb-px' : 'pb-1'
+                            }
+                          >
+                            {nav.title}
+                          </Link>
+                        </li>
+                        {(nav?.items || []).map((d) => (
+                          <>
+                            <li className="menu-sub-header">
+                              <Link
+                                key={d.id}
+                                to={d.to}
+                                target={d.target}
+                                prefetch="intent"
+                                className={({isActive}) =>
+                                  isActive ? 'pb-1 -mb-px' : 'pb-1'
+                                }
+                              >
+                                {d.title}
+                              </Link>
+                            </li>
+                          </>
+                        ))}
+                        {/* <li className="menu-sub-header">
+                    <a href=" ">Knives</a>
+                  </li> */}
+                      </>
+                    ))}
+                  </ul>
+                </li>
+              </>
+            ))}
+          </ul>
         </nav>
       </div>
       <div className="flex items-center gap-1">
@@ -269,7 +315,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           action={params.locale ? `/${params.locale}/search` : '/search'}
           className="flex items-center gap-2"
         >
-          <Input
+          {/* <Input
             className={
               isHome
                 ? 'focus:border-contrast/20 dark:focus:border-primary/20'
@@ -279,7 +325,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             variant="minisearch"
             placeholder="Search"
             name="q"
-          />
+          /> */}
           <button
             type="submit"
             className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
@@ -287,8 +333,21 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             <IconSearch />
           </button>
         </Form>
-        <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" />
-        <CartCount isHome={isHome} openCart={openCart} />
+        {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
+        {/* <CartCount isHome={isHome} openCart={openCart} /> */}
+        <div className="header-icon">
+          <img src={location_img} alt="" />
+        </div>
+        <div className="header-icon">
+          <img src={heart_img} alt="" />
+        </div>
+        <div className="header-icon">
+          {/* <AccountLink /> */}
+          <img src={user_img} alt="" />
+        </div>
+        <div className="header-icon">
+          <img src={cart_img} alt="" />
+        </div>
       </div>
     </header>
   );
