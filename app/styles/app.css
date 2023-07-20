@@ -127,6 +127,10 @@ shop-pay-button {
       }
       @media (min-width: 64em) {
         width: calc(100% + 8rem);
+
+
+
+        
       }
     }
   }
@@ -205,4 +209,8 @@ shop-pay-button {
 }
 .about_health1{
   transform: translate(1%, 30%) !important;
+}
+
+::placeholder{
+  color: red;
 }
