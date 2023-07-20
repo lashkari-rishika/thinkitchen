@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from '@remix-run/react';
 import sb2 from '../../asset/sb2.png'
 import sb3 from '../../asset/sb3.png'
@@ -23,9 +23,17 @@ const ShopByBrands = () => {
                 <img
                   src={sb3}
                   className="w-full object-cover hover_image"
+                  
                 />
                 <div className='all_brand_text text-3xl  text-white'><h1> AMEFA</h1> </div>
-                <div className='all-brand-hidden'><img src={grazia} /></div>
+                <div className='all-brand-hidden'>
+                  <div className='brand_hidden_image'>
+                    <img src={grazia} />
+                  </div>
+                  <div className='mt-2'>
+                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>
@@ -38,7 +46,14 @@ const ShopByBrands = () => {
                   className="w-full object-cover hover_image"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> BERGHOFF</h1> </div>
-                <div className='all-brand-hidden'><img src={grazia} /></div>
+                <div className='all-brand-hidden'>
+                  <div className='brand_hidden_image'>
+                    <img src={grazia} />
+                  </div>
+                  <div className='mt-2'>
+                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>
@@ -51,7 +66,14 @@ const ShopByBrands = () => {
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1>COLE&MASON</h1> </div>
-                <div className='all-brand-hidden'><img src={grazia} /></div>
+                <div className='all-brand-hidden'>
+                  <div className='brand_hidden_image'>
+                    <img src={grazia} />
+                  </div>
+                  <div className='mt-2'>
+                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>
@@ -64,7 +86,14 @@ const ShopByBrands = () => {
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> BRABANTIA</h1> </div>
-                <div className='all-brand-hidden'><img src={grazia} /></div>
+                <div className='all-brand-hidden'>
+                  <div className='brand_hidden_image'>
+                    <img src={grazia} />
+                  </div>
+                  <div className='mt-2'>
+                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>
@@ -76,7 +105,14 @@ const ShopByBrands = () => {
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> JAMIE OLIVER</h1> </div>
-                <div className='all-brand-hidden'><img src={grazia} /></div>
+                <div className='all-brand-hidden'>
+                  <div className='brand_hidden_image'>
+                    <img src={grazia} />
+                  </div>
+                  <div className='mt-2'>
+                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>
@@ -88,7 +124,14 @@ const ShopByBrands = () => {
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> ZYLISS</h1> </div>
-                <div className='all-brand-hidden'><img src={grazia} /></div>
+                <div className='all-brand-hidden'>
+                  <div className='brand_hidden_image'>
+                    <img src={grazia} />
+                  </div>
+                  <div className='mt-2'>
+                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>

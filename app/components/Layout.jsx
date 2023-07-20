@@ -26,29 +26,10 @@ import { useCartFetchers } from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
-import r1 from '../asset/Rectangle-6003.png'
-import r2 from '../asset/Rectangle-6004.png'
-import r3 from '../asset/Rectangle-6005.png'
-import r4 from '../asset/Rectangle-6006.png'
-import r5 from '../asset/Rectangle-6007.png'
-import r6 from '../asset/Rectangle-6008.png'
-
-// import sb2 from '../asset/sb2.png'
-// import sb3 from '../asset/sb3.png'
-// import sb5 from '../asset/sb5.png'
-// import sb6 from '../asset/sb6.png'
 
 export function Layout({ children, layout }) {
   const { headerMenu, footerMenu } = layout;
-  const images = [
-   r1,
-   r2,
-   r3,
-   r4,
-   r5,
-   r6,
-  ];
-
+ 
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -58,19 +39,19 @@ export function Layout({ children, layout }) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
-        <main role="main" id="mainContent" className="flex-grow px-10">
-        <div className='main_video_banner '>
-            <div className='video_banner place-contant-center'>
-              <ShopByCategory images={images}/>
-              <ShopByBrands/>
+          <main role="main" id="mainContent" className="flex-grow px-10">
+            <div className='main_video_banner '>
+              <div className='video_banner place-contant-center'>
+                <ShopByCategory />
+                <ShopByBrands/>
+              </div>
+              <div>
+                <BannerSection />
+              </div>
             </div>
-            <div>
-              <BannerSection />
-            </div>
-          </div>
-          {children}
-        </main>
-      </div>
+            {children}
+          </main>
+        </div>
       {footerMenu && <Footer menu={footerMenu} />}
     </>
   );
