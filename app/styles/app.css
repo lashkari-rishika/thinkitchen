@@ -184,9 +184,98 @@ shop-pay-button {
 
 
 
+<<<<<<< HEAD
 .foooter{
   background-color: #f3f3f5;
 }
+=======
+/* ------------------------All brand css ----------------------- */
+.brand-section .all_brand_text{
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+  font-weight: 400;
+ }
+ .brand-section .all-brand-image {
+  position: relative;
+  width: 100%;
+}
+
+.all-brand-image::before{
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  background: #1e1d1d;
+  content: '';
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.35;
+}
+
+.all-brand-hidden {
+  position: absolute;
+  bottom: 0;
+  color: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity: 0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  top: 60%;
+  align-items: center;
+  /* flex-wrap: nowrap;
+  flex-direction: row; */
+  justify-content: center;
+  display: inline-block;
+  text-align: center;
+}
+
+.brand_hidden_image {
+  display: flex;
+  justify-content: center;
+}
+.all-brand-image:hover .all-brand-hidden {
+  opacity: 1;
+  transition: all .25s;
+  transform: translateY(-40px);
+  /* transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .15s; */
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hover_image {
+ background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+.all-brand-image:hover .all_brand_text h1{
+  text-decoration: solid;
+}
+/* ---------------------------- All brand css end ---------------------------------- */
+
+
+/* ---------------------------- category slider css -------------------------------- */
+
+.category_main_section .swiper-wrapper{
+  display: flex;
+  width: 150%;
+}
+
+.category_main_section  .swiper {
+  overflow: hidden;
+}
+
+/* ---------------------------- category slider css end-------------------------------- */
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 a {
   text-decoration: none;
 }
@@ -202,11 +291,20 @@ ul {
 }
 .sub-menu{
   font-size: 18px;
+<<<<<<< HEAD
   font-weight: 600;
 }
 
 li {
 	color: #131212;	
+=======
+  font-weight: 500;
+}
+
+li {
+	color: #131212;
+	display: block;
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 	float: left;
 	padding: 0.4rem 1rem;
 	position: relative;
@@ -218,6 +316,7 @@ li a {
   color: #131212;
 }
 .sub-menu{
+<<<<<<< HEAD
   padding: 24px;
 }
 .sub-menu:hover {
@@ -231,11 +330,22 @@ li a {
   color: #0c0b0b;
 	cursor: pointer;
   border-bottom: 2px solid #000;
+=======
+  padding: 1rem;
+}
+.sub-menu:hover {
+	
+  color: #0c0b0b;
+	cursor: pointer;
+  border-bottom: 1px solid #000;
+
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 }
 .menu-hover ul{
   margin-top: 20px;
   width: 100%;
 }
+<<<<<<< HEAD
 
 li ul {
   background: black;
@@ -261,6 +371,39 @@ li ul:hover {
   margin-top: 25px;
   
 }
+=======
+.nav_drodown{
+  display: none;
+  position: absolute;
+  top: 60px;
+  background-color: #fff;
+  left: 0px;
+  content: '';
+  width: 100%;
+}
+.sub-menu:hover .nav_drodown{
+  display: block;
+}
+
+/* ul li ul {
+
+  min-width: 5rem;
+	position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+	left: 0;
+  display: none;
+} */
+
+/* ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  display: block;
+  color: #0c0b0b;
+  background-color: rgb(245, 243, 243);
+  margin-top: 20px;
+} */
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 .second-sub-menu{
   column-count: 2;
 }
@@ -270,7 +413,10 @@ li ul:hover {
 .sub-menu ul{
   width: max-content;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 ul li ul li {
 	clear: both;
   width: 100%;
@@ -282,13 +428,17 @@ ul li ul li {
 .menu-sub-header{
   font-size: 12px;
   margin: 0;
+<<<<<<< HEAD
   
+=======
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 }
 .frist-sub-menu{
   column-count: 6;
   height: auto;
 }
 .header-icon{
+<<<<<<< HEAD
   margin: 0 5px;
 }
 .header-logo img{
@@ -300,6 +450,15 @@ ul li ul li {
     margin-bottom: 10px;
 }
 /* .footer-frist h3{
+=======
+  margin: 0 15px;
+}
+.header-logo{
+  height: auto;
+  width: auto;
+}
+.footer-frist h3{
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
   font-size: 20px;
   margin-bottom: 0.2rem;
   font-weight: 500;
@@ -307,6 +466,7 @@ ul li ul li {
 }
 .footer-frist p{
   font-size: 14px;
+<<<<<<< HEAD
 } */
 
 /* .follow-us{
@@ -423,3 +583,30 @@ ul li ul li {
   box-shadow: 2px 0px 1px 2px #e4e4e4;
 }
 
+=======
+}
+.main_block_about{
+  padding: 50px;
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  transform: translate(-45%, -50%) !important;
+  width: 100%;
+
+}
+.about_health{
+  /* background: rebeccapurple; */
+  /* position: relative; */
+}
+.Main_Section1 {
+  /* justify-content: center !important; */
+}
+.Main_section_content {
+  /* display: flex;
+  position: relative; */
+}
+.about_health1{
+  transform: translate(1%, 30%) !important;
+}
+>>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
