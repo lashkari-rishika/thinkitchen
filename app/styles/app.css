@@ -184,7 +184,9 @@ shop-pay-button {
 
 
 
-
+.foooter{
+  background-color: #f3f3f5;
+}
 a {
   text-decoration: none;
 }
@@ -200,12 +202,11 @@ ul {
 }
 .sub-menu{
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 li {
-	color: #131212;
-	display: block;
+	color: #131212;	
 	float: left;
 	padding: 0.4rem 1rem;
 	position: relative;
@@ -217,40 +218,47 @@ li a {
   color: #131212;
 }
 .sub-menu{
-  padding: 1rem;
+  padding: 24px;
 }
 .sub-menu:hover {
-	
+	padding: 24px;
   color: #0c0b0b;
 	cursor: pointer;
-  border-bottom: 1px solid #000;
-
+  border-bottom: 4px solid #000;
+}
+.sub-menu:active {
+	padding: 24px;
+  color: #0c0b0b;
+	cursor: pointer;
+  border-bottom: 2px solid #000;
 }
 .menu-hover ul{
   margin-top: 20px;
   width: 100%;
 }
 
-ul li ul {
-	background: black;
-	visibility: hidden;
+li ul {
+  background: black;
   opacity: 0;
   min-width: 5rem;
-	position: absolute;
-  transition: all 0.5s ease;
+  position: absolute;
+  transition: all 0.s ease;
   margin-top: 1rem;
-	left: 0;
-  display: none;
+  left: 0;
+  -webkit-transition: all 0.s ease;
+  -moz-transition: all 0.s ease;
+  -ms-transition: all 0.s ease;
+  -o-transition: all 0.s ease;
 }
 
-ul li:hover > ul,
-ul li ul:hover {
+li:hover > ul,
+li ul:hover {
   visibility: visible;
   opacity: 1;
   display: block;
   color: #0c0b0b;
   background-color: rgb(245, 243, 243);
-  margin-top: 20px;
+  margin-top: 25px;
   
 }
 .second-sub-menu{
@@ -281,11 +289,15 @@ ul li ul li {
   height: auto;
 }
 .header-icon{
-  margin: 0 15px;
+  margin: 0 5px;
 }
-.header-logo{
-  height: auto;
-  width: auto;
+.header-logo img{
+  /* height: auto;
+  width: auto; */
+  height: 41px;
+    margin-top: 10px;
+    /* width: 300px; */
+    margin-bottom: 10px;
 }
 /* .footer-frist h3{
   font-size: 20px;
@@ -320,3 +332,94 @@ ul li ul li {
 .serach-section{
   background-color: #f3f4f6;
 }
+.up-icon{
+    width: 47px;
+    height: 45px;
+    /*margin: 6px;
+    */bottom: -12px;
+    padding: 17px 15px;
+    background-color: #fff;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+.up-icon img{
+  width: 100%;
+  height: 100%;
+}
+.search-section p{
+  font-size: 12px;
+}
+.search-section h2{
+  font-size: 17px;
+  font-weight: 700;
+}
+.menu-hover{
+  font-size: 15px;
+  font-weight: 500;
+}
+.subcribe-section p{
+  font-size: 14px;
+}
+.subcribe-section input{
+  font-size: 13px;
+    color: #000;
+    line-height: 38px;
+  
+}
+.subcribe-section h2{
+  font-size: 17px;
+  font-weight: 700;
+}
+.brands-section h2{
+  font-size: 17px;
+  font-weight: 700;
+}
+.brands-section h2{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.follow-us-header h2{
+  margin-top: 25px;
+}
+.follow-us-section h2{
+  font-size: 17px;
+  font-weight: 700;
+}
+.follow-us-icon .icon img{
+  max-width: 90%;
+    height: auto;
+}
+.shop-section p{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.brands-section p{
+  font-size: 14px;
+  font-weight: 600;
+}
+.copy-right p{
+  font-size: 13px;
+  font-weight: 600;
+}
+.description p{
+  font-size: 14px;
+}
+.subcribe-section button{
+  width: max-content;
+    /* padding: 0px; */
+    width: 110px;
+    padding: 0px;
+}
+.container{
+  width: max-content;
+    width: 81%;
+}
+.header{
+  box-shadow: 2px 0px 1px 2px #e4e4e4;
+}
+

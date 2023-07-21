@@ -248,16 +248,16 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           : 'bg-contrast/80 text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-30 top-0 m-0 justify-between w-full leading-none gap-5 px-12 py-0`}
+      } header hidden  lg:flex items-center sticky transition duration-300  opacity-80 z-30 top-0 m-0 justify-between w-full leading-none gap-5 pl-12 pr-8 py-0`}
     >
       {/* <div className='header-logo'>
         <h1>thinKitchen</h1>
       </div> */}
-      <div className="flex gap-16 p-0">
+      <div className="flex gap-40 p-0">
         <Link className="header-logo" to="/" prefetch="intent">
           <img src={logo_img} alt="" />
         </Link>
-        <nav className="flex flex-auto">
+        <nav className="flex flex-auto items-center">
           {/* Top level menu items */}
           {/* {(menu?.items || []).map((item) => (
             <Link
@@ -288,7 +288,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                 SHOP BY CATEGORIES
               </Link>
               <ul className="frist-sub-menu">
-                <div className='first-drop-down'>
+                <div className='second-drop-down'>
                   <li className="menu-header">
                     <a href=" ">Propware</a>
                   </li>
@@ -676,17 +676,17 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         </Form>
         {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
         {/* <CartCount isHome={isHome} openCart={openCart} /> */}
-        <div className='header-icon'>
+        <div className='header-icon w-5 h-5'>
           <img src={location_img} alt="" />
         </div>
-        <div className='header-icon'>
+        <div className='header-icon w-5 h-5'>
           <img src={heart_img} alt="" />
         </div>
-        <div className='header-icon'>
+        <div className='header-icon w-5 h-5'>
           {/* <AccountLink /> */}
           <img src={user_img} alt="" />
         </div>
-        <div className='header-icon'>
+        <div className='header-icon w-5 h-5'>
           <img src={cart_img} alt="" />
         </div>
       </div>
@@ -777,8 +777,8 @@ function Footer({menu}) {
       divider={isHome ? 'none' : 'top'}
       as="footer"
       role="contentinfo"
-      className="w-full gap-4  grid  border-none w-full gap-4  grid border-none grid min-h-[25rem] items-start grid-flow-row w-full gap-6 grid-cols-1 md:grid-cols-1 lg:grid-cols-
-      bg-primary bg-gray-100 text-black mb-0.5 light:text-primary text-contrast overflow-hidden bg-slate-100"
+      className="foooter w-full gap-4  grid  border-none w-full gap-4  grid border-none grid min-h-[25rem] items-start grid-flow-row w-full gap-6 grid-cols-1 md:grid-cols-1 lg:grid-cols-
+      bg-primary  text-black mb-0.5 light:text-primary text-contrast overflow-hidden bg-slate-100"
     >
       {/* <FooterMenu menu={menu} />
       <CountrySelector />
