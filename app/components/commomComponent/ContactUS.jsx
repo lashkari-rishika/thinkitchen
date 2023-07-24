@@ -18,26 +18,29 @@ const Contactsection = () => {
                 </div>
             </div>
 
-            <div className='w-10/12  mx-auto mb-14 '>
+            <div className="w-11/12  mx-auto mb-14 sm:w-6/12  lg:w-10/12 ">
                 <div className="container">
 
-                    <div class="bg-stone-100 flex py-3.5">
-                        <div class="w-80 pl-4">
-                            <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
-                                <img src={Location} alt="" class="w-4 h-5 "></img>
+                    <div class="bg-stone-100 flex py-3.5 flex-wrap">
+                        <div className="w-36 w-80 pl-4 pl-3 md:w-44  lg:w-80">
+                            <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center ">
+                                <img src={Location} alt="" className="w-4 h-5 "></img>
+                            </div>
+                            <div className="">
+                                <h1 className="text-black text-base font-bold  top-0.5 lg:text-lg ">Address</h1>
+                                <p className="text-sm font-medium text-xs lg:text-base">ThinKitchen, 101-104, Sheetal Enclave, Near Vibgyor School, Mind Space, Malad (West), Mumbai - 400064</p>
                             </div>
 
-                            <h1 className="text-black text-base font-bold">Address</h1>
-                            <p className="text-sm font-medium">ThinKitchen, 101-104, Sheetal Enclave, Near Vibgyor School, Mind Space, Malad (West), Mumbai - 400064</p>
                         </div>
 
-                        <div class="w-80 border-l border-zinc-300 border-inherit pl-4">
+
+                        <div class=" w-80 border-l border-zinc-300 border-inherit pl-4 w-1/4">
                             <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
                                 <img src={Email} alt="" class="w-5 h-4"></img>
                             </div>
 
-                            <h1 className="text-black font-bold">Email</h1>
-                            <p className="text-sm font-medium">contact@seebagroup.com</p>
+                            <h1 className="text-black font-bold  lg:text-lg">Email</h1>
+                            <p className="text-sm font-medium lg:text-base  text-xs">contact@seebagroup.com</p>
                         </div>
 
                         <div class="w-80 border-l border-zinc-300 border-inherit pl-4">
@@ -45,14 +48,14 @@ const Contactsection = () => {
                                 <img src={ShareIcon} alt="" class="w-5 h-4"></img>
                             </div>
 
-                            <h1 className="text-black font-bold pb-1">Social Media</h1>
+                            <h1 className="text-black font-bold pb-1 lg:text-lg">Social Media</h1>
 
                             <div className="flex">
-                            <img src={facebookicon} alt="" className="w-2 h-4 mr-5"></img>
-                            <img src={instagram} alt="" className="w-4 h-4 mr-5"></img>
-                            <img src={Youtube} alt="" className="w-5 h-4 mr-5"></img>
+                                <img src={facebookicon} alt="" className="w-2 h-4 mr-5"></img>
+                                <img src={instagram} alt="" className="w-4 h-4 mr-5"></img>
+                                <img src={Youtube} alt="" className="w-5 h-4 mr-5"></img>
                             </div>
-                            
+
                         </div>
 
                         <div class="w-72 border-l  border-zinc-300 pl-4">
@@ -61,8 +64,8 @@ const Contactsection = () => {
                             </div>
 
 
-                            <h1 class="text-black font-bold">For Enquiries:</h1>
-                            <p className="text-sm font-medium">Phone Number: +91 704522 3344 (Monday-Friday 10 am to 6 pm)</p>
+                            <h1 class="text-black font-bold lg:text-lg">For Enquiries:</h1>
+                            <p className="text-sm font-medium lg:text-base">Phone Number: +91 704522 3344 (Monday-Friday 10 am to 6 pm)</p>
                         </div>
                     </div>
 
@@ -70,17 +73,17 @@ const Contactsection = () => {
             </div>
 
 
-            <div className='w-10/12  mx-auto'>
+            <div className="w-11/12 mx-auto sm:w-11/12 mx-auto lg:w-10/12">
                 <div className="container">
                     <form>
 
-                        <div className="formsection1 bg-stone-100  flex flex-wrap justify-center items-center gap-4 ">
-                            <h1 className="text-4xl text-center font-medium w-full py-5">Cook, Eat, Live Healthy</h1>
+                        <div className="formsection1 bg-stone-100  flex flex-wrap justify-center items-center gap-4  sm:gap-2 md:gap-3 lg:gap-4 ">
+                            <h6 className="text-2xl  pb-5 sm:pb-1 lg:text-4xl text-center font-medium w-full py-5">Cook, Eat, Live Healthy</h6>
 
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mx-10">
+                            <div class="grid grid-cols-2 gap-4 sm:gap-1 mx-2">
 
                                 <div>
-                                    <input type="text" name="Name" placeholder="Name*" className="border-neutral-300 w-full text-sm font-medium mb-4" />
+                                    <input type="text" name="Name" placeholder="Name*" className="border-neutral-300 w-full text-sm font-medium mb-4 sm:text-sm mb-3 lg:border-neutral-300 w-full text-sm font-medium mb-4 " />
                                     <input type="email" name="Email" placeholder="Email Address*" className="border-neutral-300 font-medium w-full text-sm  mb-4" />
                                     <select name="State" value="Select" className="border-neutral-300 w-full font-medium text-sm  mb-4">
                                         <option value="volvo">Select State*</option>
@@ -100,8 +103,8 @@ const Contactsection = () => {
                                     </select>
                                 </div>
 
-                                <div class="col-span-2 mb-10">
-                                    <textarea id="w3review" name="w3review" placeholder="Message" rows="5" className="w-full font-medium border-neutral-300 mb-4"></textarea>
+                                <div class=" mb-5 col-span-2 mb-10  lg:mb-10">
+                                    <textarea id="w3review" name="w3review" placeholder="Message" rows="5" className="w-full font-medium border-neutral-300 mb-4  sm:"></textarea>
                                     <button type="submit" className="border-neutral-300 bg-black text-slate-300 text-sm w-28 h-10 ">Submit</button>
                                 </div>
                             </div>
