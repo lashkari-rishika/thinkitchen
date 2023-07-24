@@ -668,7 +668,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         </Form>
         {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
         {/* <CartCount isHome={isHome} openCart={openCart} /> */}
-<<<<<<< HEAD
+
         <div className='header-icon w-5 h-5'>
           <img src={location_img} alt="" />
         </div>
@@ -680,7 +680,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
           <img src={user_img} alt="" />
         </div>
         <div className='header-icon w-5 h-5'>
-=======
+
         <div className="header-icon">
           <img src={location_img} alt="" />
         </div>
@@ -692,9 +692,10 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
           <img src={user_img} alt="" />
         </div>
         <div className="header-icon">
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
+
           <img src={cart_img} alt="" />
         </div>
+      </div>
       </div>
     </header>
   );

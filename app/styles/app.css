@@ -184,11 +184,9 @@ shop-pay-button {
 
 
 
-<<<<<<< HEAD
 .foooter{
   background-color: #f3f3f5;
 }
-=======
 /* ------------------------All brand css ----------------------- */
 .brand-section .all_brand_text{
   
@@ -275,7 +273,6 @@ shop-pay-button {
 }
 
 /* ---------------------------- category slider css end-------------------------------- */
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 a {
   text-decoration: none;
 }
@@ -291,20 +288,17 @@ ul {
 }
 .sub-menu{
   font-size: 18px;
-<<<<<<< HEAD
   font-weight: 600;
 }
 
 li {
 	color: #131212;	
-=======
   font-weight: 500;
 }
 
 li {
 	color: #131212;
 	display: block;
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 	float: left;
 	padding: 0.4rem 1rem;
 	position: relative;
@@ -316,7 +310,6 @@ li a {
   color: #131212;
 }
 .sub-menu{
-<<<<<<< HEAD
   padding: 24px;
 }
 .sub-menu:hover {
@@ -330,7 +323,6 @@ li a {
   color: #0c0b0b;
 	cursor: pointer;
   border-bottom: 2px solid #000;
-=======
   padding: 1rem;
 }
 .sub-menu:hover {
@@ -339,13 +331,11 @@ li a {
 	cursor: pointer;
   border-bottom: 1px solid #000;
 
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 }
 .menu-hover ul{
   margin-top: 20px;
   width: 100%;
 }
-<<<<<<< HEAD
 
 li ul {
   background: black;
@@ -371,7 +361,6 @@ li ul:hover {
   margin-top: 25px;
   
 }
-=======
 .nav_drodown{
   display: none;
   position: absolute;
@@ -403,7 +392,6 @@ ul li ul:hover {
   background-color: rgb(245, 243, 243);
   margin-top: 20px;
 } */
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 .second-sub-menu{
   column-count: 2;
 }
@@ -413,10 +401,7 @@ ul li ul:hover {
 .sub-menu ul{
   width: max-content;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 ul li ul li {
 	clear: both;
   width: 100%;
@@ -428,17 +413,13 @@ ul li ul li {
 .menu-sub-header{
   font-size: 12px;
   margin: 0;
-<<<<<<< HEAD
   
-=======
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
 }
 .frist-sub-menu{
   column-count: 6;
   height: auto;
 }
 .header-icon{
-<<<<<<< HEAD
   margin: 0 5px;
 }
 .header-logo img{
@@ -450,7 +431,6 @@ ul li ul li {
     margin-bottom: 10px;
 }
 /* .footer-frist h3{
-=======
   margin: 0 15px;
 }
 .header-logo{
@@ -458,7 +438,6 @@ ul li ul li {
   width: auto;
 }
 .footer-frist h3{
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
   font-size: 20px;
   margin-bottom: 0.2rem;
   font-weight: 500;
@@ -466,7 +445,6 @@ ul li ul li {
 }
 .footer-frist p{
   font-size: 14px;
-<<<<<<< HEAD
 } */
 
 /* .follow-us{
@@ -583,7 +561,6 @@ ul li ul li {
   box-shadow: 2px 0px 1px 2px #e4e4e4;
 }
 
-=======
 }
 .main_block_about{
   padding: 50px;
@@ -609,4 +586,3 @@ ul li ul li {
 .about_health1{
   transform: translate(1%, 30%) !important;
 }
->>>>>>> ea75f0a956fef4c5acb249ab116ce8962744a9ac
