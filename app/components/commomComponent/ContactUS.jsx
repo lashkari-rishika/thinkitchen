@@ -22,7 +22,7 @@ const Contactsection = () => {
                 <div className="container">
 
                     <div class="bg-stone-100 flex py-3.5 flex-wrap">
-                        <div className="w-36 w-80 pl-4 pl-3 md:w-44  lg:w-80">
+                        <div className="w-40 pl-2  w-80 pl-4 pl-3 md:w-44   lg:w-80">
                             <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center ">
                                 <img src={Location} alt="" className="w-4 h-5 "></img>
                             </div>
@@ -34,7 +34,7 @@ const Contactsection = () => {
                         </div>
 
 
-                        <div class=" w-80 border-l border-zinc-300 border-inherit pl-4 w-1/4">
+                        <div class="w-80 border-l border-zinc-300 border-inherit pl-4 w-20">
                             <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
                                 <img src={Email} alt="" class="w-5 h-4"></img>
                             </div>
@@ -43,7 +43,7 @@ const Contactsection = () => {
                             <p className="text-sm font-medium lg:text-base  text-xs">contact@seebagroup.com</p>
                         </div>
 
-                        <div class="w-80 border-l border-zinc-300 border-inherit pl-4">
+                        <div class="w-20 w-80 border-l border-zinc-300 border-inherit pl-4">
                             <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
                                 <img src={ShareIcon} alt="" class="w-5 h-4"></img>
                             </div>
@@ -58,7 +58,7 @@ const Contactsection = () => {
 
                         </div>
 
-                        <div class="w-72 border-l  border-zinc-300 pl-4">
+                        <div class=" w-72 border-l  border-zinc-300 pl-4 w-24">
                             <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
                                 <img src={Enquries} alt="" class="w-4 h-5"></img>
                             </div>
