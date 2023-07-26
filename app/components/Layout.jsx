@@ -24,15 +24,17 @@ import { useIsHomePath } from '~/lib/utils';
 import { useIsHydrated } from '~/hooks/useIsHydrated';
 import { useCartFetchers } from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
+import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
+import Termscondition from './PrivacyandTermscondition/Termscondition';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
 import FooterComponet from './FooterComponet';
 import logo_img from '../asset/logo.svg';
 import user_img from '../asset/Icon-feather-user.png'
-import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp';
-import logo_img from '../asset/logo.svg';
-import user_img from '../asset/Icon-feather-user.png';
+// import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp';
+// import logo_img from '../asset/logo.svg';
+// import user_img from '../asset/Icon-feather-user.png';
 import heart_img from '../asset/heart.png';
 import location_img from '../asset/Untitled-1-01.png';
 import cart_img from '../asset/cart.png';
@@ -52,12 +54,14 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
           <main role="main" id="mainContent" className="flex-grow px-10">
             <div className='main_video_banner '>
-              <div className='video_banner place-contant-center'>
+              {/* <div className='video_banner place-contant-center'>
                 <ShopByCategory />
                 <ShopByBrands/>
-              </div>
+              </div> */}
               <div>
-                <BannerSection />
+                {/* <BannerSection /> */}
+                {/* <PrivacyPolicy/> */}
+                <Termscondition/>
               </div>
             </div>
             {children}
@@ -863,3 +867,6 @@ function FooterMenu({menu}) {
     </>
   );
 }
+
+
+  
