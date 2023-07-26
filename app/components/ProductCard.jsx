@@ -59,36 +59,36 @@ export function ProductCard({
                 loading={loading}
               />
             )}
-            <Text
-              as="label"
-              size="fine"
-              className="absolute top-0 right-0 m-4 text-right text-notice"
-            >
-              {cardLabel}
-            </Text>
-          </div>
-          <div className="grid gap-1">
-            <Text
-              className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
-              as="h3"
-            >
-              {product.title}
-            </Text>
-            <div className="flex gap-4">
-              <Text className="flex gap-4">
-                <Money withoutTrailingZeros data={price} />
-                {isDiscounted(price, compareAtPrice) && (
-                  <CompareAtPrice
-                    className={'opacity-50'}
-                    data={compareAtPrice}
-                  />
-                )}
+              <Text
+                as="label"
+                size="fine"
+                className="absolute top-0 right-0 m-4 text-right text-notice"
+              >
+                {cardLabel}
               </Text>
             </div>
+            <div className="grid gap-1">
+              <Text
+                className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
+                as="h3"
+              >
+                {product.title}
+              </Text>
+              <div className="flex gap-4">
+                <Text className="flex gap-4">
+                  <Money withoutTrailingZeros data={price} />
+                  {isDiscounted(price, compareAtPrice) && (
+                    <CompareAtPrice
+                      className={'opacity-50'}
+                      data={compareAtPrice}
+                    />
+                  )}
+                </Text>
+              </div>
+            </div>
           </div>
-        </div>
       </Link>
-      {quickAdd && (
+      {/* {quickAdd && ( */}
         <AddToCartButton
           lines={[
             {
@@ -97,7 +97,7 @@ export function ProductCard({
             },
           ]}
           variant="secondary"
-          className="mt-2"
+          className=""
           analytics={{
             products: [productAnalytics],
             totalValue: parseFloat(productAnalytics.price),
@@ -107,7 +107,7 @@ export function ProductCard({
             Add to Cart
           </Text>
         </AddToCartButton>
-      )}
+      {/* )} */}
     </div>
   );
 }
