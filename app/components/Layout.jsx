@@ -26,6 +26,8 @@ import { useCartFetchers } from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';
+import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
+import Blog from './custom-components/BlogandBlogdetails/Blog';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
@@ -61,7 +63,9 @@ export function Layout({children, layout}) {
               <div>
                 {/* <BannerSection /> */}
                 {/* <PrivacyPolicy/> */}
-                <Termscondition/>
+                {/* <Termscondition/> */}
+                {/* <Blogdetails/> */}
+                <Blog/>
               </div>
             </div>
             {children}

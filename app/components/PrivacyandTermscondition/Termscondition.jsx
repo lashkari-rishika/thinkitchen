@@ -5,8 +5,8 @@ const Termscondition = () => {
         <section className="">
             <div className='bg-neutral-100 px-10 pb-10'>
                 <div className="flex justify-center">
-                    <div className="">
-                        <div className="">
+                    <div>
+                        <div>
                             <p className="text-center text-gray-500 text-gray-400 mt-1.5 mb-1.5 text-xs">Home | Terms & Use</p>
                             <h1 className="text-center text-3xl font-semibold">Terms & Use</h1>
                         </div>
