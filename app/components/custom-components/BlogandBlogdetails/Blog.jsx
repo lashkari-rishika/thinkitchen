@@ -12,6 +12,24 @@ import Blog_img9 from "../../../asset/Blog_img9.png";
 const Blog = () => {
     return (
         <section className="">
+
+            <div class="container">
+                <div class="tab">
+                    <input id="tab1" type="radio" name="tabs" checked></input>
+                    <label for="tab1">Kitchen</label>
+                    <input id="tab2" type="radio" name="tabs"></input>
+                    <label for="tab2">Inspiration</label>
+                    <input id="tab3" type="radio" name="tabs"></input>
+                    <label for="tab3">Food & Drink</label>
+                    <input id="tab4" type="radio" name="tabs"></input>
+                    <label for="tab4">Entertaininga</label>
+                    <input id="tab5" type="radio" name="tabs"></input>
+                    <label for="tab5">Tips & tricks</label>
+                    
+                </div>
+            </div>
+
+
             <div className=' px-10 pb-10'>
 
                 <div>
