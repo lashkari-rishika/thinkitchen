@@ -21,9 +21,7 @@ const CustomerTestimonial = () => {
             <div className="md:w-1/2 md:ml-4">
               <div className="text-center md:text-left">
                 <p className="text-black font-medium text-sm leading-5 lg:mb-4 sm:mx-2 lg:mr-8 md:text-left sm:text-left">
-                  <div>
                     <span className="testimonial-logo-before" />
-                  </div>
                   "Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
@@ -31,9 +29,7 @@ const CustomerTestimonial = () => {
                   specimen book. Lorem Ipsum is simply dummy text of the
                   printing and typesetting industry. Lorem Ipsum has been the
                   industry's standard dummy text."
-                  <div>
                     <span className="testimonial-logo-after" />
-                  </div>
                 </p>
                 <div className="items-center justify-center md:justify-start absolute right-8 bottom-8">
                   <span className="text-gray-600 font-semibold">Name</span>
