@@ -1,7 +1,7 @@
 import {useParams, Form, Await, useMatches} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo} from 'react';
+import {Suspense, useEffect, useMemo, useState} from 'react';
 import {
   Drawer,
   useDrawer,
@@ -26,18 +26,16 @@ import {useCartFetchers} from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
-import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
+import accountLogin from '../asset/Icon-feather-user.png';
+import cart from '../asset/cart.png';
+import wishList from '../asset/heart.png';
+import location from '../asset/location.png';
+import logo from '../asset/logo@2x.png';
+import MenuHeader from './MenuHeader';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
-  const images = [
-    img2,
-    img2,
-    img2,
-    img2,
-    img2,
-    img2,
-];
+  // const images = [img2, img2, img2, img2, img2, img2];
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -47,9 +45,7 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
-          <div>
-          {/* <BannerSection/> */}
-          </div>
+        <div>{/* <BannerSection/> */}</div>
         <main role="main" id="mainContent" className="flex-grow">
           {/* <div className='main_video_banner '>
             <div className='video_banner p-6 place-contant-center'>
@@ -172,7 +168,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
         isHome
           ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
           : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      } flex lg:hidden items-center h-nav sticky z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -229,66 +225,287 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 function DesktopHeader({isHome, menu, openCart, title}) {
   const params = useParams();
   const {y} = useWindowScroll();
+  const [menuActive, setMenuActive] = useState(false);
+  const [subMenuActive, setSubMenuActive] = useState(false);
+  const [currentMenuTitle, setCurrentMenuTitle] = useState('');
+
+  const toggleMenu = () => {
+    setMenuActive((prevMenuActive) => !prevMenuActive);
+  };
+
+  const showSubMenu = (event) => {
+    const hasChildren = event.target.closest('.menu-item-has-children');
+    const menuTitle =
+      hasChildren.querySelector('i').parentNode.childNodes[0].textContent;
+
+    setSubMenuActive(true);
+    setCurrentMenuTitle(menuTitle);
+  };
+
+  const hideSubMenu = () => {
+    setSubMenuActive(false);
+    setCurrentMenuTitle('');
+  };
+
+  const handleWindowResize = () => {
+    if (window.innerWidth > 991 && menuActive) {
+      toggleMenu();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [menuActive]);
   return (
-    <header
-      role="banner"
-      className={`${
-        isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
-      } ${
-        !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
-    >
-      <div className="flex gap-12">
-        <Link className="font-bold" to="/" prefetch="intent">
-          {title}
-        </Link>
-        <nav className="flex gap-8">
-          {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link
-              key={item.id}
-              to={item.to}
-              target={item.target}
-              prefetch="intent"
-              className={({isActive}) =>
-                isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-              }
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-      </div>
-      <div className="flex items-center gap-1">
-        <Form
-          method="get"
-          action={params.locale ? `/${params.locale}/search` : '/search'}
-          className="flex items-center gap-2"
-        >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-          <button
-            type="submit"
-            className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
-          >
-            <IconSearch />
-          </button>
-        </Form>
-        <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" />
-        <CartCount isHome={isHome} openCart={openCart} />
-      </div>
-    </header>
+    <>
+      <header
+        role="banner"
+        className={`${
+          isHome
+            ? 'header flex md:hidden sm:hidden bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary'
+            : ' text-primary'
+        } ${
+          !isHome && y > 50 && ' shadow-lightHeader'
+        } hidden h-2 lg:flex items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      >
+        <div className="container">
+          <div className="row v-center flex gap-9">
+            <div className="header-item item-left">
+              <div className="logo">
+                <Link className="font-bold" to="/" prefetch="intent">
+                  {/* <img src={logo} alt='logo'/> */}
+                  {title}
+                </Link>
+              </div>
+            </div>
+            <div
+              className={`header-item item-center ${
+                menuActive ? 'active' : ''
+              }`}
+            > 
+              <div className="menu-overlay" onClick={toggleMenu}></div>
+              <nav className={`menu ${menuActive ? 'active' : ''}`}>
+                <div className="mobile-menu-head">
+                  <div className="go-back" onClick={hideSubMenu}>
+                    fhgdfgh
+                  </div>
+                  <div className="current-menu-title">{currentMenuTitle}</div>
+                  <div className="mobile-menu-close" onClick={toggleMenu}>
+                    &times;
+                  </div>
+                </div>
+                <ul className={`menu-main flex items-center gap-6 ${subMenuActive ? 'active' : ''}`}>
+                  {(menu?.items || []).map((item) => (
+                    <li
+                      className="menu-item-has-children"
+                      onClick={showSubMenu}
+                    >
+                      <Link
+                        key={item.id}
+                        to={item.to}
+                        target={item.target}
+                        prefetch="intent"
+                        className={({isActive}) =>
+                          isActive ? 'pb-1  -mb-px' : 'pb-1'
+                        }
+                      >
+                        {item.title}
+                      </Link>
+                      <div class="sub-menu mega-menu mega-menu-column-4">
+                        {(item?.items || []).map((subitem) => (
+                          <>
+                            <div class="list-item">
+                              <h4 class="title">
+                                <Link
+                                  key={subitem.id}
+                                  to={subitem.to}
+                                  target={subitem.target}
+                                  prefetch="intent"
+                                  className={({isActive}) =>
+                                    isActive ? 'pb-1  -mb-px' : 'pb-1'
+                                  }
+                                >
+                                  {subitem.title}
+                                </Link>
+                              </h4>
+                              <ul>
+                                <li>
+                                  <a href="#">Product List</a>
+                                </li>
+                                <li>
+                                  <a href="#">Product List</a>
+                                </li>
+                                <li>
+                                  <a href="#">Product List</a>
+                                </li>
+                                <li>
+                                  <a href="#">Product List</a>
+                                </li>
+                                <li>
+                                  <a href="#">Product List</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </>
+                        ))}
+                        {/* <div class="list-item">
+                          <img src={img2} alt="shop" />
+                        </div> */}
+                      </div>
+                    </li>
+                  ))}
+                  {/* <li>
+                    <a href="#">Home</a>
+                  </li> */}
+                  {/* <li className="menu-item-has-children" onClick={showSubMenu}>
+                    <a href="#">Shop</a>
+                    <div class="sub-menu mega-menu mega-menu-column-4">
+                      <div class="list-item">
+                        <h4 class="title">Men's Fashion</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                        <h4 class="title">Beauty</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="list-item">
+                        <h4 class="title">Women's Fashion</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                        <h4 class="title">Furniture</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="list-item">
+                        <h4 class="title">Home, Kitchen</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="list-item">
+                        <img src={img2} alt="shop" />
+                      </div>
+                    </div>
+                  </li> */}
+                </ul>
+              </nav>
+            </div>
+            <div className="flex items-center gap-5">
+              <Form
+                method="get"
+                action={params.locale ? `/${params.locale}/search` : '/search'}
+                className="flex items-center gap-2 bg-white rounded-md drop-shadow-md text-black"
+              >
+                <Input
+                  className={
+                    isHome
+                      ? 'focus:border-contrast/20 dark:focus:border-primary/20 text-black'
+                      : 'focus:border-primary/20 text-black'
+                  }
+                  type="search"
+                  variant="minisearch"
+                  placeholder="Search"
+                  name="q"
+                />
+                <button
+                  type="submit"
+                  className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+                >
+                  <IconSearch />
+                </button>
+              </Form>
+              <div className=''>
+              <img src={location} alt="location"/>
+              </div>
+              <div className=''>
+              <img src={wishList} alt='heart'/>
+              </div>
+              <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5 " />
+              <CartCount isHome={isHome} openCart={openCart} className="" />
+            </div>
+          </div>
+        </div>
+      </header>
+      {/* <MenuHeader /> */}
+    </>
   );
 }
 
@@ -297,11 +514,13 @@ function AccountLink({className}) {
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
     <Link to="/account" className={className}>
-      <IconAccount />
+      <img src={accountLogin} alt='login'/>
+      {/* <IconAccount /> */}
     </Link>
   ) : (
     <Link to="/account/login" className={className}>
-      <IconLogin />
+      <img src={accountLogin} alt='login'/>
+      {/* <IconLogin /> */}
     </Link>
   );
 }
@@ -330,8 +549,9 @@ function Badge({openCart, dark, count}) {
   const BadgeCounter = useMemo(
     () => (
       <>
-        <IconBag />
-        <div
+      <img src={cart} alt='cart'/>
+        {/* <IconBag /> */}
+        {/* <div
           className={`${
             dark
               ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
@@ -339,7 +559,7 @@ function Badge({openCart, dark, count}) {
           } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
-        </div>
+        </div> */}
       </>
     ),
     [count, dark],
