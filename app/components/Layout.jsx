@@ -19,24 +19,29 @@ import {
   Cart,
   CartLoading,
   Link,
+  FeaturedProducts,
 } from '~/components';
 import { useIsHomePath } from '~/lib/utils';
 import { useIsHydrated } from '~/hooks/useIsHydrated';
 import { useCartFetchers } from '~/hooks/useCartFetchers';
-import BannerSection from '../components/about_us';
+// import BannerSection from '../components/about_us';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
+import NewArrivels from './custom-components/NewArrivels';
+import LatestOffer from './custom-components/LatestOffer';
+import BestSeller from './custom-components/BestSeller';
+import FeaturedIn from './custom-components/FeaturedIn';
+import SocialMedia from './custom-components/SocialMedia';
 import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp'
 import FooterComponet from './FooterComponet';
-import logo_img from '../asset/logo.svg';
-import user_img from '../asset/Icon-feather-user.png'
-import img2 from '../asset/181618789-set-of-different-cooking-utensils-on-gray-countertop-in-kitchen.webp';
 import logo_img from '../asset/logo.svg';
 import user_img from '../asset/Icon-feather-user.png';
 import heart_img from '../asset/heart.png';
 import location_img from '../asset/Untitled-1-01.png';
 import cart_img from '../asset/cart.png';
 import union1_img from '../asset/Union 1.png';
+import OurLatestBlog from './custom-components/OurLatestBlog';
+import CustomerTestimonial from './custom-components/CustomerTestimonial';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -50,14 +55,19 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
-          <main role="main" id="mainContent" className="flex-grow px-10">
+          <main role="main" id="mainContent" className="flex-grow ">
             <div className='main_video_banner '>
-              <div className='video_banner place-contant-center'>
                 <ShopByCategory />
                 <ShopByBrands/>
-              </div>
+                <NewArrivels/>
+                <LatestOffer/>
+                <BestSeller/>
+                <FeaturedIn/>
+                <OurLatestBlog/>
+                <SocialMedia/>
+                <CustomerTestimonial/>
               <div>
-                <BannerSection />
+                {/* <BannerSection /> */}
               </div>
             </div>
             {children}

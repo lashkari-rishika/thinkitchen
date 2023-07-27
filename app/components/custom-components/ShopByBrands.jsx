@@ -10,28 +10,27 @@ import '../../styles/app.css'
 const ShopByBrands = () => {
 
   return (
-    <div className='brand-section mt-10'>
+    <div className='brand-section mt-10 xs-only:px-3 px-10'>
       <div className='brand-section-heading'>
-        <h1 className='text-3xl text-center font-normal pb-4'>SHOP BY BRANDS</h1>
+        <h1 className='text-4xl text-center font-medium pb-4'>SHOP BY BRANDS</h1>
       </div>
       <div className='image_section'>
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-1">
-          
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2.5">
+
           <div className="flex flex-col items-center">
             <div className='all-brand-image'>
               <Link href="https://www.google.com/" className='w-full' target="_blank">
                 <img
                   src={sb3}
                   className="w-full object-cover hover_image"
-                  
                 />
                 <div className='all_brand_text text-3xl  text-white'><h1> AMEFA</h1> </div>
-                <div className='all-brand-hidden'>
+                <div className='all-brand-hidden w-2/4 left-1/4 top-2/3'>
                   <div className='brand_hidden_image'>
                     <img src={grazia} />
                   </div>
                   <div className='mt-2'>
-                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                    <h1 className='text-base flex justify-center'>BY THEMEKITCHEN</h1>
                   </div>
                 </div>
               </Link>
@@ -42,16 +41,16 @@ const ShopByBrands = () => {
             <div className='all-brand-image'>
               <Link href="https://www.google.com/" className='w-full' target="_blank">
                 <img
-                  src={sb5}
+                  src={sb2}
                   className="w-full object-cover hover_image"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> BERGHOFF</h1> </div>
-                <div className='all-brand-hidden'>
+                <div className='all-brand-hidden w-2/4 left-1/4 top-2/3'>
                   <div className='brand_hidden_image'>
                     <img src={grazia} />
                   </div>
                   <div className='mt-2'>
-                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                    <h1 className='text-base'>BY THEMEKITCHEN</h1>
                   </div>
                 </div>
               </Link>
@@ -66,12 +65,12 @@ const ShopByBrands = () => {
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1>COLE&MASON</h1> </div>
-                <div className='all-brand-hidden'>
+                <div className='all-brand-hidden w-2/4 left-1/4 top-2/3'>
                   <div className='brand_hidden_image'>
                     <img src={grazia} />
                   </div>
                   <div className='mt-2'>
-                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                    <h1 className='text-base leading-none'>BY THEMEKITCHEN</h1>
                   </div>
                 </div>
               </Link>
@@ -86,12 +85,12 @@ const ShopByBrands = () => {
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> BRABANTIA</h1> </div>
-                <div className='all-brand-hidden'>
+                <div className='all-brand-hidden w-2/4 left-1/4 top-2/3'>
                   <div className='brand_hidden_image'>
                     <img src={grazia} />
                   </div>
                   <div className='mt-2'>
-                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                    <h1 className='text-base'>BY THEMEKITCHEN</h1>
                   </div>
                 </div>
               </Link>
@@ -101,16 +100,16 @@ const ShopByBrands = () => {
             <div className='all-brand-image'>
               <Link href="https://www.google.com/" className='w-full' target="_blank">
                 <img
-                  src={sb2}
+                  src={sb5}
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> JAMIE OLIVER</h1> </div>
-                <div className='all-brand-hidden'>
+                <div className='all-brand-hidden w-2/4 left-1/4 top-2/3'>
                   <div className='brand_hidden_image'>
                     <img src={grazia} />
                   </div>
                   <div className='mt-2'>
-                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                    <h1 className='text-base'>BY THEMEKITCHEN</h1>
                   </div>
                 </div>
               </Link>
@@ -124,12 +123,12 @@ const ShopByBrands = () => {
                   className="w-full object-cover"
                 />
                 <div className='all_brand_text text-3xl text-white'><h1> ZYLISS</h1> </div>
-                <div className='all-brand-hidden'>
+                <div className='all-brand-hidden w-2/4 left-1/4 top-2/3'>
                   <div className='brand_hidden_image'>
                     <img src={grazia} />
                   </div>
                   <div className='mt-2'>
-                    <h1 className='text-xl'>BY THEMEKITCHEN</h1>
+                    <h1 className='text-base'>BY THEMEKITCHEN</h1>
                   </div>
                 </div>
               </Link>

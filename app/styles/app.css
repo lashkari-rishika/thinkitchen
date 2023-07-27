@@ -189,7 +189,6 @@ shop-pay-button {
 }
 /* ------------------------All brand css ----------------------- */
 .brand-section .all_brand_text{
-  
   position: absolute;
   top: 50%;
   left: 50%;
@@ -218,13 +217,13 @@ shop-pay-button {
   position: absolute;
   bottom: 0;
   color: #f1f1f1;
-  width: 100%;
+  /* width: 100%; */
   transition: .5s ease;
   opacity: 0;
   color: white;
   font-size: 20px;
   padding: 20px;
-  top: 60%;
+  /* top: 60%; */
   align-items: center;
   /* flex-wrap: nowrap;
   flex-direction: row; */
@@ -241,8 +240,6 @@ shop-pay-button {
   opacity: 1;
   transition: all .25s;
   transform: translateY(-40px);
-  /* transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-  transition-duration: .15s; */
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -254,14 +251,86 @@ shop-pay-button {
 }
 
 
-
-.all-brand-image:hover .all_brand_text h1{
-  text-decoration: solid;
-}
 /* ---------------------------- All brand css end ---------------------------------- */
+/* ------------------------------social media--------------------------------------- */
 
+.social-brand-image {
+  position: relative;
+}
+
+.image-text {
+  position: relative;
+}
+
+.image-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .60);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-text:hover::before {
+  opacity: 1;
+}
+
+.social-hover-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-text:hover .social-hover-logo {
+  opacity: 1;
+}
+
+
+/* -----------------------------social media end ----------------------------------- */
 
 /* ---------------------------- category slider css -------------------------------- */
+
+.featured-section .swiper{
+  display: flex;
+  width: 100%;
+}
+.featured-section .swiper-wrapper{
+  display: flex;
+}
+.featured-section .myswiper {
+  position: relative;
+  overflow: hidden;
+}
+img{
+  width: 100%;
+}
+.featured-section .card {
+  padding: 0 8px;
+  overflow: hidden;
+}
+
+.arrivel-section .card{
+  padding: 0;
+}
+
+.arrivel-section .swiper-slide{
+  width: 100%;
+}
+
+.card__title {
+  text-align: center;
+  transition: opacity .3s;
+}
 
 .category_main_section .swiper-wrapper{
   display: flex;
@@ -271,8 +340,95 @@ shop-pay-button {
 .category_main_section  .swiper {
   overflow: hidden;
 }
-
+.category_heading .swiper-wrapper{
+  gap: 10px;
+}
 /* ---------------------------- category slider css end-------------------------------- */
+/* -----------------------------New Arrivel section------------------------------------ */
+
+.discount_lable {
+  top: 0.01rem;
+}
+
+.add_cart_button:hover {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  color: white;
+  background-color: #175C8A;
+}
+
+/* ----------------------------New arrivel section end -------------------------------- */
+/* -------------------------------- Latest offer --------------------------------------- */
+.leatestOffer_banner {
+  bottom : 90px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 576px) {
+  .leatestOffer_banner{
+    bottom: 86px;
+  }
+ 
+ }
+
+/* -------------------------------- Latest offer end------------------------------------- */
+
+
+
+
+/* Add your custom styles for the navigation arrows */
+/* .swiper-button-prev,
+.swiper-button-next {
+  width: 50px;
+  height: 50px;
+  background-color: #e4e4e4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+} */
+
+/* .swiper-button-prev {
+  left: 20px; 
+}
+
+.swiper-button-next {
+  right: 20px; 
+} */
+/* --------------------------------------------------- */
+
+
+/* ------------------------------- testimonial-section-start------------------------------- */
+.testimonial-section{
+  background-color: #F9F9FC;
+}
+
+.testimonial-logo-before::before {
+  content: "";
+  background-image: url('../asset/TT1.svg');
+  width: 75px;
+  height: 65px;
+  display: block;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+.testimonial-logo-after::after {
+  content: "";
+  background-image: url('../asset/TT2.svg');
+  width: 75px;
+  height: 64px;
+  display: block;
+  margin-left: auto;
+}
+/* ------------------------------- testimonial-section-end------------------------------- */
 a {
   text-decoration: none;
 }
