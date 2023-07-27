@@ -96,8 +96,9 @@ export function Section({
   const paddings = {
     x: 'px-6 md:px-8 lg:px-12',
     y: 'py-6 md:py-8 lg:py-12',
-    swimlane: 'pt-4 md:pt-8 lg:pt-12 md:pb-4 lg:pb-8',
-    all: 'p-6 md:p-8 lg:p-12',
+    // swimlane: 'pt-0 md:pt-0 lg:pt-0 md:pb-4 lg:pb-8',
+    swimlane: 'md:pb-4 lg:pb-8',
+    // all: 'p-0 md:p-0 lg:p-0',
   };
 
   const dividers = {
