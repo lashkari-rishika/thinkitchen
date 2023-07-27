@@ -5,7 +5,7 @@ import star5 from '../../asset/5star.png';
 
 const CustomerTestimonial = () => {
   return (
-    <div className="testimonial-section mt-10 xs-only:px-3 px-10">
+    <div className="testimonial-section mt-10 mb-14 xs-only:px-3 px-10">
       <div className="testimonial-section-heading">
         <h1 className="text-4xl text-center font-medium pb-4">
           CUSTOMER TESTIMONIALS
@@ -13,7 +13,7 @@ const CustomerTestimonial = () => {
       </div>
       <div className="bg-white mt-2 lg:w-5/6 sm:w-full mx-auto">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center           md:justify-between relative">
+          <div className="flex flex-col md:flex-row items-center justify-center md:justify-between relative">
             <div className="md:w-1/2 md:mr-4 mb-4 md:mb-0">
               <img src={CT1} alt="Testimonial" className="shadow-lg" />
             </div>
