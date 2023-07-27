@@ -190,6 +190,7 @@ shop-pay-button {
 .foooter {
   background-color: #f3f3f5;
 }
+/* ------------------------------- RP */
 /* ------------------------All brand css ----------------------- */
 .brand-section .all_brand_text {
   position: absolute;
@@ -342,6 +343,9 @@ img {
 .category_main_section .text-center {
   overflow: hidden;
 }
+/* .category_heading .swiper-wrapper{
+  gap: 10px;
+} */
 /* ---------------------------- category slider css end-------------------------------- */
 /* -----------------------------New Arrivel section------------------------------------ */
 

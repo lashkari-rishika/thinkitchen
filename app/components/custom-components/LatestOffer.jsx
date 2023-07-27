@@ -38,7 +38,8 @@ const LatestOffer = () => {
       <div className="image_section">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         {media.map((media)=> (
-          <div className="flex flex-col items-center">
+          <div key={media.id} className="flex flex-col items-center">
+
             <div className="relative">
               <Link
                 href={media.link}

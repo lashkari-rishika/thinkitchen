@@ -615,8 +615,7 @@ function Footer({menu}) {
       divider={isHome ? 'none' : 'top'}
       as="footer"
       role="contentinfo"
-      className="foooter w-full gap-4  grid  border-none w-full gap-4  grid border-none grid min-h-[25rem] items-start grid-flow-row w-full gap-6 grid-cols-1 md:grid-cols-1 lg:grid-cols-
-      bg-primary  text-black mb-0.5 light:text-primary text-contrast overflow-hidden bg-slate-100"
+      className="foooter w-full gap-4  grid  border-none  min-h-[25rem] items-start grid-flow-row grid-cols-1 md:grid-cols-1 lg:grid-cols-bg-primary  text-black mb-0.5 light:text-primary overflow-hidden bg-slate-100"
     >
       {/* <FooterMenu menu={menu} />
       <CountrySelector />
