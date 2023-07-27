@@ -331,15 +331,20 @@ img{
 
 .category_main_section .swiper-wrapper{
   display: flex;
-  width: 150%;
+  width: 100%;
+  gap: 10px;
 }
 
 .category_main_section  .swiper {
   overflow: hidden;
+  width: 200%;
 }
-.category_heading .swiper-wrapper{
+.category_main_section .text-center {
+  overflow: hidden;
+}
+/* .category_heading .swiper-wrapper{
   gap: 10px;
-}
+} */
 /* ---------------------------- category slider css end-------------------------------- */
 /* -----------------------------New Arrivel section------------------------------------ */
 
