@@ -21,10 +21,11 @@ import {
   Link,
   FeaturedProducts,
 } from '~/components';
-import { useIsHomePath } from '~/lib/utils';
-import { useIsHydrated } from '~/hooks/useIsHydrated';
-import { useCartFetchers } from '~/hooks/useCartFetchers';
-// import BannerSection from '../components/about_us';
+import {useIsHomePath} from '~/lib/utils';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
+import {useCartFetchers} from '~/hooks/useCartFetchers';
+import BannerSection from '../components/about_us';
+import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import NewArrivels from './custom-components/NewArrivels';
@@ -68,6 +69,7 @@ export function Layout({children, layout}) {
                 <CustomerTestimonial/>
               <div>
                 {/* <BannerSection /> */}
+                <Contactsection/>
               </div>
             </div>
             {children}
