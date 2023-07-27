@@ -3,7 +3,7 @@ import Bannerdetails_img from "../../../asset/Blogdetails_img.png";
 
 const Blogdetails = () => {
     return (
-        <section className="">
+        <section>
             <div className='px-10 pb-10'>
                 <div className="flex justify-center">
 
