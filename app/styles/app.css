@@ -938,3 +938,26 @@ a {
 .about_health1 {
   transform: translate(1%, 30%) !important;
 }
+
+/* ..................................... banner............................................. */
+.banner .banner-text h3{
+  font-size:36px;
+  color: #fff;
+  opacity: 1;
+  font-weight: 300;
+}
+.banner-logo img{
+  width: 230px;
+  height: 50px;
+}
+.banner{
+  position: absolute;
+}
+@media only screen and ( max-width:1200px) and ( min-width:1024){
+  .banner .banner-text{
+    position: absolute;
+    top: 83%;
+    left: 26%;
+  }
+  
+}
