@@ -41,6 +41,7 @@ import accountLogin from '../asset/Icon-feather-user.png';
 import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
+import Banner from '../components/Banner';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -56,6 +57,7 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
+          <Banner/>
             <ShopByCategory />
             <ShopByBrands />
             <NewArrivels />
@@ -65,6 +67,7 @@ export function Layout({children, layout}) {
             <OurLatestBlog />
             <SocialMedia />
             <CustomerTestimonial />
+            
             <div>
               {/* <BannerSection /> */}
               <Contactsection />
@@ -573,10 +576,11 @@ function Badge({openCart, dark, count}) {
         <img src={cart} alt="cart" />
         {/* <IconBag />
         <div
-          className={`${dark
+          className={`${
+            dark
               ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
               : 'text-contrast bg-primary'
-            } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
+          } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
         </div> */}
