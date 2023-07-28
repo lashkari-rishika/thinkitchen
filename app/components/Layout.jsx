@@ -73,7 +73,8 @@ export function Layout({children, layout}) {
                 <CustomerTestimonial/> */}
               <div>
                 {/* <BannerSection /> */}
-                <Contactsection/>
+                {/* <Contactsection/> */}
+                <Blog/>
               </div>
             </div>
             {children}

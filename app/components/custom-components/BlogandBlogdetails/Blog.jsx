@@ -8,14 +8,16 @@ import Blog_img6 from "../../../asset/Blog_img6.png";
 import Blog_img7 from "../../../asset/Blog_img7.png";
 import Blog_img8 from "../../../asset/Blog_img8.png";
 import Blog_img9 from "../../../asset/Blog_img9.png";
+import Tabs from "./Tabs";
 
 const Blog = () => {
     return (
         <section>
+            <div>
+              <Tabs/>
+            </div>
+
             <div className="px-10 pb-10">
-
-
-
                 <div>
                     <div>
                         <p className="text-center  text-gray-500 mt-1.5 mb-1.5 text-xs">Home | Blogs</p>
@@ -24,7 +26,7 @@ const Blog = () => {
                 </div>
                 <div className="flex justify-center">
                     <div className="card grid grid-cols-3 gap-4">
-                        <div className="w-full h-aut mb-5">
+                        <div className="w-full h-auto mb-5">
                             <img src={Blog_img1} alt="Image Card"></img>
                             <div p-4 className="card-content border border-gray-200 p-4">
                                 <h2 className="font-semibold border-b border-gray-300 text-xl pb-2">Top Table Styling Ideas and Tips to Follow...</h2>
@@ -109,7 +111,9 @@ const Blog = () => {
 
                 </div>
             </div>
+            
         </section>
+        
     );
 }
 
