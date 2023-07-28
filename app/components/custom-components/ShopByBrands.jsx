@@ -60,7 +60,7 @@ const media = [
 
 const ShopByBrands = () => {
   return (
-    <div className="brand-section mt-10 xs-only:px-3 px-10">
+    <div className="brand-section mt-10 sm-only:px-3 px-10">
       <div className="brand-section-heading">
         <h1 className="text-4xl text-center font-medium pb-4">SHOP BY BRAND</h1>
       </div>

@@ -29,7 +29,7 @@ const media = [
 
 const LatestOffer = () => {
   return (
-    <div className="latest-offer-section mt-10 xs-only:px-3 px-10">
+    <div className="latest-offer-section mt-10 sm-only:px-3 px-10">
       <div className="latest-offer-heading">
         <h1 className="text-4xl text-center font-medium pb-4 xs-only:text-2xl">
           LATEST OFFERS
@@ -46,19 +46,19 @@ const LatestOffer = () => {
                 target="_blank"
               >
                 <img src={media.imageSrc} className="w-full object-cover" />
-                <div className="leatestOffer_banner lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:text-2xl xl:w-6/12 lg:w-6/12 md:w-3/6 sm:w-3/6 xs:w-3/6 lg:bg-black lg:bg-opacity-50 lg:text-center lg:py-2 lg:text-white absolute bottom-1 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white text-center py-1 text-2xl md-only:text-sm sm-only:text-2xl xs-only:text-base">
+                <div className="leatestOffer_banner absolute left-1/2 transform -translate-x-1/2 lg:text-2xl bg-black bg-opacity-50 text-center text-white py-1 px-2 text-2xl md-only:text-sm sm-only:text-sm  xl:leading-7 lg-only:leading-6 md-only:leading-6 lg:bottom-24 lg-only:text-lg min-w-max sm-only:bottom-[86px] md-only:bottom-[5.25rem] ">
                   <h1>{media.tag}</h1>
                 </div>
               </Link>
-              <div className='flex px-4 py-6 xs:pt-2 xs:pb-4 justify-between bg-gray-50'>
-                <div className=''>
-                    <div className=''><h1 className='text-2xl xs-only:text-xl font-bold'>{media.name}</h1>
+              <div className='flex px-4 py-6 sm:pt-2 sm:pb-4 justify-between bg-gray-50'>
+                <div className='min-w-max'>
+                    <div className=''><h1 className='text-xl lg:text-2xl font-bold'>{media.name}</h1>
                     </div>
-                    <span className='text-2xl xs:text-xl font-medium leading-7'>{media.text1}</span>
-                    <span className='text-2xl xs:text-xl font-bold leading-7'>{media.text2}</span>
+                    <span className='text-xl lg-2xl font-medium leading-7'>{media.text1}</span>
+                    <span className='text-xl lg-2xl font-bold leading-7'>{media.text2}</span>
                 </div>
                 <div className=' product_card_button 4/12 items-center flex'>
-                    <button className="add_cart_button block w-full bg-white-500 text-xs font-medium text-black py-2 xs:pt-2 px-5 xs:px-3 border border-solid border-black uppercase">
+                    <button className="add_cart_button block w-full bg-white-500 text-xs font-medium text-black py-2 sm:pt-2 px-5 sm:px-3 border border-solid border-black uppercase min-w-max">
                     {media.cartBtn}
                     </button>
                 </div>
