@@ -33,12 +33,12 @@ const medium = [
 
 const OurLatestBlog = () => {
   return (
-    <div className='blog_main_section mt-10 xs-only:px-3 px-10'>
-        <div className='flex justify-between items-center mb-4'>
-            <div className='blog-section-heading block ml-auto text-center'>
-                <h1 className='text-4xl text-center font-medium'>OUR LATEST BLOGS</h1>
+    <div className='blog_main_section mt-10 sm-only:px-3 px-10'>
+        <div className='flex justify-center relative items-center pb-4'>
+            <div className='blog-section-heading block ml-auto w-full text-center'>
+                <h1 className='text-4xl font-medium'>OUR LATEST BLOGS</h1>
             </div>
-            <div className="block ml-auto text-right cursor-pointer underline">
+            <div className="block absolute top-5 right-5 font-semibold ml-auto text-right cursor-pointer underline">
                 View All
             </div>
         </div>

@@ -87,7 +87,7 @@ const media = [
 
 const ShopByCategory = ({images, text}) => {
   return (
-    <div className="category_main_section mt-10 xs-only:px-3 px-10">
+    <div className="category_main_section mt-10 sm-only:px-3 px-10">
       <div className="text-center">
         <div className="category_heading">
           <h1 className="text-4xl font-medium pb-4">SHOP BY CATEGORY</h1>
