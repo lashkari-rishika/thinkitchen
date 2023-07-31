@@ -468,14 +468,52 @@ a {
   text-decoration: none;
 }
 
+body {
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+:before,
+:after {
+  box-sizing: border-box;
+}
+.container {
+  max-width: 1200px;
+  /* margin:auto; */
+}
+.row {
+  display: flex;
+  align-content: center;
+  /* align-items: center; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.v-center {
+  align-items: center;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
 .header {
   display: block;
   width: 100%;
-  /* opacity: 0.8; */
+  
   /* position: relative; */
-  z-index: 99;
+  /* z-index: 99; */
   /* padding:15px; */
-  background: hsl(208deg 100% 97% / 75%);
+  /* background: hsl(208deg 100% 97% / 75%); */
   /* margin:auto; */
 }
 .header .item-left {
@@ -506,10 +544,10 @@ a {
 .header .menu > ul > li {
   display: inline-block;
   line-height: 50px;
-  margin-left: 25px;
+  margin-left: 50px;
 }
 .header .menu > ul > li > a {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: #000000;
   position: relative;
@@ -842,6 +880,7 @@ a {
   }
 }
 
+
 /* -------------------------------------Header End -------------------------------*/
 .serach-section {
   background-color: #f3f4f6;
@@ -912,11 +951,11 @@ a {
 }
 .brands-section p {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .copy-right p {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .description p {
   font-size: 14px;
