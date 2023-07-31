@@ -287,7 +287,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             : ' text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-2 lg:flex opacity-80 shadow-sm items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+        } hidden h-2 lg:flex opacity-80 shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
         <div className="header">
           <div className="row v-center flex gap-9">
