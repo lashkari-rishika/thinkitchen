@@ -471,11 +471,11 @@ a {
 .header {
   display: block;
   width: 100%;
-  /* opacity: 0.8; */
+  
   /* position: relative; */
-  z-index: 99;
+  /* z-index: 99; */
   /* padding:15px; */
-  background: hsl(208deg 100% 97% / 75%);
+  /* background: hsl(208deg 100% 97% / 75%); */
   /* margin:auto; */
 }
 .header .item-left {
@@ -506,10 +506,10 @@ a {
 .header .menu > ul > li {
   display: inline-block;
   line-height: 50px;
-  margin-left: 25px;
+  margin-left: 50px;
 }
 .header .menu > ul > li > a {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: #000000;
   position: relative;

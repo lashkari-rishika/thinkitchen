@@ -41,6 +41,8 @@ import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import Banner from '../components/Banner';
+import PdpSection from './PdpSection';
+import header_logo from '../asset/logo.svg'
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -55,8 +57,8 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-          <Banner/>
-            <ShopByCategory />
+          {/* <Banner/> */}
+            {/* <ShopByCategory />
             <ShopByBrands />
             <NewArrivels />
             <LatestOffer />
@@ -64,14 +66,15 @@ export function Layout({children, layout}) {
             <FeaturedIn />
             <OurLatestBlog />
             <SocialMedia />
-            <CustomerTestimonial />
+            <CustomerTestimonial /> */}
             <div>
               {/* <BannerSection /> */}
-              <Contactsection />
+              {/* <Contactsection /> */}
 
             </div>
             {children}
             </div>
+            <PdpSection />
           </main>
         </div>
       {footerMenu && <Footer menu={footerMenu} />}
@@ -282,19 +285,19 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         role="banner"
         className={`${
           isHome
-            ? 'header flex md:hidden sm:hidden bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary'
+            ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
             : ' text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-2 lg:flex items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+        } hidden h-2 lg:flex opacity-80 shadow-sm items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
-        <div className="container">
+        <div className="header">
           <div className="row v-center flex gap-9">
             <div className="header-item item-left">
               <div className="logo">
                 <Link className="font-bold" to="/" prefetch="intent">
-                  {/* <img src={logo} alt='logo'/> */}
-                  {title}
+                  <img src={header_logo} alt='logo'/>
+                  {/* {title} */}
                 </Link>
               </div>
             </div>
@@ -586,7 +589,7 @@ function Badge({ openCart, dark, count }) {
   return isHydrated ? (
     <button
       onClick={openCart}
-      className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+      className="relative flex items-center justify-center  focus:ring-primary/5"
     >
       {BadgeCounter}
     </button>
