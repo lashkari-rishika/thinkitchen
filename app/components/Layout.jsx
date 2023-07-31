@@ -55,7 +55,7 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-          <Banner/>
+          {/* <Banner/>
             <ShopByCategory />
             <ShopByBrands />
             <NewArrivels />
@@ -66,15 +66,14 @@ export function Layout({children, layout}) {
             <SocialMedia />
             <CustomerTestimonial />
             <div>
-              {/* <BannerSection /> */}
+              {<BannerSection />}
               <Contactsection />
-
-            </div>
+            </div> */}
             {children}
             </div>
           </main>
         </div>
-      {footerMenu && <Footer menu={footerMenu} />}
+      {/* {footerMenu && <Footer menu={footerMenu} />} */}
     </>
   );
 }
