@@ -282,19 +282,19 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         role="banner"
         className={`${
           isHome
-            ? 'header flex md:hidden sm:hidden bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary'
+            ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
             : ' text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-2 lg:flex items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+        } hidden h-2 lg:flex opacity-80 shadow-sm items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
-        <div className="container">
+        <div className="header">
           <div className="row v-center flex gap-9">
             <div className="header-item item-left">
               <div className="logo">
                 <Link className="font-bold" to="/" prefetch="intent">
-                  {/* <img src={logo} alt='logo'/> */}
-                  {title}
+                  <img src={header_logo} alt='logo'/>
+                  {/* {title} */}
                 </Link>
               </div>
             </div>
