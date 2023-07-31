@@ -41,6 +41,7 @@ import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import Banner from '../components/Banner';
+import header_logo from '../asset/logo.svg'
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
