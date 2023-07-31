@@ -746,8 +746,6 @@ ul li ul li {
   transform: translate(1%, 30%) !important;
 }
 
-
-
 /* tabs----css--start--here---komal */
 
 .tab-buttons button {
@@ -757,6 +755,8 @@ ul li ul li {
 .tab-buttons button:focus {
   border-bottom: 2px solid black; 
 }
+
+
 
 
 
