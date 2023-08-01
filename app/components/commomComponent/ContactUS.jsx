@@ -6,7 +6,7 @@ import ShareIcon from "../../asset/share_icon.png";
 import Enquries from "../../asset/Enquries.png";
 import facebookicon from "../../asset/facebook_icon.png";
 import instagram from "../../asset/instagram.png";
-import Youtube from "../../asset/Youtube.png"
+import Youtube from "../../asset/youtube.png"
 
 const Contactsection = () => {
     return (
