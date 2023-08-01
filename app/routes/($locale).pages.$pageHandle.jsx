@@ -5,6 +5,7 @@ import invariant from 'tiny-invariant';
 import {PageHeader} from '~/components';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
+import { AboutUS } from '~/components/AboutUS';
 
 export const headers = routeHeaders;
 
@@ -30,13 +31,17 @@ export async function loader({request, params, context}) {
 export default function Page() {
   const {page} = useLoaderData();
 
+  console.log("🚀 ~ file: ($locale).pages.$pageHandle.jsx:36 ~ Page ~ page.title:", page.title)
   return (
     <>
       <PageHeader heading={page.title}>
-        <div
+        {/* <div
           dangerouslySetInnerHTML={{__html: page.body}}
           className="prose dark:prose-invert"
-        />
+        /> */}
+        {page.title =="About us"?
+        <AboutUS/>
+        :"not found"}
       </PageHeader>
     </>
   );

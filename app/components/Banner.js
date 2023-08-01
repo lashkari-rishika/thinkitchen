@@ -34,14 +34,10 @@ const Banner = () => {
           delay: 20000000,
           disableOnInteraction: false,
         }}
-        // // pagination={{
-        // //   clickable: true,
-        // // }}
-        // // navigation={true}
         modules={[Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
         <video autoPlay loop muted>
         <source src={thinkitchen_video} type="video/mp4" />
             <div className="banner absolute md:top xl:top-[83%] xl:left-[8%] lg:left-[33%] lg:top-[83%] transform -translate-x-1/2 -translate-y-1/2 text-white">
@@ -58,7 +54,7 @@ const Banner = () => {
               </div>
             </div>
             </video>
-        </SwiperSlide>
+        </SwiperSlide> */}
 
          <SwiperSlide>
           <div
@@ -68,6 +64,7 @@ const Banner = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               height: '700px',
+              width:"110rem"
             }}
           >
             <div className="banner absolute md:top xl:top-[83%] xl:left-[8%] lg:left-[33%] lg:top-[83%] transform -translate-x-1/2 -translate-y-1/2 text-white">
@@ -86,7 +83,7 @@ const Banner = () => {
           </div>
         </SwiperSlide> 
         {/* third */}
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div
             className="banner-img "
             style={{
@@ -94,6 +91,7 @@ const Banner = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               height: '700px',
+              width:"110rem"
             }}
           >
             <div className="banner absolute md:top xl:top-[83%] xl:left-[8%] lg:left-[33%] lg:top-[83%] transform -translate-x-1/2 -translate-y-1/2 text-white">
@@ -110,7 +108,7 @@ const Banner = () => {
               </div>
             </div>
           </div>
-        </SwiperSlide> 
+        </SwiperSlide>  */}
       </Swiper>
     </div>
   );

@@ -24,7 +24,7 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import BannerSection from '../components/about_us';
+// import AboutUS from './AboutUS';
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
@@ -56,19 +56,19 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-          <Banner/>
+          {/* <Banner/> */}
             <ShopByCategory />
-            <ShopByBrands />
+            {/* <ShopByBrands />
             <NewArrivels />
             <LatestOffer />
             <BestSeller />
             <FeaturedIn />
             <OurLatestBlog />
             <SocialMedia />
-            <CustomerTestimonial />
+            <CustomerTestimonial /> */}
             <div>
-              {/* <BannerSection /> */}
-              <Contactsection />
+              {/* <AboutUS /> */}
+              {/* <Contactsection /> */}
 
             </div>
             {children}
