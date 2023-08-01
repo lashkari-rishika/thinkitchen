@@ -30,7 +30,6 @@ import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import NewArrivels from './custom-components/NewArrivels';
 import LatestOffer from './custom-components/LatestOffer';
-import BestSeller from './custom-components/BestSeller';
 import FeaturedIn from './custom-components/FeaturedIn';
 import SocialMedia from './custom-components/SocialMedia';
 import FooterComponet from './FooterComponet';
