@@ -30,7 +30,6 @@ import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import NewArrivels from './custom-components/NewArrivels';
 import LatestOffer from './custom-components/LatestOffer';
-import BestSeller from './custom-components/BestSeller';
 import FeaturedIn from './custom-components/FeaturedIn';
 import SocialMedia from './custom-components/SocialMedia';
 import FooterComponet from './FooterComponet';
@@ -56,19 +55,18 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-          <Banner/>
-            <ShopByCategory />
-            <ShopByBrands />
-            <NewArrivels />
-            <LatestOffer />
-            <BestSeller />
+          {/* <Banner/> */}
+            {/* <ShopByCategory />
+            <ShopByBrands /> */}
+            {/* <NewArrivels /> */}
+            {/* <LatestOffer />
             <FeaturedIn />
             <OurLatestBlog />
             <SocialMedia />
-            <CustomerTestimonial />
+            <CustomerTestimonial /> */}
             <div>
               {/* <BannerSection /> */}
-              <Contactsection />
+              {/* <Contactsection /> */}
 
             </div>
             {children}

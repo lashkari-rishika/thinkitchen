@@ -6,7 +6,7 @@ import {getProductPlaceholder} from '~/lib/placeholders';
 import {AiOutlineHeart} from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 
-export function ProductCard({
+export function BestSellerCard({
   product,
   label,
   className,
