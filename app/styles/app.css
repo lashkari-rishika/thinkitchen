@@ -139,7 +139,7 @@ shop-pay-button {
 }
 
 .swimlane {
-  @apply grid w-full snap-x snap-mandatory scroll-px-6 grid-flow-col justify-start gap-4 overflow-x-scroll px-6 pb-4;
+  @apply grid w-full snap-x snap-mandatory scroll-px-6 grid-flow-col justify-start gap-2 overflow-x-scroll pb-4;
 }
 
 @layer utilities {
@@ -453,7 +453,7 @@ body {
   align-content: center;
   /* align-items: center; */
   flex-direction: row;
-  flex-wrap: wrap;
+  
   justify-content: space-between;
 }
 .v-center {
@@ -491,7 +491,7 @@ body {
   align-content: center;
   /* align-items: center; */
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
 }
 .v-center {
@@ -602,6 +602,9 @@ a {
 .header .menu > ul > li .sub-menu.mega-menu {
   left: 50%;
   transform: translateX(-50%);
+}
+.header .menu > ul > li {
+margin-left: 10px;
 }
 
 .header .menu > ul > li .sub-menu.mega-menu-column-4 {
@@ -944,14 +947,15 @@ a {
   max-width: 90%;
   height: auto;
 }
-.shop-section p {
+.shop-section li {
   font-size: 14px;
   font-weight: 500;
   line-height: 26px;
 }
-.brands-section p {
+.brands-section li {
   font-size: 14px;
   font-weight: 500;
+  line-height: 26px;
 }
 .copy-right p {
   font-size: 13px;
@@ -965,6 +969,15 @@ a {
   width: 110px;
   padding: 0px;
 }
+@media (max-width: 768px) {
+  .footer-section ul {
+    display:none;
+  }
+
+  .footer-section .open {
+    display: flex;
+  }
+}
 
 .main_block_about {
   padding: 50px;
@@ -977,6 +990,9 @@ a {
 .about_health1 {
   transform: translate(1%, 30%) !important;
 }
+
+
+
 
 /* ..................................... banner............................................. */
 .banner .banner-text h3{

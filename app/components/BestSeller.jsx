@@ -1,10 +1,11 @@
 import {Link} from '@remix-run/react';
-import '../../styles/app.css';
+import '../styles/app.css';
 import {ProductCard, Section} from '~/components';
 
 import {AiOutlineHeart} from 'react-icons/ai';
 
-import arrival1 from '../../asset/arrival1.png';
+import arrival1 from '../asset/arrival1.png';
+import { BestSellerCard } from './BestSellerCard';
 
 const media = [
   {
@@ -61,7 +62,7 @@ export function BestSeller({
       >
         <div className="swimlane hiddenScroll">
           {products.nodes.map((product) => (
-            <ProductCard
+            <BestSellerCard
               product={product}
               key={product.id}
               className="snap-start w-80"
