@@ -1,11 +1,12 @@
-import {json, redirect} from '@shopify/remix-oxygen';
-import {Form, useActionData} from '@remix-run/react';
-import {useState} from 'react';
+import { json, redirect } from '@shopify/remix-oxygen';
+import { Form, useActionData } from '@remix-run/react';
+import { useState } from 'react';
 
-import {Link} from '~/components';
-import {getInputStyleClasses} from '~/lib/utils';
+import { Link } from '~/components';
+import { getInputStyleClasses } from '~/lib/utils';
+import Login_img1 from "../../app/asset/login_img1.png";
 
-export async function loader({context, params}) {
+export async function loader({ context, params }) {
   const customerAccessToken = await context.session.get('customerAccessToken');
 
   if (customerAccessToken) {
@@ -15,9 +16,9 @@ export async function loader({context, params}) {
   return new Response(null);
 }
 
-const badRequest = (data) => json(data, {status: 400});
+const badRequest = (data) => json(data, { status: 400 });
 
-export const action = async ({request, context}) => {
+export const action = async ({ request, context }) => {
   const formData = await request.formData();
   const email = formData.get('email');
 
@@ -29,10 +30,10 @@ export const action = async ({request, context}) => {
 
   try {
     await context.storefront.mutate(CUSTOMER_RECOVER_MUTATION, {
-      variables: {email},
+      variables: { email },
     });
 
-    return json({resetRequested: true});
+    return json({ resetRequested: true });
   } catch (error) {
     return badRequest({
       formError: 'Something went wrong. Please try again later.',
@@ -41,7 +42,7 @@ export const action = async ({request, context}) => {
 };
 
 export const meta = () => {
-  return [{title: 'Recover Password'}];
+  return [{ title: 'Recover Password' }];
 };
 
 export default function Recover() {
@@ -50,10 +51,16 @@ export default function Recover() {
   const isSubmitted = actionData?.resetRequested;
 
   return (
-    <div className="flex justify-center my-24 px-4">
-      <div className="max-w-md w-full">
+    <div className="flex justify-between sm-only:block">
+
+      <div className="w-6/12  sm-only:hidden  ">
+        <img src={Login_img1} alt=""></img>
+      </div>
+
+      <div className="w-1/2	relative sm-only:w-full ">
         {isSubmitted ? (
           <>
+
             <h1 className="text-4xl">Request Sent.</h1>
             <p className="mt-4">
               If that email address is in our system, you will receive an email
@@ -63,68 +70,77 @@ export default function Recover() {
           </>
         ) : (
           <>
-            <h1 className="text-4xl">Forgot Password.</h1>
-            <p className="mt-4">
-              Enter the email address associated with your account to receive a
-              link to reset your password.
-            </p>
-            {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-            <Form
-              method="post"
-              noValidate
-              className="pt-6 pb-8 mt-4 mb-4 space-y-3"
-            >
-              {actionData?.formError && (
-                <div className="flex items-center justify-center mb-6 bg-zinc-500">
-                  <p className="m-4 text-s text-contrast">
-                    {actionData.formError}
-                  </p>
-                </div>
-              )}
-              <div>
-                <input
-                  className={`mb-1 ${getInputStyleClasses(nativeEmailError)}`}
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  placeholder="Email address"
-                  aria-label="Email address"
-                  // eslint-disable-next-line jsx-a11y/no-autofocus
-                  autoFocus
-                  onBlur={(event) => {
-                    setNativeEmailError(
-                      event.currentTarget.value.length &&
-                        !event.currentTarget.validity.valid
-                        ? 'Invalid email address'
-                        : null,
-                    );
-                  }}
-                />
-                {nativeEmailError && (
-                  <p className="text-red-500 text-xs">
-                    {nativeEmailError} &nbsp;
-                  </p>
+
+            <div className="sm-only:left-0  relative top-2/4 sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 2xl-only:absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/4 md-only:w-10/12	lg-only:w-10/12">
+              <p className='text-center text-xs text-slate-400 mb-2'>Home  |  Account</p>
+              <h1 className="sm-only:text-center text-xl 2xl-only:text-4xl text-center font-medium">Reset your password</h1>
+              <p className="mt-4 sm-only:text-xs tracking-wide text-center">
+                We will send you an email to reset your password
+              </p>
+              {/* TODO: Add onSubmit to validate _before_ submission with native? */}
+              <Form
+                method="post"
+                noValidate 
+                className="pb-8 mt-4 mb-4 space-y-3"
+              >
+                {actionData?.formError && (
+                  <div className="flex items-center justify-center mb-6 bg-zinc-500">
+                    <p className="m-4 text-s text-contrast">
+                      {actionData.formError}
+                    </p>
+                  </div>
                 )}
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
-                  type="submit"
-                >
-                  Request Reset Link
-                </button>
-              </div>
-              <div className="flex items-center mt-8 border-t border-gray-300">
-                <p className="align-baseline text-sm mt-6">
-                  Return to &nbsp;
+                <div>
+                  <input
+                    className={`mb-1 ${getInputStyleClasses(nativeEmailError)} py-3`}
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    placeholder="Email"
+                    aria-label="Email address"
+                    // eslint-disable-next-line jsx-a11y/no-autofocus
+                    autoFocus
+                    onBlur={(event) => {
+                      setNativeEmailError(
+                        event.currentTarget.value.length &&
+                          !event.currentTarget.validity.valid
+                          ? 'Invalid email address'
+                          : null,
+                      );
+                    }}
+                  />
+                  {nativeEmailError && (
+                    <p className="text-red-500 text-xs">
+                      {nativeEmailError} &nbsp;
+                    </p>
+                  )}
+                </div>
+                <div className="flex items-center justify-between">
+                  <button
+                    className=" bg-sky-700 text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+                <div className='text-center	'>
                   <Link className="inline underline" to="/account/login">
-                    Login
+                    cancel
                   </Link>
-                </p>
-              </div>
-            </Form>
+                </div>
+
+                {/* <div className="flex items-center mt-8 border-t border-gray-300">
+                  <p className="align-baseline text-sm mt-6">
+                    Return to &nbsp;
+                    <Link className="inline underline" to="/account/login">
+                      Login
+                    </Link>
+                  </p>
+                </div> */}
+              </Form>
+            </div>
           </>
         )}
       </div>
