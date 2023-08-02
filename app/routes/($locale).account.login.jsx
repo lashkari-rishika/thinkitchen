@@ -88,7 +88,7 @@ export default function Login() {
       </div>
 
       <div className="w-6/12 relative ">
-        <div className='home_account_login w-4/6	m-auto absolute '>
+        <div className='home_account_login w-4/6 m-auto absolute '>
           <p className='text-center text-xs text-slate-400 mb-2'>Home | Account</p>
           <h1 className="text-3xl font-medium text-center">Login</h1>
           {/* TODO: Add onSubmit to validate _before_ submission with native? */}
