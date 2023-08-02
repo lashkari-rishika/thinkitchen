@@ -1016,3 +1016,17 @@ margin-left: 10px;
   }
   
 }
+
+/*----------- account login start css------------- */
+
+.home_account_login{
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+  
+
