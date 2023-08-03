@@ -21,7 +21,7 @@ const Blogdetails = () => {
                         <div className='px-2 mt-2  space-y-4 px-10  leading-tight'>
                             <p className='font-bold pt-1 pb-0 text-justify  text-sm lg:font-bold'>ANALYTICS SOLUTIONS</p>
                             <p className='pb-5 text-justify border-b border-gray-300'>The peak of summer is here. It means, it’s time to binge-eat mangoes and pull out all the linens, florals from the closet. Just like you change your personal style as per the season, you must change the dining table setting and style as per the season. It’s these little things that make all the difference. This hot and humid season calls for a more casual table styling. But what do we mean exactly? Let’s find out. In today’s blog, we’ll shed some sunshine on trendy summer table styling ideas and tips:</p>
-                        </div>
+                        </div>  
 
                         <div className='px-2 mt-5 space-y-4 px-10 leading-tight'>
                             <p className='font-bold text-justify'>1. ADD SOME FLOWERS:</p>
