@@ -24,6 +24,7 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+import Myaccount from '../components/Myaccount';
 import BannerSection from '../components/about_us';
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
@@ -71,7 +72,7 @@ export function Layout({children, layout}) {
             <div>
               {/* <BannerSection /> */}
               {/* <Contactsection /> */}
-
+              <Myaccount/>
             </div>
             {children}
           </div>
