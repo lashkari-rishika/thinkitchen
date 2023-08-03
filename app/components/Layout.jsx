@@ -1,7 +1,7 @@
-import { useParams, Form, Await, useMatches } from '@remix-run/react';
-import { useWindowScroll } from 'react-use';
-import { Disclosure } from '@headlessui/react';
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import {useParams, Form, Await, useMatches} from '@remix-run/react';
+import {useWindowScroll} from 'react-use';
+import {Disclosure} from '@headlessui/react';
+import {Suspense, useEffect, useMemo, useState} from 'react';
 import {
   Drawer,
   useDrawer,
@@ -25,12 +25,15 @@ import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import BannerSection from '../components/about_us';
+import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
+import Termscondition from './PrivacyandTermscondition/Termscondition';
+import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
+import Blog from './custom-components/BlogandBlogdetails/Blog';
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
 import NewArrivels from './custom-components/NewArrivels';
 import LatestOffer from './custom-components/LatestOffer';
-import BestSeller from './custom-components/BestSeller';
 import FeaturedIn from './custom-components/FeaturedIn';
 import SocialMedia from './custom-components/SocialMedia';
 import FooterComponet from './FooterComponet';
@@ -44,6 +47,11 @@ import Banner from '../components/Banner';
 import PdpSection from './PdpSection';
 import header_logo from '../asset/logo.svg'
 
+import dropdownImageMoblie from '../asset/dropdown-mobile.png';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
+import { CiCircleChevDown } from 'react-icons/ci';
+import { Image } from '@shopify/hydrogen';
+
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
   return (
@@ -55,6 +63,7 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
+
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
           {/* <Banner/> */}
@@ -82,7 +91,7 @@ export function Layout({children, layout}) {
   );
 }
 
-function Header({ title, menu }) {
+function Header({title, menu}) {
   const isHome = useIsHomePath();
 
   const {
@@ -127,7 +136,7 @@ function Header({ title, menu }) {
   );
 }
 
-function CartDrawer({ isOpen, onClose }) {
+function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
@@ -143,7 +152,7 @@ function CartDrawer({ isOpen, onClose }) {
   );
 }
 
-export function MenuDrawer({ isOpen, onClose, menu }) {
+export function MenuDrawer({isOpen, onClose, menu}) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
@@ -153,31 +162,286 @@ export function MenuDrawer({ isOpen, onClose, menu }) {
   );
 }
 
-function MenuMobileNav({ menu, onClose }) {
+function MenuMobileNav({menu, onClose}) {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isDropdownOpentwo, setDropdownOpentwo] = useState(false);
+ 
+  const toggleDropdown = () => {
+    setDropdownOpen((prevState) => {
+      return !prevState
+    })
+  };
+  const firstDropdown = (item) => {
+    setDropdownOpentwo((prevState) => !prevState);
+  };
+
+  const titlesForFirstDropdown = [
+    {
+      title: 'Prepware',
+      subTitles: [
+        {id: '1', name: 'Prepware Accessories'},
+        {id: '2', name: 'Knife & Knife Sets'},
+        {id: '3', name: 'Cooking Accessories'},
+        {id: '4', name: 'Serving Accessories'},
+      ],
+    },
+    // {
+    //   title: 'Drinkware',
+    //   subTitles: [
+    //   {id: '1', name: 'Cups & Mugs '},
+    //   {id: '2', name: 'Bottles '},
+    //   {id: '3', name: 'On-the-Go'},
+    //   {id: '4', name: 'Tea Pots'},
+    //   {id: '5', name: 'Coffee Makers'},
+    //   {id: '6', name: 'Tea Accessories'},
+    //   ]
+    // },
+    // {
+    //   title: 'Drinkware',
+    //   subTitles: [
+    //   {id: '1', name: 'Bowls  '},
+    //   {id: '2', name: 'Plates '},
+    //   {id: '3', name: 'Serveware'},
+    //   {id: '4', name: 'Tea Pots'},
+    //   {id: '5', name: 'Dinner Sets'},
+    //   {id: '6', name: 'Tea Accessories'},
+    //   ]
+    // },
+    // {
+    //   title: 'Barware',
+    //   subTitles: ['Sub Title 4', 'Sub Title 5'],
+    // },
+    // Add the rest of the titles and sub-titles here...
+  ];
+
   return (
-    <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      {/* Top level menu items */}
-      {(menu?.items || []).map((item) => (
-        <span key={item.id} className="block">
-          <Link
-            to={item.to}
-            target={item.target}
-            onClick={onClose}
-            className={({ isActive }) =>
-              isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-            }
-          >
+    <nav className="grid bg-white gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
+      <div key="category" className="block border-b-2">
+        {/* frist menu */}
+        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
+          <li>
+            <p className="text-base">
+              Shop by Catagory
+            </p>
+            <div className="absolute top-24 right-12">
+              {/* <svg
+                onClick={toggleDropdown}
+                className={`ml-4 h-30 w-4 h-4 transition-transform ${
+                  isDropdownOpen ? 'transform rotate-180' : ''
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg> */}
+
+              <li
+                onClick={toggleDropdown}
+                className={`w-8 h-8 transition-transform ${
+                  isDropdownOpen ? 'transform rotate-180' : ''
+                }`}
+              > <img src={dropdownImageMoblie} alt="" /></li>
+            </div>
+          </li>
+        </ul>
+        {isDropdownOpen && (
+          <ul className="max-h-60 overflow-y-scroll">
+            {/* Put your content here for the first dropdown */}
+            <ul className="space-y-2">
+              {titlesForFirstDropdown.map((item) => (
+                <li key={item.title}>
+                  <div className="text-sm font-semibold text-black">
+                    {item.title}
+                  </div>
+                  <div className="absolute top-32 right-14">
+                    {/* <svg
+                      onClick={firstDropdown}
+                      className={`ml-4 h-30 w-4 h-4 transition-transform ${
+                        isDropdownOpentwo ? 'transform rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg> */}
+                    <li
+                        onClick={firstDropdown}
+                        className={`ml-4 h-5 w-5  transition-transform ${
+                        isDropdownOpentwo ? 'transform rotate-180' : ''
+                      }`}> <img src={dropdown_icon_moblie} alt="" /> </li>
+                      {/* <CiCircleChevDown /> */}
+                  </div>
+
+                  {isDropdownOpentwo &&(
+                    <ul className="space-y-2">
+                    {item.subTitles.map((subTitle) => (
+                      <li
+                        key={subTitle.id}
+                        className="mt-3 mb-3 text-sm	font-medium	 text-black"
+                        onClick={(e) => e.stopPropagation()} // Stop click event propagation
+                      >
+                        {subTitle.name}
+                      </li>
+                    ))}
+                  </ul>
+                  )}
+                  
+
+                </li>
+              ))}
+            </ul>
+          </ul>
+        )}
+      </div>
+      {/*  Second menu */}
+      {/* <div key="category" className="block border-b-2">
+        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
+          <li>
             <Text as="span" size="copy">
-              {item.title}
+              Shop by Brands
             </Text>
-          </Link>
-        </span>
-      ))}
+            <div className="absolute top-24 right-12">
+              <svg
+                onClick={toggleDropdown}
+                className={`ml-4 h-30 w-4 h-4 transition-transform ${
+                  isDropdownOpen ? 'transform rotate-180' : ''
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
+        {isDropdownOpen && (
+          <ul className="pl-4 max-h-60 overflow-y-scroll">
+           
+            <ul className="space-y-2">
+              {titlesForFirstDropdown.map((item) => (
+                <li key={item.title}>
+                  <span className="text-base font-medium text-gray-800">
+                    {item.title}
+                  </span>
+                  <ul className="ml-4 space-y-2">
+                    {item.subTitles.map((subTitle) => (
+                      <li
+                        key={subTitle}
+                        className="text-sm text-gray-600"
+                        onClick={(e) => e.stopPropagation()} 
+                      >
+                        {subTitle}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </ul>
+        )}
+      </div> */}
+      {/* Thrid menu */}
+      {/* <div key="category" className="block border-b-2">
+        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
+          <li>
+            <Text as="span" size="copy">
+              Know Us
+            </Text>
+            <div className="absolute top-24 right-12">
+              <svg
+                onClick={toggleDropdown}
+                className={`ml-4 h-30 w-4 h-4 transition-transform ${
+                  isDropdownOpen ? 'transform rotate-180' : ''
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
+        {isDropdownOpen && (
+          <ul className="pl-4 max-h-60 overflow-y-scroll">
+           
+            <ul className="space-y-2">
+              {titlesForFirstDropdown.map((item) => (
+                <li key={item.title}>
+                  <span className="text-base font-medium text-gray-800">
+                    {item.title}
+                  </span>
+                  <ul className="ml-4 space-y-2">
+                    {item.subTitles.map((subTitle) => (
+                      <li
+                        key={subTitle}
+                        className="text-sm text-gray-600"
+                        onClick={(e) => e.stopPropagation()} 
+                      >
+                        {subTitle}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </ul>
+        )}
+      </div> */}
     </nav>
   );
 }
 
-function MobileHeader({ title, isHome, openCart, openMenu }) {
+{/* <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
+      {/* Top level menu items */}
+    //   {(menu?.items || []).map((item) => (
+    //     <span key={item.id} className="block">
+    //       <Link
+    //         to={item.to}
+    //         target={item.target}
+    //         onClick={onClose}
+    //         className={({ isActive }) =>
+    //           isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+    //         }
+    //       >
+    //         <Text as="span" size="copy">
+    //           {item.title}
+    //         </Text>
+    //       </Link>
+    //     </span>
+    //   ))}
+    // </nav> 
+
+export default MenuMobileNav;
+
+function MobileHeader({title, isHome, openCart, openMenu}) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -185,66 +449,67 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
   return (
     <header
       role="banner"
-      className={`${isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
-        } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      className={`${
+        isHome ? 'bg-white text-black' : ' text-primary'
+      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
-      <div className="flex items-center justify-start w-full gap-4">
+      <div className="flex items-center justify-start gap-4">
         <button
           onClick={openMenu}
-          className="relative flex items-center justify-center w-8 h-8"
+          className="relative flex items-center justify-center h-8"
         >
           <IconMenu />
         </button>
-        <Form
-          method="get"
-          action={params.locale ? `/${params.locale}/search` : '/search'}
-          className="items-center gap-2 sm:flex"
-        >
-          <button
-            type="submit"
-            className="relative flex items-center justify-center w-8 h-8"
-          >
-            <IconSearch />
-          </button>
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-        </Form>
       </div>
 
       <Link
-        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
+        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center w-full h-full"
         to="/"
       >
         <Heading
           className="font-bold text-center leading-none"
           as={isHome ? 'h1' : 'h2'}
         >
-          {title}
+          <img src={header_logo} alt="" />
         </Heading>
       </Link>
 
       <div className="flex items-center justify-end w-full gap-4">
-        <AccountLink className="relative flex items-center justify-center w-8 h-8" />
+        <AccountLink className="relative flex items-center justify-center  h-8" />
         <CartCount isHome={isHome} openCart={openCart} />
+      </div>
+      <div>
+        <Form
+          method="get"
+          action={params.locale ? `/${params.locale}/search` : '/search'}
+          className="search-section items-center gap-2 shadow-sm sm:flex absolute top-full bg-gray-100 w-full left-0"
+        >
+          <Input
+            className={
+              isHome
+                ? 'focus:border-contrast/20 absolute left-0 text-center dark:focus:border-primary/20'
+                : 'focus:border-primary/20'
+            }
+            type="search"
+            variant="minisearch"
+            placeholder="Search Product"
+            name="q"
+          />
+          <button
+            type="submit"
+            className="search-icon flex items-center justify-center h-8 ml-90%"
+          >
+            <IconSearch />
+          </button>
+        </Form>
       </div>
     </header>
   );
 }
 
-function DesktopHeader({ isHome, menu, openCart, title }) {
+function DesktopHeader({isHome, menu, openCart, title}) {
   const params = useParams();
-  const { y } = useWindowScroll();
+  const {y} = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
   const [subMenuActive, setSubMenuActive] = useState(false);
   const [currentMenuTitle, setCurrentMenuTitle] = useState('');
@@ -301,90 +566,86 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                 </Link>
               </div>
             </div>
-            <div
-              className={`header-item item-center ${
-                menuActive ? 'active' : ''
-              }`}
-            >
-              <div className="menu-overlay" onClick={toggleMenu}></div>
-              <nav className={`menu ${menuActive ? 'active' : ''}`}>
-                <div className="mobile-menu-head">
-                  <div className="go-back" onClick={hideSubMenu}>
-                    fhgdfgh
-                  </div>
-                  <div className="current-menu-title">{currentMenuTitle}</div>
-                  <div className="mobile-menu-close" onClick={toggleMenu}>
-                    &times;
-                  </div>
+          </div>
+          <div
+            className={`header-item item-center ${menuActive ? 'active' : ''}`}
+          >
+            <div className="menu-overlay" onClick={toggleMenu}></div>
+            <nav className={`menu ${menuActive ? 'active' : ''}`}>
+              <div className="mobile-menu-head">
+                <div className="go-back" onClick={hideSubMenu}>
+                  fhgdfgh
                 </div>
-                <ul
-                  className={`menu-main flex items-center gap-6 ${
-                    subMenuActive ? 'active' : ''
-                  }`}
-                >
-                  {(menu?.items || []).map((item) => (
-                    <li
-                      className="menu-item-has-children"
-                      onClick={showSubMenu}
+                <div className="current-menu-title">{currentMenuTitle}</div>
+                <div className="mobile-menu-close" onClick={toggleMenu}>
+                  &times;
+                </div>
+              </div>
+              <ul
+                className={`menu-main flex items-center gap-6 ${
+                  subMenuActive ? 'active' : ''
+                }`}
+              >
+                {(menu?.items || []).map((item) => (
+                  <li className="menu-item-has-children" onClick={showSubMenu}>
+                    <Link
+                      key={item.id}
+                      to={item.to}
+                      target={item.target}
+                      prefetch="intent"
+                      className={({isActive}) =>
+                        isActive ? 'pb-1  -mb-px' : 'pb-1'
+                      }
                     >
-                      <Link
-                        key={item.id}
-                        to={item.to}
-                        target={item.target}
-                        prefetch="intent"
-                        className={({isActive}) =>
-                          isActive ? 'pb-1  -mb-px' : 'pb-1'
-                        }
-                      >
-                        {item.title}
-                      </Link>
-                      <div class="sub-menu mega-menu mega-menu-column-4">
-                        {(item?.items || []).map((subitem) => (
-                          <>
-                            <div class="list-item">
-                              <h4 class="title">
-                                <Link
-                                  key={subitem.id}
-                                  to={subitem.to}
-                                  target={subitem.target}
-                                  prefetch="intent"
-                                  className={({isActive}) =>
-                                    isActive ? 'pb-1  -mb-px' : 'pb-1'
-                                  }
-                                >
-                                  {subitem.title}
-                                </Link>
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="#">Product List</a>
-                                </li>
-                                <li>
-                                  <a href="#">Product List</a>
-                                </li>
-                                <li>
-                                  <a href="#">Product List</a>
-                                </li>
-                                <li>
-                                  <a href="#">Product List</a>
-                                </li>
-                                <li>
-                                  <a href="#">Product List</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </>
-                        ))}
-                        {/* <div class="list-item">
+                      {item.title}
+                    </Link>
+                    <div class="sub-menu mega-menu mega-menu-column-4">
+                      {(item?.items || []).map((subitem) => (
+                        <>
+                          <div class="list-item">
+                            <h4 class="title">
+                              <Link
+                                key={subitem.id}
+                                to={subitem.to}
+                                target={subitem.target}
+                                prefetch="intent"
+                                className={({isActive}) =>
+                                  isActive ? 'pb-1  -mb-px' : 'pb-1'
+                                }
+                              >
+                                {subitem.title}
+                              </Link>
+                            </h4>
+                            <ul>
+                              <li>
+                                <a href="#">Product List</a>
+                              </li>
+                              <li>
+                                <a href="#">Product List</a>
+                              </li>
+                              <li>
+                                <a href="#">Product List</a>
+                              </li>
+                              <li>
+                                <a href="#">Product List</a>
+                              </li>
+                              <li>
+                                <a href="#">Product List</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </>
+                      ))}
+                      {/* <div class="list-item">
                           <img src={img2} alt="shop" />
                         </div> */}
-                      </div>
-                    </li>
-                  ))}
-                  {/* <li>
+                    </div>
+                  </li>
+                ))}
+                {/* <li>
                     <a href="#">Home</a>
                   </li> */}
-                  {/* <li className="menu-item-has-children" onClick={showSubMenu}>
+                {/* <li className="menu-item-has-children" onClick={showSubMenu}>
                     <a href="#">Shop</a>
                     <div class="sub-menu mega-menu mega-menu-column-4">
                       <div class="list-item">
@@ -488,49 +749,49 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                       </div>
                     </div>
                   </li> */}
-                </ul>
-              </nav>
-            </div>
-            <div className="flex items-center gap-5">
-              <Form
-                method="get"
-                action={params.locale ? `/${params.locale}/search` : '/search'}
-                className="flex items-center gap-2 bg-white rounded-md drop-shadow-md text-black"
+              </ul>
+            </nav>
+          </div>
+          <div className="flex items-center gap-5">
+            <Form
+              method="get"
+              action={params.locale ? `/${params.locale}/search` : '/search'}
+              className="flex items-center gap-2 bg-white rounded-md drop-shadow-md text-black"
+            >
+              <Input
+                className={
+                  isHome
+                    ? 'focus:border-contrast/20 dark:focus:border-primary/20 text-black'
+                    : 'focus:border-primary/20 text-black'
+                }
+                type="search"
+                variant="minisearch"
+                placeholder="Search"
+                name="q"
+              />
+              <button
+                type="submit"
+                className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
               >
-                <Input
-                  className={
-                    isHome
-                      ? 'focus:border-contrast/20 dark:focus:border-primary/20 text-black'
-                      : 'focus:border-primary/20 text-black'
-                  }
-                  type="search"
-                  variant="minisearch"
-                  placeholder="Search"
-                  name="q"
-                />
-                <button
-                  type="submit"
-                  className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
-                >
-                  <IconSearch />
-                </button>
-              </Form>
-              <div className="">
-                <img src={cart_location} alt="location" />
-              </div>
-              <div className="">
-                <img src={wishList} alt="heart" />
-              </div>
-              <AccountLink className="relative flex items-center justify-center focus:ring-primary/5 " />
-              <CartCount isHome={isHome} openCart={openCart} className="" />
+                <IconSearch />
+              </button>
+            </Form>
+            <div className="">
+              <img src={cart_location} alt="location" />
             </div>
+            <div className="">
+              <img src={wishList} alt="heart" />
+            </div>
+            <AccountLink className="relative flex items-center justify-center focus:ring-primary/5 " />
+            <CartCount isHome={isHome} openCart={openCart} className="" />
           </div>
         </div>
-      </header>
+      
+    </header>
   );
 }
 
-function AccountLink({ className }) {
+function AccountLink({className}) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -546,7 +807,7 @@ function AccountLink({ className }) {
   );
 }
 
-function CartCount({ isHome, openCart }) {
+function CartCount({isHome, openCart}) {
   const [root] = useMatches();
 
   return (
@@ -564,13 +825,13 @@ function CartCount({ isHome, openCart }) {
   );
 }
 
-function Badge({ openCart, dark, count }) {
+function Badge({openCart, dark, count}) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
     () => (
       <>
-      <img src={cart} alt="cart" />
+        <img src={cart} alt="cart" />
         {/* <IconBag />
         <div
           className={`${
@@ -603,7 +864,7 @@ function Badge({ openCart, dark, count }) {
   );
 }
 
-function Footer({ menu }) {
+function Footer({menu}) {
   const isHome = useIsHomePath();
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
@@ -626,12 +887,12 @@ function Footer({ menu }) {
         &copy; {new Date().getFullYear()} / Shopify, Inc. Hydrogen is an MIT
         Licensed Open Source project.
       </div> */}
-      <FooterComponet/>
+      <FooterComponet />
     </Section>
   );
 }
 
-function FooterLink({ item }) {
+function FooterLink({item}) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -691,7 +952,9 @@ function FooterMenu({menu}) {
           </Disclosure>
         </section>
       ))} */}
-      
     </>
   );
 }
+
+
+  

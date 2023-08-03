@@ -7,7 +7,7 @@ import {
 } from '@shopify/hydrogen';
 
 import {PageHeader, Section, ProductCard, Grid} from '~/components';
-import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {BESTSELLER_CARD_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getImageLoadingPriority} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
@@ -112,6 +112,18 @@ const ALL_PRODUCTS_QUERY = `#graphql
         endCursor
       }
     }
+    products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
+      nodes {
+        ...BestSellerCard
+      }
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+    }
   }
   ${PRODUCT_CARD_FRAGMENT}
+  ${BESTSELLER_CARD_FRAGMENT}
 `;
