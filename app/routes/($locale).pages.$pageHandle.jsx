@@ -10,7 +10,6 @@ import { AboutUS } from '~/components/AboutUS';
 export const headers = routeHeaders;
 
 export async function loader({request, params, context}) {
-  console.log("🚀 ~ file: ($locale).pages.$pageHandle.jsx:13 ~ loader ~ params:", params)
   invariant(params.pageHandle, 'Missing page handle');
 
   const {page} = await context.storefront.query(PAGE_QUERY, {
