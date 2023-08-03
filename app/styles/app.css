@@ -200,6 +200,9 @@ shop-pay-button {
   transform: translate(-50%, -50%);
   font-weight: 400;
 }
+.brands-list{
+  column-count: 6;
+}
 .brand-section .all-brand-image {
   position: relative;
   width: 100%;
@@ -969,7 +972,61 @@ margin-left: 10px;
   width: 110px;
   padding: 0px;
 }
-@media (max-width: 768px) {
+.shop-section .shop-now-header {
+  display: flex;
+  align-items: center;
+}
+.brands-section .brands-header{
+  display: flex;
+  align-items: center;
+}
+.shop-section .customer-serive-header{
+  display: flex;
+  align-items: center;
+}
+
+.shop-section .know-us-header{
+  display: flex;
+  align-items: center;
+}
+.brands-section .brands-down-icon {
+  cursor: pointer;
+  /* margin-right: 8px; */
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+.know-us-header .know-us-icon {
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+.customer-serive-header .customer-service-icon {
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+
+/* .shop-section .shop-now-icon.rotate {
+  transform: rotate(180deg); 
+}
+.know-us-header .know-us-icon.rotate {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+.customer-serive-header .customer-service-icon.rotate {
+  transform: rotate(180deg); 
+}
+.brands-header .brands-down-icon.rotate {
+  transform: rotate(180deg); 
+} */
+.know-us-header .know-us-icon {
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+/* @media (max-width: 768px) {
   .footer-section ul {
     display:none;
   }
@@ -977,7 +1034,54 @@ margin-left: 10px;
   .footer-section .open {
     display: flex;
   }
+} */
+@media screen and (min-width: 576px) {
+  .shop-now-header .shop-now-down-icon {
+    display: none;
+  }
+  .know-us-header .know-us-down-icon{
+    display: none;
+  }
+  .brands-header .brands-down-icon{
+    display: none;
+  }
+  .customer-serive-header .customer-service-down-icon{
+    display: none;
+  }
+  .shop-now-down-icon{
+    /* position: absolute; */
+    left: 80%;
+  }
+  .shop-now-header{
+    position: absolute;
+  }
 }
+@media screen and (max-width: 576px) and (min-width: 337px) {
+  .brand-section{
+    background-color: #f3f4f6;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width:768){
+.shop-now-list{
+  position: absolute;
+    margin-top: 35px;
+}
+.brands-header{
+  position: absolute;
+  right: 25px;
+}
+}
+.custom-right-45 {
+  right: 45%;
+}
+.shop-now-list{
+  column-count: 2;
+}
+/* @media screen and (min-width: 768px) {
+  .shop-section ul.shop-now-list {
+    display: none;
+  }
+} */
 
 .main_block_about {
   padding: 50px;
