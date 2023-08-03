@@ -39,7 +39,7 @@ export const FEATURED_ITEMS_QUERY = `#graphql
     }
     featuredProducts: products(first: $pageBy) {
       nodes {
-        ...ProductCard
+        ...ProductCard    
       }
     }
     featuredBestSeller: products(first: $pageBy) {

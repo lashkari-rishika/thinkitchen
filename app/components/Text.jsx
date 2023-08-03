@@ -95,7 +95,7 @@ export function Section({
 }) {
   const paddings = {
     x: 'px-6 md:px-8 lg:px-12',
-    y: 'py-6 md:py-8 lg:py-12',
+    y: 'pt-6',
     // swimlane: 'pt-0 md:pt-0 lg:pt-0 md:pb-4 lg:pb-8',
     swimlane: 'md:pb-4 lg:pb-8',
     // all: 'p-0 md:p-0 lg:p-0',
@@ -114,7 +114,7 @@ export function Section({
   };
 
   const styles = clsx(
-    'w-full gap-4 md:gap-8',
+    'w-full',
     displays[display],
     missingClass(className, '\\mp[xy]?-') && paddings[padding],
     dividers[divider],
@@ -124,7 +124,7 @@ export function Section({
   return (
     <Component {...props} className={styles}>
       {heading && (
-        <Heading size="lead" className={padding === 'y' ? paddings['x'] : ''}>
+        <Heading size="lead" className={padding === ' ' ? paddings['x'] : ''}>
           {heading}
         </Heading>
       )}
@@ -140,9 +140,8 @@ export function PageHeader({
   variant = 'default',
   ...props
 }) {
-  console.log("🚀 ~ file: Text.jsx:143 ~ children:", children)
   const variants = {
-    default: 'grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start',
+    default: 'grid w-full md:p-8 lg:p-12 justify-items-start',
     blogPost:
       'grid md:text-center w-full gap-4 p-6 py-8 md:p-8 lg:p-12 md:justify-items-center',
     allCollections:

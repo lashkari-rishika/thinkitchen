@@ -76,8 +76,8 @@ export function ProductCard({
               <button className="absolute top-2 right-2 p-2 bg-white rounded-full ">
                 <AiOutlineHeart />
               </button>
-              <div className="discount_lable absolute p-2 md-only:text-sm md-only:p-[0.1rem] text-red-600 bg-white rounded-br-lg  font-xs">
-                {discountPercentage } <span> % </span>
+              <div className="discount_lable absolute p-2 md-only:text-sm md-only:p-[0.1rem] text-red-600 font-semibold bg-white rounded-br-lg  font-xs">
+                {discountPercentage }% <span> OFF</span>
               </div>
               <div className="px-1 py-2 flex w-full">
                 <div className="product_card_text w-9/12">

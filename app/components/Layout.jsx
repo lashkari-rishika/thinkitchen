@@ -60,7 +60,7 @@ export function Layout({children, layout}) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
           {/* <Banner/> */}
-            <ShopByCategory />
+            {/* <ShopByCategory /> */}
             {/* <ShopByBrands />
             <NewArrivels />
             <LatestOffer />

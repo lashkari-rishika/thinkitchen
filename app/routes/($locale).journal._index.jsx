@@ -65,6 +65,7 @@ export default function Journals() {
 }
 
 function ArticleCard({blogHandle, article, loading}) {
+  console.log("🚀 ~ file: ($locale).journal._index.jsx:68 ~ ArticleCard ~ blogHandle:", blogHandle)
   return (
     <li key={article.id}>
       <Link to={`/${blogHandle}/${article.handle}`}>
