@@ -58,8 +58,8 @@ export function Heading({
 }) {
   const sizes = {
     display: 'font-bold text-display',
-    heading: 'font-bold text-heading',
-    lead: 'font-bold text-lead',
+    heading: 'font-bold text-heading ',
+    lead: 'text-4xl text-center font-medium pb-4',
     copy: 'font-medium text-copy',
   };
 

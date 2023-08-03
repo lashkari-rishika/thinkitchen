@@ -9,7 +9,7 @@ import featuredin4 from '../../asset/featuredin4.webp'
 import featuredin5 from '../../asset/featuredin5.webp'
 
 
-const testimonials = [
+const media = [
     {
       id: 1,
       imageSrc: featuredin1 ,
@@ -81,7 +81,7 @@ const FeaturedIn = () => {
       }, []);
 
   return (
-    <div className="featured-section mt-10 xs-only:px-3 px-10">
+    <div className="featured-section mt-10 sm-only:px-3 px-10">
       <div className="featured-section-heading">
         <h1 className="text-4xl text-center font-medium pb-4">FEATURED IN</h1>
       </div>
@@ -89,15 +89,15 @@ const FeaturedIn = () => {
         <div className="myswiper">
           <div className="swiper">
             <div className="swiper-wrapper gap-2.5">
-              {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="swiper-slide">
+              {media.map((media) => (
+                <div key={media.id} className="swiper-slide">
                   <div className="card">
                     <div className="card__image">
                       <div className="flex flex-col items-center">
                         <div className="new_arrivel_card relative w-full">
-                          <Link href={testimonial.link} className="w-full" target="_blank">
+                          <Link href={media.link} className="w-full" target="_blank">
                             <img
-                              src={testimonial.imageSrc}
+                              src={media.imageSrc}
                               alt="Product"
                               className="w-full object-cover hover_image"
                             />

@@ -21,5 +21,6 @@ export {SortFilter} from './SortFilter';
 export {Grid} from './Grid';
 export {FeaturedProducts} from './FeaturedProducts';
 export {AddToCartButton} from './AddToCartButton';
+export {BestSeller} from './BestSeller';
 // Sue me
 export * from './Icon';

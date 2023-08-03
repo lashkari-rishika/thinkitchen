@@ -3,12 +3,20 @@ import {Suspense} from 'react';
 import {Await, useLoaderData} from '@remix-run/react';
 import {AnalyticsPageType} from '@shopify/hydrogen';
 
-import {ProductSwimlane, FeaturedCollections, Hero} from '~/components';
-import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {
+  ProductSwimlane,
+  FeaturedCollections,
+  Hero,
+} from '~/components';
+import { BestSeller } from '~/components/custom-components/BestSeller';
+import {
+  MEDIA_FRAGMENT,
+  PRODUCT_CARD_FRAGMENT,
+  BESTSELLER_CARD_FRAGMENT,
+} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-
 export const headers = routeHeaders;
 
 export async function loader({params, context}) {
@@ -48,6 +56,17 @@ export async function loader({params, context}) {
         },
       },
     ),
+    bestSeller: context.storefront.query(HOMEPAGE_BESTSELLER_PRODUCTS_QUERY, {
+      variables: {
+        /**
+         * Country and language properties are automatically injected
+         * into all queries. Passing them is unnecessary unless you
+         * want to override them from the following default:
+         */
+        country,
+        language,
+      },
+    }),
     secondaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
         handle: 'backcountry',
@@ -82,6 +101,7 @@ export default function Homepage() {
     tertiaryHero,
     featuredCollections,
     featuredProducts,
+    bestSeller,
   } = useLoaderData();
 
   // TODO: skeletons vs placeholders
@@ -101,9 +121,22 @@ export default function Homepage() {
               return (
                 <ProductSwimlane
                   products={products}
-                  title="Featured Products"
+                  title="New Arrivals"
                   count={4}
                 />
+              );
+            }}
+          </Await>
+        </Suspense>
+      )}
+
+      {bestSeller && (
+        <Suspense>
+          <Await resolve={bestSeller}>
+            {({products}) => {
+              if (!products?.nodes) return <></>;
+              return (
+                <BestSeller products={products} title="BEST SELLER" count={4} />
               );
             }}
           </Await>
@@ -238,4 +271,17 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
       }
     }
   }
+`;
+
+// @see: https://shopify.dev/api/storefront/2023-04/queries/products
+export const HOMEPAGE_BESTSELLER_PRODUCTS_QUERY = `#graphql
+  query homepageBestSeller($country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    products(first: 8) {
+      nodes {
+        ...BestSellerCard
+      }
+    }
+  }
+  ${BESTSELLER_CARD_FRAGMENT}
 `;
