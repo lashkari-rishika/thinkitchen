@@ -158,7 +158,9 @@ shop-pay-button {
   .absolute-center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
-
+  #mainContent{
+    padding: 0px !important;
+  }
   .strike {
     position: relative;
     &::before {
@@ -964,6 +966,7 @@ margin-left: 10px;
 .description p {
   font-size: 14px;
 }
+
 .subcribe-section button {
   width: max-content;
   width: 110px;
@@ -1001,6 +1004,22 @@ margin-left: 10px;
   opacity: 1;
   font-weight: 300;
 }
+
+.about_health1{
+  transform: translate(1%, 30%) !important;
+}
+
+/* tabs----css--start--here---komal */
+
+.tab-buttons button {
+  padding: 10px 10px;
+  border: none;
+}
+.tab-buttons button:focus {
+  border-bottom: 2px solid black; 
+}
+
+
 .banner-logo img{
   width: 230px;
   height: 50px;
@@ -1028,5 +1047,4 @@ margin-left: 10px;
 
 
 
-  
 

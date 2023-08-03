@@ -25,6 +25,11 @@ import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 // import AboutUS from './AboutUS';
+import BannerSection from '../components/about_us';
+import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
+import Termscondition from './PrivacyandTermscondition/Termscondition';
+import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
+import Blog from './custom-components/BlogandBlogdetails/Blog';
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
@@ -57,6 +62,7 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
+
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
           {/* <Banner/> */}
@@ -72,7 +78,6 @@ export function Layout({children, layout}) {
             <div>
               {/* <AboutUS /> */}
               {/* <Contactsection /> */}
-
             </div>
             {children}
           </div>
@@ -160,7 +165,6 @@ function MenuMobileNav({menu, onClose}) {
  
   const toggleDropdown = () => {
     setDropdownOpen((prevState) => {
-      console.log("🚀 ~ file: Layout.jsx:159 ~ toggleDropdown ~ prevState:", prevState)
       return !prevState
     })
   };
@@ -947,3 +951,6 @@ function FooterMenu({menu}) {
     </>
   );
 }
+
+
+  
