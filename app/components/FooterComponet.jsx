@@ -3,13 +3,33 @@ import footer_instagram_icon from '../asset/footer-instagram.png';
 import footer_youtube_icon from '../asset/footer-youtube.png';
 import up_icon from '../asset/up-icon.png';
 
-import {FiChevronUp, FiChevronDown} from 'react-icons/fi';
+import {FiChevronDown} from 'react-icons/fi';
 import React, {useState} from 'react';
 const FooterComponet = () => {
   const [isDescriptionVisible, setDescriptionVisible] = useState(true);
-
+  const [isIconRotated, setIconRotated] = useState(true);
   const [isShopNowOpen, setShopNowOpen] = useState(false);
-  const toggleShopNow = () => setShopNowOpen((prevState) => !prevState);
+  const [isKnowUsOpen, setKnowUsOpen] = useState(false);
+  const [isCustomerServiceOpen, setCustomerServiceOpen] = useState(false);
+  const [isBrandsOpen, setBrandsOpen] = useState(false);
+  // const toggleShopNow = () => setShopNowOpen((prevState) => !prevState);
+  const toggleShopNow = () => {
+    setShopNowOpen((prevState) => !prevState);
+    setIconRotated((prevRotation) => !prevRotation); // Toggling icon rotation
+  };
+  const toggleKnowUs = () => {
+    setKnowUsOpen((prevState) => !prevState);
+    setIconRotated((prevRotation) => !prevRotation); // Toggling icon rotation
+  };
+  const toggleCustomerService = () => {
+    setCustomerServiceOpen((prevState) => !prevState);
+    setIconRotated((prevRotation) => !prevRotation);
+  };
+
+  const toggleBrands = () => {
+    setBrandsOpen((prevState) => !prevState);
+    setIconRotated((prevRotation) => !prevRotation);
+  };
 
   const toggleDescription = () => {
     setDescriptionVisible((prevState) => !prevState);
@@ -51,7 +71,7 @@ const FooterComponet = () => {
                 </div>
                 <div className="flex ">
                   <input
-                    className="pr-64 pt-0 pb-0 bg-whit text-sm sm:pr-12 md:w-auto w-full"
+                    className="pr-64 pt-0 pb-0 bg-whit text-sm sm:pr-12 w-full"
                     type="text"
                     placeholder="Email id"
                   />
@@ -70,7 +90,7 @@ const FooterComponet = () => {
         <div className="follow-us-section mx-auto pt-4 text-black">
           <div className="container mx-auto w-4/5">
             <div className="follow-us-header flex justify-center w-full">
-              <h2 className="pt-5.5 pb-7 text-right font-medium ">
+              <h2 className="pt-5.5 pb-7  text-right font-medium ">
                 FOLLOW US ON
               </h2>
               <div className="follow-us">
@@ -88,29 +108,26 @@ const FooterComponet = () => {
               </div>
             </div>
             <div className="shop-section mx-auto">
-              <div className="grid grid-cols-2 gap-8 pt-4 pb-16 md:grid-cols-4">
-                <ul>
-                  <li>
-                    <h2
-                      className="mb-4 font-medium text-gray-900 dark:text-white"
-                      // onClick={toggleShopNow}
-                  
-                    >
+              <div className="grid sm:grid-cols-1 gap-8 sm-only:gap-0 pt-4 sm-only:pb-0 pb-12 md:grid-cols-2">
+                <div className=" sm-only:border-b-2 border-gray-300 sm:pb-4">
+                  <div className="shop-now-header ">
+                    <h2 className=" sm:mb-0 font-medium text-gray-900 dark:text-white">
                       Shop Now
                     </h2>
-
-                    <div
-                      className="ml-2 cursor-pointer"
-                      onClick={() => setShopNowOpen((prevState) => !prevState)}
-                    >
-                      {isShopNowOpen ? (
-                        <FiChevronUp size={18} />
-                      ) : (
-                        <FiChevronDown size={18} />
-                      )}
-                    </div>
-                    
-                    <ul className={isShopNowOpen ? '' : 'hidden'}>
+                    <FiChevronDown
+                      size={24}
+                      className={`shop-now-down-icon sm:absolute sm:right-10 ${
+                        isIconRotated ? 'rotate' : ''
+                      }`}
+                      onClick={toggleShopNow}
+                    />
+                  </div>
+                  <ul
+                    className={`shop-now-list  ${
+                      isShopNowOpen ? 'block' : 'hidden'
+                    } xl:block sm-only:grid-cols-2 pt-10 `}
+                  >
+                    <ul>
                       <li>
                         <a href="#">Prepware</a>
                       </li>
@@ -130,12 +147,13 @@ const FooterComponet = () => {
                         <a href="#">Homeware</a>
                       </li>
                     </ul>
-                  </li>
-                </ul>
-                <ul className="mt-7">
-                  <li>
-                    <h2 className="mb-2 font-semibold text-gray-900 dark:text-white"></h2>
-                    <ul className={isShopNowOpen ? '' : 'hidden'}>
+                    <ul>
+                      {/* <h2 className="mb-2 sm:mb-0 font-semibold text-gray-900 dark:text-white"></h2> */}
+                      {/* <ul
+                      className={`shop-now-list ${
+                        isShopNowOpen ? 'block' : 'hidden'
+                      } xl:block absolute mt-7 md:mt-0`}
+                    > */}
                       <li>
                         <a href="#">Tableware</a>
                       </li>
@@ -155,14 +173,29 @@ const FooterComponet = () => {
                         <a href="#">Others</a>
                       </li>
                     </ul>
-                  </li>
-                </ul>
-                <ul>
-                  <li>
-                    <h2 className="mb-4 font-semibold text-gray-900 dark:text-white">
-                      Know Us
-                    </h2>
-                    <ul>
+                  </ul>
+                  {/* </ul> */}
+                </div>
+                <div className="grid grid-cols-2 sm-only:grid-cols-1">
+                  <div className="sm-only:border-b-2 border-gray-300 sm:pb-4 sm:pt-15">
+                    <div className="know-us-header sm:pt-15">
+                      <h2 className="mb-4 sm:mb-0 font-medium text-gray-900 dark:text-white">
+                        Know Us
+                      </h2>
+                      <FiChevronDown
+                        size={24}
+                        className={`know-us-down-icon sm-only:absolute sm-only:right-10 ${
+                          isIconRotated ? 'rotate' : ''
+                        }`}
+                        onClick={toggleKnowUs}
+                      />
+                    </div>
+
+                    <ul
+                      className={`know-us-list ${
+                        isKnowUsOpen ? 'block' : 'hidden'
+                      } xl:block sm-only:mt-7 md:mt-0 pt-4`}
+                    >
                       <li>
                         <a href="#">About Us</a>
                       </li>
@@ -176,68 +209,91 @@ const FooterComponet = () => {
                         <a href="#">Connect</a>
                       </li>
                     </ul>
-                  </li>
-                </ul>
-                <ul>
-                  <li>
-                    <h2 className="mb-4 font-semibold text-gray-900 dark:text-white">
-                      Customer Service
-                    </h2>
-                    <ul>
-                      <li>
-                        <a href="#">Privacy Policy</a>
-                      </li>
-                      <li>
-                        <a href="#">Terms & Use</a>
-                      </li>
-                      <li>
-                        <a href="#">Shipping & Delivery</a>
-                      </li>
-                      <li>
-                        <a href="#">Returns & Exchanges</a>
-                      </li>
-                      <li>
-                        <a href="#">Our Guarantee</a>
-                      </li>
-                      <li>
-                        <a href="#">Faq's</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+                  </div>
+
+                  <div className=" sm-only:border-b-2 border-gray-300 sm-ony:pt-15 sm:pb-4">
+                    <div className="customer-serive-header ">
+                      <h2 className="mb-4 sm:mb-0 font-medium text-gray-900 dark:text-white">
+                        Customer Service
+                      </h2>
+                      <FiChevronDown
+                        size={24}
+                        className={`customer-service-down-icon sm:absolute sm:right-10 ${
+                          isIconRotated ? 'rotate' : ''
+                        }`}
+                        onClick={toggleCustomerService}
+                      />
+                    </div>
+                    <ul
+                      className={`customer-service-list ${
+                        isCustomerServiceOpen ? 'block' : 'hidden'
+                      } xl:block sm-only:mt-7 md:mt-0 pt-4`}
+                    >
+                        <li>
+                          <a href="#">Privacy Policy</a>
+                        </li>
+                        <li>
+                          <a href="#">Terms & Use</a>
+                        </li>
+                        <li>
+                          <a href="#">Shipping & Delivery</a>
+                        </li>
+                        <li>
+                          <a href="#">Returns & Exchanges</a>
+                        </li>
+                        <li>
+                          <a href="#">Our Guarantee</a>
+                        </li>
+                        <li>
+                          <a href="#">Faq's</a>
+                        </li>
+                      </ul>
+                    
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* BRANDS */}
-          <div className="brands-section mx-auto bg-white text-black border-b-2 border-gray-300">
-            <div className="container mx-auto w-4/5">
-              <div className="grid gap-8 pt-6 pb-6 md:grid-cols-6">
+          <div className="brands-section mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0">
+            <div className="container mx-auto w-4/5 pt-8 sm-only:pt-0 sm-ony:pt-15 sm-only:border-b-2 border-gray-300 sm:pb-4">
+              <div className="brands-header">
+                <h2 className=" mb-4  sm:mb-0  font-medium text-gray-900 dark:text-white">
+                  Brands
+                </h2>
+                <FiChevronDown
+                  size={24}
+                  className={`brands-down-icon sm:absolute sm:right-10 ${
+                    isIconRotated ? 'rotate' : ''
+                  }`}
+                  onClick={toggleBrands}
+                />
+              </div>
+              <div
+                className={`brands-list ${
+                  isBrandsOpen ? 'block' : 'hidden'
+                } xl:block  md:mt-0 grid gap-8 pt-6 pb-6 md:grid-cols-2 sm:grid-cols-2`}
+              >
                 <ul>
                   <li>
-                    <h2 className="mb-6 font-medium text-gray-900 dark:text-white">
-                      Brands
-                    </h2>
-                    <ul>
-                      <li>
-                        <a href="#">Amefa</a>
-                      </li>
-                      <li>
-                        <a href="#">BarCraf</a>
-                      </li>
-                      <li>
-                        <a href="#">BergHOFF</a>
-                      </li>
-                      <li>
-                        <a href="#">Brabantia</a>
-                      </li>
-                      <li>
-                        <a href="#">Burleigh</a>
-                      </li>
-                    </ul>
+                    <a href="#">Amefa</a>
+                  </li>
+                  <li>
+                    <a href="#">BarCraf</a>
+                  </li>
+                  <li>
+                    <a href="#">BergHOFF</a>
+                  </li>
+                  <li>
+                    <a href="#">Brabantia</a>
+                  </li>
+                  <li>
+                    <a href="#">Burleigh</a>
                   </li>
                 </ul>
-                <ul className="mt-12">
+
+                <ul className="">
                   <li>
                     <a href="#">Cole & Mason</a>
                   </li>
@@ -254,7 +310,7 @@ const FooterComponet = () => {
                     <a href="#">Joseph Joseph</a>
                   </li>
                 </ul>
-                <ul className="mt-12">
+                <ul className="">
                   <li>
                     <a href="#">John Beswick</a>
                   </li>
@@ -271,7 +327,7 @@ const FooterComponet = () => {
                     <a href="#">Kitchen Craft</a>
                   </li>
                 </ul>
-                <ul className="mt-12">
+                <ul className="">
                   <li>
                     <a href="#">La Cafetière</a>
                   </li>
@@ -282,10 +338,13 @@ const FooterComponet = () => {
                     <a href="#">Luigi Bormioli</a>
                   </li>
                   <li>
-                    <a href="#">MasterClass Mikasa</a>
+                    <a href="#">MasterClass</a>
+                  </li>
+                  <li>
+                    <a href="#">Mikasa</a>
                   </li>
                 </ul>
-                <ul className="mt-12">
+                <ul className="">
                   <li>
                     <a href="#">Monno</a>
                   </li>
@@ -302,7 +361,7 @@ const FooterComponet = () => {
                     <a href="#">Typhoon</a>
                   </li>
                 </ul>
-                <ul className="mt-12">
+                <ul className="">
                   <li>
                     <a href="#">Zoku</a>
                   </li>
@@ -319,7 +378,7 @@ const FooterComponet = () => {
               <p>© 2023 Seeba Industries Pvt Ltd.</p>
             </div>
             <div
-              className="up-icon absolute right-1/2 border-2 border-white p-4 shadow-md"
+              className="up-icon absolute  right-1/2  border-white p-4 shadow-md"
               onClick={toggleDescription}
             >
               <img
