@@ -71,7 +71,7 @@ export default function Recover() {
         ) : (
           <>
 
-            <div className="w-8/12 sm-only:left-0  relative top-2/4 sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 
+            <div className="w-6/12 sm-only:left-0  relative top-2/4 sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 
             2xl-only:absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
             md-only:w-10/12	
             lg-only:w-10/12">
