@@ -2,88 +2,89 @@ import React from 'react';
 import {Link} from '@remix-run/react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 
-import r1 from '../../asset/Rectangle-6003.png';
-import r2 from '../../asset/Rectangle-6004.png';
-import r3 from '../../asset/Rectangle-6005.png';
-import r4 from '../../asset/Rectangle-6006.png';
-import r5 from '../../asset/Rectangle-6007.png';
-import r6 from '../../asset/Rectangle-6008.png';
+// import r1 from '../../asset/Rectangle-6003.png';
+// import r2 from '../../asset/Rectangle-6004.png';
+// import r3 from '../../asset/Rectangle-6005.png';
+// import r4 from '../../asset/Rectangle-6006.png';
+// import r5 from '../../asset/Rectangle-6007.png';
+// import r6 from '../../asset/Rectangle-6008.png';
 import '../../styles/app.css';
+import data from '../../../JSON/db.json'
 
-const media = [
-  {
-    id: 1,
-    imageSrc: r1 ,
-    name:'Pripware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 2,
-    imageSrc: r2 ,
-    name:'Drinkware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 3,
-    imageSrc: r3 ,
-    name:'Dineware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 4,
-    imageSrc: r4 ,
-    name:'Barware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 5,
-    imageSrc: r5 ,
-    name:'Storageware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 6,
-    imageSrc: r6 ,
-    name:'Homeware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 7,
-    imageSrc: r1 ,
-    name:'Tableware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 8,
-    imageSrc: r2 ,
-    name:'Bakeware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 9,
-    imageSrc: r3 ,
-    name:'Kids' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 10,
-    imageSrc: r4 ,
-    name:'Cookware' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 11,
-    imageSrc: r5 ,
-    name:'Bath' ,
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 12,
-    imageSrc: r6 ,
-    name:'Other' ,
-    link: 'https://www.google.com/',
-  },
-]
+// const item = [
+//   {
+//     id: 1,
+//     imageSrc: r1 ,
+//     name:'Pripware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 2,
+//     imageSrc: r2 ,
+//     name:'Drinkware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 3,
+//     imageSrc: r3 ,
+//     name:'Dineware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 4,
+//     imageSrc: r4 ,
+//     name:'Barware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 5,
+//     imageSrc: r5 ,
+//     name:'Storageware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 6,
+//     imageSrc: r6 ,
+//     name:'Homeware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 7,
+//     imageSrc: r1 ,
+//     name:'Tableware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 8,
+//     imageSrc: r2 ,
+//     name:'Bakeware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 9,
+//     imageSrc: r3 ,
+//     name:'Kids' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 10,
+//     imageSrc: r4 ,
+//     name:'Cookware' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 11,
+//     imageSrc: r5 ,
+//     name:'Bath' ,
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 12,
+//     imageSrc: r6 ,
+//     name:'Other' ,
+//     link: 'https://www.google.com/',
+//   },
+// ]
 
 const ShopByCategory = ({images, text}) => {
   return (
@@ -101,17 +102,17 @@ const ShopByCategory = ({images, text}) => {
           // onSlideChange={() => console.log('slide change')}
           // onSwiper={(swiper) => console.log(swiper)}
         >
-          {media.map((media) => (
-          <SwiperSlide key={media.id}>
+          {data.category.map((item) => (
+          <SwiperSlide key={item.id}>
             <div className="category_image_text">
               <Link
-                href={media.link}
+                href={item.link}
                 className="w-full"
                 target="_blank"
               >
-                <img src={media.imageSrc} className="w-full " />
+                <img src={item.imageSrc} className="w-full " alt={item.imageSrc} />
                 <div className="category_name">
-                  <h2 className="mt-2 font-medium text-base">{media.name}</h2>
+                  <h2 className="mt-2 font-medium text-base">{item.name}</h2>
                 </div>
               </Link>
             </div>
