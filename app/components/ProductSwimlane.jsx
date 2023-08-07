@@ -10,7 +10,6 @@ export function ProductSwimlane({
   count = 12,
   ...props
 }) {
-  console.log("🚀 ~ file: ProductSwimlane.jsx:13 ~ title:", title)
   return (
     <Section className="sm-only:px-3 px-10" heading={title} padding="y" {...props}>
       <div className="swimlane hiddenScroll">

@@ -13,13 +13,13 @@ import {
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-import ShopByCategory from '~/components/custom-components/ShopByCategory';
-import ShopByBrands from '~/components/custom-components/ShopByBrands';
-import LatestOffer from '~/components/custom-components/LatestOffer';
-import FeaturedIn from '~/components/custom-components/FeaturedIn';
-import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
-import SocialMedia from '~/components/custom-components/SocialMedia';
-import CustomerTestimonial from '~/components/custom-components/CustomerTestimonial';
+// import ShopByCategory from '~/components/custom-components/ShopByCategory';
+// import ShopByBrands from '~/components/custom-components/ShopByBrands';
+// import LatestOffer from '~/components/custom-components/LatestOffer';
+// import FeaturedIn from '~/components/custom-components/FeaturedIn';
+// import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
+// import SocialMedia from '~/components/custom-components/SocialMedia';
+// import CustomerTestimonial from '~/components/custom-components/CustomerTestimonial';
 export const headers = routeHeaders;
 
 export async function loader({params, context}) {
@@ -115,8 +115,8 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
-      <ShopByCategory />
-      <ShopByBrands />
+      {/* <ShopByCategory />
+      <ShopByBrands /> */}
       {featuredProducts && (
         <Suspense>
           <Await resolve={featuredProducts}>
@@ -134,7 +134,7 @@ export default function Homepage() {
         </Suspense>
       )}
 
-      <LatestOffer />
+      {/* <LatestOffer /> */}
       {bestSeller && (
         <Suspense>
           <Await resolve={bestSeller}>
@@ -147,11 +147,11 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-
+{/* 
       <FeaturedIn />
       <OurLatestBlog />
       <SocialMedia />
-      <CustomerTestimonial />
+      <CustomerTestimonial /> */}
 
       {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>

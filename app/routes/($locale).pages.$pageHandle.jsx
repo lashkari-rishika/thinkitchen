@@ -5,7 +5,7 @@ import invariant from 'tiny-invariant';
 import {PageHeader} from '~/components';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
-import { AboutUS } from '~/components/AboutUS';
+import {AboutUS} from '~/components/AboutUS';
 
 export const headers = routeHeaders;
 
@@ -33,13 +33,14 @@ export default function Page() {
   return (
     <>
       <PageHeader heading={page.title}>
-        <div
-          dangerouslySetInnerHTML={{__html: page.body}}
-          className="prose dark:prose-invert"
-        />
-        {page.title =="About us"?
-        <AboutUS/>
-        :""}
+        {page.title == 'About us' ? (
+          <AboutUS />
+        ) : (
+          <div
+            dangerouslySetInnerHTML={{__html: page.body}}
+            className="prose dark:prose-invert"
+          />
+        )}
       </PageHeader>
     </>
   );

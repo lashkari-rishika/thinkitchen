@@ -39,14 +39,14 @@ export const FEATURED_ITEMS_QUERY = `#graphql
     }
     featuredProducts: products(first: $pageBy) {
       nodes {
-        ...ProductCard    
+        ...ProductCard
       }
     }
-    featuredBestSeller: products(first: $pageBy) {
-      nodes {
-        ...BestSellerCard
-      }
-    }
+    // featuredBestSeller: products(first: $pageBy) {
+    //   nodes {
+    //     ...BestSellerCard
+    //   }
+    // }
   }
 
   ${PRODUCT_CARD_FRAGMENT}
