@@ -1,10 +1,10 @@
 import {Link} from '@remix-run/react';
 import '../../styles/app.css';
+import data from '../../../JSON/db.json'
 import {ProductCard, Section} from '~/components';
-
 import {AiOutlineHeart} from 'react-icons/ai';
 
-import arrival1 from '../../asset/arrival1.png';
+// import arrival1 from '../../asset/arrival1.png';
 
 const media = [
   {
@@ -45,6 +45,7 @@ const mockProducts = {
   nodes: new Array(12).fill(''),
 };
 
+
 export function BestSeller({
   title = 'Featured Products',
   products = mockProducts,
@@ -72,3 +73,4 @@ export function BestSeller({
     </>
   );
 }
+

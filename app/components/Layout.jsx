@@ -44,11 +44,14 @@ import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import Banner from '../components/Banner';
+import Plp from './custom-components/Plp';
+import { PlpFilterUI } from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
 import {CiCircleChevDown} from 'react-icons/ci';
 import {Image} from '@shopify/hydrogen';
+
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -64,7 +67,10 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-            {/* <Banner/> */}
+
+          {/* <Banner/> */}
+            {/* <PlpFilterUI/> */}
+             <Plp/>
             {/* <ShopByCategory /> */}
             {/* <ShopByBrands />
             <NewArrivels />
@@ -75,6 +81,8 @@ export function Layout({children, layout}) {
             <SocialMedia />
             <CustomerTestimonial /> */}
             <div>
+              {/* <BannerSection /> */}
+              {/* <Contactsection /> */}
               {/* <AboutUS /> */}
               {/* <Contactsection /> */}
             </div>
