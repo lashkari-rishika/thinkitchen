@@ -81,7 +81,7 @@ const FeaturedIn = () => {
       }, []);
 
   return (
-    <div className="featured-section mt-10 sm-only:px-3 px-10">
+    <div className="featured-section sm-only:px-3 px-10">
       <div className="featured-section-heading">
         <h1 className="text-4xl text-center font-medium pb-4">FEATURED IN</h1>
       </div>

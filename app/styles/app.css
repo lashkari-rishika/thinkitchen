@@ -318,7 +318,7 @@ img {
   width: 100%;
 }
 .featured-section .card {
-  padding: 0 8px;
+  /* padding: 0 8px; */
   overflow: hidden;
 }
 
