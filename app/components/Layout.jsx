@@ -41,7 +41,8 @@ import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import Banner from '../components/Banner';
-
+import Plp from './custom-components/Plp';
+import { PlpFilterUI } from './custom-components/PlpFilterUI';
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
   return (
@@ -55,8 +56,10 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-          <Banner/>
-            <ShopByCategory />
+          {/* <Banner/> */}
+            {/* <PlpFilterUI/> */}
+             <Plp/>
+         {/*<ShopByCategory />
             <ShopByBrands />
             <NewArrivels />
             <LatestOffer />
@@ -64,10 +67,10 @@ export function Layout({children, layout}) {
             <FeaturedIn />
             <OurLatestBlog />
             <SocialMedia />
-            <CustomerTestimonial />
+            <CustomerTestimonial /> */}
             <div>
               {/* <BannerSection /> */}
-              <Contactsection />
+              {/* <Contactsection /> */}
 
             </div>
             {children}
