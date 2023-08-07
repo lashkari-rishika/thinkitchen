@@ -39,9 +39,9 @@ const OurLatestBlog = () => {
             <div className='blog-section-heading block ml-auto w-full text-center'>
                 <h1 className='text-4xl font-item'>OUR LATEST BLOGS</h1>
             </div>
-            <div className="block absolute top-5 right-5 font-semibold ml-auto text-right cursor-pointer underline">
+            <Link to={`/journal/${handle}`} className="block absolute top-5 right-5 font-semibold ml-auto text-right cursor-pointer underline">
                 View All
-            </div>
+            </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2.5">
             {data.blog.map((item) => (

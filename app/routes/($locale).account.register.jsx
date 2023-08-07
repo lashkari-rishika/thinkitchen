@@ -1,13 +1,15 @@
-import {redirect, json} from '@shopify/remix-oxygen';
-import {Form, useActionData} from '@remix-run/react';
-import {useState} from 'react';
+import { redirect, json } from '@shopify/remix-oxygen';
+import { Form, useActionData } from '@remix-run/react';
+import { useState } from 'react';
 
-import {getInputStyleClasses} from '~/lib/utils';
-import {Link} from '~/components';
+import { getInputStyleClasses } from '~/lib/utils';
+import { Link } from '~/components';
 
-import {doLogin} from './($locale).account.login';
+import { doLogin } from './($locale).account.login';
+import Login_img1 from "../asset/Login_img1.png";
 
-export async function loader({context, params}) {
+
+export async function loader({ context, params }) {
   const customerAccessToken = await context.session.get('customerAccessToken');
 
   if (customerAccessToken) {
@@ -17,20 +19,29 @@ export async function loader({context, params}) {
   return new Response(null);
 }
 
-const badRequest = (data) => json(data, {status: 400});
+const badRequest = (data) => json(data, { status: 400 });
 
-export const action = async ({request, context, params}) => {
-  const {session, storefront} = context;
+export const action = async ({ request, context, params }) => {
+  const { session, storefront } = context;
   const formData = await request.formData();
 
   const email = formData.get('email');
   const password = formData.get('password');
+  const first_name = formData.get('first_name');
+  const last_name = formData.get('last_name');
+  const password_confirmation = formData.get('password_confirmation');
 
   if (
     !email ||
     !password ||
+    !first_name ||
+    !last_name ||
+    !password_confirmation ||
     typeof email !== 'string' ||
-    typeof password !== 'string'
+    typeof password !== 'string' ||
+    typeof first_name !== 'string' ||
+    typeof last_name !== 'string' ||
+    typeof password_confirmation !== 'string'
   ) {
     return badRequest({
       formError: 'Please provide both an email and a password.',
@@ -40,7 +51,7 @@ export const action = async ({request, context, params}) => {
   try {
     const data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
       variables: {
-        input: {email, password},
+        input: { email, password},
       },
     });
 
@@ -51,7 +62,7 @@ export const action = async ({request, context, params}) => {
       throw new Error(data?.customerCreate?.customerUserErrors.join(', '));
     }
 
-    const customerAccessToken = await doLogin(context, {email, password});
+    const customerAccessToken = await doLogin(context, { email, password });
     session.set('customerAccessToken', customerAccessToken);
 
     return redirect(params.locale ? `${params.locale}/account` : '/account', {
@@ -78,30 +89,95 @@ export const action = async ({request, context, params}) => {
 };
 
 export const meta = () => {
-  return [{title: 'Register'}];
+  return [{ title: 'Register' }];
 };
 
 export default function Register() {
   const actionData = useActionData();
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
+  const [nativefirstNameError, setNativeFirstNameError] = useState(null);
+  const [nativelastNameError, setNativeLastNameError] = useState(null);
+  const [nativepassword_confirmationError, setNativePasswordConfirmationError] = useState(null);
 
   return (
-    <div className="flex justify-center my-24 px-4">
-      <div className="max-w-md w-full">
-        <h1 className="text-4xl">Create an Account.</h1>
-        {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-        <Form
-          method="post"
-          noValidate
-          className="pt-6 pb-8 mt-4 mb-4 space-y-3"
-        >
-          {actionData?.formError && (
-            <div className="flex items-center justify-center mb-6 bg-zinc-500">
-              <p className="m-4 text-s text-contrast">{actionData.formError}</p>
+    <div className="flex justify-between">
+
+      <div className="w-6/12">
+        <img src={Login_img1} alt=""/>
+      </div>
+
+      <div className='w-6/12 relative'>
+        <div className="home_account_login max-w-md w-full m-auto absolute ">
+          <p className='text-center text-xs text-slate-400 mb-2'>Home | Account</p>
+          <h1 className="text-4xl text-center">Create account</h1>
+          {/* TODO: Add onSubmit to validate _before_ submission with native? */}
+          <Form
+            method="post"
+            noValidate
+            className="pt-6 pb-8 mb-4 space-y-3 px-8"
+          >
+            {actionData?.formError && (
+              <div className="flex items-center justify-center mb-6 bg-zinc-500">
+                <p className="m-4 text-s text-contrast">{actionData.formError}</p>
+              </div>
+            )}
+            <div>
+              <input
+                className={`mb-1 ${getInputStyleClasses(nativefirstNameError)} py-3`}
+                id="first_name"
+                name="first_name"
+                type="text"
+                autoComplete="off"
+                required
+                placeholder="First Name"
+                aria-label="first_name"
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
+                onBlur={(event) => {
+                  setNativeFirstNameError(
+                    event.currentTarget.value.length &&
+                      !event.currentTarget.validity.valid
+                      ? 'Please enter a valid name'
+                      : null,
+                  );
+                }}
+              />
+              {nativefirstNameError && (
+                <p className="text-red-500 text-xs">{nativefirstNameError} &nbsp;</p>
+              )}
             </div>
-          )}
-          <div>
+            <div>
+              <input
+                className={`mb-1 ${getInputStyleClasses(nativelastNameError)} py-3`}
+                id="last_name"
+                name="last_name"
+                type="text"
+                autoComplete="off"
+                placeholder="Last Name"
+                aria-label="last_name"
+                minLength={8}
+                required
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
+                onBlur={(event) => {
+                  setNativeLastNameError(
+                    event.currentTarget.value.length &&
+                      !event.currentTarget.validity.valid
+                      ? 'please enter a valid last name'
+                      : null,
+                  );
+                }}
+              />
+              {nativelastNameError && (
+                <p className="text-red-500 text-xs">
+                  {' '}
+                  {nativelastNameError} &nbsp;
+                </p>
+              )}
+            </div>
+
+            <div>
             <input
               className={`mb-1 ${getInputStyleClasses(nativeEmailError)}`}
               id="email"
@@ -161,24 +237,76 @@ export default function Register() {
               </p>
             )}
           </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
-              type="submit"
-              disabled={!!(nativePasswordError || nativeEmailError)}
-            >
-              Create Account
-            </button>
+          <div>
+            <input
+              className={`mb-1 ${getInputStyleClasses(nativepassword_confirmationError)}`}
+              id="password_confirmation"
+              name="password_confirmation"
+              type="password"
+              autoComplete="off"
+              placeholder="Confirm Password"
+              aria-label="password_confirmation"
+              minLength={8}
+              required
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              onBlur={(event) => {
+                if (
+                  event.currentTarget.validity.valid ||
+                  !event.currentTarget.value.length
+                ) {
+                  setNativePasswordConfirmationError(null);
+                } else {
+                  setNativePasswordConfirmationError(
+                    event.currentTarget.validity.valueMissing
+                      ? 'Please enter a password'
+                      : 'Passwords must be at least 8 characters',
+                  );
+                }
+              }}
+            />
+            {nativepassword_confirmationError && (
+              <p className="text-red-500 text-xs">
+                {' '}
+                {nativepassword_confirmationError} &nbsp;
+              </p>
+            )}
           </div>
-          <div className="flex items-center mt-8 border-t border-gray-300">
-            <p className="align-baseline text-sm mt-6">
-              Already have an account? &nbsp;
-              <Link className="inline underline" to="/account/login">
-                Sign in
-              </Link>
-            </p>
-          </div>
-        </Form>
+            {/* <div>
+              <input
+                className={`mb-1 ${getInputStyleClasses(nativePasswordError)} py-3`}
+                id="Password"
+                name="Password"
+                type="Password"
+                autoComplete="current-password"
+                placeholder="Confirm Password"
+                aria-label="Password" />
+            </div> */}
+
+            <div class="flex space-x-4 mt-4">
+              <input type="checkbox" id="keep-me-logged-in" name="keep-me-logged-in" class="h-4 w-4" />
+              <label for="keep-me-logged-in" class="text-sm">I agree to the Terms & Conditions*</label>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <button
+                className="bg-sky-700 text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+                type="submit"
+                disabled={!!(nativePasswordError || nativeEmailError)}
+              >
+                Create Account
+              </button>
+            </div>
+            {/* <div className="flex items-center mt-8">
+              <p className="align-baseline text-sm mt-6">
+                Already have an account? &nbsp;
+                <Link className="inline underline" to="/account/login">
+                  Sign in
+                </Link>
+              </p>
+            </div> */}
+          </Form>
+        </div>
       </div>
     </div>
   );

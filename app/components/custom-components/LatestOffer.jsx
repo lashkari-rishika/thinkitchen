@@ -31,7 +31,7 @@ import data from '../../../JSON/db.json'
 
 const LatestOffer = () => {
   return (
-    <div className="latest-offer-section mt-10 sm-only:px-3 px-10">
+    <div className="latest-offer-section sm-only:px-3 px-10">
       <div className="latest-offer-heading">
         <h1 className="text-4xl text-center font-medium pb-4 xs-only:text-2xl">
           LATEST OFFERS

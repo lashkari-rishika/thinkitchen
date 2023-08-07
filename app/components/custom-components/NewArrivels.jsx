@@ -47,7 +47,7 @@ const NewArrivels = () => {
 
   return (
 
-    <div className="arrivel_main_section mt-10 sm-only:px-3 px-10">
+    <div className="mt-10 sm-only:px-3 px-10">
       <div className="arrivel-section-heading">
         <h1 className="text-4xl text-center font-medium pb-4">NEW ARRIVELS</h1>
       </div>
