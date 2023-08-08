@@ -1007,6 +1007,9 @@ margin-left: 10px;
   margin-right: 8px;
   transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
 }
+.flex_column{
+  flex-flow: wrap column;
+}
 
 /* .shop-section .shop-now-icon.rotate {
   transform: rotate(180deg); 
