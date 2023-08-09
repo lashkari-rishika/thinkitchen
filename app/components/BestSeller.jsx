@@ -4,7 +4,6 @@ import {Section} from '~/components';
 
 import {AiOutlineHeart} from 'react-icons/ai';
 
-import arrival1 from '../asset/arrival1.png';
 import { BestSellerCard } from './BestSellerCard';
 
 const mockProducts = {
