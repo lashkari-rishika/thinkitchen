@@ -100,7 +100,7 @@ const ShopByBrands = () => {
         </div>
       </div>
       <div className="my-2 text-center ">
-        <h2 className="font-medium underline-offset-8">Viwe All Brands </h2>
+        <h2 className="font-medium underline-offset-8">View All Brands </h2>
       </div>
     </div>
   );

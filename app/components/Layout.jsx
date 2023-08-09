@@ -90,6 +90,7 @@ export function Layout({children, layout}) {
               {/* <AboutUS /> */}
               {/* <Contactsection /> */}
             </div>
+
             {children}
           </div>
         </main>
@@ -599,6 +600,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
+                  { console.log("🚀 ~ file: Layout.jsx:578 ~ DesktopHeader ~ menu:", menu)}
                     <Link
                       key={item.id}
                       to={item.to}
