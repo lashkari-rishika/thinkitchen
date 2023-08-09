@@ -24,8 +24,15 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+
 import Myaccount from '../components/Myaccount';
 import BannerSection from '../components/about_us';
+// import AboutUS from './AboutUS';
+import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
+import Termscondition from './PrivacyandTermscondition/Termscondition';
+import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
+import Blog from './custom-components/BlogandBlogdetails/Blog';
+
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
@@ -41,11 +48,16 @@ import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import Banner from '../components/Banner';
+import Plp from './custom-components/Plp';
+import { PlpFilterUI } from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
+
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
 import { Image } from '@shopify/hydrogen';
+import ProductDetailPage from '../components/ProductDetailPage.js';
+
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -58,13 +70,20 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
+
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
+
+            <ProductDetailPage />
+
           {/* <Banner/> */}
-            {/* <ShopByCategory />
-            <ShopByBrands /> */}
-            {/* <NewArrivels /> */}
-            {/* <LatestOffer />
+            {/* <PlpFilterUI/> */}
+             <Plp/>
+            {/* <ShopByCategory /> */}
+            {/* <ShopByBrands />
+            <NewArrivels />
+            <LatestOffer />
+            <BestSeller />
             <FeaturedIn />
             <OurLatestBlog />
             <SocialMedia />
@@ -72,8 +91,13 @@ export function Layout({children, layout}) {
             <div>
               {/* <BannerSection /> */}
               {/* <Contactsection /> */}
+
               <Myaccount/>
+           {/* <AboutUS /> */}
+              {/* <Contactsection /> */}
+
             </div>
+
             {children}
           </div>
         </main>
@@ -157,12 +181,11 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 function MenuMobileNav({menu, onClose}) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownOpentwo, setDropdownOpentwo] = useState(false);
- 
+
   const toggleDropdown = () => {
     setDropdownOpen((prevState) => {
-      console.log("🚀 ~ file: Layout.jsx:159 ~ toggleDropdown ~ prevState:", prevState)
-      return !prevState
-    })
+      return !prevState;
+    });
   };
   const firstDropdown = (item) => {
     setDropdownOpentwo((prevState) => !prevState);
@@ -181,24 +204,24 @@ function MenuMobileNav({menu, onClose}) {
     {
       title: 'Drinkware',
       subTitles: [
-      {id: '1', name: 'Cups & Mugs '},
-      {id: '2', name: 'Bottles '},
-      {id: '3', name: 'On-the-Go'},
-      {id: '4', name: 'Tea Pots'},
-      {id: '5', name: 'Coffee Makers'},
-      {id: '6', name: 'Tea Accessories'},
-      ]
+        {id: '1', name: 'Cups & Mugs '},
+        {id: '2', name: 'Bottles '},
+        {id: '3', name: 'On-the-Go'},
+        {id: '4', name: 'Tea Pots'},
+        {id: '5', name: 'Coffee Makers'},
+        {id: '6', name: 'Tea Accessories'},
+      ],
     },
     {
       title: 'Drinkware',
       subTitles: [
-      {id: '1', name: 'Bowls  '},
-      {id: '2', name: 'Plates '},
-      {id: '3', name: 'Serveware'},
-      {id: '4', name: 'Tea Pots'},
-      {id: '5', name: 'Dinner Sets'},
-      {id: '6', name: 'Tea Accessories'},
-      ]
+        {id: '1', name: 'Bowls  '},
+        {id: '2', name: 'Plates '},
+        {id: '3', name: 'Serveware'},
+        {id: '4', name: 'Tea Pots'},
+        {id: '5', name: 'Dinner Sets'},
+        {id: '6', name: 'Tea Accessories'},
+      ],
     },
     {
       title: 'Barware',
@@ -213,9 +236,7 @@ function MenuMobileNav({menu, onClose}) {
         {/* frist menu */}
         <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
           <li>
-            <p className="text-base">
-              Shop by Catagory
-            </p>
+            <p className="text-base">Shop by Catagory</p>
             <div className="absolute top-24 right-12">
               {/* <svg
                 onClick={toggleDropdown}
@@ -240,7 +261,10 @@ function MenuMobileNav({menu, onClose}) {
                 className={`w-8 h-8 transition-transform ${
                   isDropdownOpen ? 'transform rotate-180' : ''
                 }`}
-              > <img src={dropdownImageMoblie} alt="" /></li>
+              >
+                {' '}
+                <img src={dropdownImageMoblie} alt="" />
+              </li>
             </div>
           </li>
         </ul>
@@ -272,28 +296,30 @@ function MenuMobileNav({menu, onClose}) {
                       />
                     </svg> */}
                     <li
-                        onClick={firstDropdown}
-                        className={`ml-4 h-5 w-5  transition-transform ${
+                      onClick={firstDropdown}
+                      className={`ml-4 h-5 w-5  transition-transform ${
                         isDropdownOpentwo ? 'transform rotate-180' : ''
-                      }`}> <img src={dropdown_icon_moblie} alt="" /> </li>
-                      {/* <CiCircleChevDown /> */}
+                      }`}
+                    >
+                      {' '}
+                      <img src={dropdown_icon_moblie} alt="" />{' '}
+                    </li>
+                    {/* <CiCircleChevDown /> */}
                   </div>
 
-                  {isDropdownOpentwo &&(
+                  {isDropdownOpentwo && (
                     <ul className="space-y-2">
-                    {item.subTitles.map((subTitle) => (
-                      <li
-                        key={subTitle.id}
-                        className="mt-3 mb-3 text-sm	font-medium	 text-black"
-                        onClick={(e) => e.stopPropagation()} // Stop click event propagation
-                      >
-                        {subTitle.name}
-                      </li>
-                    ))}
-                  </ul>
+                      {item.subTitles.map((subTitle) => (
+                        <li
+                          key={subTitle.id}
+                          className="mt-3 mb-3 text-sm	font-medium	 text-black"
+                          onClick={(e) => e.stopPropagation()} // Stop click event propagation
+                        >
+                          {subTitle.name}
+                        </li>
+                      ))}
+                    </ul>
                   )}
-                  
-
                 </li>
               ))}
             </ul>
@@ -330,7 +356,6 @@ function MenuMobileNav({menu, onClose}) {
         </ul>
         {isDropdownOpen && (
           <ul className="pl-4 max-h-60 overflow-y-scroll">
-           
             <ul className="space-y-2">
               {titlesForFirstDropdown.map((item) => (
                 <li key={item.title}>
@@ -412,25 +437,27 @@ function MenuMobileNav({menu, onClose}) {
   );
 }
 
-{/* <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      {/* Top level menu items */}
-    //   {(menu?.items || []).map((item) => (
-    //     <span key={item.id} className="block">
-    //       <Link
-    //         to={item.to}
-    //         target={item.target}
-    //         onClick={onClose}
-    //         className={({ isActive }) =>
-    //           isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-    //         }
-    //       >
-    //         <Text as="span" size="copy">
-    //           {item.title}
-    //         </Text>
-    //       </Link>
-    //     </span>
-    //   ))}
-    // </nav> 
+{
+  /* <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
+      {/* Top level menu items */
+}
+//   {(menu?.items || []).map((item) => (
+//     <span key={item.id} className="block">
+//       <Link
+//         to={item.to}
+//         target={item.target}
+//         onClick={onClose}
+//         className={({ isActive }) =>
+//           isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+//         }
+//       >
+//         <Text as="span" size="copy">
+//           {item.title}
+//         </Text>
+//       </Link>
+//     </span>
+//   ))}
+// </nav>
 
 export default MenuMobileNav;
 
@@ -547,7 +574,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           : ' text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-2 lg:flex opacity-80 shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="header">
         <div className="row v-center">
@@ -580,6 +607,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
+                  { console.log("🚀 ~ file: Layout.jsx:578 ~ DesktopHeader ~ menu:", menu)}
                     <Link
                       key={item.id}
                       to={item.to}
@@ -879,7 +907,7 @@ function Footer({menu}) {
         &copy; {new Date().getFullYear()} / Shopify, Inc. Hydrogen is an MIT
         Licensed Open Source project.
       </div> */}
-      <FooterComponet />
+      <FooterComponet menu={menu} />
     </Section>
   );
 }

@@ -6,7 +6,7 @@ import { getInputStyleClasses } from '~/lib/utils';
 import { Link } from '~/components';
 
 import { doLogin } from './($locale).account.login';
-import Login_img1 from "../../app/asset/login_img1.png";
+import Login_img1 from "../asset/Login_img1.png";
 
 
 export async function loader({ context, params }) {
@@ -27,12 +27,21 @@ export const action = async ({ request, context, params }) => {
 
   const email = formData.get('email');
   const password = formData.get('password');
+  const first_name = formData.get('first_name');
+  const last_name = formData.get('last_name');
+  const password_confirmation = formData.get('password_confirmation');
 
   if (
     !email ||
     !password ||
+    !first_name ||
+    !last_name ||
+    !password_confirmation ||
     typeof email !== 'string' ||
-    typeof password !== 'string'
+    typeof password !== 'string' ||
+    typeof first_name !== 'string' ||
+    typeof last_name !== 'string' ||
+    typeof password_confirmation !== 'string'
   ) {
     return badRequest({
       formError: 'Please provide both an email and a password.',
@@ -42,7 +51,7 @@ export const action = async ({ request, context, params }) => {
   try {
     const data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
       variables: {
-        input: { email, password },
+        input: { email, password},
       },
     });
 
@@ -87,12 +96,17 @@ export default function Register() {
   const actionData = useActionData();
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
+  const [nativefirstNameError, setNativeFirstNameError] = useState(null);
+  const [nativelastNameError, setNativeLastNameError] = useState(null);
+  const [nativepassword_confirmationError, setNativePasswordConfirmationError] = useState(null);
 
   return (
     <div className="flex justify-between sm-only:block">
 
+
       <div className="w-6/12  sm-only:hidden">
-        <img src={Login_img1} alt=""></img>
+        <img src={Login_img1} alt=""/>
+
       </div>
 
       <div className='w-6/12 relative sm-only:w-full'>
@@ -114,86 +128,155 @@ export default function Register() {
             )}
             <div>
               <input
-                className={`mb-1 ${getInputStyleClasses(nativeEmailError)} py-3`}
-                id="First name"
-                name="First name"
-                type="First name"
-                autoComplete="First name"
+                className={`mb-1 ${getInputStyleClasses(nativefirstNameError)} py-3`}
+                id="first_name"
+                name="first_name"
+                type="text"
+                autoComplete="off"
                 required
-                placeholder="First name"
-                aria-label="First name"
+                placeholder="First Name"
+                aria-label="first_name"
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 onBlur={(event) => {
-                  setNativeEmailError(
+                  setNativeFirstNameError(
                     event.currentTarget.value.length &&
                       !event.currentTarget.validity.valid
-                      ? 'Invalid email address'
+                      ? 'Please enter a valid name'
                       : null,
                   );
                 }}
               />
-              {nativeEmailError && (
-                <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
+              {nativefirstNameError && (
+                <p className="text-red-500 text-xs">{nativefirstNameError} &nbsp;</p>
               )}
             </div>
             <div>
               <input
-                className={`mb-1 ${getInputStyleClasses(nativePasswordError)} py-3`}
-                id="Last name"
-                name="Last name"
-                type="Last name"
-                autoComplete="current-password"
-                placeholder="Last name"
-                aria-label="Last name"
+                className={`mb-1 ${getInputStyleClasses(nativelastNameError)} py-3`}
+                id="last_name"
+                name="last_name"
+                type="text"
+                autoComplete="off"
+                placeholder="Last Name"
+                aria-label="last_name"
                 minLength={8}
                 required
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 onBlur={(event) => {
-                  if (
-                    event.currentTarget.validity.valid ||
-                    !event.currentTarget.value.length
-                  ) {
-                    setNativePasswordError(null);
-                  } else {
-                    setNativePasswordError(
-                      event.currentTarget.validity.valueMissing
-                        ? 'Please enter a password'
-                        : 'Passwords must be at least 8 characters',
-                    );
-                  }
+                  setNativeLastNameError(
+                    event.currentTarget.value.length &&
+                      !event.currentTarget.validity.valid
+                      ? 'please enter a valid last name'
+                      : null,
+                  );
                 }}
               />
-              {nativePasswordError && (
+              {nativelastNameError && (
                 <p className="text-red-500 text-xs">
                   {' '}
-                  {nativePasswordError} &nbsp;
+                  {nativelastNameError} &nbsp;
                 </p>
               )}
             </div>
 
             <div>
-              <input
-                className={`mb-1 ${getInputStyleClasses(nativePasswordError)} py-3`}
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Email" />
-            </div>
-
-            <div>
-              <input
-                className={`mb-1 ${getInputStyleClasses(nativePasswordError)} py-3`}
-                id="Password"
-                name="Password"
-                type="Password"
-                autoComplete="current-password"
-                placeholder="Create Password"
-                aria-label="Password" />
-            </div>
-
-            <div>
+            <input
+              className={`mb-1 ${getInputStyleClasses(nativeEmailError)}`}
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="Email address"
+              aria-label="Email address"
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              onBlur={(event) => {
+                setNativeEmailError(
+                  event.currentTarget.value.length &&
+                    !event.currentTarget.validity.valid
+                    ? 'Invalid email address'
+                    : null,
+                );
+              }}
+            />
+            {nativeEmailError && (
+              <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
+            )}
+          </div>
+          <div>
+            <input
+              className={`mb-1 ${getInputStyleClasses(nativePasswordError)}`}
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              placeholder="Password"
+              aria-label="Password"
+              minLength={8}
+              required
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              onBlur={(event) => {
+                if (
+                  event.currentTarget.validity.valid ||
+                  !event.currentTarget.value.length
+                ) {
+                  setNativePasswordError(null);
+                } else {
+                  setNativePasswordError(
+                    event.currentTarget.validity.valueMissing
+                      ? 'Please enter a password'
+                      : 'Passwords must be at least 8 characters',
+                  );
+                }
+              }}
+            />
+            {nativePasswordError && (
+              <p className="text-red-500 text-xs">
+                {' '}
+                {nativePasswordError} &nbsp;
+              </p>
+            )}
+          </div>
+          <div>
+            <input
+              className={`mb-1 ${getInputStyleClasses(nativepassword_confirmationError)}`}
+              id="password_confirmation"
+              name="password_confirmation"
+              type="password"
+              autoComplete="off"
+              placeholder="Confirm Password"
+              aria-label="password_confirmation"
+              minLength={8}
+              required
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              onBlur={(event) => {
+                if (
+                  event.currentTarget.validity.valid ||
+                  !event.currentTarget.value.length
+                ) {
+                  setNativePasswordConfirmationError(null);
+                } else {
+                  setNativePasswordConfirmationError(
+                    event.currentTarget.validity.valueMissing
+                      ? 'Please enter a password'
+                      : 'Passwords must be at least 8 characters',
+                  );
+                }
+              }}
+            />
+            {nativepassword_confirmationError && (
+              <p className="text-red-500 text-xs">
+                {' '}
+                {nativepassword_confirmationError} &nbsp;
+              </p>
+            )}
+          </div>
+            {/* <div>
               <input
                 className={`mb-1 ${getInputStyleClasses(nativePasswordError)} py-3`}
                 id="Password"
@@ -202,7 +285,7 @@ export default function Register() {
                 autoComplete="current-password"
                 placeholder="Confirm Password"
                 aria-label="Password" />
-            </div>
+            </div> */}
 
             <div class="flex space-x-4 mt-4">
               <input type="checkbox" id="keep-me-logged-in" name="keep-me-logged-in" class="h-4 w-4" />
