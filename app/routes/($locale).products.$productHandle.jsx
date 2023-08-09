@@ -98,19 +98,26 @@ export default function Product() {
 
   return (
     <>
-      <Section className="pdp-section sm-only:mt-10 md-only:mt-10 bg-white sm-only:bg-[#FBFBFB]">
-          
-        <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
-          <ProductGallery
-            media={media.nodes}
-            className="w-full lg:col-span-2"
-          />
-          
-          <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
+      <div className="pdp-section sm-only:mt-10 md-only:mt-10 bg-white sm-only:bg-[#FBFBFB]">
+        <div className="px-11 sm-only:px-2">
+          <div>
+            <p className="text-xs font-semibold">
+              <span className="text-slate-300	">Home | Knives |</span>Amefa
+              Austin Cutlery, Set of 24
+            </p>
+          </div>
+        </div>
+        <div className="product-deatil-section grid grid-cols-2 sm-only:px-3  sm-only:grid-cols-1 gap-1 px-11 pt-3 sm-only:columns-1  columns-3">
+          <div className="product-image-1">
+            <ProductGallery
+              media={media.nodes}
+              className="w-full lg:col-span-2"
+            />
+          </div>
+
+          <div className="sticky product-contant pl-3 md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
             <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
-            
               <div className="grid gap-2">
-                
                 <Heading as="h1" className="whitespace-normal">
                   {title}
                 </Heading>
@@ -144,7 +151,7 @@ export default function Product() {
             </section>
           </div>
         </div>
-      </Section>
+      </div>
       <Suspense fallback={<Skeleton className="h-32" />}>
         <Await
           errorElement="There was a problem loading related products"
