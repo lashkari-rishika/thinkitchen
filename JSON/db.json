@@ -545,5 +545,242 @@
               "question":"What are the best selling products in thinkitchen ?",
               "answer":" Answer to Question 3."
             }
-          ]
+          ],
+
+          "AllBrands": [
+            {
+                "id": 1,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands1.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "BergHOFF",
+                "text": "BergHOFF is an international brand which creates, produces and distributes sophisticated kitchen designs that give an edge to the everyday cooking experience.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 2,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands2.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Amefa",
+                "text": "Setting the tables since 1931, Amefa offers a wide range of cutlery and kitchen products with designs to suit every style, from traditional to contemporary.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 3,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands3.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Brabantia",
+                "text": "Brabantia is a family run, global interior design brand, renowned for bringing smart and stylish design to kitchen and homewares.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 4,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands4.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Burleigh",
+                "text": "Burleigh blends age-old technology with soulful floral prints to bring you dinnerware that is meant for hospitality.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 5,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands5.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Cole & Mason",
+                "text": "Established in England in 1919, Cole & Mason is passionate about the art of seasoning.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 6,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands6.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Dartington",
+                "text": "Born in 1967, Dartington Crystal is UK’s leading manufacturer simple yet functional glassware.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 7,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands7.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Denby",
+                "text": "Handmade in the heart of England, Denby pottery has over 200 years of craftsmanship, creating beautiful tableware and serveware.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 8,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands8.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Jamie Oliver",
+                "text": "This is your one-stop destination for all of Jamie’s beautiful homeware and expertly designed kitchen kit.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 9,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands9.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "John Beswick",
+                "text": "John Beswick's wide range of ceramic vases lets you define the room's personality.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 10,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands10.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Joseph-Joseph",
+                "text": "Joseph Joseph Award winning, stylish and inventive kitchenware products are now here.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 11,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands1.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "BergHOFF",
+                "text": "BergHOFF is an international brand which creates, produces and distributes sophisticated kitchen designs that give an edge to the everyday cooking experience.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 12,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands2.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Amefa",
+                "text": "Setting the tables since 1931, Amefa offers a wide range of cutlery and kitchen products with designs to suit every style, from traditional to contemporary.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 3,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands3.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Brabantia",
+                "text": "Brabantia is a family run, global interior design brand, renowned for bringing smart and stylish design to kitchen and homewares.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 14,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands4.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Burleigh",
+                "text": "Burleigh blends age-old technology with soulful floral prints to bring you dinnerware that is meant for hospitality.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 15,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands5.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Cole & Mason",
+                "text": "Established in England in 1919, Cole & Mason is passionate about the art of seasoning.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 16,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands6.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Dartington",
+                "text": "Born in 1967, Dartington Crystal is UK’s leading manufacturer simple yet functional glassware.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 17,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands7.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Denby",
+                "text": "Handmade in the heart of England, Denby pottery has over 200 years of craftsmanship, creating beautiful tableware and serveware.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 18,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands8.png?v=1691472233",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Jamie Oliver",
+                "text": "This is your one-stop destination for all of Jamie’s beautiful homeware and expertly designed kitchen kit.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 19,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands9.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "John Beswick",
+                "text": "John Beswick's wide range of ceramic vases lets you define the room's personality.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 20,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/ABrands10.png?v=1691472234",
+                "logoImg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+                "Name": "Joseph-Joseph",
+                "text": "Joseph Joseph Award winning, stylish and inventive kitchenware products are now here.",
+                "exploreBtn": "Explore Now",
+                "link": "https://www.google.com/"
+            }
+        ],
+        "AllBrandProducts": [
+          {
+            "id": 1,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/BrandDetailProduct1.png?v=1691494413",
+            "discountTag": "20% OFF",
+            "heart": "AiOutlineHeart",
+            "productName": "BergHOFF Leo Wok with Lid, 28cm",
+            "price": "₹ 7,399",
+            "discountedPrice": "₹ 6,659",
+            "cartButton": "Add To Cart",
+            "link": "https://www.google.com/"
+          },
+          {
+            "id": 2,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/BrandDetailProduct1.png?v=1691494413",
+            "discountTag": "20% OFF",
+            "heart": "AiOutlineHeart",
+            "productName": "BergHOFF Leo Dual Lunch Pot - Pink",
+            "price": "₹ 1,400",
+            "cartButton": "Add To Cart",
+            "link": "https://www.google.com/"
+          },
+          {
+            "id": 3,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/BrandDetailProduct1.png?v=1691494413",
+            "discountTag": "20% OFF",
+            "heart": "AiOutlineHeart",
+            "productName": "BergHOFF Gem Ramekin Medium, Set of 4",
+            "price": "₹ 1,400",
+            "cartButton": "Add To Cart",
+            "link": "https://www.google.com/"
+          }
+        ],
+
+        "AllBrandSuggetion": [
+          {
+            "id": 1,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/BrandDetailProduct1_r.png?v=1691555173",
+            "productName": "Prepware Accessories",
+            "link": "https://www.google.com/"
+          },
+          {
+            "id": 2,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/BrandDetailProduct1_r.png?v=1691555173",
+            "productName": "Cooking Accessories",
+            "link": "https://www.google.com/"
+          },
+          {
+            "id": 3,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/BrandDetailProduct1_r.png?v=1691555173",
+            "productName": "Serving Accessories",
+            "link": "https://www.google.com/"
+          }
+        ]
 }

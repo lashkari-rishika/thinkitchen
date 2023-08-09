@@ -237,10 +237,10 @@ shop-pay-button {
   text-align: center;
 }
 
-.brand_hidden_image {
+/* .brand_hidden_image {
   display: flex;
   justify-content: center;
-}
+} */
 .all-brand-image:hover .all-brand-hidden {
   opacity: 1;
   transition: all 0.25s;
@@ -461,8 +461,37 @@ min-width: 50%;} */
   display: block;
   margin-left: auto;
 }
-/* ------------------------------- testimonial-section-end------------------------------- *
+/* ------------------------------- testimonial-section-end------------------------------- */
+.Brand_Suggetion > div {
+  position: relative;
+  transition: transform 0.3s;
+}
 
+.Brand_Suggetion .hover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #175C8A;
+  color: white;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.Brand_Suggetion > div:hover {
+  transform: scale(1.05);
+}
+.Brand_Suggetion > div:hover .hover-content {
+  display: flex;
+  opacity: 1;
+}
 /* -------------------------------------Header Start -----------------------------*/
 
 /* header */

@@ -84,7 +84,7 @@ const ShopByBrands = () => {
                     <h1> {item.name}</h1>{' '}
                   </div>
                   <div className="all-brand-hidden w-2/4 left-1/4 top-2/3">
-                    <div className="brand_hidden_image">
+                    <div className="flex justify-center">
                       <img src={item.imgSrc2} />
                     </div>
                     <div className="mt-2">

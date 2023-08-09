@@ -51,6 +51,8 @@ import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
 import {CiCircleChevDown} from 'react-icons/ci';
 import {Image} from '@shopify/hydrogen';
+import { AllBrands } from './custom-components/AllBrands';
+import { BrandDetails } from './custom-components/BrandDetails';
 
 
 export function Layout({children, layout}) {
@@ -70,14 +72,16 @@ export function Layout({children, layout}) {
 
           {/* <Banner/> */}
             {/* <PlpFilterUI/> */}
+            <BrandDetails/>
+            <AllBrands/>
              <Plp/>
-            {/* <ShopByCategory /> */}
-            {/* <ShopByBrands />
+            {/* <OurLatestBlog />
+            <ShopByBrands /> */}
+            {/* <ShopByCategory />
             <NewArrivels />
             <LatestOffer />
             <BestSeller />
             <FeaturedIn />
-            <OurLatestBlog />
             <SocialMedia />
             <CustomerTestimonial /> */}
             <div>
