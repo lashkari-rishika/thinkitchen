@@ -1,33 +1,7 @@
 import React from 'react';
 import {Link} from '@remix-run/react';
 
-// import img from '../../asset/latestoffer1.png';
-// import img2 from '../../asset/latestoffer2.png';
-
 import data from '../../../JSON/db.json'
-
-// const item = [
-//   {
-//     id: 1,
-//     imageSrc: img ,
-//     tag: 'SAVE 50% ON GLASSES' ,
-//     name: 'DARTINGTON',
-//     text1: 'Sale upto' ,
-//     text2: '50% OFF',
-//     cartBtn: 'Add To Cart',
-//     link: 'https://www.google.com/',
-//   },
-//   {
-//     id: 2,
-//     imageSrc: img2 ,
-//     tag: 'DINE ON FESTIVAL SETS' ,
-//     name: 'DENBY',
-//     text1: 'Festival season' ,
-//     text2: '',
-//     cartBtn: 'Add To Cart',
-//     link: 'https://www.google.com/',
-//   },
-// ]
 
 const LatestOffer = () => {
   return (
@@ -75,67 +49,6 @@ const LatestOffer = () => {
 };
 
 export default LatestOffer;
-
-
-
-
-
-
-// import React from 'react';
-// import {Link} from '@remix-run/react';
-// import Swiper  from 'swiper';
-// import { useEffect } from 'react';
-// import { AiOutlineHeart } from 'react-icons/ai'
-// import arrival1 from '../../asset/arrival1.png'
-
-// import '../../styles/app.css'
-// import img from '../../asset/latestoffer1.png';
-// import img2 from '../../asset/latestoffer2.png';
-
-// const ShopByBrand = () => {
-//     useEffect(() => {
-//         if (typeof document !== 'undefined') {
-//           const swiper = new Swiper('.swiper', {
-//             loop: true,
-//             slidesPerView: 5,
-//             centeredSlides: true,
-//             autoplay: {
-//               delay: 2000,
-//             },
-//           });
-//         }
-//       }, []);
-
-//   return (
-//     <div className="brand-section mt-10">
-//       <div className="brand-section-heading">
-//         <h1 className="text-3xl text-center font-normal pb-4">
-//           ARRIVELS
-//         </h1>
-//       </div>
-//       <div className="image_section">
-//       <div className="myswiper">
-
-// <div className="swiper">
-//   <div className="swiper-wrapper">
-//     <div className="swiper-slide">
-//       <div className="card">
-//         <div className="card__image">
-//             <img src={img} alt=""/>
-//           <h2 className="card__title">Slide 1</h2>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-//   <div className="swiper-button-prev"></div>
-//   <div className="swiper-button-next"></div>
-// </div>
-// <div className="swiper-pagination"></div>
-// </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 
 

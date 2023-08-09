@@ -24,11 +24,15 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+
+import Myaccount from '../components/Myaccount';
+import BannerSection from '../components/about_us';
 // import AboutUS from './AboutUS';
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';
 import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
 import Blog from './custom-components/BlogandBlogdetails/Blog';
+
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
@@ -48,11 +52,12 @@ import Plp from './custom-components/Plp';
 import { PlpFilterUI } from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
-import {CiCircleChevDown} from 'react-icons/ci';
-import {Image} from '@shopify/hydrogen';
 import { AllBrands } from './custom-components/AllBrands';
 import { BrandDetails } from './custom-components/BrandDetails';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
+import { CiCircleChevDown } from 'react-icons/ci';
+import { Image } from '@shopify/hydrogen';
+import ProductDetailPage from '../components/ProductDetailPage.js';
 
 
 export function Layout({children, layout}) {
@@ -70,6 +75,8 @@ export function Layout({children, layout}) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
 
+            <ProductDetailPage />
+
           {/* <Banner/> */}
             {/* <PlpFilterUI/> */}
             <BrandDetails/>
@@ -78,6 +85,9 @@ export function Layout({children, layout}) {
             {/* <OurLatestBlog />
             <ShopByBrands /> */}
             {/* <ShopByCategory />
+             {/* <Plp/> */}
+            {/* <ShopByCategory /> */}
+            {/* <ShopByBrands />
             <NewArrivels />
             <LatestOffer />
             <BestSeller />
@@ -87,9 +97,13 @@ export function Layout({children, layout}) {
             <div>
               {/* <BannerSection /> */}
               {/* <Contactsection /> */}
-              {/* <AboutUS /> */}
+
+              <Myaccount/>
+           {/* <AboutUS /> */}
               {/* <Contactsection /> */}
+
             </div>
+
             {children}
           </div>
         </main>
@@ -193,33 +207,6 @@ function MenuMobileNav({menu, onClose}) {
         {id: '4', name: 'Serving Accessories'},
       ],
     },
-    {
-      title: 'Drinkware',
-      subTitles: [
-        {id: '1', name: 'Cups & Mugs '},
-        {id: '2', name: 'Bottles '},
-        {id: '3', name: 'On-the-Go'},
-        {id: '4', name: 'Tea Pots'},
-        {id: '5', name: 'Coffee Makers'},
-        {id: '6', name: 'Tea Accessories'},
-      ],
-    },
-    {
-      title: 'Drinkware',
-      subTitles: [
-        {id: '1', name: 'Bowls  '},
-        {id: '2', name: 'Plates '},
-        {id: '3', name: 'Serveware'},
-        {id: '4', name: 'Tea Pots'},
-        {id: '5', name: 'Dinner Sets'},
-        {id: '6', name: 'Tea Accessories'},
-      ],
-    },
-    {
-      title: 'Barware',
-      subTitles: ['Sub Title 4', 'Sub Title 5'],
-    },
-    // Add the rest of the titles and sub-titles here...
   ];
 
   return (
@@ -509,7 +496,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           />
           <button
             type="submit"
-            className="search-icon flex items-center justify-center h-8 ml-90%"
+            className="search-icon flex items-center justify-center h-8 ml-[90%]"
           >
             <IconSearch />
           </button>
@@ -566,7 +553,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           : ' text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-2 lg:flex opacity-80 shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="header">
         <div className="row v-center">
@@ -599,6 +586,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
+                  { console.log("🚀 ~ file: Layout.jsx:578 ~ DesktopHeader ~ menu:", menu)}
                     <Link
                       key={item.id}
                       to={item.to}
@@ -898,7 +886,7 @@ function Footer({menu}) {
         &copy; {new Date().getFullYear()} / Shopify, Inc. Hydrogen is an MIT
         Licensed Open Source project.
       </div> */}
-      <FooterComponet />
+      <FooterComponet menu={menu} />
     </Section>
   );
 }
