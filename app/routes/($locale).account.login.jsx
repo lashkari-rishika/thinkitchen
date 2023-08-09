@@ -81,25 +81,29 @@ export default function Login() {
 
   return (
 
-    <div className="flex justify-between">
+    <div className="flex justify-between sm-only:block">
 
-      <div className="w-6/12">
+
+      <div className="w-6/12 sm-only:hidden ">
         <img src={Login_img1} alt=""/>
+
       </div>
 
-      <div className="w-6/12 relative ">
-        <div className='home_account_login w-4/6 m-auto absolute '>
+      <div className=" w-2/4 relative sm-only:w-full">
+        <div className='w-2/4  sm-only:left-0  relative top-2/4 sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 
+            2xl-only:absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+            md-only:w-10/12	
+            lg-only:w-10/12'>
           <p className='text-center text-xs text-slate-400 mb-2'>Home | Account</p>
           <h1 className="text-3xl font-medium text-center">Login</h1>
           {/* TODO: Add onSubmit to validate _before_ submission with native? */}
           <Form
             method="post"
             noValidate
-            className="pt-6 pb-8 mb-4 space-y-3 px-20"
-          >
+            className="pt-6 pb-8 mb-4 space-y-3 sm-only:px-0  md-only:px-0">
             {actionData?.formError && (
-              <div className="flex items-center justify-center mb-6 bg-zinc-500">
-                <p className="m-4 text-s text-contrast">{actionData.formError}</p>
+              <div className="flex items-center justify-center mb-6 ">
+                <p className="text-s text-contrast text-red-600">{actionData.formError}</p>
               </div>
             )}
 
@@ -157,12 +161,7 @@ export default function Login() {
                   }
                 }}
               />
-              <div class="flex space-x-4 mt-4">
-                <input type="checkbox" id="keep-me-logged-in" name="keep-me-logged-in" class="h-4 w-4" />
-                <label for="keep-me-logged-in" class="text-sm">Keep me logged in</label>
-              </div>
-
-
+              
               {nativePasswordError && (
                 <p className="text-red-500 text-xs">
                   {' '}
@@ -170,6 +169,12 @@ export default function Login() {
                 </p>
               )}
             </div>
+
+            <div class="flex space-x-4 mt-4">
+                <input type="checkbox" id="keep-me-logged-in" name="keep-me-logged-in" class="h-4 w-4" />
+                <label for="keep-me-logged-in" class="text-sm">Keep me logged in</label>
+            </div>
+
             <div className="flex items-center justify-between">
               <button
                 className="bg-sky-700 text-contrast py-2 px-4 focus:shadow-outline block w-full"

@@ -24,11 +24,15 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+
+import Myaccount from '../components/Myaccount';
+import BannerSection from '../components/about_us';
 // import AboutUS from './AboutUS';
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';
 import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
 import Blog from './custom-components/BlogandBlogdetails/Blog';
+
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
 import ShopByBrands from './custom-components/ShopByBrands';
@@ -88,8 +92,11 @@ export function Layout({children, layout}) {
             <div>
               {/* <BannerSection /> */}
               {/* <Contactsection /> */}
-              {/* <AboutUS /> */}
+
+              <Myaccount/>
+           {/* <AboutUS /> */}
               {/* <Contactsection /> */}
+
             </div>
 
             {children}
