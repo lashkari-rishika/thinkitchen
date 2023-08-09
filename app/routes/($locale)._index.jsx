@@ -3,12 +3,8 @@ import {Suspense} from 'react';
 import {Await, useLoaderData} from '@remix-run/react';
 import {AnalyticsPageType} from '@shopify/hydrogen';
 
-import {
-  ProductSwimlane,
-  FeaturedCollections,
-  Hero,
-} from '~/components';
-import { BestSeller } from '~/components/custom-components/BestSeller';
+import {ProductSwimlane, FeaturedCollections, Hero} from '~/components';
+import {BestSeller} from '~/components/custom-components/BestSeller';
 import {
   MEDIA_FRAGMENT,
   PRODUCT_CARD_FRAGMENT,
@@ -17,6 +13,13 @@ import {
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
+import ShopByCategory from '~/components/custom-components/ShopByCategory';
+import ShopByBrands from '~/components/custom-components/ShopByBrands';
+import LatestOffer from '~/components/custom-components/LatestOffer';
+import FeaturedIn from '~/components/custom-components/FeaturedIn';
+import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
+import SocialMedia from '~/components/custom-components/SocialMedia';
+import CustomerTestimonial from '~/components/custom-components/CustomerTestimonial';
 export const headers = routeHeaders;
 
 export async function loader({params, context}) {
@@ -112,6 +115,8 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
+      <ShopByCategory />
+      <ShopByBrands />
 
       {featuredProducts && (
         <Suspense>
@@ -130,6 +135,12 @@ export default function Homepage() {
         </Suspense>
       )}
 
+      <LatestOffer />
+
+      {console.log(
+        '🚀 ~ file: ($locale)._index.jsx:139 ~ Homepage ~ bestSeller:',
+        bestSeller,
+      )}
       {bestSeller && (
         <Suspense>
           <Await resolve={bestSeller}>
@@ -143,6 +154,11 @@ export default function Homepage() {
         </Suspense>
       )}
 
+      <FeaturedIn />
+      <OurLatestBlog />
+      <SocialMedia />
+      <CustomerTestimonial />
+
       {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
           <Await resolve={secondaryHero}>
@@ -154,7 +170,7 @@ export default function Homepage() {
         </Suspense>
       )}
 
-      {featuredCollections && (
+      {/* {featuredCollections && (
         <Suspense>
           <Await resolve={featuredCollections}>
             {({collections}) => {
@@ -168,7 +184,7 @@ export default function Homepage() {
             }}
           </Await>
         </Suspense>
-      )}
+      )} */}
 
       {tertiaryHero && (
         <Suspense fallback={<Hero {...skeletons[2]} />}>

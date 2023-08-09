@@ -4,7 +4,7 @@ import Main_section_img1 from "../asset/Main_section_img1.png"
 import Main_section_img2 from "../asset/Main_section_img2.png"
 import Main_section_img3 from "../asset/Main_section_img3.png"
 import Main_section_img4 from "../asset/Main_section_img4.png"
-const BannerSection = () => {
+export function AboutUS (){
     return (
         <section>
 
@@ -96,4 +96,3 @@ const BannerSection = () => {
     );
 };
 
-export default BannerSection;

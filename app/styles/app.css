@@ -158,7 +158,9 @@ shop-pay-button {
   .absolute-center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
-
+  #mainContent{
+    padding: 0px !important;
+  }
   .strike {
     position: relative;
     &::before {
@@ -199,6 +201,9 @@ shop-pay-button {
   text-align: center;
   transform: translate(-50%, -50%);
   font-weight: 400;
+}
+.brands-list{
+  column-count: 6;
 }
 .brand-section .all-brand-image {
   position: relative;
@@ -313,7 +318,7 @@ img {
   width: 100%;
 }
 .featured-section .card {
-  padding: 0 8px;
+  /* padding: 0 8px; */
   overflow: hidden;
 }
 
@@ -364,6 +369,38 @@ img {
 }
 
 /* ----------------------------New arrivel section end -------------------------------- */
+/* ----------------------------plpfilter-section-start------------------------------ */
+.plp_filter_main::before {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  background: #000000;
+  content: '';
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.20;
+  z-index: 1;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .plp_filter_main::before {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    background: #000000;
+    content: '';
+    left: 0px;
+    width: 100%;
+    height: 245%;
+    opacity: 0.20;
+    z-index: 1;
+  }
+  
+}
+/* --------------------------------plpfilter-section-end-------------------------------- */
+
+
 /* -------------------------------- Latest offer --------------------------------------- */
 /* .leatestOffer_banner {
 min-width: 50%;} */
@@ -964,12 +1001,70 @@ margin-left: 10px;
 .description p {
   font-size: 14px;
 }
+
 .subcribe-section button {
   width: max-content;
   width: 110px;
   padding: 0px;
 }
-@media (max-width: 768px) {
+.shop-section .shop-now-header {
+  display: flex;
+  align-items: center;
+}
+.brands-section .brands-header{
+  display: flex;
+  align-items: center;
+}
+.shop-section .customer-serive-header{
+  display: flex;
+  align-items: center;
+}
+
+.shop-section .know-us-header{
+  display: flex;
+  align-items: center;
+}
+.brands-section .brands-down-icon {
+  cursor: pointer;
+  /* margin-right: 8px; */
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+.know-us-header .know-us-icon {
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+.customer-serive-header .customer-service-icon {
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+.flex_column{
+  flex-flow: wrap column;
+}
+
+/* .shop-section .shop-now-icon.rotate {
+  transform: rotate(180deg); 
+}
+.know-us-header .know-us-icon.rotate {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+.customer-serive-header .customer-service-icon.rotate {
+  transform: rotate(180deg); 
+}
+.brands-header .brands-down-icon.rotate {
+  transform: rotate(180deg); 
+} */
+.know-us-header .know-us-icon {
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
+}
+/* @media (max-width: 768px) {
   .footer-section ul {
     display:none;
   }
@@ -977,7 +1072,54 @@ margin-left: 10px;
   .footer-section .open {
     display: flex;
   }
+} */
+@media screen and (min-width: 576px) {
+  .shop-now-header .shop-now-down-icon {
+    display: none;
+  }
+  .know-us-header .know-us-down-icon{
+    display: none;
+  }
+  .brands-header .brands-down-icon{
+    display: none;
+  }
+  .customer-serive-header .customer-service-down-icon{
+    display: none;
+  }
+  .shop-now-down-icon{
+    /* position: absolute; */
+    left: 80%;
+  }
+  .shop-now-header{
+    position: absolute;
+  }
 }
+@media screen and (max-width: 576px) and (min-width: 337px) {
+  .brand-section{
+    background-color: #f3f4f6;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width:768){
+.shop-now-list{
+  position: absolute;
+    margin-top: 35px;
+}
+.brands-header{
+  position: absolute;
+  right: 25px;
+}
+}
+.custom-right-45 {
+  right: 45%;
+}
+.shop-now-list{
+  column-count: 2;
+}
+/* @media screen and (min-width: 768px) {
+  .shop-section ul.shop-now-list {
+    display: none;
+  }
+} */
 
 .main_block_about {
   padding: 50px;
@@ -1001,6 +1143,22 @@ margin-left: 10px;
   opacity: 1;
   font-weight: 300;
 }
+
+.about_health1{
+  transform: translate(1%, 30%) !important;
+}
+
+/* tabs----css--start--here---komal */
+
+.tab-buttons button {
+  padding: 10px 10px;
+  border: none;
+}
+.tab-buttons button:focus {
+  border-bottom: 2px solid black; 
+}
+
+
 .banner-logo img{
   width: 230px;
   height: 50px;

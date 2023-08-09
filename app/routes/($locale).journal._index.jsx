@@ -6,6 +6,7 @@ import {Grid, PageHeader, Section, Link} from '~/components';
 import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
+import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
 
 const BLOG_HANDLE = 'Journal';
 
@@ -67,6 +68,7 @@ export default function Journals() {
 function ArticleCard({blogHandle, article, loading}) {
   return (
     <li key={article.id}>
+      <OurLatestBlog/>
       <Link to={`/${blogHandle}/${article.handle}`}>
         {article.image && (
           <div className="card-image aspect-[3/2]">
