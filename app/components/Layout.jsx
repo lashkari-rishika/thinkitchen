@@ -49,6 +49,7 @@ import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
 import { Image } from '@shopify/hydrogen';
+import ProductDetailPage from '../components/ProductDetailPage.js';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -64,6 +65,7 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
+            <ProductDetailPage />
           {/* <Banner/> */}
             {/* <ShopByCategory />
             <ShopByBrands /> */}
@@ -549,7 +551,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           : ' text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-2 lg:flex opacity-80 shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="header">
         <div className="row v-center">

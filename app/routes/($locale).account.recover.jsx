@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Link } from '~/components';
 import { getInputStyleClasses } from '~/lib/utils';
-import Login_img1 from "../../app/asset/login_img1.png";
+// import Login_img1 from "../../app/asset/login_img1.png";
 
 export async function loader({ context, params }) {
   const customerAccessToken = await context.session.get('customerAccessToken');
