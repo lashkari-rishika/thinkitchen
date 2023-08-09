@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { getInputStyleClasses } from '~/lib/utils';
 import { Link } from '~/components';
-import Login_img1 from "../../app/asset/login_img1.png";
+import Login_img1 from "../asset/Login_img1.png";
 
 export const handle = {
   isPublic: true,
@@ -84,7 +84,7 @@ export default function Login() {
     <div className="flex justify-between">
 
       <div className="w-6/12">
-        <img src={Login_img1} alt=""></img>
+        <img src={Login_img1} alt=""/>
       </div>
 
       <div className="w-6/12 relative ">
