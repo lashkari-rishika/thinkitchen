@@ -77,7 +77,7 @@ const ProductDetailPage = () => {
         </div>
       </div>
       <div className="product-deatil-section grid grid-cols-3 sm-only:px-3  sm-only:grid-cols-1 gap-1 px-11 pt-3 sm-only:columns-1  columns-3">
-        
+
         <div className="product-image-1">
           <div>
             <img src={product_image} alt="" />
@@ -94,7 +94,7 @@ const ProductDetailPage = () => {
             <img src={product_image} alt="" />
           </div>
         </div>
-        
+
         <div className="product-contant pl-3">
           <div>
             <Link className="underline  font-semibold text-sm" to="">
@@ -608,7 +608,7 @@ const ProductDetailPage = () => {
                 </div>
                 <p>
                   {' '}
-                  
+
                 </p>
               </div>
               <div className="flex justify-center items-center sm-only:justify-start ">
