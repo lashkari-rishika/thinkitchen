@@ -26,7 +26,7 @@ import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 
 import Myaccount from '../components/Myaccount';
-import BannerSection from '../components/about_us';
+// import BannerSection from '../components/about_us';
 // import AboutUS from './AboutUS';
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';

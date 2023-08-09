@@ -89,7 +89,7 @@ const Tabs = () => {
         },
         {
             title: 'Tips & tricks',
-            content: (
+            content: (<>
                 <div className="w-96 h-auto mb-5">
                     <img src={Blog_img7} alt="Image Card"></img>
                     <div p-4 className="card-content border border-gray-200 p-4">
@@ -98,8 +98,7 @@ const Tabs = () => {
                         <button className="mt-6 px-8 border border-gray-300 px-4 py-2 text-black-500 hover:bg-indigo-800 hover:text-gray-300">Read More</button>
                     </div>
                 </div>
-            ),
-            content: (
+            
                 <div className="w-96 h-auto mb-5">
                     <img src={Blog_img8} alt="Image Card"></img>
                     <div p-4 className="card-content border border-gray-200 p-4">
@@ -108,9 +107,7 @@ const Tabs = () => {
                         <button className="px-8 border border-gray-300 px-4 py-2 text-black-500 hover:bg-indigo-800 hover:text-gray-300">Read More</button>
                     </div>
                 </div>
-            ),
-
-            content: (
+         
                 <div className="w-96 h-auto mb-5">
                     <img src={Blog_img9} alt="Image Card"></img>
                     <div p-4 className="card-content border border-gray-200 p-4">
@@ -119,7 +116,7 @@ const Tabs = () => {
                         <button className="mt-6 px-8 border border-gray-300 px-4 py-2 text-black-500 hover:bg-indigo-800 hover:text-gray-300">Read More</button>
                     </div>
                 </div>
-            )
+                </>)
 
         },
     ];
