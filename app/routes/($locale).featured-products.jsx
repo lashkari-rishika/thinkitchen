@@ -42,11 +42,11 @@ export const FEATURED_ITEMS_QUERY = `#graphql
         ...ProductCard
       }
     }
-    // featuredBestSeller: products(first: $pageBy) {
-    //   nodes {
-    //     ...BestSellerCard
-    //   }
-    // }
+    featuredBestSeller: products(first: $pageBy) {
+      nodes {
+        ...BestSellerCard
+      }
+    }
   }
 
   ${PRODUCT_CARD_FRAGMENT}
