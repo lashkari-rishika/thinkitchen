@@ -15,19 +15,14 @@ import pdp_whatsapp_img from '../asset/pdp-whatsapp-img.png';
 import pdp_email_img from '../asset/pdp-email-img.png';
 import pdp_Amefa_Austin from '../asset/pdp-Amefa Austin-img.png';
 import pdp_Mikasa_Reactive_Blue from '../asset/pdp-Mikasa Reactive Blue-img.png';
-import {AiFillStar} from 'react-icons/ai';
-import {BiStar} from 'react-icons/bi';
-import {MdVerified} from 'react-icons/md';
 import {MdDone} from 'react-icons/md';
 import pdp_benner_img from '../asset/pdp-benner-img.png';
-import first_customer from '../asset/first-customer.png';
-import second_customer from '../asset/second-customer.png';
-import third_customer from '../asset/third-customer.png';
-import pdpYouLike from './pdpYouLike';
-import NewArrivels from './custom-components/NewArrivels';
 import PdpYouLike from './pdpYouLike';
+import CustomerReview from './CustomerReview';
 
 const ProductDetailPage = () => {
+  const TEXT_SLATE_300 = 'text-slate-300';
+
   const [count, setCount] = useState(1); // Initialize the count to 1
   const [isDiscriptionOpen, setIsDiscriptionOpen] = useState(false);
   const [isDimensionOpen, setIsDimensionOpen] = useState(false);
@@ -35,6 +30,8 @@ const ProductDetailPage = () => {
   const [isAdditionalInfoOpen, setIsAdditionalInfoOpen] = useState(false);
   const [isFirstChecked, setIsFirstChecked] = useState(false);
   const [isSecondChecked, setIsSecondChecked] = useState(false);
+  const reviewIds = [1, 2, 3];
+
   const increment = () => {
     setCount(count + 1);
   };
@@ -71,13 +68,12 @@ const ProductDetailPage = () => {
       <div className="px-11 sm-only:px-2">
         <div>
           <p className="text-xs font-semibold">
-            <span className="text-slate-300	">Home | Knives |</span>Amefa Austin
+            <span className={TEXT_SLATE_300}>Home | Knives |</span>Amefa Austin
             Cutlery, Set of 24
           </p>
         </div>
       </div>
       <div className="product-deatil-section grid grid-cols-3 sm-only:px-3  sm-only:grid-cols-1 gap-1 px-11 pt-3 sm-only:columns-1  columns-3">
-        
         <div className="product-image-1">
           <div>
             <img src={product_image} alt="" />
@@ -94,7 +90,7 @@ const ProductDetailPage = () => {
             <img src={product_image} alt="" />
           </div>
         </div>
-        
+
         <div className="product-contant pl-3">
           <div>
             <Link className="underline  font-semibold text-sm" to="">
@@ -117,7 +113,7 @@ const ProductDetailPage = () => {
           {/* REVIEW SECTION */}
           <div className="review-section">
             <p className="flex text-xs pt-3 pb-5">
-              <span className="text-slate-300">SKU:</span>TK123456789
+              <span className={TEXT_SLATE_300}>SKU:</span>TK123456789
               <span className="star-image pl-2 pr-2 flex">
                 <img
                   className="hover:bg-[#fa55d6]"
@@ -133,7 +129,7 @@ const ProductDetailPage = () => {
               Refined and elegant design with a contemporary feel, the Austin
               pattern has perfect lines and elegant shapes. Made of high-quality
               stainless steel this cutlery set is designed for superior
-              durability <span className="text-slate-300">...Read More</span>
+              durability <span className={TEXT_SLATE_300}>...Read More</span>
             </p>
           </div>
           <div className="pt-4 border-t border-gray-300">
@@ -178,12 +174,12 @@ const ProductDetailPage = () => {
           </div>
           <div className="sm-only:flex sm-only:grid-cols-2 gap-3 sm-only:pb-3 sm-only:border-b border-gray-300">
             <div className="pt-3">
-              <button class="text-white text-sm bg-[#175C8A] hover:bg-[#003354] py-2 px-10 sm-only:px-12 lg:px-36">
+              <button class="text-white text-sm bg-[#175C8A] hover:bg-[#003354] py-2 px-10 sm-only:px-12 xl-only:px-24 lg:px-36">
                 ADD TO CART
               </button>
             </div>
             <div className="pt-3">
-              <button class="text-white text-sm bg-[#175C8A] hover:bg-[#003354] sm-only:px-12 py-2 px-12 lg:px-40">
+              <button class="text-white text-sm bg-[#175C8A] hover:bg-[#003354] sm-only:px-12 py-2 xl-only:px-16 px-12 lg:px-40">
                 BUY NOW
               </button>
             </div>
@@ -418,7 +414,9 @@ const ProductDetailPage = () => {
                     <span className="text-[#E91111] mr-2 text-[14px]">
                       ₹4,999
                     </span>{' '}
-                    <span className="text-slate-300 text-xs line-through text-[10px]">
+                    <span
+                      className={`${TEXT_SLATE_300} text-xs line-through text-[10px]`}
+                    >
                       MRP. ₹ 5,999{' '}
                     </span>{' '}
                     <span className="ml-4 text-[14px]"> 20% OFF</span>{' '}
@@ -441,7 +439,9 @@ const ProductDetailPage = () => {
                     <span className="text-[#E91111] text-[14px] mr-2">
                       ₹ 8,399
                     </span>{' '}
-                    <span className="text-slate-300 text-xs line-through text-[10px]">
+                    <span
+                      className={`${TEXT_SLATE_300} text-xs line-through text-[10px]`}
+                    >
                       MRP. ₹ 9,999{' '}
                     </span>{' '}
                     <span className="ml-4 text-[14px]"> 20% OFF</span>{' '}
@@ -469,10 +469,15 @@ const ProductDetailPage = () => {
           <img src={pdp_benner_img} alt="" />
         </div>
       </div>
-      <div className="px-11 sm-only:px-3 mt-16">
+
+
+        <CustomerReview />
+      {/* <div className="px-11 sm-only:px-3 mt-16">
         <div className=" px-20 md-only:px-4 sm-only:px-2 bg-[#F5F5F5]">
           <div className="pt-3 pb-4 border-b border-[#D6D6D6]">
-            <h1 className="text-[33px] font-semibold sm-only:text-[25px]">CUSTOMER REVIEW</h1>
+            <h1 className="text-[33px] font-semibold sm-only:text-[22px]">
+              CUSTOMER REVIEW
+            </h1>
           </div>
           <div className="grid grid-cols-6 pt-3 sm-only:grid-cols-1">
             <div className='"col-span-1 border-r border-[#D6D6D6] sm-only:border-r-0 '>
@@ -486,7 +491,7 @@ const ProductDetailPage = () => {
             </div>
             <div className="col-span-4 sm-only:grid-cols-1 sm-only:pl-0 sm-only:mt-3 sm-only:border-t sm-only:border-[#D6D6D6] pl-3">
               <div className="flex items-baseline sm-only:mt-3">
-                {/* <img className='w-[85px] mt-2' src={pdp_star_image} alt="" /> */}
+                
                 <AiFillStar className="text-[#FFD500]" />
                 <AiFillStar className="text-[#FFD500]" />
                 <AiFillStar className="text-[#FFD500]" />
@@ -558,114 +563,54 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-6 mt-5 sm-only:mt-10 sm-only:grid-cols-1 bg-white px-5 py-5">
-            <div className='"col-span-1 border-r border-[#D6D6D6] sm-only:border-r-0 sm-only:border-b sm-only:border-[#D6D6D6]'>
-              <div className="flex md-only:contents">
-                <img className="w-[35px]" src={first_customer} alt="" />
-                <div className="ml-[10px] md-only:ml-0 mr-[10px]">
-                  <p className="text-[14px] text-[#2D2C2E] font-semibold">
-                    Pankaj Saini
-                  </p>
-                  <p className="text-[14px] font-semibold text-[#2D2C2E]">
-                    25/6/2022
-                  </p>
-                </div>
-                <p>
-                  {' '}
-                  <MdVerified />
-                </p>
+          
+           <div>   
+          {data.customer_review.map((item) => (
+              <div
+                
+                className="grid grid-cols-6 mt-5 sm-only:mt-10 sm-only:grid-cols-1 bg-white px-5 py-5"
+                key={item.id}
+              >
+                
+                  <div
+                    className={`col-span-1 border-r border-[#D6D6D6] sm-only:border-r-0 sm-only:border-b sm-only:border-[#D6D6D6]`}
+                  >
+                    <div className="flex md-only:contents">
+                      <img className="w-[35px]" src={item.img} alt="" />
+                      <div className="ml-[10px] md-only:ml-0 mr-[10px]">
+                        <p className="text-[13px] text-[#2D2C2E] font-semibold">
+                          {item.name}
+                        </p>
+                        <p className="text-[14px] font-semibold text-[#2D2C2E]">
+                          {item.date}
+                        </p>
+                      </div>
+                      <p>
+                        <MdVerified />
+                      </p>
+                    </div>
+                    <div className="flex justify-center items-center sm-only:justify-start ">
+                      <img
+                        className="w-[85px] mb-[25px] sm-only:ml-[45px]"
+                        src={pdp_star_image}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="col-span-5 sm-only:col-span-1 sm-only:mt-3 sm-only:pl-0 pl-6">
+                    <div>
+                      <p className="text-[#2D2C2E] text-[14px] font-bold">
+                        {item.title}
+                      </p>
+                      <p className="text-[#2D2C2E] text-[13px]">
+                        {item.content}
+                      </p>
+                    </div>
+                  </div>
+                
               </div>
-              <div className="flex justify-center items-center sm-only:justify-start ">
-                <img
-                  className="w-[85px] mb-[25px] sm-only:ml-[45px]"
-                  src={pdp_star_image}
-                  alt=""
-                />
-              </div>
+                ))}
             </div>
-            <div className="col-span-5 sm-only:col-span-1 sm-only:mt-3 sm-only:pl-0 pl-6">
-              <div>
-                <p className="text-[#2D2C2E] text-[14px] font-bold	">
-                  It is a good product for good health
-                </p>
-                <p className="text-[#2D2C2E] text-[13px]">
-                  Iam using this product from last 60days. It is very good
-                  product.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-6 mt-5 sm-only:mt-10 sm-only:grid-cols-1 bg-white px-5 py-5">
-            <div className='"col-span-1 border-r border-[#D6D6D6] sm-only:border-r-0 sm-only:border-b sm-only:border-[#D6D6D6]'>
-              <div className="flex">
-                <img className="w-[35px]" src={second_customer} alt="" />
-                <div className="ml-[10px] mr-[10px]">
-                  <p className="text-[14px] text-[#2D2C2E] font-semibold">DP</p>
-                  <p className="text-[14px] font-semibold text-[#2D2C2E]">
-                    15/6/2022
-                  </p>
-                </div>
-                <p>
-                  {' '}
-                  
-                </p>
-              </div>
-              <div className="flex justify-center items-center sm-only:justify-start ">
-                <img
-                  className="w-[85px] mt-2 mb-[25px] sm-only:ml-[45px]"
-                  src={pdp_star_image}
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="col-span-5 sm-only:col-span-1 sm-only:mt-3 sm-only:pl-0 pl-6">
-              <div>
-                <p className="text-[#2D2C2E] text-[14px] font-bold	">
-                  The best product requires perfect health
-                </p>
-                <p className="text-[#2D2C2E] text-[13px]">looks good</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-6 mt-5 sm-only:mt-10 sm-only:grid-cols-1 bg-white px-5 py-5">
-            <div className='"col-span-1 border-r border-[#D6D6D6] sm-only:border-r-0 sm-only:border-b sm-only:border-[#D6D6D6]'>
-              <div className="flex">
-                <img className="w-[35px]" src={third_customer} alt="" />
-                <div className="ml-[10px] mr-[10px]">
-                  <p className="text-[13px] text-[#2D2C2E] font-semibold">
-                    Amlan Jyoti Das
-                  </p>
-                  <p className="text-[14px] font-semibold text-[#2D2C2E]">
-                    10/6/2022
-                  </p>
-                </div>
-                <p>
-                  {' '}
-                  <MdVerified />
-                </p>
-              </div>
-              <div className="flex justify-center items-center sm-only:justify-start ">
-                <img
-                  className="w-[85px] mb-[25px] sm-only:ml-[45px]"
-                  src={pdp_star_image}
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="col-span-5 sm-only:col-span-1 sm-only:mt-3 sm-only:pl-0 pl-6">
-              <div>
-                <p className="text-[#2D2C2E] text-[14px] font-bold	">
-                  A healthy body makes for a good product
-                </p>
-                <p className="text-[#2D2C2E] text-[13px]">
-                  Iam using this product from last 60days. It is very good
-                  product.
-                </p>
-              </div>
-            </div>
-          </div>
 
           <div className="py-6">
             <p className="flex justify-center items-center">
@@ -678,9 +623,9 @@ const ProductDetailPage = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="pdp-footer sticky sm-only:col-span-1 shadow-[0px -5px 6px #0000000] pt-3 px-4 md:px-11 pb-3 bg-white bottom-0 grid md:grid-cols-2">
+      <div className="pdp-footer sticky sm-only:sticky sm-only:col-span-1 shadow-[0px -5px 6px #0000000] pt-3 px-4 md:px-11 pb-3 bg-white bottom-0 grid md:grid-cols-2">
         <div className="flex md-only:hidden sm-only:hidden">
           <h2 className="text-2xl text-black font-medium flex items-center">
             Amefa Austin Cutlery, Set of 24

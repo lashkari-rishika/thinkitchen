@@ -4,43 +4,6 @@ import data from '../../../JSON/db.json'
 import {ProductCard, Section} from '~/components';
 import {AiOutlineHeart} from 'react-icons/ai';
 
-// import arrival1 from '../../asset/arrival1.png';
-
-const media = [
-  {
-    id: 1,
-    imageSrc: arrival1,
-    discountTag: '20% OFF',
-    heart: AiOutlineHeart,
-    productName: 'Amefa Austin Cutlery, Set of 24',
-    price: '₹ 4,999',
-    discountedPrice: '₹ 5,999',
-    cartButton: 'Add To Cart',
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 2,
-    imageSrc: arrival1,
-    discountTag: '20% OFF',
-    heart: AiOutlineHeart,
-    productName: 'Amefa Austin Cutlery, Set of 24',
-    price: '₹ 4,999',
-    discountedPrice: '₹ 5,999',
-    cartButton: 'Add To Cart',
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 3,
-    imageSrc: arrival1,
-    discountTag: '20% OFF',
-    heart: AiOutlineHeart,
-    productName: 'Amefa Austin Cutlery, Set of 24',
-    price: '₹ 4,999',
-    discountedPrice: '₹ 5,999',
-    cartButton: 'Add To Cart',
-    link: 'https://www.google.com/',
-  },
-];
 const mockProducts = {
   nodes: new Array(12).fill(''),
 };
