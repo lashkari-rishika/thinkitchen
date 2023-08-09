@@ -24,7 +24,7 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import Myaccount from '../components/Myaccount';
+// import Myaccount from '../components/Myaccount';
 import BannerSection from '../components/about_us';
 import Contactsection from '../components/commomComponent/ContactUS';
 import ShopByCategory from './custom-components/ShopByCategory';
@@ -46,6 +46,8 @@ import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
 import { Image } from '@shopify/hydrogen';
+import Myorder from './Myorder';
+import Myorderdetails from './Myorderdetails';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -60,7 +62,7 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-          {/* <Banner/> */}
+           {/* <Banner/>  */}
             {/* <ShopByCategory />
             <ShopByBrands /> */}
             {/* <NewArrivels /> */}
@@ -70,9 +72,11 @@ export function Layout({children, layout}) {
             <SocialMedia />
             <CustomerTestimonial /> */}
             <div>
-              {/* <BannerSection /> */}
+              <BannerSection /> 
               {/* <Contactsection /> */}
-              <Myaccount/>
+               {/* <Myaccount/>  */}
+             {/* <Myorder/>  */}
+              {/* <Myorderdetails/> */}
             </div>
             {children}
           </div>

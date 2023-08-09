@@ -2,7 +2,7 @@ import {json} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
 
 import {
-  PRODUCT_CARD_FRAGMENT,
+  PRODUCT_CARD_FRAGMENT, 
   FEATURED_COLLECTION_FRAGMENT,
   BESTSELLER_CARD_FRAGMENT,
 } from '~/data/fragments';
