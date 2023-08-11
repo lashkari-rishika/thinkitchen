@@ -29,8 +29,19 @@ export function ProductGallery({media, className}) {
         ].join(' ');
 
         return (
-          <div className={style} key={med.id || image?.id}>
-            {image && (
+          <div className="product-image-1" key={med.id || image?.id}>
+            {/* <div>/ */}
+              {image && (
+                <img
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  src={image.url}
+                  alt=""
+                  aspectRatio={!isFirst && !isFourth ? '4/5' : undefined}
+                  className=" w-full h-full fadeIn"
+                />
+              )}
+            {/* </div> */}
+            {/* {image && (
               <Image
                 loading={i === 0 ? 'eager' : 'lazy'}
                 data={image}
@@ -42,7 +53,7 @@ export function ProductGallery({media, className}) {
                 // }
                 className="object-cover w-full h-full aspect-square fadeIn"
               />
-            )}
+            )} */}
           </div>
         );
       })}
