@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import product_image from '../asset/product-detail-page-image.png';
 
-import '../../node_modules/swiper/swiper-bundle.css'
+import '../../node_modules/swiper/swiper-bundle.css';
 
 import {Link} from './Link';
-import {BsHeart} from 'react-icons/bs';
+import {BsHeart,BsHeartFill} from 'react-icons/bs';
 import {GrShare} from 'react-icons/gr';
 import pdp_star_image from '../asset/pdp-star-img.svg';
 import {FiChevronDown} from 'react-icons/fi';
@@ -41,7 +41,7 @@ const ProductDetailPage = () => {
   const [showMore, setShowMore] = useState(initialShowMore);
 
   const toggleShowMore = () => {
-      setShowMore(!showMore);
+    setShowMore(!showMore);
   };
 
   const increment = () => {
@@ -73,6 +73,12 @@ const ProductDetailPage = () => {
   };
   const handleSecondCheckBoxClick = () => {
     setIsSecondChecked(!isSecondChecked);
+  };
+
+  const [liked, setLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    setLiked(!liked);
   };
 
   return (
@@ -116,11 +122,15 @@ const ProductDetailPage = () => {
             <h2 className="text-2xl sm-only:text-[15px] text-black font-medium">
               Amefa Austin Cutlery, Set of 24
             </h2>
-            <div className="heart-icon md-only:ml-[115px] flex sm-only:pl-[160px] justify-end pl-24 md-only:pl-0 lg-only:pl-0  ">
-              <a href="">
-                <BsHeart />
-              </a>
-            </div>
+            <div className="heart-icon md-only:ml-[115px] flex sm-only:pl-[160px] justify-end pl-24 md-only:pl-0 lg-only:pl-0">
+            <a href="#" onClick={handleLikeClick}>
+                {liked ? (
+                    <BsHeartFill className="text-[#fa55d6]" />
+                ) : (
+                    <BsHeart className="text-black" />
+                )}
+            </a>
+        </div>
           </div>
           {/* REVIEW SECTION */}
           <div className="review-section">
@@ -128,7 +138,7 @@ const ProductDetailPage = () => {
               <span className={TEXT_SLATE_300}>SKU:</span>TK123456789
               <span className="star-image pl-2 pr-2 flex">
                 <img
-                  className="hover:bg-[#E96775] transition duration-300"
+                  className=" transition duration-300"
                   src={pdp_star_image}
                   alt=""
                 />
@@ -137,16 +147,31 @@ const ProductDetailPage = () => {
             </p>
           </div>
           <div className="pt-4 mb-4  border-t border-gray-300">
-          <p className="text-xs">
-                Refined and elegant design with a contemporary feel, the Austin pattern has perfect lines and elegant shapes. Made of high-quality stainless steel this cutlery set is designed for superior durability
-                {showMore ? (
-                    <>
-                        {' Additional content you want to show when "Read More" is clicked. '}
-                        <span className="text-[#969696] cursor-pointer " onClick={toggleShowMore}>Read Less</span>
-                    </>
-                ) : (
-                    <span className="text-[#969696] cursor-pointer " onClick={toggleShowMore}>...Read More</span>
-                )}
+            <p className="text-xs">
+              Refined and elegant design with a contemporary feel, the Austin
+              pattern has perfect lines and elegant shapes. Made of high-quality
+              stainless steel this cutlery set is designed for superior
+              durability
+              {showMore ? (
+                <>
+                  {
+                    ' Additional content you want to show when "Read More" is clicked. '
+                  }
+                  <span
+                    className="text-[#969696] cursor-pointer "
+                    onClick={toggleShowMore}
+                  >
+                    Read Less
+                  </span>
+                </>
+              ) : (
+                <span
+                  className="text-[#969696] cursor-pointer "
+                  onClick={toggleShowMore}
+                >
+                  ...Read More
+                </span>
+              )}
             </p>
           </div>
           <div className="pt-4 border-t border-gray-300">
@@ -182,13 +207,21 @@ const ProductDetailPage = () => {
               <img className="p-[5px] w-10" src={pdp_share_whatsapp} alt="" />
               <img className="p-[5px] w-10" src={pdp_share_link} alt="" />
             </div>
-              <p className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden sm-only:mt-[5px] ">Qty:</p>
+            <p className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden sm-only:mt-[5px] ">
+              Qty:
+            </p>
             <div className="product-counter flex w-36 sm-only:w-[105px] border border-[#E6E6E6] ">
-              <button className="text-lg  px-7 sm-only:px-[15px] py-1" onClick={decrement}>
+              <button
+                className="text-lg  px-7 sm-only:px-[15px] py-1"
+                onClick={decrement}
+              >
                 -
               </button>
               <p className="flex text-lg font-semibold items-center">{count}</p>
-              <button className="text-lg px-7 sm-only:px[15px] py-1" onClick={increment}>
+              <button
+                className="text-lg px-7 sm-only:px[15px] py-1"
+                onClick={increment}
+              >
                 +
               </button>
             </div>
@@ -201,12 +234,12 @@ const ProductDetailPage = () => {
                 <GrShare className="text-gray-400" />
               </a>
               <div
-              className={`share-icon flex  shadow-md sm-only:shadow-none 2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden `}
-            >
-              <img className="p-[5px] w-10" src={pdp_share_facebook} alt="" />
-              <img className="p-[5px] w-10" src={pdp_share_whatsapp} alt="" />
-              <img className="p-[5px] w-10" src={pdp_share_link} alt="" />
-            </div>
+                className={`share-icon flex  shadow-md sm-only:shadow-none 2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden `}
+              >
+                <img className="p-[5px] w-10" src={pdp_share_facebook} alt="" />
+                <img className="p-[5px] w-10" src={pdp_share_whatsapp} alt="" />
+                <img className="p-[5px] w-10" src={pdp_share_link} alt="" />
+              </div>
             </div>
           </div>
           <div className="sm-only:flex sm-only:grid-cols-2 gap-3 sm-only:pb-3 sm-only:border-b border-gray-300">
@@ -482,12 +515,12 @@ const ProductDetailPage = () => {
                 />
                 <div>
                   <p className="text-sm flex sm-only:pl-[10px] text-gray-500 2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
-                  Mikasa Reactive Blue Dinnerware Set, 12 pcs
+                    Mikasa Reactive Blue Dinnerware Set, 12 pcs
                   </p>
                   <p className="text-sm flex sm-only:pl-[10px]  text-gray-500 2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
                     {' '}
                     <span className="text-[#E91111] mr-2 text-[14px]">
-                    ₹ 8,399
+                      ₹ 8,399
                     </span>{' '}
                     <span
                       className={`${TEXT_SLATE_300} text-xs line-through text-[10px]`}
@@ -584,13 +617,17 @@ const ProductDetailPage = () => {
 
       <div className="mt-16  px-11 sm-only:px-3">
         <div>
-          <img className='sm-only:w-[430px] sm-only:h-[320px]' src={pdp_benner_img} alt="" />
+          <img
+            className="sm-only:w-[430px] sm-only:h-[320px]"
+            src={pdp_benner_img}
+            alt=""
+          />
         </div>
       </div>
 
       <CustomerReview />
 
-      <div className="pdp-footer sticky sm-only:px-1 flex shadow-[0px -5px 6px #0000000] sm-only:pt-0 pt-3 sm-only:pb-1  px-11 pb-3 bg-white bottom-0 grid grid-cols-2">
+      <div className="pdp-footer md-only:grid-cols-1 md-only:flex sticky sm-only:px-1 flex shadow-[0px -5px 6px #0000000] sm-only:pt-0 pt-3 sm-only:pb-1  px-11 pb-3 bg-white bottom-0 grid grid-cols-2">
         <div className="flex sm-only:hidden">
           <h2 className="text-2xl text-black font-medium flex items-center md-only:text-[15px] lg-only:text-[15px]">
             Amefa Austin Cutlery, Set of 24
@@ -637,13 +674,10 @@ const ProductDetailPage = () => {
                 +
               </button>
             </div>
-            
-          
-            
           </div>
-              <button class=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
-                ADD TO CART
-              </button>
+          <button class=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
+            ADD TO CART
+          </button>
         </div>
         <button class="lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-10">
           ADD TO CART
