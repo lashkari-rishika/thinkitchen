@@ -157,7 +157,7 @@ export default function Recover() {
           {/* </>
         )} */}
       </div>
-    </div>
+    
   );
 }
 
