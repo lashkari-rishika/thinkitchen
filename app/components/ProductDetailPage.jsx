@@ -256,7 +256,7 @@ const ProductDetailPage = () => {
           </div>
 
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Description</h3>
+            <h3 className="text-sm font-semibold" onClick={toggleDiscription}>Description</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
@@ -282,7 +282,7 @@ const ProductDetailPage = () => {
 
           <div className=" pb-2 border-b border-gray-300"></div>
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Size & Dimension</h3>
+            <h3 className="text-sm font-semibold" onClick={toggleDimension}>Size & Dimension</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
@@ -308,7 +308,7 @@ const ProductDetailPage = () => {
           <div className=" pb-2 border-b border-gray-300"></div>
 
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Use & Care</h3>
+            <h3 className="text-sm font-semibold"  onClick={toggleUseAndCare}>Use & Care</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
@@ -334,7 +334,7 @@ const ProductDetailPage = () => {
           <div className=" pb-2 border-b border-gray-300"></div>
 
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Additional Info</h3>
+            <h3 className="text-sm font-semibold" onClick={toggleAdditionalInfo}>Additional Info</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
