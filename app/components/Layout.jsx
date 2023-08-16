@@ -75,8 +75,8 @@ export function Layout({children, layout}) {
           <div className="main_video_banner ">
 
             {/* <ProductDetailPage /> */}
+            {/* <Banner/> */}
             <MyCart />
-          {/* <Banner/> */}
             {/* <PlpFilterUI/> */}
              {/* <Plp/> */}
             {/* <ShopByCategory /> */}

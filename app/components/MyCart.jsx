@@ -6,6 +6,7 @@ import {RiDeleteBin6Line} from 'react-icons/ri';
 
 const MyCart = () => {
   const [count, setCount] = useState(1);
+  const [count2, setCount2] = useState(1);
 
   const increment = () => {
     setCount(count + 1);
@@ -14,6 +15,16 @@ const MyCart = () => {
   const decrement = () => {
     if (count > 1) {
       setCount(count - 1);
+    }
+  };
+
+  const increment2 = () => {
+    setCount2(count2 + 1);
+  };
+
+  const decrement2 = () => {
+    if (count2 > 1) {
+      setCount2(count2 - 1);
     }
   };
   return (
@@ -66,7 +77,7 @@ const MyCart = () => {
                     >
                       +
                     </button>
-                    <div className="pl-14 items-center flex sm-only:hidden ">
+                    <div className="pl-6 items-center flex sm-only:hidden ">
                       <RiDeleteBin6Line />
                       <p className="pl-2 text-[12px]">Remove</p>
                     </div>
@@ -102,18 +113,18 @@ const MyCart = () => {
                   <div className="flex items-center border border-gray-300 p-1 sm:w-24 md:w-28 lg:w-28 xl:w-28">
                     <button
                       className="text-lg px-2 md:px-4"
-                      onClick={decrement}
+                      onClick={decrement2}
                     >
                       -
                     </button>
-                    <p className="text-lg font-semibold px-2">{count}</p>
+                    <p className="text-lg font-semibold px-2">{count2}</p>
                     <button
                       className="text-lg px-2 md:px-4"
-                      onClick={increment}
+                      onClick={increment2}
                     >
                       +
                     </button>
-                    <div className="pl-14 items-center flex sm-only:hidden">
+                    <div className="pl-6 items-center flex sm-only:hidden">
                       <RiDeleteBin6Line />
                       <p className="pl-2 text-[12px]">Remove</p>
                     </div>
@@ -170,21 +181,21 @@ const MyCart = () => {
                 </div>
                 <div className="grid pb-3 sm-only:overflow-x-scroll sm-only:gap-2 lg-only:grid-cols-2 md-only:grid-cols-1 grid-cols-3 gap-2 mt-2">
                   <div className="text-sm sm-only:w-[130%]  sm-only:bg-white border border-gray-300 rounded-lg shadow-md p-2.5">
-                    <h5 className="font-semibold ">No Cost EMI</h5>
+                    <h5 className="font-semibold text-[13px] ">No Cost EMI</h5>
                     <p className="text-[11px] mt-[8px]">
                       Avail No Cost EMI on select cards for orders above ₹3000
                     </p>
                     <p className=" text-[#175C8A] mt-[8px]">1 offer </p>
                   </div>
                   <div className="text-sm sm-only:ml-[35px] sm-only:w-[130%]  sm-only:bg-white border border-gray-300 rounded-lg shadow-md p-2.5">
-                    <h5 className="font-semibold ">Bank Offer</h5>
+                    <h5 className="font-semibold text-[13px] ">Bank Offer</h5>
                     <p className="text-[11px] mt-[8px]">
                       Upto ₹1,750.00 discount on select Credit Cards,HDFC…
                     </p>
                     <p className=" text-[#175C8A] mt-[8px]">6 offer </p>
                   </div>
                   <div className="text-sm sm-only:w-[130%] sm-only:ml-[70px] sm-only:bg-white border border-gray-300 rounded-lg shadow-md p-2.5">
-                    <h5 className="font-semibold ">Partner Offers</h5>
+                    <h5 className="font-semibold text-[13px] ">Partner Offers</h5>
                     <p className="text-[11px] mt-[8px]">
                       Get GST invoice and save up to 28% on business purchases.
                     </p>
