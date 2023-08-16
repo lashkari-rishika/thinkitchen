@@ -26,8 +26,6 @@ import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 
 import Myaccount from '../components/Myaccount';
-import BannerSection from '../components/about_us';
-// import AboutUS from './AboutUS';
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';
 import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
@@ -57,7 +55,7 @@ import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
 import { Image } from '@shopify/hydrogen';
 import ProductDetailPage from '../components/ProductDetailPage.js';
-
+// import { AboutUS } from './AboutUS';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -74,11 +72,11 @@ export function Layout({children, layout}) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
 
-            <ProductDetailPage />
+            {/* <ProductDetailPage /> */}
 
           {/* <Banner/> */}
             {/* <PlpFilterUI/> */}
-             <Plp/>
+             {/* <Plp/> */}
             {/* <ShopByCategory /> */}
             {/* <ShopByBrands />
             <NewArrivels />
@@ -92,10 +90,13 @@ export function Layout({children, layout}) {
               {/* <BannerSection /> */}
               {/* <Contactsection /> */}
 
-              <Myaccount/>
-           {/* <AboutUS /> */}
-              {/* <Contactsection /> */}
-
+              {/* <Myaccount/> */}
+           {/* <AboutUS/> */}
+             {/* <Contactsection /> */}
+              {/* <PrivacyPolicy/> */}
+              {/* <Termscondition/> */}
+              {/* <Blogdetails/> */}
+              {/* <Blog/> */}
             </div>
 
             {children}
