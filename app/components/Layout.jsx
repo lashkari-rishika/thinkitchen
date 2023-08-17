@@ -2,6 +2,7 @@ import {useParams, Form, Await, useMatches} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
+import SsAbc from './custom-components/SsAbc';
 import {
   Drawer,
   useDrawer,
@@ -57,10 +58,7 @@ import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
 import {CiCircleChevDown} from 'react-icons/ci';
 import {Image} from '@shopify/hydrogen';
-import ProductDetailPage from '../components/ProductDetailPage';
 // import { AboutUS } from './AboutUS';
-
-import MyCart from '../components/MyCart';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -577,11 +575,11 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                     >
                       {item.title}
                     </Link>
-                    <div class="sub-menu mega-menu mega-menu-column-4">
+                    <div className="sub-menu mega-menu mega-menu-column-4">
                       {(item?.items || []).map((subitem) => (
                         <>
-                          <div class="list-item">
-                            <h4 class="title">
+                          <div className="list-item">
+                            <h4 className="title">
                               <Link
                                 key={subitem.id}
                                 to={subitem.to}
