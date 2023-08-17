@@ -2,7 +2,6 @@ import {useParams, Form, Await, useMatches} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
-import SsAbc from './custom-components/SsAbc';
 import {
   Drawer,
   useDrawer,
@@ -75,7 +74,7 @@ export function Layout({children, layout}) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
             {/* <MyCart /> */}
-            <Banner/>
+            {/* <Banner/> */}
             {children}
           </div>
         </main>

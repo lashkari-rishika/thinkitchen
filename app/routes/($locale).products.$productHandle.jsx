@@ -590,8 +590,145 @@ export default function Product() {
         </div>
 
         {/* {Frequently Bought and image } */}
+        <div>
+          <div className="mt-16 px-11">
+            <div className="bg-[#F5F5F5] px-20 py-6">
+              <div className="">
+                <h1 className="font-ubuntu text-base font-semibold">
+                  FREQUENTLY BOUGHT TOGETHER
+                </h1>
+              </div>
+              <div className="pt-4 flex">
+                <div>
+                  <img className="w-[190px]" src={product_image} alt="" />
+                  <p className="text-[14px] mt-2">Amefa Austin </p>
+                  <p className="text-[14px] mt-2">Cutlery, Set of 24</p>
+                </div>
+
+                <div>
+                  <p className="flex items-center p-[32px] text-[30px]"> +</p>
+                </div>
+                <div>
+                  <img className="w-[190px]" src={product_image} alt="" />
+                  <p className="text-[14px] mt-2">Mikasa Reactive Blue</p>
+                  <p className="text-[14px] mt-2">Dinnerware Set, 12 pcs</p>
+                </div>
+                <div className="pl-10">
+                  <div>
+                    <p className="text-sm flex">
+                      <div
+                        className="w-4 h-4 border bg-white border-[1px solid #ECECEC]  cursor-pointer flex items-center justify-center"
+                        onClick={handleFirstCheckBoxClick}
+                      >
+                        {isFirstChecked && <MdDone className="text-black" />}
+                      </div>
+                      <span className="pl-3 pr-1">Current items</span>
+                      <span className="text-gray-500">
+                        {' '}
+                        Amefa Austin Cutlery, Set of 24
+                      </span>
+                    </p>
+                    <p>
+                      {' '}
+                      <span className="text-[#E91111] mr-2 text-[14px]">
+                        ₹4,999
+                      </span>{' '}
+                      <span className="text-slate-300 text-xs line-through text-[10px]">
+                        MRP. ₹ 5,999{' '}
+                      </span>{' '}
+                      <span className="ml-4 text-[14px]"> 20% OFF</span>{' '}
+                    </p>
+                  </div>
+                  <div className="pt-4 pb-4 border-b border-gray-200">
+                    <p className="text-sm flex">
+                      <div
+                        className="w-4 h-4 border bg-white border-[1px solid #ECECEC]  cursor-pointer flex items-center justify-center"
+                        onClick={handleSecondCheckBoxClick}
+                      >
+                        {isSecondChecked && <MdDone className="text-black" />}
+                      </div>
+                      <span className="pl-3 text-gray-500">
+                        Mikasa Reactive Blue Dinnerware Set, 12 pcs
+                      </span>
+                    </p>
+                    <p>
+                      {' '}
+                      <span className="text-[#E91111] text-[14px] mr-2">
+                        ₹ 8,399
+                      </span>{' '}
+                      <span className="text-slate-300 text-xs line-through text-[10px]">
+                        MRP. ₹ 9,999{' '}
+                      </span>{' '}
+                      <span className="ml-4 text-[14px]"> 20% OFF</span>{' '}
+                    </p>
+                  </div>
+                  <div className="ml-8 pt-4 flex">
+                    <p className="flex items-center">Total: ₹ 1,040</p>
+                    <button class=" text-white text-sm bg-[#003354] ml-4 py-2 pl-5 pr-5 ">
+                      Add Both to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-16">
+          <PdpYouLike />
+          {/* <NewArrivels/> */}
+        </div>
+         <div className="mt-16  px-11">
+          <div>
+            <img src={pdp_benner_img} alt="" />
+          </div>
+        </div>
 
         {/* <CustomerReview /> */}
+
+        <div className="pdp-footer sticky sm-only:col-span-1 shadow-[0px -5px 6px #0000000] pt-3 px-4 md:px-11 pb-3 bg-white bottom-0 grid md:grid-cols-2">
+          <div className="flex md-only:hidden sm-only:hidden">
+            <h2 className="text-2xl text-black font-medium flex items-center">
+              Amefa Austin Cutlery, Set of 24
+            </h2>
+          </div>
+          <div className="flex md-only:flex md-only:ml-4 mt-3 md-only:mt-0 md-only:items-end">
+            <div className="md:pl-5">
+              <p className="flex items-center">
+                <span className="text-[#969696] text-xs line-through">
+                  MRP.₹5999
+                </span>
+                <span className="pl-2 pr-2 text-xl text-[#E91111] font-semibold">
+                  ₹4,999
+                </span>
+                <span className="text-xs bg-[#E91111] text-white p-2 rounded-2xl">
+                  20% OFF
+                </span>
+              </p>
+              <p className="text-[#969696] text-xs">(inclusive of all taxes)</p>
+            </div>
+            <div className="mt-3 md:mt-4">
+              <div className="flex">
+                <div className="md-only:hidden product-counter flex w-36 border border-[#E6E6E6] ">
+                  <button className="text-base px-4" onClick={decrement}>
+                    -
+                  </button>
+                  <p className="flex text-lg font-semibold items-center">
+                    {count}
+                  </p>
+                  <button className="text-base px-4" onClick={increment}>
+                    +
+                  </button>
+                </div>
+                <div className="ml-4 mt-2">
+                  <button class=" text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-4">
+                    ADD TO CART
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
       {/* <Suspense fallback={<Skeleton className="h-32" />}>
         <Await
