@@ -8,7 +8,7 @@ import {MdVerified} from 'react-icons/md';
 
 const CustomerReview = () => {
   return (
-    <div>
+    <>
         <div className="px-11 sm-only:px-3 mt-16">
         <div className=" px-20 md-only:px-4 sm-only:px-2 bg-[#F5F5F5]">
           <div className="pt-3 pb-4 border-b border-[#D6D6D6]">
@@ -161,7 +161,7 @@ const CustomerReview = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
