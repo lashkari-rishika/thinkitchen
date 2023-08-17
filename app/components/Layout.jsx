@@ -26,8 +26,10 @@ import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 
 import Myaccount from '../components/Myaccount';
+
 // import BannerSection from '../components/about_us';
 // import AboutUS from './AboutUS';
+
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';
 import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
@@ -52,13 +54,14 @@ import Plp from './custom-components/Plp';
 import {PlpFilterUI} from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-
-
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
 import { Image } from '@shopify/hydrogen';
-// import ProductDetailPage from '../components/ProductDetailPage.js';
+import ProductDetailPage from '../components/ProductDetailPage.js';
+// import { AboutUS } from './AboutUS';
+
 import MyCart from '../components/Mycart';
+
 
 
 export function Layout({children, layout}) {
@@ -81,11 +84,15 @@ export function Layout({children, layout}) {
 
 
             {/* <ProductDetailPage /> */}
+
             {/* <Banner/> */}
             <MyCart />
 
+
             {/* <PlpFilterUI/> */}
-            {/* <Plp/> */}
+
+             {/* <Plp/> */}
+
             {/* <ShopByCategory /> */}
             {/* <ShopByBrands />
             <NewArrivels />
@@ -100,8 +107,14 @@ export function Layout({children, layout}) {
               {/* <Contactsection /> */}
 
               {/* <Myaccount/> */}
-              {/* <AboutUS /> */}
-              {/* <Contactsection /> */}
+
+           {/* <AboutUS/> */}
+             {/* <Contactsection /> */}
+              {/* <PrivacyPolicy/> */}
+              {/* <Termscondition/> */}
+              {/* <Blogdetails/> */}
+              {/* <Blog/> */}
+
             </div>
 
             {children}

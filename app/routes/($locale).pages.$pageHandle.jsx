@@ -33,6 +33,10 @@ export default function Page() {
   return (
     <>
       <PageHeader heading={page.title}>
+      {/* <div
+            dangerouslySetInnerHTML={{__html: page.body}}
+            className="prose dark:prose-invert"
+          /> */}
         {page.title == 'About us' ? (
           <AboutUS />
         ) : (
