@@ -1,15 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from '@remix-run/react';
-import  '../styles/app.css';
-import { AiOutlineHeart } from 'react-icons/ai';
-import arrival1 from '../asset/arrival1.png'
+import '../styles/app.css';
+import {AiOutlineHeart} from 'react-icons/ai';
+import {BsHeartFill} from 'react-icons/bs';
+
+import arrival1 from '../asset/arrival1.png';
 
 const media = [
   {
     id: 1,
     imageSrc: arrival1,
     discountTag: '20% OFF',
-    heart: AiOutlineHeart,
+    heart: 'AiOutlineHeart',
     productName: 'Amefa Austin Cutlery, Set of 24',
     price: '₹ 4,999',
     discountedPrice: '₹ 5,999',
@@ -20,7 +22,7 @@ const media = [
     id: 2,
     imageSrc: arrival1,
     discountTag: '20% OFF',
-    heart: AiOutlineHeart,
+    heart: 'AiOutlineHeart',
     productName: 'Amefa Austin Cutlery, Set of 24',
     price: '₹ 4,999',
     discountedPrice: '₹ 5,999',
@@ -31,26 +33,36 @@ const media = [
     id: 3,
     imageSrc: arrival1,
     discountTag: '20% OFF',
-    heart: AiOutlineHeart,
+    heart: 'AiOutlineHeart',
     productName: 'Amefa Austin Cutlery, Set of 24',
     price: '₹ 4,999',
     discountedPrice: '₹ 5,999',
     cartButton: 'Add To Cart',
     link: 'https://www.google.com/',
   },
-]
+];
 
 const PdpYouLike = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
 
   return (
-
     <div className="mt-10 sm-only:px-3 px-10">
       <div className="arrivel-section-heading">
-        <h1 className="text-4xl text-center font-medium pb-4">YOU MAY ALSO LIKE</h1>
+        <h1 className="text-4xl text-center font-medium pb-4">
+          YOU MAY ALSO LIKE
+        </h1>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2.5">
-        {media.map((media) => (
+        {media.map((media, index) => (
           <div key={media.id} className="flex flex-col items-center">
             <div className="new_arrivel_card relative w-full">
               <Link href={media.link} className="w-full" target="_blank">
@@ -59,9 +71,22 @@ const PdpYouLike = () => {
                   alt="Product"
                   className="w-full object-cover hover_image"
                 />
-                <button className="absolute top-2 right-2 p-2 bg-white rounded-full ">
-                  <AiOutlineHeart/>
+                <button
+                  className="absolute top-2 right-2 p-2 rounded-full"
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    backgroundColor:
+                      hoveredIndex === index ? 'transparent' : 'white',
+                  }}
+                >
+                  {hoveredIndex === index ? (
+                    <BsHeartFill className="text-[#fa55d6]" />
+                  ) : (
+                    <AiOutlineHeart className="text-black" />
+                  )}
                 </button>
+
                 <div className="discount_lable absolute p-2 md-only:text-sm md-only:p-[0.1rem] text-red-600 bg-white rounded-br-lg  font-xs">
                   {media.discountTag}
                 </div>

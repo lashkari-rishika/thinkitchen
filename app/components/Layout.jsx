@@ -26,6 +26,10 @@ import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 
 import Myaccount from '../components/Myaccount';
+
+// import BannerSection from '../components/about_us';
+// import AboutUS from './AboutUS';
+
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';
 import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
@@ -47,15 +51,18 @@ import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import Banner from '../components/Banner';
 import Plp from './custom-components/Plp';
-import { PlpFilterUI } from './custom-components/PlpFilterUI';
+import {PlpFilterUI} from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
 import { Image } from '@shopify/hydrogen';
 import ProductDetailPage from '../components/ProductDetailPage.js';
 // import { AboutUS } from './AboutUS';
+
+import MyCart from '../components/Mycart';
+
+
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -71,12 +78,21 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
+            {/* <Blog/>
+              <Blogdetails/> */}
+            {/* <ProductDetailPage /> */}
+
 
             {/* <ProductDetailPage /> */}
 
-          {/* <Banner/> */}
+            {/* <Banner/> */}
+            <MyCart />
+
+
             {/* <PlpFilterUI/> */}
+
              {/* <Plp/> */}
+
             {/* <ShopByCategory /> */}
             {/* <ShopByBrands />
             <NewArrivels />
@@ -91,12 +107,14 @@ export function Layout({children, layout}) {
               {/* <Contactsection /> */}
 
               {/* <Myaccount/> */}
+
            {/* <AboutUS/> */}
              {/* <Contactsection /> */}
               {/* <PrivacyPolicy/> */}
               {/* <Termscondition/> */}
               {/* <Blogdetails/> */}
               {/* <Blog/> */}
+
             </div>
 
             {children}
@@ -157,7 +175,7 @@ function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
+    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right" className="text-2xl">
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
@@ -202,33 +220,6 @@ function MenuMobileNav({menu, onClose}) {
         {id: '4', name: 'Serving Accessories'},
       ],
     },
-    {
-      title: 'Drinkware',
-      subTitles: [
-        {id: '1', name: 'Cups & Mugs '},
-        {id: '2', name: 'Bottles '},
-        {id: '3', name: 'On-the-Go'},
-        {id: '4', name: 'Tea Pots'},
-        {id: '5', name: 'Coffee Makers'},
-        {id: '6', name: 'Tea Accessories'},
-      ],
-    },
-    {
-      title: 'Drinkware',
-      subTitles: [
-        {id: '1', name: 'Bowls  '},
-        {id: '2', name: 'Plates '},
-        {id: '3', name: 'Serveware'},
-        {id: '4', name: 'Tea Pots'},
-        {id: '5', name: 'Dinner Sets'},
-        {id: '6', name: 'Tea Accessories'},
-      ],
-    },
-    {
-      title: 'Barware',
-      subTitles: ['Sub Title 4', 'Sub Title 5'],
-    },
-    // Add the rest of the titles and sub-titles here...
   ];
 
   return (
@@ -238,7 +229,7 @@ function MenuMobileNav({menu, onClose}) {
         <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
           <li>
             <p className="text-base">Shop by Catagory</p>
-            <div className="absolute top-24 right-12">
+            <div className="absolute top-[30%] right-[10%]">
               {/* <svg
                 onClick={toggleDropdown}
                 className={`ml-4 h-30 w-4 h-4 transition-transform ${
@@ -278,7 +269,7 @@ function MenuMobileNav({menu, onClose}) {
                   <div className="text-sm font-semibold text-black">
                     {item.title}
                   </div>
-                  <div className="absolute top-32 right-14">
+                  <div className="absolute top-[43%] right-[11%]">
                     {/* <svg
                       onClick={firstDropdown}
                       className={`ml-4 h-30 w-4 h-4 transition-transform ${
@@ -518,7 +509,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           />
           <button
             type="submit"
-            className="search-icon flex items-center justify-center h-8 ml-90%"
+            className="search-icon flex items-center justify-center h-8 ml-[90%]"
           >
             <IconSearch />
           </button>
@@ -608,7 +599,6 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
-                  { console.log("🚀 ~ file: Layout.jsx:578 ~ DesktopHeader ~ menu:", menu)}
                     <Link
                       key={item.id}
                       to={item.to}

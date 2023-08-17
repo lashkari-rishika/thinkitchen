@@ -120,9 +120,7 @@ export async function loader({params, request, context}) {
 
 export default function Collection() {
   const {collection, collections, appliedFilters} = useLoaderData();
-  console.log("🚀 ~ file: ($locale).collections.$collectionHandle.jsx:123 ~ Collection ~ collection:", collection)
-
-  return (
+   return (
     <>
       <PageHeader heading={collection.title}>
         {collection?.description && (
