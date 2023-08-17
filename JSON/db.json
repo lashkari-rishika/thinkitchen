@@ -1,0 +1,580 @@
+{
+
+    "category": [
+        {
+          "id": 1,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6003.png?v=1690960123",
+          "name": "Pripware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 2,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6004.png?v=1690960124",
+          "name": "Drinkware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 3,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6005.png?v=1690960123",
+          "name": "Dineware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 4,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6006.png?v=1690960124",
+          "name": "Barware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 5,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6007.png?v=1690960123",
+          "name": "Storageware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 6,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6008.png?v=1690960123",
+          "name": "Homeware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 7,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6003.png?v=1690960123",
+          "name": "Tableware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 8,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6004.png?v=1690960124",
+          "name": "Bakeware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 9,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6005.png?v=1690960123",
+          "name": "Kids",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 10,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6006.png?v=1690960124",
+          "name": "Cookware",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 11,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6007.png?v=1690960123",
+          "name": "Bath",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 12,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6008.png?v=1690960123",
+          "name": "Other",
+          "link": "https://www.google.com/"
+        }
+      ],
+
+      "brands": [
+        {
+          "id": 1,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/sb2.png?v=1690960124",
+          "name": "AMEFA",
+          "tagName": "BY THENKITCHEN",
+          "imgSrc2": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 2,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/sb3.png?v=1690960124",
+          "name": "BERGHOFF",
+          "tagName": "BY THENKITCHEN",
+          "imgSrc2": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 3,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/sb5.png?v=1690960124",
+          "name": "COLE&MASON",
+          "tagName": "BY THENKITCHEN",
+          "imgSrc2": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 4,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/sb6.png?v=1690960124",
+          "name": "BRABANTIA",
+          "tagName": "BY THENKITCHEN",
+          "imgSrc2": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 5,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/sb2.png?v=1690960124",
+          "name": "JAMIE OLIVER",
+          "tagName": "BY THENKITCHEN",
+          "imgSrc2": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 6,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/sb3.png?v=1690960124",
+          "name": "ZYLISS",
+          "tagName": "BY THENKITCHEN",
+          "imgSrc2": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/grazialogo.png?v=1690960123",
+          "link": "https://www.google.com/"
+        }
+      ],
+
+      "products": [
+        {
+          "id": 1,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+          "discountTag": "20% OFF",
+          "heart": "AiOutlineHeart",
+          "productName": "Amefa Austin Cutlery, Set of 24",
+          "price": "₹ 4,999",
+          "discountedPrice": "₹ 5,999",
+          "cartButton": "Add To Cart",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 2,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+          "discountTag": "20% OFF",
+          "heart": "AiOutlineHeart",
+          "productName": "Amefa Austin Cutlery, Set of 24",
+          "price": "₹ 4,999",
+          "discountedPrice": "₹ 5,999",
+          "cartButton": "Add To Cart",
+          "link": "https://www.google.com/"
+        },
+        {
+          "id": 3,
+          "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+          "discountTag": "20% OFF",
+          "heart": "AiOutlineHeart",
+          "productName": "Amefa Austin Cutlery, Set of 24",
+          "price": "₹ 4,999",
+          "discountedPrice": "₹ 5,999",
+          "cartButton": "Add To Cart",
+          "link": "https://www.google.com/"
+        }
+      ],
+
+      "offers": [
+        {
+            "id": 1,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/latestoffer1.png?v=1690960124",
+            "tag": "SAVE 50% ON GLASSES",
+            "name": "DARTINGTON",
+            "text1": "Sale upto",
+            "text2": "50% OFF",
+            "cartBtn": "Add To Cart",
+            "link": "https://www.google.com/"
+        },
+        {
+            "id": 2,
+            "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/latestoffer2.png?v=1690960124",
+            "tag": "DINE ON FESTIVAL SETS",
+            "name": "DENBY",
+            "text1": "Festival season",
+            "text2": "",
+            "cartBtn": "Add To Cart",
+            "link": "https://www.google.com/"
+        }
+        ],
+
+        "featuredin": [
+            {
+                "id": 1,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin1.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 2,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin2.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 3,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin3.jpg?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 4,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin4.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 5,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin5.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 6,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin1.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 7,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin2.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 8,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin3.jpg?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 9,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin4.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 10,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/featuredin5.webp?v=1690960123",
+                "link": "https://www.google.com/"
+            }
+        ],
+
+        "blog": [
+            {
+                "id": 1,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/OurLB1.png?v=1690960124",
+                "date": "November 01, 2022",
+                "text": "Champagne is a luxurious drink that is often associated with celebrations and special occasions.",
+                "exploreBtn": "Explore",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 2,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/OurLB2.png?v=1690960124",
+                "date": "November 01, 2022",
+                "text": "Champagne is a luxurious drink that is often associated with celebrations and special occasions.",
+                "exploreBtn": "Explore",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 3,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/OurLB3.png?v=1690960124",
+                "date": "November 01, 2022",
+                "text": "Champagne is a luxurious drink that is often associated with celebrations and special occasions.",
+                "exploreBtn": "Explore",
+                "link": "https://www.google.com/"
+            }
+        ],
+
+        "socialmedia": [
+            {
+                "id": 1,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/social1.png?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 2,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/social2.png?v=1690960124",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 3,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/social3.png?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 4,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/social4.png?v=1690960123",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 5,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/social4.png?v=1690960123",
+                "link": "https://www.google.com/"
+            }
+        ],
+
+        "testimonial": [
+            {
+                "id": 1,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/CT1.png?v=1690461750",
+                "starimg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/5star.png?v=1690960122",
+                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+            }
+        ],
+
+        "plpdata": [
+            {
+                "id": 1,
+                "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 2,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 3,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 4,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 5,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 6,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 7,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 8,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 9,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 10,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 11,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 12,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 13,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 14,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 15,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            },
+            {
+                "id": 16,
+                "imageSrc":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1.png?v=1690461333",
+                "discountTag": "20% OFF",
+                "heart": "AiOutlineHeart",
+                "productName": "Amefa Austin Cutlery, Set of 24",
+                "price": "₹ 4,999",
+                "discountedPrice": "₹ 5,999",
+                "cartButton": "Add To Cart",
+                "link": "https://www.google.com/"
+            }
+        ],
+
+        "plpfilter": [
+            {
+                "id": 1,
+                "main_category": "Categories",
+                "sub_category": ["Prepware", "Drinkware", "Dineware", "Barware", "Storageware", "Homeware", "Tableware"]
+            },
+            {
+                "id": 2,
+                "main_category": "Sub Categories",
+                "sub_category": ["Knives", "Cutter", "Grater", "Utensils"]
+            },
+            {
+                "id": 3,
+                "main_category": "Brands",
+                "sub_category": ["Amefa", "BarCraft", "BergHOFF", "Brabantia"]
+            },
+            {
+                "id": 4,
+                "main_category": "Just Launch",
+                "sub_category": ["Award Winners", "Sets/Bundles", "Ratings, Sale/ Offers", "Gifting"]
+            },
+            {
+                "id": 5,
+                "main_category": "Restricted Price Filter",
+                "sub_category": ["Inspiration", "Home Essentials", "Back To School", "Healthy Living"]
+            },
+            {
+                "id": 6,
+                "main_category": "ABCD",
+                "sub_category": ["Jam & Pickle", "Making Travel", "wedding Dinner", "Parties"]
+            },
+            {
+                "id": 7,
+                "main_category": "Price",
+                "sub_category": []
+            }
+        ],
+
+        "accordian": [
+            {
+              "id": 1,
+              "question":"What is the minimum and maximum price range of thinkitchen products ?",
+              "answer":" Answer to Question 3."
+            },
+            {
+              "id": 2,
+              "question":"What is the shipping cost of thinkitchen ?",
+              "answer":" Answer to Question 3."
+            },
+            {
+              "id": 3,
+              "question":"What is the minimum and maximum price range of thinkitchen products ?",
+              "answer":" Answer to Question 3."
+            },
+            {
+              "id": 4,
+              "question":"How many products are available in thinkitchen ?",
+              "answer":" Answer to Question 3."
+            },
+            {
+              "id": 5,
+              "question":"What are the best selling products in thinkitchen ?",
+              "answer":" Answer to Question 3."
+            }
+          ],
+        "customer_review":[
+          {
+            "id": 1,
+            "img":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer1.png?v=1691572299",
+            "name": "Pankaj Saini",
+            "date": "25/6/2022",
+            "verified": true,
+            "title": "It is a good product for good health. ",
+            "content": "I am using this product from last 60 days. It is very good product."
+          },
+          {
+            "id": 2,
+            "img":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer2.png?v=1691572316",
+            "name": "DP",
+            "date": "15/6/2022",
+            "verified": false,
+            "title": "The best product requires perfect health.",
+            "content": "Looks good."
+          },
+          {
+            "id": 3,
+            "img":"https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer3.png?v=1691572325",
+            "name": "Amlan Jyoti Das",
+            "date": "10/6/2022",
+            "verified": true,
+            "title": "A healthy body makes for a good product.  ",
+            "content": "I am using this product from last 60 days. It is very good product."
+          }        
+        ]
+                   
+}
+

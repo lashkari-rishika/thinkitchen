@@ -49,7 +49,9 @@ const Banner = () => {
       <div className="slider">
         {slide.type === 'video' ? (
           <div
+
             className="banner-video relative h-[700px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px]"
+
           >
             <video autoPlay loop muted className="w-full h-full object-cover">
               <source src={slide.src} type="video/mp4" />
@@ -72,13 +74,17 @@ const Banner = () => {
               </div>
             </video>
           </div>
+
         ) : (
+
           <div
             className="banner-img relative h-[700px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px]"
             style={{
               backgroundImage: `url(${slide.src})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+
+
             }}
           >
             <div className="banner sm-only:hidden absolute sm:top-1/4 md:top-1/3 lg:top-1/3 xl:top-1/4 2xl:top-1/3 left-1/2 transform -translate-x-1/2 text-white">
@@ -99,8 +105,10 @@ const Banner = () => {
                 <button className='sm-only:text-white sm-only:border sm-only:rounded-lg	 sm-only:border-white sm-only:p-1 sm-only:text-base	'>EXPLORE NOW</button>
               </div>
           </div>
+
         )}
       </div>
+
     </div>
   );
 };
