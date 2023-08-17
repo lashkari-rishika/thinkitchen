@@ -18,7 +18,7 @@ export const Button = forwardRef(
     const Component = props?.to ? Link : as;
 
     const baseButtonClasses =
-      'inline-block rounded font-medium text-center py-3 px-6';
+      'inline-block rounded font-medium text-center py-2 px-10 sm-only:px-12 lg:px-36';
 
     const variants = {
       primary: `${baseButtonClasses} bg-primary text-contrast`,
@@ -28,11 +28,11 @@ export const Button = forwardRef(
 
     const widths = {
       auto: 'w-auto',
-      full: 'w-full',
+      full: 'w-[47%]',
     };
 
     const styles = clsx(
-      missingClass(className, 'bg-') && variants[variant],
+      // missingClass(className, 'bg-') && variants[variant],
       missingClass(className, 'w-') && widths[width],
       className,
     );

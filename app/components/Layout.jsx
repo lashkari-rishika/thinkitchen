@@ -26,7 +26,6 @@ import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 
 import Myaccount from '../components/Myaccount';
-import BannerSection from '../components/about_us';
 // import AboutUS from './AboutUS';
 import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
 import Termscondition from './PrivacyandTermscondition/Termscondition';
@@ -49,15 +48,14 @@ import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import Banner from '../components/Banner';
 import Plp from './custom-components/Plp';
-import { PlpFilterUI } from './custom-components/PlpFilterUI';
+import {PlpFilterUI} from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
-import { CiCircleChevDown } from 'react-icons/ci';
-import { Image } from '@shopify/hydrogen';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
+import {CiCircleChevDown} from 'react-icons/ci';
+import {Image} from '@shopify/hydrogen';
 import ProductDetailPage from '../components/ProductDetailPage.js';
-
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -73,12 +71,13 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
+            {/* <Blog/>
+              <Blogdetails/> */}
+            {/* <ProductDetailPage /> */}
 
-            <ProductDetailPage />
-
-          {/* <Banner/> */}
+            {/* <Banner/> */}
             {/* <PlpFilterUI/> */}
-             {/* <Plp/> */}
+            {/* <Plp/> */}
             {/* <ShopByCategory /> */}
             {/* <ShopByBrands />
             <NewArrivels />
@@ -92,10 +91,9 @@ export function Layout({children, layout}) {
               {/* <BannerSection /> */}
               {/* <Contactsection /> */}
 
-              <Myaccount/>
-           {/* <AboutUS /> */}
+              {/* <Myaccount/> */}
+              {/* <AboutUS /> */}
               {/* <Contactsection /> */}
-
             </div>
 
             {children}
@@ -156,7 +154,7 @@ function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
+    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right" className="text-2xl">
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
@@ -580,7 +578,6 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
-                  { console.log("🚀 ~ file: Layout.jsx:578 ~ DesktopHeader ~ menu:", menu)}
                     <Link
                       key={item.id}
                       to={item.to}
