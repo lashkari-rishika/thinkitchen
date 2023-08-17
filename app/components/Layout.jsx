@@ -54,15 +54,13 @@ import Plp from './custom-components/Plp';
 import {PlpFilterUI} from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
-import { CiCircleChevDown } from 'react-icons/ci';
-import { Image } from '@shopify/hydrogen';
-import ProductDetailPage from '../components/ProductDetailPage.js';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
+import {CiCircleChevDown} from 'react-icons/ci';
+import {Image} from '@shopify/hydrogen';
+import ProductDetailPage from '../components/ProductDetailPage';
 // import { AboutUS } from './AboutUS';
 
-import MyCart from '../components/Mycart';
-
-
+import MyCart from '../components/MyCart';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -78,45 +76,7 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-            {/* <Blog/>
-              <Blogdetails/> */}
-            {/* <ProductDetailPage /> */}
-
-
-            {/* <ProductDetailPage /> */}
-
-            {/* <Banner/> */}
-            <MyCart />
-
-
-            {/* <PlpFilterUI/> */}
-
-             {/* <Plp/> */}
-
-            {/* <ShopByCategory /> */}
-            {/* <ShopByBrands />
-            <NewArrivels />
-            <LatestOffer />
-            <BestSeller />
-            <FeaturedIn />
-            <OurLatestBlog />
-            <SocialMedia />
-            <CustomerTestimonial /> */}
-            <div>
-              {/* <BannerSection /> */}
-              {/* <Contactsection /> */}
-
-              {/* <Myaccount/> */}
-
-           {/* <AboutUS/> */}
-             {/* <Contactsection /> */}
-              {/* <PrivacyPolicy/> */}
-              {/* <Termscondition/> */}
-              {/* <Blogdetails/> */}
-              {/* <Blog/> */}
-
-            </div>
-
+            {/* <MyCart /> */}
             {children}
           </div>
         </main>
@@ -175,7 +135,13 @@ function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right" className="text-2xl">
+    <Drawer
+      open={isOpen}
+      onClose={onClose}
+      heading="Cart"
+      openFrom="right"
+      className="text-2xl"
+    >
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
