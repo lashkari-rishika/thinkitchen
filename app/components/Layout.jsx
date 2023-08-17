@@ -2,60 +2,6 @@ import {useParams, Form, Await, useMatches} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
-import {CiCircleChevDown} from 'react-icons/ci';
-import {Image} from '@shopify/hydrogen';
-
-import Myaccount from '../components/Myaccount';
-
-
-// import AboutUS from './AboutUS';
-import Contactsection from '../components/commomComponent/ContactUS';
-import accountLogin from '../asset/Icon-feather-user.png';
-
-import cart from '../asset/cart.png';
-
-import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
-import Termscondition from './PrivacyandTermscondition/Termscondition';
-import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
-import Blog from './custom-components/BlogandBlogdetails/Blog';
-
-
-import ShopByCategory from './custom-components/ShopByCategory';
-import ShopByBrands from './custom-components/ShopByBrands';
-import NewArrivels from './custom-components/NewArrivels';
-import LatestOffer from './custom-components/LatestOffer';
-import FeaturedIn from './custom-components/FeaturedIn';
-import SocialMedia from './custom-components/SocialMedia';
-import FooterComponet from './FooterComponet';
-import OurLatestBlog from './custom-components/OurLatestBlog';
-import CustomerTestimonial from './custom-components/CustomerTestimonial';
-
-import wishList from '../asset/heart.png';
-import cart_location from '../asset/cart_location.png';
-import Banner from '../components/Banner';
-
-import Plp from './custom-components/Plp';
-import {PlpFilterUI} from './custom-components/PlpFilterUI';
-
-
-import header_logo from '../asset/logo.svg';
-import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-
-import {AllBrands} from './custom-components/AllBrands';
-import {BrandDetails} from './custom-components/BrandDetails';
-
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
-
-import ProductDetailPage from '../components/ProductDetailPage.js';
-// import { AboutUS } from './AboutUS';
-
-import MyCart from '../components/Mycart';
-
-
-import {useCartFetchers} from '~/hooks/useCartFetchers';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useIsHomePath} from '~/lib/utils';
-import SsAbc from './custom-components/SsAbc';
 import {
   Drawer,
   useDrawer,
@@ -75,6 +21,43 @@ import {
   Link,
   FeaturedProducts,
 } from '~/components';
+import {useIsHomePath} from '~/lib/utils';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
+import {useCartFetchers} from '~/hooks/useCartFetchers';
+
+import Myaccount from '../components/Myaccount';
+
+// import BannerSection from '../components/about_us';
+// import AboutUS from './AboutUS';
+
+import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
+import Termscondition from './PrivacyandTermscondition/Termscondition';
+import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
+import Blog from './custom-components/BlogandBlogdetails/Blog';
+
+import Contactsection from '../components/commomComponent/ContactUS';
+import ShopByCategory from './custom-components/ShopByCategory';
+import ShopByBrands from './custom-components/ShopByBrands';
+import NewArrivels from './custom-components/NewArrivels';
+import LatestOffer from './custom-components/LatestOffer';
+import FeaturedIn from './custom-components/FeaturedIn';
+import SocialMedia from './custom-components/SocialMedia';
+import FooterComponet from './FooterComponet';
+import OurLatestBlog from './custom-components/OurLatestBlog';
+import CustomerTestimonial from './custom-components/CustomerTestimonial';
+import accountLogin from '../asset/Icon-feather-user.png';
+import cart from '../asset/cart.png';
+import wishList from '../asset/heart.png';
+import cart_location from '../asset/cart_location.png';
+import Banner from '../components/Banner';
+import Plp from './custom-components/Plp';
+import {PlpFilterUI} from './custom-components/PlpFilterUI';
+import header_logo from '../asset/logo.svg';
+import dropdownImageMoblie from '../asset/dropdown-mobile.png';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
+import {CiCircleChevDown} from 'react-icons/ci';
+import {Image} from '@shopify/hydrogen';
+// import { AboutUS } from './AboutUS';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -90,38 +73,8 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-
-            {/* <SsAbc/> */}
-            {/* <ProductDetailPage /> */}
+            {/* <MyCart /> */}
             {/* <Banner/> */}
-            {/* <PlpFilterUI/> */}
-            {/* <AllBrands /> */}
-            {/* <BrandDetails /> */}
-            {/* <Plp/> */}
-            {/* <OurLatestBlog />
-            <ShopByBrands /> */}
-            {/* <ShopByCategory />
-             {/* <Plp/> */}
-            {/* <BestSeller /> */}
-            <NewArrivels />
-            <FeaturedIn />
-
-            {/* <ShopByCategory /> */}
-            {/* <ShopByBrands />
-            <LatestOffer />
-            <SocialMedia />
-            <CustomerTestimonial /> */}
-            <div>
-              {/* <BannerSection /> */}
-              {/* <Contactsection /> */}
-
-              {/* <Myaccount/> */}
-
-              {/* <AboutUS /> */}
-              {/* <Contactsection /> */}
-
-            </div>
-
             {children}
           </div>
         </main>
@@ -180,7 +133,13 @@ function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right" className="text-2xl">
+    <Drawer
+      open={isOpen}
+      onClose={onClose}
+      heading="Cart"
+      openFrom="right"
+      className="text-2xl"
+    >
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
