@@ -216,7 +216,7 @@ function MenuMobileNav({menu, onClose}) {
         <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
           <li>
             <p className="text-base">Shop by Catagory</p>
-            <div className="absolute top-24 right-12">
+            <div className="absolute top-[30%] right-[10%]">
               {/* <svg
                 onClick={toggleDropdown}
                 className={`ml-4 h-30 w-4 h-4 transition-transform ${
@@ -256,7 +256,7 @@ function MenuMobileNav({menu, onClose}) {
                   <div className="text-sm font-semibold text-black">
                     {item.title}
                   </div>
-                  <div className="absolute top-32 right-14">
+                  <div className="absolute top-[43%] right-[11%]">
                     {/* <svg
                       onClick={firstDropdown}
                       className={`ml-4 h-30 w-4 h-4 transition-transform ${
