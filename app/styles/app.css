@@ -1173,24 +1173,8 @@ margin-left: 10px;
   }
   
 }
-@media only screen and (max-width:767px) and (min-width:320px){
-  .main_block_about{
-    position: unset !important;
-    transform: unset !important;
-  }
-}
 
-/*----------- account login start css------------- */
 
-.home_account_login{
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-/* ------------- account login css end --------------- */
-
-/* ----privacy policy start css------- */
-
-.collection{
-  margin-top:1px;
+.image_section .swiper .swiper-wrapper .swiper-slide{
+  width: 0px;
 }
