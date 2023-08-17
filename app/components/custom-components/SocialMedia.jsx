@@ -41,7 +41,7 @@ const SocialMedia = () => {
   return (
     <div className='social-media-section my-10 px-3 sm:px-0'>
         <div className='social-section-heading'>
-            <h1 className='text-4xl text-center font-medium pb-4'>JOIN US ON SOCIAL @THINKITCHEN</h1>
+            <h1 className='text-4xl sm-only:text-2xl text-center font-medium pb-4'>JOIN US ON SOCIAL @THINKITCHEN</h1>
         </div>
         <div className='image_section'>
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-1">

@@ -237,10 +237,6 @@ shop-pay-button {
   text-align: center;
 }
 
-.brand_hidden_image {
-  display: flex;
-  justify-content: center;
-}
 .all-brand-image:hover .all-brand-hidden {
   opacity: 1;
   transition: all 0.25s;
@@ -301,57 +297,6 @@ shop-pay-button {
 
 /* -----------------------------social media end ----------------------------------- */
 
-/* ---------------------------- category slider css -------------------------------- */
-
-.featured-section .swiper {
-  display: flex;
-  width: 100%;
-}
-.featured-section .swiper-wrapper {
-  display: flex;
-}
-.featured-section .myswiper {
-  position: relative;
-  overflow: hidden;
-}
-img {
-  width: 100%;
-}
-.featured-section .card {
-  /* padding: 0 8px; */
-  overflow: hidden;
-}
-
-.arrivel-section .card {
-  padding: 0;
-}
-
-.arrivel-section .swiper-slide {
-  width: 100%;
-}
-
-.card__title {
-  text-align: center;
-  transition: opacity 0.3s;
-}
-
-.category_main_section .swiper-wrapper {
-  display: flex;
-  width: 100%;
-  gap: 10px;
-}
-
-.category_main_section .swiper {
-  overflow: hidden;
-  width: 200%;
-}
-.category_main_section .text-center {
-  overflow: hidden;
-}
-/* .category_heading .swiper-wrapper{
-  gap: 10px;
-} */
-/* ---------------------------- category slider css end-------------------------------- */
 /* -----------------------------New Arrivel section------------------------------------ */
 
 .discount_lable {
@@ -400,44 +345,6 @@ img {
 }
 /* --------------------------------plpfilter-section-end-------------------------------- */
 
-
-/* -------------------------------- Latest offer --------------------------------------- */
-/* .leatestOffer_banner {
-min-width: 50%;} */
-
-/* @media only screen and (min-device-width: 320px) and (max-device-width: 576px) {
-  .leatestOffer_banner{
-    bottom: 86px;
-  }
- 
- }*/
-/* @media only screen and (min-device-width: 576px) and (max-device-width: 768px) {
-  .leatestOffer_banner{
-    bottom: 90px;
-  }
- 
- } */
-/* @media only screen and (min-device-width: 768px) and (max-device-width: 992px) {
-  .leatestOffer_banner{
-    bottom: 86px;
-  }
- 
- } */
-/* @media only screen and (min-device-width: 992px) and (max-device-width: 1200px) {
-  .leatestOffer_banner{
-    width: 48%;
-  }
- 
- } */
-/* @media only screen and (min-device-width: 1200px) and (max-device-width: 1400px) {
-  .leatestOffer_banner{
-    bottom: 86px;
-  }
- 
- } */
-
-/* -------------------------------- Latest offer end------------------------------------- */
-
 /* ------------------------------- testimonial-section-start------------------------------- */
 .testimonial-section {
   background-color: #f9f9fc;
@@ -461,8 +368,37 @@ min-width: 50%;} */
   display: block;
   margin-left: auto;
 }
-/* ------------------------------- testimonial-section-end------------------------------- *
+/* ------------------------------- testimonial-section-end------------------------------- */
+.Brand_Suggetion > div {
+  position: relative;
+  transition: transform 0.3s;
+}
 
+.Brand_Suggetion .hover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #175C8A;
+  color: white;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.Brand_Suggetion > div:hover {
+  transform: scale(1.05);
+}
+.Brand_Suggetion > div:hover .hover-content {
+  display: flex;
+  opacity: 1;
+}
 /* -------------------------------------Header Start -----------------------------*/
 
 /* header */

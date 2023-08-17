@@ -37,7 +37,7 @@ const OurLatestBlog = () => {
     <div className="blog_main_section mt-10 sm-only:px-3 px-10">
       <div className="flex justify-center relative items-center pb-4">
         <div className="blog-section-heading block ml-auto w-full text-center">
-          <h1 className="text-4xl font-item">OUR LATEST BLOGS</h1>
+          <h1 className="text-4xl sm-only:text-2xl font-item">OUR LATEST BLOGS</h1>
         </div>
         <Link
           to="#"

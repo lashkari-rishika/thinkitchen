@@ -8,7 +8,7 @@ const CustomerTestimonial = () => {
   return (
     <div className="testimonial-section mt-10 mb-14 sm-only:px-3 px-10">
       <div className="testimonial-section-heading">
-        <h1 className="text-4xl text-center font-medium pb-4">
+        <h1 className="text-4xl sm-only:text-2xl text-center font-medium pb-4">
           CUSTOMER TESTIMONIALS
         </h1>
       </div>
