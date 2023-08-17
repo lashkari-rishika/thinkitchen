@@ -1122,12 +1122,11 @@ margin-left: 10px;
 } */
 
 .main_block_about {
-  padding: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
+  padding: 50px; 
+ top: 50%;
+  left: 50%; 
   transform: translate(-45%, -50%) !important;
-  width: 100%;
+  width: 100%; 
 }
 .about_health1 {
   transform: translate(1%, 30%) !important;
@@ -1174,6 +1173,12 @@ margin-left: 10px;
   }
   
 }
+@media only screen and (max-width:767px) and (min-width:320px){
+  .main_block_about{
+    position: unset !important;
+    transform: unset !important;
+  }
+}
 
 /*----------- account login start css------------- */
 
@@ -1184,10 +1189,8 @@ margin-left: 10px;
 }
 /* ------------- account login css end --------------- */
 
-.Total{
-  width:89%;
-}
-/* .Delivery{
-  width:136%;
-} */
+/* ----privacy policy start css------- */
 
+.collection{
+  margin-top:1px;
+}

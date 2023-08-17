@@ -6,7 +6,7 @@ import up_icon from '../asset/up-icon.png';
 import {FiChevronDown} from 'react-icons/fi';
 import React, {useState} from 'react';
 const FooterComponet = ({menu}) => {
-  const [isDescriptionVisible, setDescriptionVisible] = useState(true);
+  // const [isDescriptionVisible, setDescriptionVisible] = useState(true);
   const [isIconRotated, setIconRotated] = useState(true);
   const [isShopNowOpen, setShopNowOpen] = useState(false);
   const [isKnowUsOpen, setKnowUsOpen] = useState(false);
@@ -31,8 +31,16 @@ const FooterComponet = ({menu}) => {
     setIconRotated((prevRotation) => !prevRotation);
   };
 
+  // const toggleDescription = () => {
+  //   setDescriptionVisible((prevState) => !prevState);
+  // };
+
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+
   const toggleDescription = () => {
-    setDescriptionVisible((prevState) => !prevState);
+      setIsDescriptionVisible(!isDescriptionVisible);
+      // Scroll to top when up icon is clicked
+      window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
     <div>
@@ -152,7 +160,7 @@ const FooterComponet = ({menu}) => {
           </div>
 
           {/* BRANDS */}
-          <div className="border-t brands-section mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0">
+          <div className="border-t brands-section mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0 sm-only:border-t-0">
             {(menu?.items || []).map((item) => (
               <>
                 {item.title == 'Brands' ? (
@@ -197,22 +205,21 @@ const FooterComponet = ({menu}) => {
               <p>© 2023 Seeba Industries Pvt Ltd.</p>
             </div>
             <div
-              className="up-icon absolute  right-1/2  border-white p-4 shadow-md"
+              className="up-icon absolute sm-only:right-[45%] right-1/2  border-white p-4 shadow-md"
               onClick={toggleDescription}
             >
               <img
                 src={up_icon}
                 alt=""
-                className={`h-4 w-4 transform ${
-                  isDescriptionVisible ? 'rotate-180' : ''
-                }`}
+                className={`h-4 w-4 transform ${isDescriptionVisible ? '' : ''}`}
+                onClick={toggleDescription}
               />
             </div>
           </div>
         </div>
       </section>
       {/* description */}
-      {isDescriptionVisible && (
+      
         <section>
           <div className="description pt-6 pb-6 bg-white text-black">
             <div className="container mx-auto w-4/5">
@@ -262,7 +269,7 @@ const FooterComponet = ({menu}) => {
             </div>
           </div>
         </section>
-      )}
+    
     </div>
   );
 };
