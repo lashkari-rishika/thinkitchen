@@ -937,3 +937,7 @@ a {
   }
   
 }
+
+.image_section .swiper .swiper-wrapper .swiper-slide{
+  width: 0px;
+}
