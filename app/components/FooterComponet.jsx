@@ -5,6 +5,7 @@ import up_icon from '../asset/up-icon.png';
 
 import {FiChevronDown} from 'react-icons/fi';
 import React, {useState} from 'react';
+import ShippingComponent from './ShippingComponent';
 const FooterComponet = () => {
   const [isDescriptionVisible, setDescriptionVisible] = useState(true);
   const [isIconRotated, setIconRotated] = useState(true);
@@ -38,6 +39,8 @@ const FooterComponet = () => {
     <div>
       {/* POPULAR SEARCHES SECTION*/}
       <section>
+        <ShippingComponent />
+
         <div className="search-section mx-auto pt-6 pb-6 text-black border-b-2 border-gray-300">
           <div className="container mx-auto w-4/5">
             <h2 className="font-medium mb-1">POPULAR SEARCHES</h2>
