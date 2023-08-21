@@ -57,7 +57,7 @@ export function BestSellerCard({
         <div className="flex flex-col items-center w-[26rem]">
           <div className="new_arrivel_card relative w-full">
             <Link
-              honClick={onClick}
+              onClick={onClick}
               to={`/products/${product.handle}`}
               prefetch="intent"
               className="w-full"
