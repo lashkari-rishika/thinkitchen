@@ -29,19 +29,20 @@ const FeaturedIn = ({ images, text }) => {
 
         <Swiper
           spaceBetween={10}
-          slidesPerView={3} // Display 6 slides in larger screens
+          slidesPerView={3}
+          scrollbar={{ draggable: true }}
           breakpoints={{
             992: {
-              slidesPerView: 6, // Display 4 slides in tab view
+              slidesPerView: 5,
             },
             768: {
-              slidesPerView: 5, // Display 4 slides in tab view
+              slidesPerView: 4,
             },
             576: {
-              slidesPerView: 4, // Display 4 slides in tab view
+              slidesPerView: 4,
             },
             320: {
-              slidesPerView: 3, // Display 4 slides in tab view
+              slidesPerView: 3,
             }
           }}
           onSwiper={setSwiper}

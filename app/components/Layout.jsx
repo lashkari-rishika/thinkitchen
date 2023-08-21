@@ -88,17 +88,14 @@ export function Layout({children, layout}) {
             {/* <PlpFilterUI/> */}
             {/* <AllBrands /> */}
             {/* <BrandDetails /> */}
-            {/* <Plp/> */}
-            {/* <OurLatestBlog />
-            <ShopByBrands /> */}
-            {/* <ShopByCategory />
-             {/* <Plp/> */}
+             {/* <Plp/>
             {/* <BestSeller /> */}
+            {/* <ShopByCategory />
+            <ShopByBrands />
+            <OurLatestBlog/>
             <NewArrivels />
-            <FeaturedIn />
-            {/* <ShopByCategory /> */}
-            {/* <ShopByBrands />
             <LatestOffer />
+            <FeaturedIn />
             <SocialMedia />
             <CustomerTestimonial /> */}
             <div>
@@ -592,10 +589,6 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
-                    {console.log(
-                      '🚀 ~ file: Layout.jsx:578 ~ DesktopHeader ~ menu:',
-                      menu,
-                    )}
                     <Link
                       key={item.id}
                       to={item.to}

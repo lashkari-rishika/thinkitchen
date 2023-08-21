@@ -137,10 +137,7 @@ export default function Homepage() {
 
       <LatestOffer />
 
-      {console.log(
-        '🚀 ~ file: ($locale)._index.jsx:139 ~ Homepage ~ bestSeller:',
-        bestSeller,
-      )}
+
       {bestSeller && (
         <Suspense>
           <Await resolve={bestSeller}>

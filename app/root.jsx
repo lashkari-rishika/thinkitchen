@@ -29,12 +29,17 @@ import '../node_modules/swiper/swiper-bundle.min.css'
 import '../node_modules/swiper/swiper-bundle.js'
 import '../node_modules/swiper/swiper-bundle.min.js'
 import '../node_modules/swiper/swiper.css'
+import swiperNavigation from 'swiper/css/navigation';
+import swiperPagination from 'swiper/css/pagination';
+import swiperScrollbar from 'swiper/css/scrollbar';
 
 export const links = () => {
   return [
     {rel: 'stylesheet', href: styles},
-    // {rel: 'stylesheet', href: swiperStyle},
     {rel:'stylesheet', href:swiperssStyle},
+    {rel:'stylesheet', href:swiperNavigation},
+    {rel:'stylesheet', href:swiperPagination},
+    {rel:'stylesheet', href:swiperScrollbar},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
