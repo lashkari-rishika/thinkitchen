@@ -5,6 +5,7 @@ import React from 'react';
 import data from '../../../JSON/db.json'
 
 const CustomerTestimonial = () => {
+
   return (
     <div className="testimonial-section mt-10 mb-14 sm-only:px-3 px-10">
       <div className="testimonial-section-heading">

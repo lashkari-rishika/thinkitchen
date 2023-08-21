@@ -483,9 +483,9 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           <button
             type="submit"
             className="search-icon flex items-center justify-center h-8 ml-[85%]"
-
+          >
             <IconSearch />
-          </button>
+            </button>
         </Form>
       </div>
     </header>

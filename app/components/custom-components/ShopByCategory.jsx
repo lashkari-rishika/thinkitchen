@@ -8,17 +8,17 @@ import data from '../../../JSON/db.json';
 const ShopByCategory = ({ images, text }) => {
   const [swiper, setSwiper] = useState(null);
 
-  const slidePrev = () => {
-    if (swiper) {
-      swiper.slidePrev();
-    }
-  };
+  // const slidePrev = () => {
+  //   if (swiper) {
+  //     swiper.slidePrev();
+  //   }
+  // };
 
-  const slideNext = () => {
-    if (swiper) {
-      swiper.slideNext();
-    }
-  };
+  // const slideNext = () => {
+  //   if (swiper) {
+  //     swiper.slideNext();
+  //   }
+  // };
 
   return (
     <div className="category_main_section mt-10 sm-only:px-3 px-10">
@@ -29,19 +29,19 @@ const ShopByCategory = ({ images, text }) => {
 
         <Swiper
           spaceBetween={30}
-          slidesPerView={6} // Display 6 slides in larger screens
+          slidesPerView={6}
           breakpoints={{
             992: {
-              slidesPerView: 6, // Display 4 slides in tab view
+              slidesPerView: 6,
             },
             768: {
-              slidesPerView: 5, // Display 4 slides in tab view
+              slidesPerView: 5,
             },
             576: {
-              slidesPerView: 3, // Display 4 slides in tab view
+              slidesPerView: 3,
             },
             320: {
-              slidesPerView: 1.5, // Display 4 slides in tab view
+              slidesPerView: 2.5,
             }
           }}
           onSwiper={setSwiper}

@@ -100,7 +100,7 @@ const ShopByBrands = () => {
         </div>
       </div>
       <div className="my-2 text-center ">
-        <h2 className="font-medium underline-offset-8">View All Brands </h2>
+        <button className="font-medium underline-offset-8">View All Brands </button>
       </div>
     </div>
   );
