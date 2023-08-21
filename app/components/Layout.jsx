@@ -184,6 +184,35 @@ function MenuMobileNav({menu, onClose}) {
         {id: '4', name: 'Serving Accessories'},
       ],
     },
+
+    // {
+    //   title: 'Drinkware',
+    //   subTitles: [
+    //   {id: '1', name: 'Cups & Mugs '},
+    //   {id: '2', name: 'Bottles '},
+    //   {id: '3', name: 'On-the-Go'},
+    //   {id: '4', name: 'Tea Pots'},
+    //   {id: '5', name: 'Coffee Makers'},
+    //   {id: '6', name: 'Tea Accessories'},
+    //   ]
+    // },
+    // {
+    //   title: 'Drinkware',
+    //   subTitles: [
+    //   {id: '1', name: 'Bowls  '},
+    //   {id: '2', name: 'Plates '},
+    //   {id: '3', name: 'Serveware'},
+    //   {id: '4', name: 'Tea Pots'},
+    //   {id: '5', name: 'Dinner Sets'},
+    //   {id: '6', name: 'Tea Accessories'},
+    //   ]
+    // },
+    // {
+    //   title: 'Barware',
+    //   subTitles: ['Sub Title 4', 'Sub Title 5'],
+    // },
+    // Add the rest of the titles and sub-titles here...
+
   ];
 
   return (
@@ -192,8 +221,11 @@ function MenuMobileNav({menu, onClose}) {
         {/* frist menu */}
         <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
           <li>
-            <p className="text-base">Shop by Catagory</p>
-            <div className="absolute top-[30%] right-[10%]">
+            <p className="text-base">
+              Shop by Catagory
+            </p>
+            <div className="absolute top-[5rem] right-12">
+
               {/* <svg
                 onClick={toggleDropdown}
                 className={`ml-4 h-30 w-4 h-4 transition-transform ${
@@ -233,7 +265,9 @@ function MenuMobileNav({menu, onClose}) {
                   <div className="text-sm font-semibold text-black">
                     {item.title}
                   </div>
-                  <div className="absolute top-[43%] right-[11%]">
+
+                  <div className="absolute top-[7rem] right-[3.4rem]">
+
                     {/* <svg
                       onClick={firstDropdown}
                       className={`ml-4 h-30 w-4 h-4 transition-transform ${
@@ -432,7 +466,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       <div className="flex items-center justify-start gap-4">
         <button
           onClick={openMenu}
-          className="relative flex items-center justify-center h-8"
+          className="relative flex items-center justify-center h-8 "
         >
           <IconMenu />
         </button>
@@ -473,8 +507,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           />
           <button
             type="submit"
-            className="search-icon flex items-center justify-center h-8 ml-[90%]"
-          >
+            className="search-icon flex items-center justify-center h-8 ml-[85%]"
+
             <IconSearch />
           </button>
         </Form>
