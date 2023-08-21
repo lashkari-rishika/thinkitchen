@@ -117,7 +117,7 @@ export default function Homepage() {
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
 
-      <Banner/>
+      <Banner />
       <ShopByCategory />
       <ShopByBrands />
 
@@ -126,7 +126,7 @@ export default function Homepage() {
           <Await resolve={featuredProducts}>
             {({products}) => {
               if (!products?.nodes) return <></>;
-              return (
+              return ( 
                 <ProductSwimlane
                   products={products}
                   title="New Arrivals"
