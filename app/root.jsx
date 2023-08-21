@@ -24,6 +24,7 @@ import styles from './styles/app.css';
 // import swiperStyle from './components/custom-components/swiper.css'
 import {DEFAULT_LOCALE, parseMenu, getCartId} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
+
 import swiperssStyle from  '../node_modules/swiper/swiper-bundle.css'
 import '../node_modules/swiper/swiper-bundle.min.css'
 import '../node_modules/swiper/swiper-bundle.js'
@@ -32,6 +33,7 @@ import '../node_modules/swiper/swiper.css'
 import swiperNavigation from 'swiper/css/navigation';
 import swiperPagination from 'swiper/css/pagination';
 import swiperScrollbar from 'swiper/css/scrollbar';
+
 
 export const links = () => {
   return [
@@ -191,8 +193,14 @@ const LAYOUT_QUERY = `#graphql
     type
     url
   }
+  fragment SubChildMenuItem on MenuItem {
+    ...MenuItem
+  }
   fragment ChildMenuItem on MenuItem {
     ...MenuItem
+    items {
+      ...SubChildMenuItem
+    }
   }
   fragment ParentMenuItem on MenuItem {
     ...MenuItem

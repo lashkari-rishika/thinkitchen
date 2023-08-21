@@ -2,52 +2,6 @@ import {useParams, Form, Await, useMatches} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
-import {CiCircleChevDown} from 'react-icons/ci';
-import {Image} from '@shopify/hydrogen';
-
-import Myaccount from '../components/Myaccount';
-
-// import AboutUS from './AboutUS';
-import Contactsection from '../components/commomComponent/ContactUS';
-import accountLogin from '../asset/Icon-feather-user.png';
-
-import cart from '../asset/cart.png';
-import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
-import Termscondition from './PrivacyandTermscondition/Termscondition';
-import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
-import Blog from './custom-components/BlogandBlogdetails/Blog';
-
-
-import ShopByCategory from './custom-components/ShopByCategory';
-import ShopByBrands from './custom-components/ShopByBrands';
-import NewArrivels from './custom-components/NewArrivels';
-import LatestOffer from './custom-components/LatestOffer';
-import FeaturedIn from './custom-components/FeaturedIn';
-import SocialMedia from './custom-components/SocialMedia';
-import FooterComponet from './FooterComponet';
-import OurLatestBlog from './custom-components/OurLatestBlog';
-import CustomerTestimonial from './custom-components/CustomerTestimonial';
-
-import wishList from '../asset/heart.png';
-import cart_location from '../asset/cart_location.png';
-import Banner from '../components/Banner';
-
-import Plp from './custom-components/Plp';
-import {PlpFilterUI} from './custom-components/PlpFilterUI';
-
-import header_logo from '../asset/logo.svg';
-import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-
-import {AllBrands} from './custom-components/AllBrands';
-import {BrandDetails} from './custom-components/BrandDetails';
-
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
-import ProductDetailPage from '../components/ProductDetailPage.js';
-
-import {useCartFetchers} from '~/hooks/useCartFetchers';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useIsHomePath} from '~/lib/utils';
-import SsAbc from './custom-components/SsAbc';
 import {
   Drawer,
   useDrawer,
@@ -67,6 +21,20 @@ import {
   Link,
   FeaturedProducts,
 } from '~/components';
+import {useIsHomePath} from '~/lib/utils';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
+import {useCartFetchers} from '~/hooks/useCartFetchers';
+import FooterComponet from './FooterComponet';
+import accountLogin from '../asset/Icon-feather-user.png';
+import cart from '../asset/cart.png';
+import wishList from '../asset/heart.png';
+import cart_location from '../asset/cart_location.png';
+import Plp from './custom-components/Plp';
+import header_logo from '../asset/logo.svg';
+import dropdownImageMoblie from '../asset/dropdown-mobile.png';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
+import {CiCircleChevDown} from 'react-icons/ci';
+import {Image} from '@shopify/hydrogen';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -82,31 +50,6 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-            {/* <SsAbc/> */}
-            {/* <ProductDetailPage /> */}
-            {/* <Banner/> */}
-            {/* <PlpFilterUI/> */}
-            {/* <AllBrands /> */}
-            {/* <BrandDetails /> */}
-             {/* <Plp/>
-            {/* <BestSeller /> */}
-            {/* <ShopByCategory />
-            <ShopByBrands />
-            <OurLatestBlog/>
-            <NewArrivels />
-            <LatestOffer />
-            <FeaturedIn />
-            <SocialMedia />
-            <CustomerTestimonial /> */}
-            <div>
-              {/* <BannerSection /> */}
-              {/* <Contactsection /> */}
-
-              {/* <Myaccount/> */}
-              {/* <AboutUS /> */}
-              {/* <Contactsection /> */}
-            </div>
-
             {children}
           </div>
         </main>
@@ -165,7 +108,13 @@ function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
+    <Drawer
+      open={isOpen}
+      onClose={onClose}
+      heading="Cart"
+      openFrom="right"
+      className="text-2xl"
+    >
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
@@ -210,6 +159,35 @@ function MenuMobileNav({menu, onClose}) {
         {id: '4', name: 'Serving Accessories'},
       ],
     },
+
+    // {
+    //   title: 'Drinkware',
+    //   subTitles: [
+    //   {id: '1', name: 'Cups & Mugs '},
+    //   {id: '2', name: 'Bottles '},
+    //   {id: '3', name: 'On-the-Go'},
+    //   {id: '4', name: 'Tea Pots'},
+    //   {id: '5', name: 'Coffee Makers'},
+    //   {id: '6', name: 'Tea Accessories'},
+    //   ]
+    // },
+    // {
+    //   title: 'Drinkware',
+    //   subTitles: [
+    //   {id: '1', name: 'Bowls  '},
+    //   {id: '2', name: 'Plates '},
+    //   {id: '3', name: 'Serveware'},
+    //   {id: '4', name: 'Tea Pots'},
+    //   {id: '5', name: 'Dinner Sets'},
+    //   {id: '6', name: 'Tea Accessories'},
+    //   ]
+    // },
+    // {
+    //   title: 'Barware',
+    //   subTitles: ['Sub Title 4', 'Sub Title 5'],
+    // },
+    // Add the rest of the titles and sub-titles here...
+
   ];
 
   return (
@@ -218,8 +196,11 @@ function MenuMobileNav({menu, onClose}) {
         {/* frist menu */}
         <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
           <li>
-            <p className="text-base">Shop by Catagory</p>
-            <div className="absolute top-24 right-12">
+            <p className="text-base">
+              Shop by Catagory
+            </p>
+            <div className="absolute top-[5rem] right-12">
+
               {/* <svg
                 onClick={toggleDropdown}
                 className={`ml-4 h-30 w-4 h-4 transition-transform ${
@@ -259,7 +240,9 @@ function MenuMobileNav({menu, onClose}) {
                   <div className="text-sm font-semibold text-black">
                     {item.title}
                   </div>
-                  <div className="absolute top-32 right-14">
+
+                  <div className="absolute top-[7rem] right-[3.4rem]">
+
                     {/* <svg
                       onClick={firstDropdown}
                       className={`ml-4 h-30 w-4 h-4 transition-transform ${
@@ -458,7 +441,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       <div className="flex items-center justify-start gap-4">
         <button
           onClick={openMenu}
-          className="relative flex items-center justify-center h-8"
+          className="relative flex items-center justify-center h-8 "
         >
           <IconMenu />
         </button>
@@ -499,10 +482,10 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           />
           <button
             type="submit"
-            className="search-icon flex items-center justify-center h-8 ml-[90%]"
+            className="search-icon flex items-center justify-center h-8 ml-[85%]"
           >
             <IconSearch />
-          </button>
+            </button>
         </Form>
       </div>
     </header>
@@ -510,6 +493,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({isHome, menu, openCart, title}) {
+  console.log('🚀 ~ file: Layout.jsx:494 ~ DesktopHeader ~ menu:', menu);
   const params = useParams();
   const {y} = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
@@ -574,9 +558,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             <div className="menu-overlay" onClick={toggleMenu}></div>
             <nav className={`menu ${menuActive ? 'active' : ''}`}>
               <div className="mobile-menu-head">
-                <div className="go-back" onClick={hideSubMenu}>
-                  fhgdfgh
-                </div>
+                <div className="go-back" onClick={hideSubMenu}></div>
                 <div className="current-menu-title">{currentMenuTitle}</div>
                 <div className="mobile-menu-close" onClick={toggleMenu}>
                   &times;
@@ -618,21 +600,23 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                               </Link>
                             </h4>
                             <ul>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
+                              {(subitem?.items || []).map((subchilditem) => (
+                                <>
+                                  <li>
+                                    <Link
+                                      key={subchilditem.id}
+                                      to={subchilditem.to}
+                                      target={subchilditem.target}
+                                      prefetch="intent"
+                                      className={({isActive}) =>
+                                        isActive ? 'pb-1  -mb-px' : 'pb-1'
+                                      }
+                                    >
+                                      {subchilditem.title}
+                                    </Link>
+                                  </li>
+                                </>
+                              ))}
                             </ul>
                           </div>
                         </>

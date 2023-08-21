@@ -1058,12 +1058,11 @@ margin-left: 10px;
 } */
 
 .main_block_about {
-  padding: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
+  padding: 50px; 
+ top: 50%;
+  left: 50%; 
   transform: translate(-45%, -50%) !important;
-  width: 100%;
+  width: 100%; 
 }
 .about_health1 {
   transform: translate(1%, 30%) !important;
@@ -1111,14 +1110,48 @@ margin-left: 10px;
   
 }
 
-/*----------- account login start css------------- */
 
-.home_account_login{
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+/* .image_section .swiper .swiper-wrapper .swiper-slide{
+  width: 0px;
+} */
+
+
+
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
-/* ------------- account login css end --------------- */
 
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
 
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
 
+/* Create an active/current tablink class */
+.tab button .active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

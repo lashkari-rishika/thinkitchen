@@ -28,9 +28,11 @@ const CustomerReview = () => {
   // }, [searchQuery]);
 
   return (
+
     <div>
       <div className="px-11 sm-only:px-3 mt-16">
         <div className=" px-20 pb-4 md-only:px-4 sm-only:px-2 bg-[#F5F5F5]">
+
           <div className="pt-3 pb-4 border-b border-[#D6D6D6]">
             <h1 className="text-[33px] font-semibold sm-only:text-[22px]">
               CUSTOMER REVIEW
@@ -178,8 +180,10 @@ const CustomerReview = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };
+
 
 export default CustomerReview;
