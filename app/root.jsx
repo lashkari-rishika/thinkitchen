@@ -12,7 +12,7 @@ import {
 } from '@remix-run/react';
 import {ShopifySalesChannel, Seo} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
-
+import productDetailStyle from '../app/styles/productDetailStyle.css'
 import {seoPayload} from '~/lib/seo.server';
 import {Layout} from '~/components';
 
@@ -21,12 +21,27 @@ import favicon from '../public/favicon.svg';
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
+// import swiperStyle from './components/custom-components/swiper.css'
 import {DEFAULT_LOCALE, parseMenu, getCartId} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
-import 'swiper/css';
+
+import swiperssStyle from  '../node_modules/swiper/swiper-bundle.css'
+import '../node_modules/swiper/swiper-bundle.min.css'
+import '../node_modules/swiper/swiper-bundle.js'
+import '../node_modules/swiper/swiper-bundle.min.js'
+import '../node_modules/swiper/swiper.css'
+import swiperNavigation from 'swiper/css/navigation';
+import swiperPagination from 'swiper/css/pagination';
+import swiperScrollbar from 'swiper/css/scrollbar';
+
+
 export const links = () => {
   return [
     {rel: 'stylesheet', href: styles},
+    {rel:'stylesheet', href:swiperssStyle},
+    {rel:'stylesheet', href:swiperNavigation},
+    {rel:'stylesheet', href:swiperPagination},
+    {rel:'stylesheet', href:swiperScrollbar},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -178,8 +193,14 @@ const LAYOUT_QUERY = `#graphql
     type
     url
   }
+  fragment SubChildMenuItem on MenuItem {
+    ...MenuItem
+  }
   fragment ChildMenuItem on MenuItem {
     ...MenuItem
+    items {
+      ...SubChildMenuItem
+    }
   }
   fragment ParentMenuItem on MenuItem {
     ...MenuItem

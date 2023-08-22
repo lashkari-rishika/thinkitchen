@@ -24,22 +24,12 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import BannerSection from '../components/about_us';
-import Contactsection from '../components/commomComponent/ContactUS';
-import ShopByCategory from './custom-components/ShopByCategory';
-import ShopByBrands from './custom-components/ShopByBrands';
-import NewArrivels from './custom-components/NewArrivels';
-import LatestOffer from './custom-components/LatestOffer';
-import FeaturedIn from './custom-components/FeaturedIn';
-import SocialMedia from './custom-components/SocialMedia';
 import FooterComponet from './FooterComponet';
-import OurLatestBlog from './custom-components/OurLatestBlog';
-import CustomerTestimonial from './custom-components/CustomerTestimonial';
 import accountLogin from '../asset/Icon-feather-user.png';
 import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
-import Banner from '../components/Banner';
+import Plp from './custom-components/Plp';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
@@ -57,6 +47,7 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
+
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
             {/* <Banner/> */}
@@ -130,7 +121,13 @@ function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
+    <Drawer
+      open={isOpen}
+      onClose={onClose}
+      heading="Cart"
+      openFrom="right"
+      className="text-2xl"
+    >
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
@@ -363,7 +360,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
             className="search-icon flex items-center justify-center h-8 ml-[85%]"
           >
             <IconSearch />
-          </button>
+            </button>
         </Form>
       </div>
     </header>
@@ -371,6 +368,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({isHome, menu, openCart, title}) {
+  console.log('🚀 ~ file: Layout.jsx:494 ~ DesktopHeader ~ menu:', menu);
   const params = useParams();
   const {y} = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
@@ -417,7 +415,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           : ' text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-2 lg:flex opacity-80 shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="header">
         <div className="row v-center">
@@ -435,9 +433,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             <div className="menu-overlay" onClick={toggleMenu}></div>
             <nav className={`menu ${menuActive ? 'active' : ''}`}>
               <div className="mobile-menu-head">
-                <div className="go-back" onClick={hideSubMenu}>
-                  fhgdfgh
-                </div>
+                <div className="go-back" onClick={hideSubMenu}></div>
                 <div className="current-menu-title">{currentMenuTitle}</div>
                 <div className="mobile-menu-close" onClick={toggleMenu}>
                   &times;
@@ -461,11 +457,11 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                     >
                       {item.title}
                     </Link>
-                    <div class="sub-menu mega-menu mega-menu-column-4">
+                    <div className="sub-menu mega-menu mega-menu-column-4">
                       {(item?.items || []).map((subitem) => (
                         <>
-                          <div class="list-item">
-                            <h4 class="title">
+                          <div className="list-item">
+                            <h4 className="title">
                               <Link
                                 key={subitem.id}
                                 to={subitem.to}
@@ -479,21 +475,23 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                               </Link>
                             </h4>
                             <ul>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
+                              {(subitem?.items || []).map((subchilditem) => (
+                                <>
+                                  <li>
+                                    <Link
+                                      key={subchilditem.id}
+                                      to={subchilditem.to}
+                                      target={subchilditem.target}
+                                      prefetch="intent"
+                                      className={({isActive}) =>
+                                        isActive ? 'pb-1  -mb-px' : 'pb-1'
+                                      }
+                                    >
+                                      {subchilditem.title}
+                                    </Link>
+                                  </li>
+                                </>
+                              ))}
                             </ul>
                           </div>
                         </>
@@ -749,7 +747,7 @@ function Footer({menu}) {
         &copy; {new Date().getFullYear()} / Shopify, Inc. Hydrogen is an MIT
         Licensed Open Source project.
       </div> */}
-      <FooterComponet />
+      <FooterComponet menu={menu} />
     </Section>
   );
 }

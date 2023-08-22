@@ -19,6 +19,8 @@ export default {
       xl: '62em',                                 // min: 992 px - ..
       '2xl': '75em',                              // min: 1200px - ..
       'sm-max': { max: '36em' },                  // min: ... max: 576 px
+      'md-max': { max: '48em' },                  // min: ... max: 768 px
+      'lg-max': { max: '62em' },                  // min: ... max: 992 px
       'sm-only': { min: '20em', max: '36em' },    // min: 320 px -- max: 576 px
       'md-only': { min: '36em', max: '48em' },    // min: 576 px -- max: 768 px
       'lg-only': { min: '48em', max: '62em' },    // min: 768 px -- max: 992 px
