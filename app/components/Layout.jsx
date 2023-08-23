@@ -150,7 +150,7 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 }
 
 function MenuMobileNav({menu, onClose}) {
-  console.log("🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:", menu)
+  console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [activeSubMenuId, setActiveSubMenuId] = useState(null);
 
@@ -199,7 +199,14 @@ function MenuMobileNav({menu, onClose}) {
       id: 'brands',
       title: 'Shop by Brands',
       icon: dropdownImageMoblie,
-      options: ['View All Brands', 'BergHOFF', 'Amefa', 'Brabantia', 'Burleigh', 'Cole & Mason'],
+      options: [
+        'View All Brands',
+        'BergHOFF',
+        'Amefa',
+        'Brabantia',
+        'Burleigh',
+        'Cole & Mason',
+      ],
     },
     {
       id: 'know-us',
@@ -210,94 +217,109 @@ function MenuMobileNav({menu, onClose}) {
   ];
   return (
     <nav className="grid bg-white gap-4 p-6 sm-only:gap-4 sm:px-12 sm:py-8">
-    {data.map((category) => (
-      <div key={category.id} className="block border-b-2">
-        <ul className="space-y-2 mb-[12px]">
-          <li className="relative">
-            <Link className="text-base">{category.title}</Link>
-            <div className="absolute border-l border-[#DEDEDE] top-0 right-0 transform  -translate-x-2.5">
-              <li
-                onClick={() => toggleCategory(category.id)}
-                className={`w-8 h-8 transition-transform ${
-                  activeCategoryId === category.id ? 'transform rotate-180' : ''
-                }`}
+      {(menu?.items || []).map((item) => (
+        <div key={item.id} className="block border-b-2">
+          <ul className="space-y-2 mb-[12px]">
+            <li className="relative">
+              <Link
+                key={item.id}
+                to={item.to}
+                target={item.target}
+                prefetch="intent"
+                className="text-base"
               >
-                <img src={category.icon} alt="" className="ml-auto" />
-              </li>
-            </div>
-          </li>
-        </ul>
-        {activeCategoryId === category.id && (
-          <ul className="max-h-60 overflow-y-scroll">
-            <ul className="space-y-2">
-              {category.subMenus?.map((subMenu) => (
-                <li key={subMenu.id} className="relative">
-                  <div className="text-sm font-semibold text-black">
-                    {subMenu.title}
-                  </div>
-                  <div className="absolute top-0 right-0 transform  -translate-x-4">
-                    <li
-                      onClick={() => toggleSubMenu(subMenu.id)}
-                      className={`h-5 w-5 transition-transform ${
-                        activeSubMenuId === subMenu.id ? 'transform rotate-180' : ''
-                      }`}
-                    >
-                      <img src={subMenu.icon} alt="" />
-                    </li>
-                  </div>
-                  {activeSubMenuId === subMenu.id && subMenu.options && (
-                    <ul className="space-y-2">
-                      {subMenu.options.map((option) => (
-                        <li
-                          key={option}
-                          className="mt-3 mb-3 text-sm font-medium text-black"
-                        >
-                          {option}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                {item.title}
+              </Link>
+              <ul className="absolute border-l border-[#DEDEDE] top-0 right-0 transform  -translate-x-2.5">
+                <li
+                  onClick={() => toggleCategory(item.id)}
+                  className={`w-8 h-8 transition-transform ${
+                    activeCategoryId === item.id ? 'transform rotate-180' : ''
+                  }`}
+                >
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown-mobile.png?v=1692696964"
+                    alt=""
+                    className="ml-auto"
+                  />
                 </li>
-              ))}
-              {!category.subMenus && category.options && (
-                <ul className="space-y-2">
-                  {category.options.map((option) => (
-                    <li key={option} className="mt-3 mb-3 text-sm font-medium text-black">
-                      {option}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </ul>
+              </ul>
+            </li>
           </ul>
-        )}
-      </div>
-    ))}
-  </nav>
+          {activeCategoryId === item.id && (
+            <ul className="max-h-60 overflow-y-scroll">
+              <ul className="space-y-2">
+                {(item?.items || []).map((subitem) => (
+                  <Link
+                  key={subitem.id}
+                  to={subitem.to}
+                  target={subitem.target}
+                  prefetch="intent"
+                  className="relative"
+                  >
+                    {console.log("🚀 ~ file: Layout.jsx:253 ~ item:", item)}
+                    <div className="text-sm font-semibold text-black mb-[10px]">
+                      {subitem.title}
+                    </div>
+                    <div className="absolute top-0 right-0 transform  -translate-x-4">
+                      <li
+                        onClick={() => toggleSubMenu(subitem.id)}
+                        className={`h-5 w-5 transition-transform ${
+                          activeSubMenuId === subitem.id
+                            ? 'transform rotate-180'
+                            : ''
+                        }`}
+                      >
+                        {console.log("🚀 ~ file: Layout.jsx:273 ~ subitem:", subitem?.items?.length )}
+                       
+                          { !subitem?.items?.length == 0 && ( 
+                            <img
+                              src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown_icon_mobile.png?v=1692697923"
+                              alt=""
+                            />
+                          )}
+                      </li>
+                    </div>
+                    {activeSubMenuId === subitem.id && (
+                      <ul className="space-y-2 grid">
+                        {(subitem?.items || []).map((subchilditem) => (
+                          <Link
+                            key={subchilditem.id}
+                            to={subchilditem.to}
+                            target={subchilditem.target}
+                            prefetch="intent"
+                            className="mt-3 text-sm font-medium text-black"
+                          >
+                            {subchilditem.title}
+                          </Link>
+                        ))}
+                      </ul>
+                    )}
+                  </Link>
+                ))}
+                {/* {!category.subitem && category.subitem && (
+                  <ul className="space-y-2">
+                     {(item?.items || []).map((subitem) => (
+                      <li
+                      key={subitem.id}
+                      to={subitem.to}
+                      target={subitem.target}
+                      prefetch="intent"
+                        className="mt-3 mb-3 text-sm font-medium text-black"
+                      >
+                        {subitem.title}
+                      </li>
+                    ))}
+                  </ul>
+                )} */}
+              </ul>
+            </ul>
+          )}
+        </div>
+      ))}
+    </nav>
   );
 }
-
-{
-  /* <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      {/* Top level menu items */
-}
-//   {(menu?.items || []).map((item) => (
-//     <span key={item.id} className="block">
-//       <Link
-//         to={item.to}
-//         target={item.target}
-//         onClick={onClose}
-//         className={({ isActive }) =>
-//           isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-//         }
-//       >
-//         <Text as="span" size="copy">
-//           {item.title}
-//         </Text>
-//       </Link>
-//     </span>
-//   ))}
-// </nav>
 
 export default MenuMobileNav;
 
@@ -360,7 +382,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
             className="search-icon flex items-center justify-center h-8 ml-[85%]"
           >
             <IconSearch />
-            </button>
+          </button>
         </Form>
       </div>
     </header>
