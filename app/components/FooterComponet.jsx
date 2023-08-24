@@ -182,7 +182,7 @@ const FooterComponet = ({menu}) => {
                       />
                     </div>
                     <div
-                      className={`w-64 ${
+                      className={` ${
                         isBrandsOpen ? 'block' : 'hidden'
                       } xl:block  md:mt-0 grid gap-8 pt-6 pb-6 md:grid-cols-2 sm:grid-cols-2`}
                     >
