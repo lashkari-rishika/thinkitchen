@@ -35,6 +35,7 @@ import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
 import {CiCircleChevDown} from 'react-icons/ci';
 import {Image} from '@shopify/hydrogen';
+import EmailComponent from './EmailComponent';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -50,7 +51,8 @@ export function Layout({children, layout}) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-            {children}
+            {/* {children} */}
+            <EmailComponent />
           </div>
         </main>
       </div>
