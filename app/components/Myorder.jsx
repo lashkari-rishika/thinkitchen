@@ -1,75 +1,106 @@
-import React from "react";
-import Myaccounttabs from "../components/Myaccounttabs";
+import Verticaltabs from "../components/Verticaltabs";
+import Myorderdetails from "../components/Myorderdetails";
+import React, { useState } from "react";
+import { Text, Link } from '~/components';
 
-
-const Myorder = () => {
+const Myorder = ({ orders }) => {
+    console.log("🚀 ~ file: Myorder.jsx:5 ~ Myorder ~ ̥:", orders);
 
     return (
         <section>
+            <div className="text-center sm-only:mt-12 sm-only:hidden">
+                <p className="text-zinc-400 text-xs "> Home | My Order</p>
+                <h1 className="lg:text-4xl sm:text-2lg sm:font-medium">My Order</h1>
+            </div>
+
             <div>
-                <div className="text-center mt-7">
-                    <p className="text-zinc-400 text-xs mb-4"> Home | My Order</p>
-                    <h1 className="text-3xl ">My Order</h1>
-                </div>
+                <p className="lg:font-semibold  lg:border-b-2 lg:pb-3 lg:block hidden">My Order</p>
+                <div>
+                    {orders && orders.map((item) => {
+                        const [legacyOrderId, key] = item.id.split('/').pop().split('?');
 
-                <div className="flex mx-32">
-                    <div className="bg-gray-100 mr-6">
-                        <Myaccounttabs />
-                    </div>
+                        return (
+                            <div key={item.id}>
 
-                    <div>
-                        <p className="font-semibold border-b-2">My Order</p>
-                        <div>
-                            <table className=" border-b-2">
-                                <div className="mb-4 mt-3">
-                                    <tr className="text-zinc-400 ">
-                                        <td className="pr-36">Order number</td>
-                                        <td className="pr-14">Order placed</td>
-                                        <td className="pr-14">Items</td>
-                                        <td className="pr-14">Total</td>
-                                        <td className="text-center" rowspan="2">    
-                                            <button type="button" className="bg-sky-600 text-white px-4 py-2">Order Detail</button>
-                                        </td>
-                                    </tr>
-                                    <tr className="text-sm font-semibold  ">
-                                        <td className="">#TKSS25646151</td>
-                                        <td className="">14 Dec 2022</td>
-                                        <td className="">1</td>
-                                        <td className="">₹ 4,999</td>
-                                    </tr>
+                                {/* ====== start mobile view ======= */}
+
+                                <div className="ml-4">
+                                    <div className="lg:hidden sm:block flex flex-col space-y-2 ">
+                                        <div className="text-sm">
+                                            <div className="text-zinc-400">Order number</div>
+                                            <div className="font-semibold">{item.orderNumber}</div>
+                                        </div>
+                                        <div className="text-sm">
+                                            <div className="text-zinc-400">Order placed</div>
+                                            <div className="font-semibold">{item.processedAt}</div>
+                                        </div>
+                                        <div className="text-sm">
+                                            <div className="text-zinc-400">Total</div>
+                                            <div className="font-semibold">{item.currentTotalPrice.amount}</div>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="lg:hidden sm:block mt-3 text-sm ">
+                                        <Link
+                                            className="bg-sky-600 text-white py-3.5 px-9 inline-block"
+                                            to={`/account/orders/${legacyOrderId}?${key}`}
+                                            prefetch="intent"
+                                        >
+                                            <Text >
+                                                Order Detail
+                                            </Text>
+                                        </Link>
+                                    </div>
+                                    {/* <div className="lg:hidden sm:block mt-3 text-sm ">
+                                        <button type="button" className="bg-sky-600  text-white py-3.5 px-9">Order Detail</button>
+                                    </div> */}
                                 </div>
 
+                                {/* ========  END mobile view =========== */}
 
-                            </table>
+                                {/* ---------start Desktop view----------- */}
 
-                            <table className=" border-b-2">
-                                <div className="mb-4 mt-3">
-                                    <tr className="text-zinc-400 ">
-                                        <td className="pr-36">Order number</td>
-                                        <td className="pr-14">Order placed</td>
-                                        <td className="pr-14">Items</td>
-                                        <td className="pr-14">Total</td>
-                                        <td className="text-center" rowspan="2">
-                                            <button type="button" className="bg-sky-600 text-white px-4 py-2">Order Detail</button>
-                                        </td>
-                                    </tr>
-                                    <tr className="text-sm font-semibold  ">
-                                        <td className="">#TKSS25646151</td>
-                                        <td className="">14 Dec 2022</td>
-                                        <td className="">1</td>
-                                        <td className="">₹ 4,999</td>
-                                    </tr>
+                                <div className="sm:hidden lg:block">
+                                    <div className="flex lg:border-b-2 ">
+                                        <table className="lg:my-4">
+                                            <tbody>
+                                                <tr className="text-zinc-400 lg:text-sm lg:w-52">
+                                                    <td className="lg:pr-32 lg-only:pr-8">Order number</td>
+                                                    <td className="lg:pr-32 lg-only:pr-8">Order placed</td>
+                                                    <td className="lg:pr-32 lg-only:pr-8">Items</td>
+                                                    <td className="lg:pr-32 lg-only:pr-8">Total</td>
+                                                </tr>
+                                                <tr className="lg:text-sm lg:font-semibold">
+                                                    <td>{item.orderNumber}</td>
+                                                    <td>{item.processedAt}</td>
+                                                    <td>{item.lineItems.edges.length}</td>
+                                                    <td>{item.currentTotalPrice.amount}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <div className="ml-auto my-auto">
+                                            <Link
+                                                className="bg-sky-600 text-white px-6 py-2 text-sm"
+                                                to={`/account/orders/${legacyOrderId}?${key}`}
+                                                prefetch="intent"
+                                            >
+                                                <Text>Order Detail</Text>
+                                            </Link>
+                                        </div>
+
+                                    </div>
                                 </div>
 
-                            </table>
-                        </div>
-                    </div>
-
+                                {/* ========  END Desktop view ========== */}
+                            </div>
+                        );
+                    })}
                 </div>
-
-
             </div>
         </section>
     );
-}
+};
+
 export default Myorder;

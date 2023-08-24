@@ -22,11 +22,11 @@ export function AccountDetails({customer}) {
           <p className="mt-1">
             {firstName || lastName
               ? (firstName ? firstName + ' ' : '') + lastName
-              : 'Add name'}{' '}
+              : 'Add name'}{' '} {firstName} + {lastName}
           </p>
 
           <div className="mt-4 text-sm text-primary/50">Contact</div>
-          <p className="mt-1">{phone ?? 'Add mobile'}</p>
+          <p className="mt-1">{phone}</p>
 
           <div className="mt-4 text-sm text-primary/50">Email address</div>
           <p className="mt-1">{email}</p>

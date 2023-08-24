@@ -26,6 +26,7 @@ import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
+import VerticalTabs from '~/components/Verticaltabs';
 
 export const headers = routeHeaders;
 
@@ -108,16 +109,17 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <>
-      <PageHeader heading={heading}>
+      <VerticalTabs customer={customer} addresses={addresses} orders={orders}/>
+      {/* <PageHeader heading={heading}>
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <button type="submit" className="text-primary/50">
             Sign out
           </button>
         </Form>
-      </PageHeader>
+      </PageHeader> */}
       {orders && <AccountOrderHistory orders={orders} />}
-      <AccountDetails customer={customer} />
-      <AccountAddressBook addresses={addresses} customer={customer} />
+      {/* <AccountDetails customer={customer} /> */}
+      {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}
       {!orders.length && (
         <Suspense>
           <Await

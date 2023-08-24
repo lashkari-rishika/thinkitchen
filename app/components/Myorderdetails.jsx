@@ -1,5 +1,4 @@
 import React from "react";
-import Myaccounttabs from "../components/Myaccounttabs";
 import order_details1 from "../asset/order_details1.png";
 
 
@@ -14,9 +13,9 @@ const Myorderdetails = () => {
                 </div>
 
                 <div className="flex mx-32 sm-only:mx-0">
-                    <div className="bg-gray-100 mr-6 sm-only:hidden">
+                    {/* <div className="bg-gray-100 mr-6 sm-only:hidden">
                         <Myaccounttabs />
-                    </div>
+                    </div> */}
 
                     <div className="w-full">
 

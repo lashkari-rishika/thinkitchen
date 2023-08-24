@@ -1,7 +1,7 @@
-import {Form} from '@remix-run/react';
-import {Button, Link, Text} from '~/components';
+import { Form } from '@remix-run/react';
+import { Button, Link, Text } from '~/components';
 
-export function AccountAddressBook({customer, addresses}) {
+export function AccountAddressBook({ customer, addresses }) {
   return (
     <>
       <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
@@ -12,7 +12,19 @@ export function AccountAddressBook({customer, addresses}) {
               You haven&apos;t saved any addresses yet.
             </Text>
           )}
-          <div className="w-48">
+
+
+          <div>
+            <Button type="button"
+              to="address/add"
+              className="bg-sky-600 text-white px-4 py-2 mx-3 my-3 text-base"
+              variant="secondary"
+            >
+              + Add New Address
+            </Button>
+          </div>
+
+          {/* <div className="w-48">
             <Button
               to="address/add"
               className="mt-2 text-sm w-full mb-6"
@@ -20,7 +32,8 @@ export function AccountAddressBook({customer, addresses}) {
             >
               Add an Address
             </Button>
-          </div>
+          </div> */}
+
           {Boolean(addresses?.length) && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {customer.defaultAddress && (
@@ -39,7 +52,7 @@ export function AccountAddressBook({customer, addresses}) {
   );
 }
 
-function Address({address, defaultAddress}) {
+function Address({ address, defaultAddress }) {
   return (
     <div className="lg:p-8 p-6 border border-gray-200 rounded flex flex-col">
       {defaultAddress && (
@@ -61,7 +74,16 @@ function Address({address, defaultAddress}) {
           address.formatted.map((line) => <li key={line}>{line}</li>)}
       </ul>
 
-      <div className="flex flex-row font-medium mt-6 items-baseline">
+      <div className=" flex">
+        <Link to={`/account/address/${encodeURIComponent(address.id)}`} className="bg-sky-600 text-white px-4 py-2 my-3 text-base">
+          Edit Address
+        </Link>
+        <Link to={`/account/address/${encodeURIComponent(address.id)}`} className="bg-sky-600 text-white px-4 py-2 mx-3 my-3 text-base">
+          Remove
+        </Link>
+      </div>
+
+      {/* <div className="flex flex-row font-medium mt-6 items-baseline">
         <Link
           to={`/account/address/${encodeURIComponent(address.id)}`}
           className="text-left underline text-sm"
@@ -75,7 +97,8 @@ function Address({address, defaultAddress}) {
             Remove
           </button>
         </Form>
-      </div>
+      </div> */}
     </div>
   );
 }
+

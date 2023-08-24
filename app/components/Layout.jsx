@@ -1,7 +1,7 @@
-import {useParams, Form, Await, useMatches} from '@remix-run/react';
-import {useWindowScroll} from 'react-use';
-import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo, useState} from 'react';
+import { useParams, Form, Await, useMatches } from '@remix-run/react';
+import { useWindowScroll } from 'react-use';
+import { Disclosure } from '@headlessui/react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import {
   Drawer,
   useDrawer,
@@ -21,54 +21,30 @@ import {
   Link,
   FeaturedProducts,
 } from '~/components';
-import {useIsHomePath} from '~/lib/utils';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useCartFetchers} from '~/hooks/useCartFetchers';
-import BannerSection from '../components/about_us';
+import { useIsHomePath } from '~/lib/utils';
+import { useIsHydrated } from '~/hooks/useIsHydrated';
+import { useCartFetchers } from '~/hooks/useCartFetchers';
 
-import Myaccount from '../components/Myaccount';
-
-// import BannerSection from '../components/about_us';
-// import AboutUS from './AboutUS';
-
-import PrivacyPolicy from './PrivacyandTermscondition/PrivacyPolicy';
-import Termscondition from './PrivacyandTermscondition/Termscondition';
-import Blogdetails from './custom-components/BlogandBlogdetails/Blogdetails';
-import Blog from './custom-components/BlogandBlogdetails/Blog';
-
-import Contactsection from '../components/commomComponent/ContactUS';
-import ShopByCategory from './custom-components/ShopByCategory';
-import ShopByBrands from './custom-components/ShopByBrands';
-import NewArrivels from './custom-components/NewArrivels';
-import LatestOffer from './custom-components/LatestOffer';
-import FeaturedIn from './custom-components/FeaturedIn';
-import SocialMedia from './custom-components/SocialMedia';
 import FooterComponet from './FooterComponet';
-import OurLatestBlog from './custom-components/OurLatestBlog';
-import CustomerTestimonial from './custom-components/CustomerTestimonial';
 import accountLogin from '../asset/Icon-feather-user.png';
 import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
-import Banner from '../components/Banner';
-import Plp from './custom-components/Plp';
-import {PlpFilterUI} from './custom-components/PlpFilterUI';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
 import { Image } from '@shopify/hydrogen';
 import Myorder from './Myorder';
+import VerticalTabs from './Verticaltabs';
 import Myorderdetails from './Myorderdetails';
-import ProductDetailPage from '../components/ProductDetailPage.js';
-// import { AboutUS } from './AboutUS';
-
-import MyCart from '../components/Mycart';
 
 
 
-export function Layout({children, layout}) {
-  const {headerMenu, footerMenu} = layout;
+
+
+export function Layout({ children, layout }) {
+  const { headerMenu, footerMenu } = layout;
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -82,13 +58,15 @@ export function Layout({children, layout}) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
 
-      {/* <Myorderdetails/> */}
-      <Myorder/>
+            {/* {<Myorderdetails/> }  */}
+            <div>
+              {/* <VerticalTabs /> */}
+            </div>
             {/* <MyCart />
               <Myaccount/> */}
 
             {children}
-            <div/>
+            <div />
           </div>
         </main>
       </div>
@@ -97,7 +75,7 @@ export function Layout({children, layout}) {
   );
 }
 
-function Header({title, menu}) {
+function Header({ title, menu }) {
   const isHome = useIsHomePath();
 
   const {
@@ -142,7 +120,7 @@ function Header({title, menu}) {
   );
 }
 
-function CartDrawer({isOpen, onClose}) {
+function CartDrawer({ isOpen, onClose }) {
   const [root] = useMatches();
 
   return (
@@ -158,7 +136,7 @@ function CartDrawer({isOpen, onClose}) {
   );
 }
 
-export function MenuDrawer({isOpen, onClose, menu}) {
+export function MenuDrawer({ isOpen, onClose, menu }) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
@@ -168,7 +146,7 @@ export function MenuDrawer({isOpen, onClose, menu}) {
   );
 }
 
-function MenuMobileNav({menu, onClose}) {
+function MenuMobileNav({ menu, onClose }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownOpentwo, setDropdownOpentwo] = useState(false);
 
@@ -185,10 +163,10 @@ function MenuMobileNav({menu, onClose}) {
     {
       title: 'Prepware',
       subTitles: [
-        {id: '1', name: 'Prepware Accessories'},
-        {id: '2', name: 'Knife & Knife Sets'},
-        {id: '3', name: 'Cooking Accessories'},
-        {id: '4', name: 'Serving Accessories'},
+        { id: '1', name: 'Prepware Accessories' },
+        { id: '2', name: 'Knife & Knife Sets' },
+        { id: '3', name: 'Cooking Accessories' },
+        { id: '4', name: 'Serving Accessories' },
       ],
     },
   ];
@@ -221,9 +199,8 @@ function MenuMobileNav({menu, onClose}) {
 
               <li
                 onClick={toggleDropdown}
-                className={`w-8 h-8 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
+                className={`w-8 h-8 transition-transform ${isDropdownOpen ? 'transform rotate-180' : ''
+                  }`}
               >
                 {' '}
                 <img src={dropdownImageMoblie} alt="" />
@@ -260,9 +237,8 @@ function MenuMobileNav({menu, onClose}) {
                     </svg> */}
                     <li
                       onClick={firstDropdown}
-                      className={`ml-4 h-5 w-5  transition-transform ${
-                        isDropdownOpentwo ? 'transform rotate-180' : ''
-                      }`}
+                      className={`ml-4 h-5 w-5  transition-transform ${isDropdownOpentwo ? 'transform rotate-180' : ''
+                        }`}
                     >
                       {' '}
                       <img src={dropdown_icon_moblie} alt="" />{' '}
@@ -424,7 +400,7 @@ function MenuMobileNav({menu, onClose}) {
 
 export default MenuMobileNav;
 
-function MobileHeader({title, isHome, openCart, openMenu}) {
+function MobileHeader({ title, isHome, openCart, openMenu }) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -432,9 +408,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   return (
     <header
       role="banner"
-      className={`${
-        isHome ? 'bg-white text-black' : ' text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      className={`${isHome ? 'bg-white text-black' : ' text-primary'
+        } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start gap-4">
         <button
@@ -490,9 +465,9 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({isHome, menu, openCart, title}) {
+function DesktopHeader({ isHome, menu, openCart, title }) {
   const params = useParams();
-  const {y} = useWindowScroll();
+  const { y } = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
   const [subMenuActive, setSubMenuActive] = useState(false);
   const [currentMenuTitle, setCurrentMenuTitle] = useState('');
@@ -531,13 +506,11 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   return (
     <header
       role="banner"
-      className={`${
-        isHome
+      className={`${isHome
           ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
           : ' text-primary'
-      } ${
-        !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+        } ${!isHome && y > 50 && ' shadow-lightHeader'
+        } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="header">
         <div className="row v-center">
@@ -564,9 +537,8 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                 </div>
               </div>
               <ul
-                className={`menu-main flex items-center gap-6 ${
-                  subMenuActive ? 'active' : ''
-                }`}
+                className={`menu-main flex items-center gap-6 ${subMenuActive ? 'active' : ''
+                  }`}
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
@@ -575,7 +547,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                       to={item.to}
                       target={item.target}
                       prefetch="intent"
-                      className={({isActive}) =>
+                      className={({ isActive }) =>
                         isActive ? 'pb-1  -mb-px' : 'pb-1'
                       }
                     >
@@ -591,7 +563,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                                 to={subitem.to}
                                 target={subitem.target}
                                 prefetch="intent"
-                                className={({isActive}) =>
+                                className={({ isActive }) =>
                                   isActive ? 'pb-1  -mb-px' : 'pb-1'
                                 }
                               >
@@ -773,7 +745,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   );
 }
 
-function AccountLink({className}) {
+function AccountLink({ className }) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -789,7 +761,7 @@ function AccountLink({className}) {
   );
 }
 
-function CartCount({isHome, openCart}) {
+function CartCount({ isHome, openCart }) {
   const [root] = useMatches();
 
   return (
@@ -807,7 +779,7 @@ function CartCount({isHome, openCart}) {
   );
 }
 
-function Badge({openCart, dark, count}) {
+function Badge({ openCart, dark, count }) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
@@ -846,7 +818,7 @@ function Badge({openCart, dark, count}) {
   );
 }
 
-function Footer({menu}) {
+function Footer({ menu }) {
   const isHome = useIsHomePath();
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
@@ -874,7 +846,7 @@ function Footer({menu}) {
   );
 }
 
-function FooterLink({item}) {
+function FooterLink({ item }) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -890,7 +862,7 @@ function FooterLink({item}) {
   );
 }
 
-function FooterMenu({menu}) {
+function FooterMenu({ menu }) {
   // const styles = {
   //   section: 'grid gap-4',
   //   nav: 'grid gap-2',
