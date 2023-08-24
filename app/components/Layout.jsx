@@ -372,6 +372,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
             type="submit"
             className="search-icon flex items-center justify-center h-8 ml-[85%]"
           >
+
             <IconSearch />
           </button>
         </Form>
@@ -381,7 +382,6 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({isHome, menu, openCart, title}) {
-  console.log('🚀 ~ file: Layout.jsx:494 ~ DesktopHeader ~ menu:', menu);
   const params = useParams();
   const {y} = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
