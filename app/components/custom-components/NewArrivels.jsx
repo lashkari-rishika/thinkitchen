@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import '../../../node_modules/swiper/swiper-bundle.css'
-import '../../../node_modules/swiper/swiper-bundle.js'
 import {AiOutlineHeart} from 'react-icons/ai';
 import {BsArrowLeft, BsArrowRight} from 'react-icons/bs';
 import data from '../../../JSON/db.json';
@@ -89,7 +88,7 @@ const NewArrivels = ({ images, text }) => {
           <button className="flex justify-center" onClick={slidePrev}>
             <BsArrowLeft />
           </button>
-          <button className="flex justify-center" onClick={slideNext}>
+          <button className="flex justify-center" onClick={ slideNext}>
             <BsArrowRight />
           </button>
         </div>

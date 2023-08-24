@@ -140,6 +140,7 @@ export default function Homepage() {
 
       <LatestOffer />
 
+
       {bestSeller && (
         <Suspense>
           <Await resolve={bestSeller}>
