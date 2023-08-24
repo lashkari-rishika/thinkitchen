@@ -54,10 +54,10 @@ export function ProductCard({
 
   return (
     <>
-      <div className="flex flex-col items-center w-[26rem]">
+      <div className="flex flex-col items-center ">
         <div className="new_arrivel_card relative w-full">
           <Link
-            honClick={onClick}
+            onClick={onClick}
             to={`/products/${product.handle}`}
             prefetch="intent"
             className="w-full"
@@ -65,7 +65,7 @@ export function ProductCard({
           >
             {image && (
               <Image
-                className="w-full object-cover hover_image h-[25rem]"
+                className="w-full object-cover hover_image "
                 sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 45vw"
                 aspectRatio="4/5"
                 data={image}

@@ -7,8 +7,7 @@ import {FiChevronDown} from 'react-icons/fi';
 import React, {useState} from 'react';
 
 import ShippingComponent from './ShippingComponent';
-const FooterComponet = () => {
-  const [isDescriptionVisible, setDescriptionVisible] = useState(true);
+const FooterComponet = ({menu}) => {
   const [isIconRotated, setIconRotated] = useState(true);
   const [isShopNowOpen, setShopNowOpen] = useState(false);
   const [isKnowUsOpen, setKnowUsOpen] = useState(false);
