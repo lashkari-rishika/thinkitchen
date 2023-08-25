@@ -461,9 +461,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                   }`}
               >
                 {(menu?.items || []).map((item) => (
-                  <li className="menu-item-has-children" onClick={showSubMenu}>
+                  <li key={item.id}
+                  className="menu-item-has-children" onClick={showSubMenu}>
                     <Link
-                      key={item.id}
                       to={item.to}
                       target={item.target}
                       prefetch="intent"
@@ -476,10 +476,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                     <div className="sub-menu mega-menu mega-menu-column-4">
                       {(item?.items || []).map((subitem) => (
                         <>
-                          <div className="list-item">
+                          <div key={subitem.id} className="list-item">
                             <h4 className="title">
                               <Link
-                                key={subitem.id}
                                 to={subitem.to}
                                 target={subitem.target}
                                 prefetch="intent"
@@ -493,9 +492,8 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                             <ul>
                               {(subitem?.items || []).map((subchilditem) => (
                                 <>
-                                  <li>
+                                  <li key={subchilditem.id}>
                                     <Link
-                                      key={subchilditem.id}
                                       to={subchilditem.to}
                                       target={subchilditem.target}
                                       prefetch="intent"
@@ -512,7 +510,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                           </div>
                         </>
                       ))}
-                      {/* <div class="list-item">
+                      {/* <div className="list-item">
                           <img src={img2} alt="shop" />
                         </div> */}
                     </div>
@@ -523,9 +521,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                   </li> */}
                 {/* <li className="menu-item-has-children" onClick={showSubMenu}>
                     <a href="#">Shop</a>
-                    <div class="sub-menu mega-menu mega-menu-column-4">
-                      <div class="list-item">
-                        <h4 class="title">Men's Fashion</h4>
+                    <div className="sub-menu mega-menu mega-menu-column-4">
+                      <div className="list-item">
+                        <h4 className="title">Men's Fashion</h4>
                         <ul>
                           <li>
                             <a href="#">Product List</a>
@@ -543,40 +541,8 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                             <a href="#">Product List</a>
                           </li>
                         </ul>
-                        <h4 class="title">Beauty</h4>
+                        <h4 className="title">Beauty</h4>
                         <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="list-item">
-                        <h4 class="title">Women's Fashion</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                        <h4 class="title">Furniture</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
                           <li>
                             <a href="#">Product List</a>
                           </li>
@@ -588,8 +554,8 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                           </li>
                         </ul>
                       </div>
-                      <div class="list-item">
-                        <h4 class="title">Home, Kitchen</h4>
+                      <div className="list-item">
+                        <h4 className="title">Women's Fashion</h4>
                         <ul>
                           <li>
                             <a href="#">Product List</a>
@@ -603,9 +569,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                           <li>
                             <a href="#">Product List</a>
                           </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
+                        </ul>
+                        <h4 className="title">Furniture</h4>
+                        <ul>
                           <li>
                             <a href="#">Product List</a>
                           </li>
@@ -620,7 +586,39 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                           </li>
                         </ul>
                       </div>
-                      <div class="list-item">
+                      <div className="list-item">
+                        <h4 className="title">Home, Kitchen</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="list-item">
                         <img src={img2} alt="shop" />
                       </div>
                     </div>

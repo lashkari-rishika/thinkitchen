@@ -3,6 +3,82 @@ import {IoMdClose} from 'react-icons/io';
 import {FiChevronUp, FiChevronDown, FiSearch} from 'react-icons/fi';
 import {GrClose} from 'react-icons/gr';
 
+// {
+//   id: 1,
+//   main_category: 'Categories',
+//   sub_category: [
+//     {
+//       id:1,
+//       category:'Prepware',
+//     },
+//     {
+//       id:2,
+//       category:'Drinkware',
+//     },
+//     {
+//       id:3,
+//       category:'Barware',
+//     },
+//     {
+//       id:4,
+//       category:'Storageware',
+//     },
+//     {
+//       id:5,
+//       category:'Homeware',
+//     },
+//     {
+//       id:6,
+//       category:'Tableware',
+//     },
+//   ],
+// },
+
+// {
+//   id: 2,
+//   main_category: 'Sub Categories',
+//   sub_category: [
+//     {
+//       id:1,
+//       category:'Knives',
+//     },
+//     {
+//       id:2,
+//       category:'Cutter',
+//     },
+//     {
+//       id:3,
+//       category:'Grater',
+//     },
+//     {
+//       id:4,
+//       category:'Utensils',
+//     },
+//   ],
+// },
+
+// {
+//   id: 3,
+//   main_category: 'Brands',
+//   sub_category: [
+//     {
+//       id:1,
+//       category:'Amefa',
+//     },
+//     {
+//       id:2,
+//       category:'BarCraft',
+//     },
+//     {
+//       id:3,
+//       category:'BergHOFF',
+//     },
+//     {
+//       id:4,
+//       category:'Brabantia',
+//     },
+//   ],
+// },
 export const filtermanu = [
   {
     id: 1,
@@ -63,7 +139,7 @@ export const filtermanu = [
     sub_category: [],
   },
 ];
-export function PlpFilterUI({ mainCategory, subCategory }) {
+export function PlpFilterUI({mainCategory, subCategory}) {
   const [selectedSubItems, setSelectedSubItems] = useState({});
   const [visibleDropdowns, setVisibleDropdowns] = useState(
     filtermanu.reduce((acc, item) => {
@@ -75,11 +151,12 @@ export function PlpFilterUI({ mainCategory, subCategory }) {
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
 
   const handleSubItemSelect = (mainCategoryId, subItem) => {
+    console.log("🚀 ~ file: PlpFilterUI.jsx:154 ~ handleSubItemSelect ~ subItem:", subItem)
+    console.log("🚀 ~ file: PlpFilterUI.jsx:154 ~ handleSubItemSelect ~ mainCategoryId:", mainCategoryId)
     setSelectedSubItems((prevSelectedSubItems) => ({
       ...prevSelectedSubItems,
       [mainCategoryId]: prevSelectedSubItems[mainCategoryId]
-        ? prevSelectedSubItems[mainCategoryId].includes(subItem)
-          ? prevSelectedSubItems[mainCategoryId].filter(
+        ? prevSelectedSubItems[mainCategoryId].includes(subItem)? prevSelectedSubItems[mainCategoryId].filter(
               (item) => item !== subItem,
             )
           : [...prevSelectedSubItems[mainCategoryId], subItem]
@@ -87,20 +164,21 @@ export function PlpFilterUI({ mainCategory, subCategory }) {
     }));
   };
 
-  const handleOptionClose = (mainCategoryId, subItem) => {     // close checked view option
+  const handleOptionClose = (mainCategoryId, subItem) => {
+    // close checked view option
     setSelectedSubItems((prevSelectedSubItems) => ({
       ...prevSelectedSubItems,
       [mainCategoryId]: prevSelectedSubItems[mainCategoryId].filter(
-        (item) => item !== subItem
+        (item) => item !== subItem,
       ),
     }));
   };
 
-
   const toggleDropdown = (mainCategoryId) => {
-    setVisibleDropdowns((prevVisibleDropdowns) => ({   // dropdown in filter
-      ...prevVisibleDropdowns,
-      [mainCategoryId]: !prevVisibleDropdowns[mainCategoryId],
+    setVisibleDropdowns((prev) => ({
+      // dropdown in filter
+      ...prev,
+      [mainCategoryId]: !prev[mainCategoryId],
     }));
   };
 
@@ -125,7 +203,6 @@ export function PlpFilterUI({ mainCategory, subCategory }) {
             </div>
           </div>
           <div className="filter_main_section max-h-max w-[25%] md-max:w-[85%] md-max:left-0 bg-white px-8 md-max:pl-4 md-max:pr-8 py-3 absolute top-12 right-0 z-[100] ">
-
             {/* --------------------------Mobile view search------------------------- */}
 
             <div className=" lg:hidden bg-[#F6F6F6] relative w-full">
@@ -143,16 +220,27 @@ export function PlpFilterUI({ mainCategory, subCategory }) {
 
             <div className="flex justify-between text-sm my-2">
               <div className="">Refine By</div>
-              <div onClick={handleClearAll} className="text-red-700">Clear All</div>
+              <div onClick={handleClearAll} className="text-red-700">
+                Clear All
+              </div>
             </div>
             <div className="flex text-sm font-medium mb-2.5 flex-wrap">
-              {Object.entries(selectedSubItems).flatMap(([mainCategoryId, selectedItems]) =>
-                selectedItems.map((item, index) => (
-                  <div className='flex items-center text-[#818181] border-[#111111] bg-[#FAFAFA] p-[0.2rem] mr-1.5 mb-1.5 w-max ' key={index}>
-                    {item}<GrClose className='ml-1.5 mr-1.5'
-                    onClick={() => handleOptionClose(mainCategoryId, item)}/>
-                  </div>
-                ))
+              {filtermanu.map((category) =>
+                category.sub_category.map((subItem) =>
+                  selectedSubItems[category.id] &&
+                  selectedSubItems[category.id].includes(subItem) ? (
+                    <div
+                      className="flex items-center text-[#818181] border-[#111111] bg-[#FAFAFA] p-[0.2rem] mr-1.5 mb-1.5 w-max "
+                      key={subItem}
+                    >
+                      {subItem}
+                      <GrClose
+                        className="ml-1.5 mr-1.5"
+                        onClick={() => handleOptionClose(category.id, subItem)}
+                      />
+                    </div>
+                  ) : null,
+                ),
               )}
             </div>
 

@@ -112,9 +112,9 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div class="flex justify-center items-center">
-                    <div class="">
-                        <ul class="flex flex-row space-x-2 text-zinc-400">
+            <div className="flex justify-center items-center">
+                    <div className="">
+                        <ul className="flex flex-row space-x-2 text-zinc-400">
                             <li>01</li>
                             <li>02</li>
                             <li>03</li>

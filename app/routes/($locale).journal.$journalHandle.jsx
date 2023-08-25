@@ -9,7 +9,7 @@ import {routeHeaders} from '~/data/cache';
 
 import styles from '../styles/custom-font.css';
 
-const BLOG_HANDLE = 'journal';
+const BLOG_HANDLE = 'news';
 
 export const headers = routeHeaders;
 
