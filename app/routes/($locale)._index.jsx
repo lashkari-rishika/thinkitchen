@@ -119,7 +119,7 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
         )}
-
+<Banner/>
       <ShopByCategory />
       <ShopByBrands />
 

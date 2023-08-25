@@ -9,7 +9,7 @@ import React, {useState} from 'react';
 import ShippingComponent from './ShippingComponent';
 const FooterComponet = ({menu}) => {
 
-  const [isDescriptionVisible, setDescriptionVisible] = useState(true);
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(true);
 
   const [isIconRotated, setIconRotated] = useState(true);
   const [isShopNowOpen, setShopNowOpen] = useState(false);
