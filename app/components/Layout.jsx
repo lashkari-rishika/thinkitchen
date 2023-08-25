@@ -24,7 +24,6 @@ import {
 import { useIsHomePath } from '~/lib/utils';
 import { useIsHydrated } from '~/hooks/useIsHydrated';
 import { useCartFetchers } from '~/hooks/useCartFetchers';
-
 import FooterComponet from './FooterComponet';
 import accountLogin from '../asset/Icon-feather-user.png';
 import cart from '../asset/cart.png';
@@ -38,9 +37,7 @@ import { Image } from '@shopify/hydrogen';
 import Myorder from './Myorder';
 import VerticalTabs from './Verticaltabs';
 import Myorderdetails from './Myorderdetails';
-
-
-
+import EmailComponent from './EmailComponent';
 
 
 export function Layout({ children, layout }) {
@@ -57,14 +54,6 @@ export function Layout({ children, layout }) {
 
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
-
-            {/* {<Myorderdetails/> }  */}
-            <div>
-              {/* <VerticalTabs /> */}
-            </div>
-            {/* <MyCart />
-              <Myaccount/> */}
-
             {children}
             <div />
           </div>
@@ -124,7 +113,13 @@ function CartDrawer({ isOpen, onClose }) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right" className="text-2xl">
+    <Drawer
+      open={isOpen}
+      onClose={onClose}
+      heading="Cart"
+      openFrom="right"
+      className="text-2xl"
+    >
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
@@ -146,257 +141,181 @@ export function MenuDrawer({ isOpen, onClose, menu }) {
   );
 }
 
-function MenuMobileNav({ menu, onClose }) {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isDropdownOpentwo, setDropdownOpentwo] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownOpen((prevState) => {
-      return !prevState;
-    });
-  };
-  const firstDropdown = (item) => {
-    setDropdownOpentwo((prevState) => !prevState);
+function MenuMobileNav({menu, onClose}) {
+  console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
+  const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [activeSubMenuId, setActiveSubMenuId] = useState(null);
+
+
+  const toggleCategory = (categoryId) => {
+    setActiveCategoryId(activeCategoryId === categoryId ? null : categoryId);
+    setActiveSubMenuId(null); // Close any active sub-menu
   };
 
-  const titlesForFirstDropdown = [
+  const toggleSubMenu = (subMenuId) => {
+    setActiveSubMenuId(activeSubMenuId === subMenuId ? null : subMenuId);
+  };
+
+  const data = [
     {
-      title: 'Prepware',
-      subTitles: [
-        { id: '1', name: 'Prepware Accessories' },
-        { id: '2', name: 'Knife & Knife Sets' },
-        { id: '3', name: 'Cooking Accessories' },
-        { id: '4', name: 'Serving Accessories' },
+      id: 'category',
+      title: 'Shop by Category',
+      icon: dropdownImageMoblie,
+      subMenus: [
+        {
+          id: 'prepware',
+          title: 'Prepware',
+          icon: dropdown_icon_moblie,
+          options: [
+            'Prepware Accessories',
+            'Knife & Knife Sets',
+            'Cooking Accessories',
+            'Serving Accessories',
+          ],
+        },
+        {
+          id: 'drinkware',
+          title: 'Drinkware',
+          icon: dropdown_icon_moblie,
+          options: [
+            'Cups & Mugs',
+            'Bottles',
+            'On-the-Go',
+            'Tea Pots',
+            'Coffee Makers',
+            'Tea Accessories',
+          ],
+        },
+
       ],
     },
+    {
+      id: 'brands',
+      title: 'Shop by Brands',
+      icon: dropdownImageMoblie,
+      options: [
+        'View All Brands',
+        'BergHOFF',
+        'Amefa',
+        'Brabantia',
+        'Burleigh',
+        'Cole & Mason',
+      ],
+    },
+    {
+      id: 'know-us',
+      title: 'Know Us',
+      icon: dropdownImageMoblie,
+      options: ['About Us', 'Career'],
+    },
   ];
-
   return (
-    <nav className="grid bg-white gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      <div key="category" className="block border-b-2">
-        {/* frist menu */}
-        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
-          <li>
-            <p className="text-base">Shop by Catagory</p>
-            <div className="absolute top-[30%] right-[10%]">
-              {/* <svg
-                onClick={toggleDropdown}
-                className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+    <nav className="grid bg-white gap-4 p-6 sm-only:gap-4 sm:px-12 sm:py-8">
+      {(menu?.items || []).map((item) => (
+        <div key={item.id} className="block border-b-2">
+          <ul className="space-y-2 mb-[12px]">
+            <li className="relative">
+              <Link
+                key={item.id}
+                to={item.to}
+                target={item.target}
+                prefetch="intent"
+                className="text-base"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg> */}
-
-              <li
-                onClick={toggleDropdown}
-                className={`w-8 h-8 transition-transform ${isDropdownOpen ? 'transform rotate-180' : ''
+                {item.title}
+              </Link>
+              <ul className="absolute border-l border-[#DEDEDE] top-0 right-0 transform  -translate-x-2.5">
+                <li
+                  onClick={() => toggleCategory(item.id)}
+                  className={`w-8 h-8 transition-transform ${
+                    activeCategoryId === item.id ? 'transform rotate-180' : ''
                   }`}
-              >
-                {' '}
-                <img src={dropdownImageMoblie} alt="" />
-              </li>
-            </div>
-          </li>
-        </ul>
-        {isDropdownOpen && (
-          <ul className="max-h-60 overflow-y-scroll">
-            {/* Put your content here for the first dropdown */}
-            <ul className="space-y-2">
-              {titlesForFirstDropdown.map((item) => (
-                <li key={item.title}>
-                  <div className="text-sm font-semibold text-black">
-                    {item.title}
-                  </div>
-                  <div className="absolute top-[43%] right-[11%]">
-                    {/* <svg
-                      onClick={firstDropdown}
-                      className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                        isDropdownOpentwo ? 'transform rotate-180' : ''
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg> */}
-                    <li
-                      onClick={firstDropdown}
-                      className={`ml-4 h-5 w-5  transition-transform ${isDropdownOpentwo ? 'transform rotate-180' : ''
-                        }`}
-                    >
-                      {' '}
-                      <img src={dropdown_icon_moblie} alt="" />{' '}
-                    </li>
-                    {/* <CiCircleChevDown /> */}
-                  </div>
+                >
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown-mobile.png?v=1692696964"
+                    alt=""
+                    className="ml-auto"
+                  />
 
-                  {isDropdownOpentwo && (
-                    <ul className="space-y-2">
-                      {item.subTitles.map((subTitle) => (
-                        <li
-                          key={subTitle.id}
-                          className="mt-3 mb-3 text-sm	font-medium	 text-black"
-                          onClick={(e) => e.stopPropagation()} // Stop click event propagation
-                        >
-                          {subTitle.name}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </li>
-              ))}
-            </ul>
+              </ul>
+            </li>
           </ul>
-        )}
-      </div>
-      {/*  Second menu */}
-      {/* <div key="category" className="block border-b-2">
-        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
-          <li>
-            <Text as="span" size="copy">
-              Shop by Brands
-            </Text>
-            <div className="absolute top-24 right-12">
-              <svg
-                onClick={toggleDropdown}
-                className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          </li>
-        </ul>
-        {isDropdownOpen && (
-          <ul className="pl-4 max-h-60 overflow-y-scroll">
-            <ul className="space-y-2">
-              {titlesForFirstDropdown.map((item) => (
-                <li key={item.title}>
-                  <span className="text-base font-medium text-gray-800">
-                    {item.title}
-                  </span>
-                  <ul className="ml-4 space-y-2">
-                    {item.subTitles.map((subTitle) => (
+          {activeCategoryId === item.id && (
+            <ul className="max-h-60 overflow-y-scroll">
+              <ul className="space-y-2">
+                {(item?.items || []).map((subitem) => (
+                  <Link
+                  key={subitem.id}
+                  to={subitem.to}
+                  target={subitem.target}
+                  prefetch="intent"
+                  className="relative"
+                  >
+                    {console.log("🚀 ~ file: Layout.jsx:253 ~ item:", item)}
+                    <div className="text-sm font-semibold text-black mb-[10px]">
+                      {subitem.title}
+                    </div>
+                    <div className="absolute top-0 right-0 transform  -translate-x-4">
                       <li
-                        key={subTitle}
-                        className="text-sm text-gray-600"
-                        onClick={(e) => e.stopPropagation()} 
+                        onClick={() => toggleSubMenu(subitem.id)}
+                        className={`h-5 w-5 transition-transform ${
+                          activeSubMenuId === subitem.id
+                            ? 'transform rotate-180'
+                            : ''
+                        }`}
                       >
-                        {subTitle}
+                        {console.log("🚀 ~ file: Layout.jsx:273 ~ subitem:", subitem?.items?.length )}
+                       
+                          { !subitem?.items?.length == 0 && ( 
+                            <img
+                              src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown_icon_mobile.png?v=1692697923"
+                              alt=""
+                            />
+                          )}
+                      </li>
+                    </div>
+                    {activeSubMenuId === subitem.id && (
+                      <ul className="space-y-2 grid">
+                        {(subitem?.items || []).map((subchilditem) => (
+                          <Link
+                            key={subchilditem.id}
+                            to={subchilditem.to}
+                            target={subchilditem.target}
+                            prefetch="intent"
+                            className="mt-3 text-sm font-medium text-black"
+                          >
+                            {subchilditem.title}
+                          </Link>
+                        ))}
+                      </ul>
+                    )}
+                  </Link>
+                ))}
+                {/* {!category.subitem && category.subitem && (
+                  <ul className="space-y-2">
+                     {(item?.items || []).map((subitem) => (
+                      <li
+                      key={subitem.id}
+                      to={subitem.to}
+                      target={subitem.target}
+                      prefetch="intent"
+                        className="mt-3 mb-3 text-sm font-medium text-black"
+                      >
+                        {subitem.title}
                       </li>
                     ))}
                   </ul>
-                </li>
-              ))}
+                )} */}
+              </ul>
             </ul>
-          </ul>
-        )}
-      </div> */}
-      {/* Thrid menu */}
-      {/* <div key="category" className="block border-b-2">
-        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
-          <li>
-            <Text as="span" size="copy">
-              Know Us
-            </Text>
-            <div className="absolute top-24 right-12">
-              <svg
-                onClick={toggleDropdown}
-                className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          </li>
-        </ul>
-        {isDropdownOpen && (
-          <ul className="pl-4 max-h-60 overflow-y-scroll">
-           
-            <ul className="space-y-2">
-              {titlesForFirstDropdown.map((item) => (
-                <li key={item.title}>
-                  <span className="text-base font-medium text-gray-800">
-                    {item.title}
-                  </span>
-                  <ul className="ml-4 space-y-2">
-                    {item.subTitles.map((subTitle) => (
-                      <li
-                        key={subTitle}
-                        className="text-sm text-gray-600"
-                        onClick={(e) => e.stopPropagation()} 
-                      >
-                        {subTitle}
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </ul>
-        )}
-      </div> */}
+          )}
+        </div>
+      ))}
     </nav>
   );
 }
-
-{
-  /* <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      {/* Top level menu items */
-}
-//   {(menu?.items || []).map((item) => (
-//     <span key={item.id} className="block">
-//       <Link
-//         to={item.to}
-//         target={item.target}
-//         onClick={onClose}
-//         className={({ isActive }) =>
-//           isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-//         }
-//       >
-//         <Text as="span" size="copy">
-//           {item.title}
-//         </Text>
-//       </Link>
-//     </span>
-//   ))}
-// </nav>
 
 export default MenuMobileNav;
 
@@ -414,7 +333,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
       <div className="flex items-center justify-start gap-4">
         <button
           onClick={openMenu}
-          className="relative flex items-center justify-center h-8"
+          className="relative flex items-center justify-center h-8 "
         >
           <IconMenu />
         </button>
@@ -455,8 +374,9 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
           />
           <button
             type="submit"
-            className="search-icon flex items-center justify-center h-8 ml-[90%]"
+            className="search-icon flex items-center justify-center h-8 ml-[85%]"
           >
+
             <IconSearch />
           </button>
         </Form>
@@ -528,9 +448,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             <div className="menu-overlay" onClick={toggleMenu}></div>
             <nav className={`menu ${menuActive ? 'active' : ''}`}>
               <div className="mobile-menu-head">
-                <div className="go-back" onClick={hideSubMenu}>
-                  fhgdfgh
-                </div>
+                <div className="go-back" onClick={hideSubMenu}></div>
                 <div className="current-menu-title">{currentMenuTitle}</div>
                 <div className="mobile-menu-close" onClick={toggleMenu}>
                   &times;
@@ -553,11 +471,11 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                     >
                       {item.title}
                     </Link>
-                    <div class="sub-menu mega-menu mega-menu-column-4">
+                    <div className="sub-menu mega-menu mega-menu-column-4">
                       {(item?.items || []).map((subitem) => (
                         <>
-                          <div class="list-item">
-                            <h4 class="title">
+                          <div className="list-item">
+                            <h4 className="title">
                               <Link
                                 key={subitem.id}
                                 to={subitem.to}
@@ -571,21 +489,23 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                               </Link>
                             </h4>
                             <ul>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
-                              <li>
-                                <a href="#">Product List</a>
-                              </li>
+                              {(subitem?.items || []).map((subchilditem) => (
+                                <>
+                                  <li>
+                                    <Link
+                                      key={subchilditem.id}
+                                      to={subchilditem.to}
+                                      target={subchilditem.target}
+                                      prefetch="intent"
+                                      className={({isActive}) =>
+                                        isActive ? 'pb-1  -mb-px' : 'pb-1'
+                                      }
+                                    >
+                                      {subchilditem.title}
+                                    </Link>
+                                  </li>
+                                </>
+                              ))}
                             </ul>
                           </div>
                         </>

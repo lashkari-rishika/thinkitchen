@@ -64,7 +64,7 @@ const ShopByBrands = () => {
   return (
     <div className="brand-section mt-10 sm-only:px-3 px-10">
       <div className="brand-section-heading">
-        <h1 className="text-4xl md-only:text-3xl sm-only:2xl text-center font-medium pb-4">SHOP BY BRAND</h1>
+        <h1 className="text-4xl sm-only:text-2xl md-only:text-3xl sm-only:2xl text-center font-medium pb-4">SHOP BY BRAND</h1>
       </div>
       <div className="image_section">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2.5">
@@ -84,7 +84,7 @@ const ShopByBrands = () => {
                     <h1> {item.name}</h1>{' '}
                   </div>
                   <div className="all-brand-hidden w-2/4 left-1/4 top-2/3">
-                    <div className="brand_hidden_image">
+                    <div className="flex justify-center">
                       <img src={item.imgSrc2} />
                     </div>
                     <div className="mt-2">
@@ -100,7 +100,7 @@ const ShopByBrands = () => {
         </div>
       </div>
       <div className="my-2 text-center ">
-        <h2 className="font-medium underline-offset-8">View All Brands </h2>
+        <button className="font-medium underline-offset-8">View All Brands </button>
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import {
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
+import Banner from '~/components/Banner';
 import ShopByCategory from '~/components/custom-components/ShopByCategory';
 import ShopByBrands from '~/components/custom-components/ShopByBrands';
 import LatestOffer from '~/components/custom-components/LatestOffer';
@@ -115,6 +116,8 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
+
+      <Banner />
       <ShopByCategory />
       <ShopByBrands />
 
@@ -123,7 +126,7 @@ export default function Homepage() {
           <Await resolve={featuredProducts}>
             {({products}) => {
               if (!products?.nodes) return <></>;
-              return (
+              return ( 
                 <ProductSwimlane
                   products={products}
                   title="New Arrivals"
@@ -137,10 +140,7 @@ export default function Homepage() {
 
       <LatestOffer />
 
-      {console.log(
-        '🚀 ~ file: ($locale)._index.jsx:139 ~ Homepage ~ bestSeller:',
-        bestSeller,
-      )}
+
       {bestSeller && (
         <Suspense>
           <Await resolve={bestSeller}>
