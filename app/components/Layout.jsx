@@ -53,7 +53,7 @@ export function Layout({ children, layout }) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
 
         <main role="main" id="mainContent" className="flex-grow ">
-          <div className="main_video_banner ">
+          <div className="main_video_banner">
             {children}
             <div />
           </div>

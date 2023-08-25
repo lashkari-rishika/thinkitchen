@@ -74,7 +74,7 @@ export default function Search() {
 
   return (
     <>
-      <PageHeader>
+      {/* <PageHeader>
         <Heading as="h1" size="copy">
           Search
         </Heading>
@@ -90,7 +90,7 @@ export default function Search() {
             Go
           </button>
         </Form>
-      </PageHeader>
+      </PageHeader> */}
       {!searchTerm || noResults ? (
         <NoResults
           noResults={noResults}
@@ -109,7 +109,7 @@ export default function Search() {
               ));
 
               return (
-                <>
+                <div className="p-[35px]">
                   <div className="flex items-center justify-center mt-6">
                     <PreviousLink className="inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full">
                       {isLoading ? 'Loading...' : 'Previous'}
@@ -121,7 +121,7 @@ export default function Search() {
                       {isLoading ? 'Loading...' : 'Next'}
                     </NextLink>
                   </div>
-                </>
+                </div>
               );
             }}
           </Pagination>
@@ -134,37 +134,41 @@ export default function Search() {
 function NoResults({noResults, recommendations}) {
   return (
     <>
-      {noResults && (
-        <Section padding="x">
-          <Text className="opacity-50">
-            No results, try a different search.
-          </Text>
-        </Section>
-      )}
-      <Suspense>
-        <Await
-          errorElement="There was a problem loading related products"
-          resolve={recommendations}
-        >
-          {(result) => {
-            if (!result) return null;
-            const {featuredCollections, featuredProducts} = result;
+      <div>
+        {noResults && (
+          <Section padding="x">
+            <Text className="opacity-50">
+              No results, try a different search.
+            </Text>
+          </Section>
+        )}
+        <Suspense>
+          <Await
+            errorElement="There was a problem loading related products"
+            resolve={recommendations}
+          >
+            {(result) => {
+              if (!result) return null;
+              const {featuredCollections, featuredProducts} = result;
 
-            return (
-              <>
-                <FeaturedCollections
-                  title="Trending Collections"
-                  collections={featuredCollections}
-                />
-                <ProductSwimlane
-                  title="Trending Products"
-                  products={featuredProducts}
-                />
-              </>
-            );
-          }}
-        </Await>
-      </Suspense>
+              return (
+                <>
+                  <FeaturedCollections
+                    title="Trending Collections"
+                    collections={featuredCollections}
+                  />
+                  <div>
+                    <ProductSwimlane
+                      title="Trending Products"
+                      products={featuredProducts}
+                    />
+                  </div>
+                </>
+              );
+            }}
+          </Await>
+        </Suspense>
+      </div>
     </>
   );
 }
