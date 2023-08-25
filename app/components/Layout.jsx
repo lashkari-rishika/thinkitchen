@@ -1,7 +1,7 @@
-import {useParams, Form, Await, useMatches} from '@remix-run/react';
-import {useWindowScroll} from 'react-use';
-import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo, useState} from 'react';
+import { useParams, Form, Await, useMatches } from '@remix-run/react';
+import { useWindowScroll } from 'react-use';
+import { Disclosure } from '@headlessui/react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import {
   Drawer,
   useDrawer,
@@ -21,23 +21,27 @@ import {
   Link,
   FeaturedProducts,
 } from '~/components';
-import {useIsHomePath} from '~/lib/utils';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useCartFetchers} from '~/hooks/useCartFetchers';
+import { useIsHomePath } from '~/lib/utils';
+import { useIsHydrated } from '~/hooks/useIsHydrated';
+import { useCartFetchers } from '~/hooks/useCartFetchers';
 import FooterComponet from './FooterComponet';
 import accountLogin from '../asset/Icon-feather-user.png';
 import cart from '../asset/cart.png';
 import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
-import Plp from './custom-components/Plp';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
-import {CiCircleChevDown} from 'react-icons/ci';
-import {Image} from '@shopify/hydrogen';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
+import { CiCircleChevDown } from 'react-icons/ci';
+import { Image } from '@shopify/hydrogen';
+import Myorder from './Myorder';
+import VerticalTabs from './Verticaltabs';
+import Myorderdetails from './Myorderdetails';
+import EmailComponent from './EmailComponent';
 
-export function Layout({children, layout}) {
-  const {headerMenu, footerMenu} = layout;
+
+export function Layout({ children, layout }) {
+  const { headerMenu, footerMenu } = layout;
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -51,6 +55,7 @@ export function Layout({children, layout}) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
             {children}
+            <div />
           </div>
         </main>
       </div>
@@ -59,7 +64,7 @@ export function Layout({children, layout}) {
   );
 }
 
-function Header({title, menu}) {
+function Header({ title, menu }) {
   const isHome = useIsHomePath();
 
   const {
@@ -104,7 +109,7 @@ function Header({title, menu}) {
   );
 }
 
-function CartDrawer({isOpen, onClose}) {
+function CartDrawer({ isOpen, onClose }) {
   const [root] = useMatches();
 
   return (
@@ -126,7 +131,7 @@ function CartDrawer({isOpen, onClose}) {
   );
 }
 
-export function MenuDrawer({isOpen, onClose, menu}) {
+export function MenuDrawer({ isOpen, onClose, menu }) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
@@ -136,297 +141,185 @@ export function MenuDrawer({isOpen, onClose, menu}) {
   );
 }
 
+
 function MenuMobileNav({menu, onClose}) {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isDropdownOpentwo, setDropdownOpentwo] = useState(false);
+  console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
+  const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [activeSubMenuId, setActiveSubMenuId] = useState(null);
 
-  const toggleDropdown = () => {
-    setDropdownOpen((prevState) => {
-      return !prevState;
-    });
-  };
-  const firstDropdown = (item) => {
-    setDropdownOpentwo((prevState) => !prevState);
+
+  const toggleCategory = (categoryId) => {
+    setActiveCategoryId(activeCategoryId === categoryId ? null : categoryId);
+    setActiveSubMenuId(null); // Close any active sub-menu
   };
 
-  const titlesForFirstDropdown = [
+  const toggleSubMenu = (subMenuId) => {
+    setActiveSubMenuId(activeSubMenuId === subMenuId ? null : subMenuId);
+  };
+
+  const data = [
     {
-      title: 'Prepware',
-      subTitles: [
-        {id: '1', name: 'Prepware Accessories'},
-        {id: '2', name: 'Knife & Knife Sets'},
-        {id: '3', name: 'Cooking Accessories'},
-        {id: '4', name: 'Serving Accessories'},
+      id: 'category',
+      title: 'Shop by Category',
+      icon: dropdownImageMoblie,
+      subMenus: [
+        {
+          id: 'prepware',
+          title: 'Prepware',
+          icon: dropdown_icon_moblie,
+          options: [
+            'Prepware Accessories',
+            'Knife & Knife Sets',
+            'Cooking Accessories',
+            'Serving Accessories',
+          ],
+        },
+        {
+          id: 'drinkware',
+          title: 'Drinkware',
+          icon: dropdown_icon_moblie,
+          options: [
+            'Cups & Mugs',
+            'Bottles',
+            'On-the-Go',
+            'Tea Pots',
+            'Coffee Makers',
+            'Tea Accessories',
+          ],
+        },
+
       ],
     },
-
-    // {
-    //   title: 'Drinkware',
-    //   subTitles: [
-    //   {id: '1', name: 'Cups & Mugs '},
-    //   {id: '2', name: 'Bottles '},
-    //   {id: '3', name: 'On-the-Go'},
-    //   {id: '4', name: 'Tea Pots'},
-    //   {id: '5', name: 'Coffee Makers'},
-    //   {id: '6', name: 'Tea Accessories'},
-    //   ]
-    // },
-    // {
-    //   title: 'Drinkware',
-    //   subTitles: [
-    //   {id: '1', name: 'Bowls  '},
-    //   {id: '2', name: 'Plates '},
-    //   {id: '3', name: 'Serveware'},
-    //   {id: '4', name: 'Tea Pots'},
-    //   {id: '5', name: 'Dinner Sets'},
-    //   {id: '6', name: 'Tea Accessories'},
-    //   ]
-    // },
-    // {
-    //   title: 'Barware',
-    //   subTitles: ['Sub Title 4', 'Sub Title 5'],
-    // },
-    // Add the rest of the titles and sub-titles here...
-
+    {
+      id: 'brands',
+      title: 'Shop by Brands',
+      icon: dropdownImageMoblie,
+      options: [
+        'View All Brands',
+        'BergHOFF',
+        'Amefa',
+        'Brabantia',
+        'Burleigh',
+        'Cole & Mason',
+      ],
+    },
+    {
+      id: 'know-us',
+      title: 'Know Us',
+      icon: dropdownImageMoblie,
+      options: ['About Us', 'Career'],
+    },
   ];
-
   return (
-    <nav className="grid bg-white gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      <div key="category" className="block border-b-2">
-        {/* frist menu */}
-        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
-          <li>
-            <p className="text-base">
-              Shop by Catagory
-            </p>
-            <div className="absolute top-[5rem] right-12">
-
-              {/* <svg
-                onClick={toggleDropdown}
-                className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+    <nav className="grid bg-white gap-4 p-6 sm-only:gap-4 sm:px-12 sm:py-8">
+      {(menu?.items || []).map((item) => (
+        <div key={item.id} className="block border-b-2">
+          <ul className="space-y-2 mb-[12px]">
+            <li className="relative">
+              <Link
+                key={item.id}
+                to={item.to}
+                target={item.target}
+                prefetch="intent"
+                className="text-base"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg> */}
+                {item.title}
+              </Link>
+              <ul className="absolute border-l border-[#DEDEDE] top-0 right-0 transform  -translate-x-2.5">
+                <li
+                  onClick={() => toggleCategory(item.id)}
+                  className={`w-8 h-8 transition-transform ${
+                    activeCategoryId === item.id ? 'transform rotate-180' : ''
+                  }`}
+                >
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown-mobile.png?v=1692696964"
+                    alt=""
+                    className="ml-auto"
+                  />
 
-              <li
-                onClick={toggleDropdown}
-                className={`w-8 h-8 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
-              >
-                {' '}
-                <img src={dropdownImageMoblie} alt="" />
-              </li>
-            </div>
-          </li>
-        </ul>
-        {isDropdownOpen && (
-          <ul className="max-h-60 overflow-y-scroll">
-            {/* Put your content here for the first dropdown */}
-            <ul className="space-y-2">
-              {titlesForFirstDropdown.map((item) => (
-                <li key={item.title}>
-                  <div className="text-sm font-semibold text-black">
-                    {item.title}
-                  </div>
-
-                  <div className="absolute top-[7rem] right-[3.4rem]">
-
-                    {/* <svg
-                      onClick={firstDropdown}
-                      className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                        isDropdownOpentwo ? 'transform rotate-180' : ''
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg> */}
-                    <li
-                      onClick={firstDropdown}
-                      className={`ml-4 h-5 w-5  transition-transform ${
-                        isDropdownOpentwo ? 'transform rotate-180' : ''
-                      }`}
-                    >
-                      {' '}
-                      <img src={dropdown_icon_moblie} alt="" />{' '}
-                    </li>
-                    {/* <CiCircleChevDown /> */}
-                  </div>
-
-                  {isDropdownOpentwo && (
-                    <ul className="space-y-2">
-                      {item.subTitles.map((subTitle) => (
-                        <li
-                          key={subTitle.id}
-                          className="mt-3 mb-3 text-sm	font-medium	 text-black"
-                          onClick={(e) => e.stopPropagation()} // Stop click event propagation
-                        >
-                          {subTitle.name}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </li>
-              ))}
-            </ul>
+              </ul>
+            </li>
           </ul>
-        )}
-      </div>
-      {/*  Second menu */}
-      {/* <div key="category" className="block border-b-2">
-        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
-          <li>
-            <Text as="span" size="copy">
-              Shop by Brands
-            </Text>
-            <div className="absolute top-24 right-12">
-              <svg
-                onClick={toggleDropdown}
-                className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          </li>
-        </ul>
-        {isDropdownOpen && (
-          <ul className="pl-4 max-h-60 overflow-y-scroll">
-            <ul className="space-y-2">
-              {titlesForFirstDropdown.map((item) => (
-                <li key={item.title}>
-                  <span className="text-base font-medium text-gray-800">
-                    {item.title}
-                  </span>
-                  <ul className="ml-4 space-y-2">
-                    {item.subTitles.map((subTitle) => (
+          {activeCategoryId === item.id && (
+            <ul className="max-h-60 overflow-y-scroll">
+              <ul className="space-y-2">
+                {(item?.items || []).map((subitem) => (
+                  <Link
+                  key={subitem.id}
+                  to={subitem.to}
+                  target={subitem.target}
+                  prefetch="intent"
+                  className="relative"
+                  >
+                    {console.log("🚀 ~ file: Layout.jsx:253 ~ item:", item)}
+                    <div className="text-sm font-semibold text-black mb-[10px]">
+                      {subitem.title}
+                    </div>
+                    <div className="absolute top-0 right-0 transform  -translate-x-4">
                       <li
-                        key={subTitle}
-                        className="text-sm text-gray-600"
-                        onClick={(e) => e.stopPropagation()} 
+                        onClick={() => toggleSubMenu(subitem.id)}
+                        className={`h-5 w-5 transition-transform ${
+                          activeSubMenuId === subitem.id
+                            ? 'transform rotate-180'
+                            : ''
+                        }`}
                       >
-                        {subTitle}
+                        {console.log("🚀 ~ file: Layout.jsx:273 ~ subitem:", subitem?.items?.length )}
+                       
+                          { !subitem?.items?.length == 0 && ( 
+                            <img
+                              src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown_icon_mobile.png?v=1692697923"
+                              alt=""
+                            />
+                          )}
+                      </li>
+                    </div>
+                    {activeSubMenuId === subitem.id && (
+                      <ul className="space-y-2 grid">
+                        {(subitem?.items || []).map((subchilditem) => (
+                          <Link
+                            key={subchilditem.id}
+                            to={subchilditem.to}
+                            target={subchilditem.target}
+                            prefetch="intent"
+                            className="mt-3 text-sm font-medium text-black"
+                          >
+                            {subchilditem.title}
+                          </Link>
+                        ))}
+                      </ul>
+                    )}
+                  </Link>
+                ))}
+                {/* {!category.subitem && category.subitem && (
+                  <ul className="space-y-2">
+                     {(item?.items || []).map((subitem) => (
+                      <li
+                      key={subitem.id}
+                      to={subitem.to}
+                      target={subitem.target}
+                      prefetch="intent"
+                        className="mt-3 mb-3 text-sm font-medium text-black"
+                      >
+                        {subitem.title}
                       </li>
                     ))}
                   </ul>
-                </li>
-              ))}
+                )} */}
+              </ul>
             </ul>
-          </ul>
-        )}
-      </div> */}
-      {/* Thrid menu */}
-      {/* <div key="category" className="block border-b-2">
-        <ul className="flex items-center mb-2 justify-between w-full focus:outline-none">
-          <li>
-            <Text as="span" size="copy">
-              Know Us
-            </Text>
-            <div className="absolute top-24 right-12">
-              <svg
-                onClick={toggleDropdown}
-                className={`ml-4 h-30 w-4 h-4 transition-transform ${
-                  isDropdownOpen ? 'transform rotate-180' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          </li>
-        </ul>
-        {isDropdownOpen && (
-          <ul className="pl-4 max-h-60 overflow-y-scroll">
-           
-            <ul className="space-y-2">
-              {titlesForFirstDropdown.map((item) => (
-                <li key={item.title}>
-                  <span className="text-base font-medium text-gray-800">
-                    {item.title}
-                  </span>
-                  <ul className="ml-4 space-y-2">
-                    {item.subTitles.map((subTitle) => (
-                      <li
-                        key={subTitle}
-                        className="text-sm text-gray-600"
-                        onClick={(e) => e.stopPropagation()} 
-                      >
-                        {subTitle}
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </ul>
-        )}
-      </div> */}
+          )}
+        </div>
+      ))}
     </nav>
   );
 }
 
-{
-  /* <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      {/* Top level menu items */
-}
-//   {(menu?.items || []).map((item) => (
-//     <span key={item.id} className="block">
-//       <Link
-//         to={item.to}
-//         target={item.target}
-//         onClick={onClose}
-//         className={({ isActive }) =>
-//           isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-//         }
-//       >
-//         <Text as="span" size="copy">
-//           {item.title}
-//         </Text>
-//       </Link>
-//     </span>
-//   ))}
-// </nav>
-
 export default MenuMobileNav;
 
-function MobileHeader({title, isHome, openCart, openMenu}) {
+function MobileHeader({ title, isHome, openCart, openMenu }) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -434,9 +327,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   return (
     <header
       role="banner"
-      className={`${
-        isHome ? 'bg-white text-black' : ' text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      className={`${isHome ? 'bg-white text-black' : ' text-primary'
+        } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start gap-4">
         <button
@@ -484,17 +376,18 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
             type="submit"
             className="search-icon flex items-center justify-center h-8 ml-[85%]"
           >
+
             <IconSearch />
-            </button>
+          </button>
         </Form>
       </div>
     </header>
   );
 }
 
-function DesktopHeader({isHome, menu, openCart, title}) {
+function DesktopHeader({ isHome, menu, openCart, title }) {
   const params = useParams();
-  const {y} = useWindowScroll();
+  const { y } = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
   const [subMenuActive, setSubMenuActive] = useState(false);
   const [currentMenuTitle, setCurrentMenuTitle] = useState('');
@@ -533,13 +426,11 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   return (
     <header
       role="banner"
-      className={`${
-        isHome
+      className={`${isHome
           ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
           : ' text-primary'
-      } ${
-        !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+        } ${!isHome && y > 50 && ' shadow-lightHeader'
+        } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="header">
         <div className="row v-center">
@@ -564,9 +455,8 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                 </div>
               </div>
               <ul
-                className={`menu-main flex items-center gap-6 ${
-                  subMenuActive ? 'active' : ''
-                }`}
+                className={`menu-main flex items-center gap-6 ${subMenuActive ? 'active' : ''
+                  }`}
               >
                 {(menu?.items || []).map((item) => (
                   <li key={item.id}
@@ -575,7 +465,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                       to={item.to}
                       target={item.target}
                       prefetch="intent"
-                      className={({isActive}) =>
+                      className={({ isActive }) =>
                         isActive ? 'pb-1  -mb-px' : 'pb-1'
                       }
                     >
@@ -590,7 +480,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                                 to={subitem.to}
                                 target={subitem.target}
                                 prefetch="intent"
-                                className={({isActive}) =>
+                                className={({ isActive }) =>
                                   isActive ? 'pb-1  -mb-px' : 'pb-1'
                                 }
                               >
@@ -773,7 +663,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   );
 }
 
-function AccountLink({className}) {
+function AccountLink({ className }) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -789,7 +679,7 @@ function AccountLink({className}) {
   );
 }
 
-function CartCount({isHome, openCart}) {
+function CartCount({ isHome, openCart }) {
   const [root] = useMatches();
 
   return (
@@ -807,7 +697,7 @@ function CartCount({isHome, openCart}) {
   );
 }
 
-function Badge({openCart, dark, count}) {
+function Badge({ openCart, dark, count }) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
@@ -846,7 +736,7 @@ function Badge({openCart, dark, count}) {
   );
 }
 
-function Footer({menu}) {
+function Footer({ menu }) {
   const isHome = useIsHomePath();
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
@@ -874,7 +764,7 @@ function Footer({menu}) {
   );
 }
 
-function FooterLink({item}) {
+function FooterLink({ item }) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -890,7 +780,7 @@ function FooterLink({item}) {
   );
 }
 
-function FooterMenu({menu}) {
+function FooterMenu({ menu }) {
   // const styles = {
   //   section: 'grid gap-4',
   //   nav: 'grid gap-2',

@@ -54,7 +54,9 @@ export function ProductCard({
 
   return (
     <>
-      <div className="flex flex-col items-center">
+
+      <div className="flex flex-col items-center ">
+
         <div className="new_arrivel_card relative w-full">
           <Link
             onClick={onClick}
