@@ -1,12 +1,39 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {FiChevronDown} from 'react-icons/fi';
+import {useLocation, useSearchParams, Link} from '@remix-run/react';
 
-export function SortBy() {
+export function SortBy({
+  filters,
+  appliedFilters = [],
+  children,
+  collections = [],
+}) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('select one');
+  const [params] = useSearchParams();
+  const location = useLocation();
 
   const dropdownRef = useRef(null);
-
+  const items = [
+    {label: 'Featured', key: 'featured'},
+    {
+      label: 'Price: Low - High',
+      key: 'price-low-high',
+    },
+    {
+      label: 'Price: High - Low',
+      key: 'price-high-low',
+    },
+    {
+      label: 'Best Selling',
+      key: 'best-selling',
+    },
+    {
+      label: 'Newest',
+      key: 'newest',
+    },
+  ];
+  const activeItem = items.find((item) => item.key === params.get('sort'));
   useEffect(() => {
     // Add event listener to detect clicks outside the dropdown
     const handleClickOutside = (event) => {
@@ -29,14 +56,18 @@ export function SortBy() {
     setIsDropdownOpen(false);
   }, [selectedOption]);
 
- const toggleDropdown = () => {
+  const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
-
+  function getSortLink(sort, params, location) {
+    // debugger;
+    params.set('sort', sort);
+    return `${location.pathname}?${params.toString()}`;
+  }
   return (
     <>
       <div
@@ -44,37 +75,31 @@ export function SortBy() {
         onClick={toggleDropdown}
         ref={dropdownRef}
       >
-      <div className="mr-1 md-max:hidden">SORT BY:</div>
+        <div className="mr-1 md-max:hidden">SORT BY:</div>
         <div className="bg-white flex rounded items-center p-1 font-semibold md-max:fixed md-max:bottom-[11px] md-max:right-[33px]">
-          {selectedOption || 'Bestselling'} <FiChevronDown className="ml-1.5" />
+          {(activeItem || items[0]).label} <FiChevronDown className="ml-1.5" />
         </div>
         {isDropdownOpen && (
-          <div className="bg-white p-2 mt-1 rounded shadow-lg min-w-max absolute top-full left-0 z-10">
+          <>
             <div
-              className="px-2 py-1 cursor-pointer hover:bg-gray-200 rounded"
-              onClick={() => handleOptionSelect('Bestselling')}
+              className="bg-white p-2 mt-1 rounded shadow-lg min-w-max absolute top-full left-0 z-10"
             >
-              Bestselling
+              {items.map((item) => {
+                return (
+                  <div key={item.label}>
+                  <Link
+                    className={`px-2 py-1 cursor-pointer hover:bg-gray-200 rounded ${
+                      activeItem?.key === item.key ? 'font-bold' : 'font-normal'
+                    }`}
+                    to={getSortLink(item.key, params, location)}
+                  >
+                    {item.label}
+                  </Link>
+                  </div>
+                );
+              })}
             </div>
-            <div
-              className="px-2 py-1 cursor-pointer hover:bg-gray-200 rounded"
-              onClick={() => handleOptionSelect('New Arrival')}
-            >
-              New Arrival
-            </div>
-            <div
-              className="px-2 py-1 cursor-pointer hover:bg-gray-200 rounded"
-              onClick={() => handleOptionSelect('Price (low - high)')}
-            >
-              Price (low - high)
-            </div>
-            <div
-              className="px-2 py-1 cursor-pointer hover:bg-gray-200 rounded"
-              onClick={() => handleOptionSelect('Price (high - low)')}
-            >
-              Price (high - low)
-            </div>
-          </div>
+          </>
         )}
       </div>
     </>

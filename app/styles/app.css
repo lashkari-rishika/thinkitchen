@@ -343,6 +343,8 @@ shop-pay-button {
   }
   
 }
+
+
 /* --------------------------------plpfilter-section-end-------------------------------- */
 
 /* ------------------------------- testimonial-section-start------------------------------- */
@@ -1148,6 +1150,11 @@ body {font-family: Arial;}
   background-color: #ccc;
 }
 
+
+.collection{
+  margin-top:1px;
+}
+
 /* Style the tab content */
 .tabcontent {
   display: none;
@@ -1155,3 +1162,4 @@ body {font-family: Arial;}
   border: 1px solid #ccc;
   border-top: none;
 }
+
