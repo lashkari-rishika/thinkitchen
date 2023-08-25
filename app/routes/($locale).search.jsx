@@ -98,14 +98,17 @@ export default function Search() {
         />
       ) : (
         <Section>
-          <Pagination connection={products}>
+          <Pagination connection={item}>
             {({nodes, isLoading, NextLink, PreviousLink}) => {
-              const itemsMarkup = nodes.map((product, i) => (
+              const itemsMarkup = nodes.map((item, i) => (
                 <ProductCard
-                  key={product.id}
-                  product={product}
+                  key={item.id}
+                  product={item}
                   loading={getImageLoadingPriority(i)}
                 />
+
+                
+
               ));
 
               return (

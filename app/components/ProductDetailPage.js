@@ -244,12 +244,12 @@ const ProductDetailPage = () => {
           </div>
           <div className="sm-only:flex sm-only:grid-cols-2 gap-3 sm-only:pb-3 sm-only:border-b border-gray-300">
             <div className="pt-3 w-[100%]">
-              <button class="text-white text-sm w-[100%] bg-[#175C8A] hover:bg-[#003354] py-2">
+              <button className="text-white text-sm w-[100%] bg-[#175C8A] hover:bg-[#003354] py-2">
                 ADD TO CART
               </button>
             </div>
             <div className="pt-3 w-[100%]">
-              <button class="text-white w-[100%] text-sm bg-[#175C8A] hover:bg-[#003354]  py-2 ">
+              <button className="text-white w-[100%] text-sm bg-[#175C8A] hover:bg-[#003354]  py-2 ">
                 BUY NOW
               </button>
             </div>
@@ -600,7 +600,7 @@ const ProductDetailPage = () => {
                   <p className="flex items-center w-[100%] relative justify-center">
                     Total: ₹ 1,040
                   </p>
-                  <button class=" text-white text-sm bg-[#003354] ml-4 py-2 w-[100%] ">
+                  <button className=" text-white text-sm bg-[#003354] ml-4 py-2 w-[100%] ">
                     Add Both to Cart
                   </button>
                 </div>
@@ -675,11 +675,11 @@ const ProductDetailPage = () => {
               </button>
             </div>
           </div>
-          <button class=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
+          <button className=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
             ADD TO CART
           </button>
         </div>
-        <button class="lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-10">
+        <button className="lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-10">
           ADD TO CART
         </button>
       </div>

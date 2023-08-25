@@ -353,6 +353,7 @@ export function CartEmpty({hidden = false, layout = 'drawer', onClose}) {
           started!
         </Text>
         <div>
+         
           <Button onClick={onClose}>Continue shopping</Button>
         </div>
       </section>
