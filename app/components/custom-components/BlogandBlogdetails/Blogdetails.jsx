@@ -17,7 +17,6 @@ const Blogdetails = () => {
                             <div>
                                 <img src={Bannerdetails_img} alt=''></img>
                             </div>
-
                         </div>
 
                         <div className="mx-8 sm-only:mx-0">

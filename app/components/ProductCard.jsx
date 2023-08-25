@@ -57,7 +57,7 @@ export function ProductCard({
       <div className="flex flex-col items-center">
         <div className="new_arrivel_card relative w-full">
           <Link
-            honClick={onClick}
+            onClick={onClick}
             to={`/products/${product.handle}`}
             prefetch="intent"
             className="w-full"
@@ -79,26 +79,12 @@ export function ProductCard({
             <div className="discount_lable absolute p-1 md-only:text-sm md-only:p-[0.001rem] text-red-600 font-semibold bg-white rounded-br-lg  font-xs">
               {discountPercentage}% <span> OFF</span>
             </div>
-            <div className="px-1 py-2 flex w-full">
-              <div className="product_card_text w-9/12">
-                <div className="font-semibold text-sm md-only:text-xs md-only:leading-4">
+            <div className="px-1 py-2  w-full">
+              <div className="product_card_text flex">
+                <div className="font-semibold text-sm md-only:text-xs md-only:leading-4  w-9/12 sm-only:w-full">
                   {product.title}
                 </div>
-                <div className='flex'>
-                  <span className="font-xs text-gray-400 md-only:text-[12px] mb-1 gap-1 ">
-                    {isDiscounted(price, compareAtPrice) && (
-                      <CompareAtPrice
-                        className={'opacity-50 mr-3'}
-                        data={compareAtPrice}
-                      />
-                    )}
-                  </span>
-                  <span className="text-red-500 font-xs md-only:text-[12px] mb-1">
-                    <Money withoutTrailingZeros data={price} />
-                  </span>
-                </div>
-              </div>
-              <div className=" product_card_button 4/12">
+                <div className=" product_card_button 4/12 sm-only:hidden">
                 {/* {quickAdd && ( */}
                 <AddToCartButton
                   lines={[
@@ -126,6 +112,51 @@ export function ProductCard({
                     {media.cartButton}
                   </button> */}
               </div>
+              </div>
+              <div className='flex justify-between items-center sm-only:my-1.5'>
+                <div className='flex'>
+                  <span className="font-xs text-gray-400 md-only:text-[12px] mb-1 gap-1 ">
+                    {isDiscounted(price, compareAtPrice) && (
+                      <CompareAtPrice
+                        className={'opacity-50 mr-3'}
+                        data={compareAtPrice}
+                      />
+                    )}
+                  </span>
+                  <span className="text-red-500 font-xs md-only:text-[12px] mb-1">
+                    <Money withoutTrailingZeros data={price} />
+                  </span>
+                </div>
+                <div className=" product_card_button 4/12 md:hidden">
+                {/* {quickAdd && ( */}
+                <AddToCartButton
+                  lines={[
+                    {
+                      quantity: 1,
+                      merchandiseId: firstVariant.id,
+                    },
+                  ]}
+                  variant="secondary"
+                  className="add_cart_button text-sm md-omly:text-[0.675rem] md-only:text-[0.65rem] md-only:leading-[1rem] block w-full bg-white-500 font-semibold text-black py-1 px-2 md-only:px-1 border border-solid border-gray-300 min-w-max"
+                  analytics={{
+                    products: [productAnalytics],
+                    totalValue: parseFloat(productAnalytics.price),
+                  }}
+                >
+                  {/* <Text
+                      as="span"
+                      className="flex items-center justify-center gap-2"
+                    > */}
+                  Add to Cart
+                  {/* </Text> */}
+                </AddToCartButton>
+                {/* )} */}
+                {/* <button className="add_cart_button text-sm md-omly:text-[0.675rem] md-only:text-[0.65rem] md-only:leading-[1rem] block w-full bg-white-500 font-semibold text-black py-1 px-2 md-only:px-1 border border-solid border-gray-300 min-w-max">
+                    {media.cartButton}
+                  </button> */}
+              </div>
+              </div>
+              
             </div>
           </Link>
         </div>

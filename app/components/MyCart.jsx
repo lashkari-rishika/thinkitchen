@@ -149,15 +149,15 @@ const MyCart = () => {
               </div>
             </div>
             <div className="pr-8 sm-only:px-4">
-              <div class="flex pl-5 pr-5 pt-5 md-only:pr-0">
+              <div className="flex pl-5 pr-5 pt-5 md-only:pr-0">
                 <p className="md-only:text-[12px]">Subtotal </p>
                 <p className="absolute 2xl-only:right-[120px]  xl-only:right-[100px] lg-only:right-[40px] md-only:right-[40px] sm-only:right-[35px]  font-semibold"> ₹ 13,398</p>
               </div>
-              <div class="border-b border-[#D3D3D3] flex pl-5 pr-5 pb-5 md-only:pr-0">
+              <div className="border-b border-[#D3D3D3] flex pl-5 pr-5 pb-5 md-only:pr-0">
                 <p className="md-only:text-[12px]">Discount on MRP </p>
                 <p className="absolute 2xl-only:right-[120px]  xl-only:right-[100px] lg-only:right-[40px] md-only:right-[40px] sm-only:right-[35px]   font-semibold"> - ₹ 1,000</p>
               </div>
-              <div class="flex pl-5 pr-5 py-5 sm-only:border-b border-[#D3D3D3] md-only:pr-0">
+              <div className="flex pl-5 pr-5 py-5 sm-only:border-b border-[#D3D3D3] md-only:pr-0">
                 <p className="md-only:text-[12px] font-semibold">Total </p>
                 <p className="absolute 2xl-only:right-[120px]  xl-only:right-[100px] lg-only:right-[40px] md-only:right-[40px] sm-only:right-[35px] font-semibold">
                   {' '}

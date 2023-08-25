@@ -6,9 +6,8 @@ import {Grid, PageHeader, Section, Link} from '~/components';
 import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-// import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
 
-const BLOG_HANDLE = 'Journal';
+const BLOG_HANDLE = 'news';
 
 export const headers = routeHeaders;
 
@@ -50,7 +49,7 @@ export default function Journals() {
     <>
       <PageHeader heading={BLOG_HANDLE} />
       <Section>
-        <Grid as="ol" layout="blog">
+        <div as="ol" className="grid-flow-row grid gap-2 gap-y-6 md:gap-4 lg:gap-6 grid-cols-1 md:grid-cols-3 mx-3 my-2" layout="blog">
           {articles.map((article, i) => (
             <ArticleCard
               blogHandle={BLOG_HANDLE.toLowerCase()}
@@ -59,16 +58,15 @@ export default function Journals() {
               loading={getImageLoadingPriority(i, 2)}
             />
           ))}
-        </Grid>
+        </div>
       </Section>
     </>
   );
 }
 
-function ArticleCard({blogHandle, article, loading}) {
+export function ArticleCard({blogHandle, article, loading}) {
   return (
     <li key={article.id}>
-      {/* <OurLatestBlog/> */}
       <Link to={`/${blogHandle}/${article.handle}`}>
         {article.image && (
           <div className="card-image aspect-[3/2]">
@@ -84,6 +82,11 @@ function ArticleCard({blogHandle, article, loading}) {
         )}
         <h2 className="mt-4 font-medium">{article.title}</h2>
         <span className="block mt-1">{article.publishedAt}</span>
+        <div className=" OurBlog_card_button w-1/3">
+          <button className="add_cart_button rounded text-sm block w-full bg-white-500 font-semibold text-black py-1.5 px-2 border border-solid border-gray-300">
+            Explor more
+          </button>
+        </div>
       </Link>
     </li>
   );

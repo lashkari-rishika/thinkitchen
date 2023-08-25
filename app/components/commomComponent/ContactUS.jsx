@@ -39,7 +39,7 @@ const Contactsection = () => {
                         <div className=" w-72 border-l border-zinc-300 border-inherit pl-4 sm-only:w-40">
                             <div className="sm-only:flex items-center">
                                 <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
-                                    <img src={Email} alt="" class="w-5 h-4"></img>
+                                    <img src={Email} alt="" className="w-5 h-4"></img>
                                 </div>
                                 <div>
                                     <h1 className="text-black font-bold  lg:text-lg">Email</h1>

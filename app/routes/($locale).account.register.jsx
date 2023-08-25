@@ -110,8 +110,8 @@ export default function Register() {
       </div>
 
       <div className='w-6/12 relative sm-only:w-full'>
-        <div className="w-2/4  sm-only:left-0  relative top-2/4 sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 
-            2xl-only:absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+        <div className="w-2/4  sm-only:left-0  relative sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 
+            2xl-only:absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2
             md-only:w-10/12	
             lg-only:w-10/12 ">
           <p className='text-center text-xs text-slate-400 mb-2'>Home | Account</p>
@@ -123,7 +123,7 @@ export default function Register() {
             className="pt-6 pb-8 mb-4 space-y-3 px-8 sm-only:px-0  md-only:px-0">
             {actionData?.formError && (
               <div className="flex items-center justify-center mb-6 ">
-                <p className="text-s text-contrast text-red-600">{actionData.formError}</p>
+                <p className="text-sm text-red-600">{actionData.formError}</p>
               </div>
             )}
             <div>
@@ -287,9 +287,9 @@ export default function Register() {
                 aria-label="Password" />
             </div> */}
 
-            <div class="flex space-x-4 mt-4">
-              <input type="checkbox" id="keep-me-logged-in" name="keep-me-logged-in" class="h-4 w-4" />
-              <label for="keep-me-logged-in" class="text-sm">I agree to the Terms & Conditions*</label>
+            <div className="flex space-x-4 mt-4">
+              <input type="checkbox" id="keep-me-logged-in" name="keep-me-logged-in" className="h-4 w-4" />
+              <label for="keep-me-logged-in" className="text-sm">I agree to the Terms & Conditions*</label>
             </div>
 
             <div className="flex items-center justify-between">
