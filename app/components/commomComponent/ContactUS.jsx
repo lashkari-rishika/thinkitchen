@@ -1,12 +1,12 @@
 import React from "react";
-import Banner_img from "../../asset/Banner_img.png";
-import Location from "../../asset/Location.png";
-import Email from "../../asset/Email.png";
-import ShareIcon from "../../asset/share_icon.png";
-import Enquries from "../../asset/Enquries.png";
-import facebookicon from "../../asset/facebook_icon.png";
-import instagram from "../../asset/instagram.png";
-import youtube from "../../asset/youtube.png";
+// import Banner_img from "../../asset/Banner_img.png";
+// import Location from "../../asset/Location.png";
+// import Email from "../../asset/Email.png";
+// import ShareIcon from "../../asset/share_icon.png";
+// import Enquries from "../../asset/Enquries.png";
+// import facebookicon from "../../asset/facebook_icon.png";
+// import instagram from "../../asset/instagram.png";
+// import youtube from "../../asset/youtube.png";
 
 
 const Contactsection = () => {
@@ -14,7 +14,7 @@ const Contactsection = () => {
         <section>
             <div className="w-full pb-14">
                 <div className="Banner_image relative">
-                    <img className='min-w-full' src={Banner_img} alt=''></img>
+                    <img className='min-w-full' src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Banner_img.png?v=1690960125" />
                 </div>
             </div>
 
@@ -25,7 +25,7 @@ const Contactsection = () => {
 
                             <div className="sm-only:flex items-center">
                                 <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center ">
-                                    <img src={Location} alt="" className="w-4 h-5 "></img>
+                                    <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Location.png?v=1693463117" className="w-4 h-5 "/>
                                 </div>
 
                                 <div className="">
@@ -39,7 +39,7 @@ const Contactsection = () => {
                         <div className=" w-72 border-l border-zinc-300 border-inherit pl-4 sm-only:w-40">
                             <div className="sm-only:flex items-center">
                                 <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
-                                    <img src={Email} alt="" className="w-5 h-4"></img>
+                                    <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Email.png?v=1690960123"  className="w-5 h-4" />
                                 </div>
                                 <div>
                                     <h1 className="text-black font-bold  lg:text-lg">Email</h1>
@@ -52,23 +52,23 @@ const Contactsection = () => {
                         <div className=" w-72 border-l border-zinc-300 border-inherit pl-4 sm-only:w-40">
                             <div className="sm-only:flex items-center">
                                 <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
-                                    <img src={ShareIcon} alt="" className="w-5 h-4"></img>
+                                    <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/share_icon_af57eefa-6807-4352-9741-5312f46ad806.png?v=1693464633" className="w-5 h-4" />
                                 </div>
                                 <div>
                                     <h1 className="text-black font-bold pb-1 lg:text-lg">Social Media</h1>
                                 </div>
                             </div>
                             <div className="flex">
-                                <img src={facebookicon} alt="" className="w-2 h-4 mr-5"></img>
-                                <img src={instagram} alt="" className="w-4 h-4 mr-5"></img>
-                                <img src={Youtube} alt="" className="w-5 h-4 mr-5"></img>
+                                <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/facebook_icon_17be1079-5eb5-4782-91c1-73a90bc75c19.png?v=1693464284"  className="w-2 h-4 mr-5" />
+                                <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/instagram_3ecaa9b5-1674-4476-afa2-25db802f71cb.png?v=1693464800"className="w-4 h-4 mr-5" />
+                                <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/youtube_8a3c0428-2006-4c9a-99b4-71e4111211a9.png?v=1693464930" className="w-5 h-4 mr-5" />
                             </div>
                         </div>
 
                         <div className=" w-72 border-l border-zinc-300 border-inherit pl-4 sm-only:w-40">
                             <div className="sm-only:flex items-center">
                                 <div className="bg-white w-10 h-10 mb-1.5 rounded-full flex items-center justify-center">
-                                    <img src={Enquries} alt="" className="w-4 h-5"></img>
+                                    <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Enquries.png?v=1690960123" className="w-4 h-5"></img>
                                 </div>
 
                                 <div>

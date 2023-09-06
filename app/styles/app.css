@@ -1066,9 +1066,7 @@ margin-left: 10px;
   transform: translate(-45%, -50%) !important;
   width: 100%; 
 }
-.about_health1 {
-  transform: translate(1%, 30%) !important;
-}
+
 
 
 
@@ -1081,19 +1079,17 @@ margin-left: 10px;
   font-weight: 300;
 }
 
-.about_health1{
-  transform: translate(1%, 30%) !important;
+/* start Custom CSS to hide scroll bars */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+/* end Custom CSS to hide scroll bars */
 
-/* tabs----css--start--here---komal */
 
-.tab-buttons button {
-  padding: 10px 10px;
-  border: none;
-}
-.tab-buttons button:focus {
-  border-bottom: 2px solid black; 
-}
+
 
 
 .banner-logo img{
@@ -1111,12 +1107,6 @@ margin-left: 10px;
   }
   
 }
-
-
-/* .image_section .swiper .swiper-wrapper .swiper-slide{
-  width: 0px;
-} */
-
 
 
 body {font-family: Arial;}
