@@ -39,6 +39,7 @@ import VerticalTabs from './Verticaltabs';
 import Myorderdetails from './Myorderdetails';
 import EmailComponent from './EmailComponent';
 import Blog from './custom-components/BlogandBlogdetails/Blog';
+import Contactsection from './commomComponent/ContactUS';
 
 export function Layout({ children, layout }) {
   const { headerMenu, footerMenu } = layout;
@@ -58,7 +59,8 @@ export function Layout({ children, layout }) {
             {children}
             <div />
             <div>
-              <Blog />
+              {/* <Blog /> */}
+              <Contactsection />
             </div>
 
           </div>

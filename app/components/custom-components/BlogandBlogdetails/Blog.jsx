@@ -2,72 +2,85 @@ import React, { useState } from "react";
 
 const Blog = () => {
 
-    const [activeTab, setActiveTab] = useState(0);
+    const [activeTab, setActiveTab] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
     // Function to change the active tab
-    const changeTab = (newTab) => {
-        setActiveTab(newTab);
-      };
+    const changeTab = (category) => {
+        setActiveTab(category);
+        setSelectedCategory(category);
+        setCurrentPage(1);
+    };
+
 
     const blogItems = [
         {
-            id: 1,
+
+            category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img1.png?v=1693223678",
             Blogheader: 'Top Table Styling Ideas and Tips to Follow...',
             Blogcontent: 'The peak of summer is here. It means, it’s time to binge-eat mangoes and pull out all the linens, florals from the closet.',
             ReadButton: 'Read More',
         },
         {
-            id: 2,
+
+            category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img2.png?v=1692952922",
             Blogheader: "Social News XYZ | 09/08/2022",
             Blogcontent: "Embrace the Charm of Ceramics",
             ReadButton: 'Read More',
         },
         {
-            id: 3,
+
+            category: "Food&Drink",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img3.png?v=1693224243",
             Blogheader: 'Newsroom Odisha | 09/08/2022',
             Blogcontent: 'Essentials for Festive Entertaining',
             ReadButton: 'Read More',
         },
         {
-            id: 4,
+
+            category: "Entertaining",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img4.png?v=1693224435",
             Blogheader: 'Kaumi Marg | 09/08/2022',
             Blogcontent: 'Thoughtful yet effortless gifts for your sibling',
             ReadButton: 'Read More',
         },
         {
-            id: 5,
+
+            category: "Tips&Tricks",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
             Blogheader: 'Investment Guru India | 09/08/2022',
             Blogcontent: 'Thoughtful yet effortless gifts for your sibling',
             ReadButton: 'Read More',
         },
         {
-            id: 6,
+
+            category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img6.png?v=1693224527",
             Blogheader: 'Always First | 09/08/2022',
             Blogcontent: 'A Beginners Guide To Choosing The Best Wok To Transform Your Stir-Fry',
             ReadButton: 'Read More',
         },
         {
-            id: 7,
+
+            category: "Inspiration",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img7.png?v=1693224557",
             Blogheader: 'The Reporting Today | 08/08/2022',
             Blogcontent: 'Giving your kitchen showstopper esque vibes',
             ReadButton: 'Read More',
         },
         {
-            id: 8,
+
+            category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img8.png?v=1692952969",
             Blogheader: 'NDTV | 08/08/2022',
             Blogcontent: 'A Beginners Guide To Choosing The Best Wok To Transform Your Stir-Fry',
             ReadButton: 'Read More',
         },
         {
-            id: 9,
+
+            category: "Tips&Tricks",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img8.png?v=1692952969",
             Blogheader: 'Biz Life News | 07/08/2022',
             Blogcontent: 'A Beginners Guide To Choosing The Best Wok To Transform Your Stir-Fry',
@@ -76,18 +89,22 @@ const Blog = () => {
     ];
 
 
+    // =========== pagination logic start ============
 
-    const ITEMS_PER_PAGE = 3; // Adjust this value as needed
-    const TOTAL_ITEMS = blogItems.length; // Assuming you have an array of blog items
+    const ITEMS_PER_PAGE = 2;
+    const filteredItems = blogItems.filter((item) =>
+        selectedCategory ? item.category === selectedCategory : true
+    );
+    const TOTAL_ITEMS = filteredItems.length;
     const TOTAL_PAGES = Math.ceil(TOTAL_ITEMS / ITEMS_PER_PAGE);
 
     const [currentPage, setCurrentPage] = useState(1);
 
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, TOTAL_ITEMS);
-    const displayedItems = blogItems.slice(startIndex, endIndex);
+    const displayedItems = filteredItems.slice(startIndex, endIndex);
 
-
+    // =========== pagination logic end============
 
     return (
         <section>
@@ -97,59 +114,55 @@ const Blog = () => {
             <div className=" bg-neutral-100 p-2.5 fixed w-full top-16 sm-only:overflow-x-scroll  sm-only:top-20 hide-scrollbar md-only:overflow-x-scroll md-only:top-24">
                 <ul className="tabs-nav flex  lg:flex-row lg:space-x-4 md:justify-end xl:mr-[10%]">
                     <li>
-                        <a
-                            href="#Kitchen"
-                            onClick={() => changeTab(5)}
-                            className={` ${activeTab === 5 ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
+                        <button
+                            onClick={() => changeTab("Kitchen")}
+                            className={` ${activeTab === "Kitchen" ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
                         >
                             Kitchen
-                        </a>
+                        </button>
                     </li>
 
+
                     <li>
-                        <a
-                            href="#Inspiration"
-                            onClick={() => changeTab(1)}
-                            className={` ${activeTab === 1 ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
+                        <button
+                            onClick={() => changeTab("Inspiration")}
+                            className={` ${activeTab === "Inspiration" ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
                         >
                             Inspiration
-                        </a>
+                        </button>
                     </li>
 
                     <li>
-                        <a
-                            href="#Food&Drink"
-                            onClick={() => changeTab(2)}
-                            className={` ${activeTab === 2 ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
+                        <button
+                            onClick={() => changeTab("Food&Drink")}
+                            className={` ${activeTab === "Food&Drink" ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
                         >
                             Food&Drink
-                        </a>
+                        </button>
                     </li>
 
                     <li>
-                        <a
-                            href="#Entertaininga"
-                            onClick={() => changeTab(3)}
-                            className={` ${activeTab === 3 ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
+                        <button
+                            onClick={() => changeTab("Entertaininga")}
+                            className={` ${activeTab === "Entertaininga" ? "tab-active  border-b-2 border-black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
                         >
                             Entertaininga
-                        </a>
+                        </button>
                     </li>
 
                     <li>
-                        <a
-                            href="#Tips&tricks"
-                            onClick={() => changeTab(4)}
-                            className={` ${activeTab === 4 ? "tab-active  border-b-2 border-black black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
+                        <button
+                            onClick={() => changeTab("Tips&tricks")}
+                            className={` ${activeTab === "Tips&tricks" ? "tab-active  border-b-2 border-black black" : ""} text-sm lg:pb-3 sm-only:px-2 sm-only:py-2 md-only:py-2 md-only:px-2`}
                         >
                             Tips&tricks
-                        </a>
+                        </button>
                     </li>
 
                 </ul>
             </div>
 
-           {/* =============== end Tabs Functionality ================*/}
+            {/* =============== end Tabs Functionality ================*/}
 
             <div className=" px-10 pb-10 sm-only:px-3">
                 <div>
@@ -163,30 +176,31 @@ const Blog = () => {
                     <div className="tabs-stage lg:grid grid-cols-3 gap-4 ">
 
                         {displayedItems.map((item) => (
-                            <div
-                                key={item.id} // Ensure each item has a unique key
-                                id={item.id} // Use the id as the identifier (you can customize this)
-                                className={`w-full h-auto mb-5 ${activeTab === item.id ? "" : "hidden"}`}
-                            >
-                                <img src={item.imageUrl} alt="Image Card" />
-                                <div p-4 className="card-content border border-gray-200 p-4">
-                                    <h2 className="font-semibold border-b border-gray-300 text-xl pb-2 sm-only:hidden">
-                                        {item.Blogheader}
-                                    </h2>
+                            <div key={item.category} className={`w-full h-auto mb-5`}>
+                                {activeTab === item.category && (
+                                    <>
+                                        <img src={item.imageUrl} alt="Image Card" />
+                                        <div p-4 className="card-content border border-gray-200 p-4">
+                                            <h2 className="font-semibold border-b border-gray-300 text-xl pb-2 sm-only:hidden">
+                                                {item.Blogheader}
+                                            </h2>
 
-                                    <div className="md:hidden">
-                                        <h2 className="pb-2 border-b border-gray-300 font-bold">
-                                            {item.Blogheader}
-                                        </h2>
-                                    </div>
+                                            <div className="md:hidden">
+                                                <h2 className="pb-2 border-b border-gray-300 font-bold">
+                                                    {item.Blogheader}
+                                                </h2>
+                                            </div>
 
-                                    <p className="font-medium py-3 text-black whitespace-normal lg:only:text-justify">
-                                        {item.Blogcontent}
-                                    </p>
-                                    <button className="px-8 border border-gray-300 py-2 text-black-500 hover:bg-indigo-800 hover:text-gray-300 sm-only:text-black-500 font-bold text-sm">
-                                        {item.ReadButton}
-                                    </button>
-                                </div>
+                                            <p className="font-medium py-3 text-black whitespace-normal lg:only:text-justify">
+                                                {item.Blogcontent}
+                                            </p>
+                                            <button className="px-8 border border-gray-300 py-2 text-black-500 hover:bg-indigo-800 hover:text-gray-300 sm-only:text-black-500 font-bold text-sm">
+                                                {item.ReadButton}
+                                            </button>
+                                        </div>
+                                    </>
+                                )}
+
                             </div>
                         ))}
 
@@ -194,7 +208,7 @@ const Blog = () => {
                 </div>
             </div>
 
-            {/* ===================pagination======================= */}
+            {/* ===================start pagination functionality======================= */}
 
             <div className="flex justify-center items-center">
                 <ul className="flex flex-row space-x-2 text-zinc-400">
