@@ -27,14 +27,14 @@ export function ProductCard({
 
   const [discountPercentage, setDiscountPercentage] = useState(0);
 
-  const calculateDiscountPercentage = () => {
-    const discount = price.amount - compareAtPrice.amount;
-    const discountPercentageValue = parseInt((discount / price.amount) * 100);
-    setDiscountPercentage(Math.floor(discountPercentageValue.toFixed(2)));
-  };
-  useEffect(() => {
-    calculateDiscountPercentage();
-  }, []);
+  // const calculateDiscountPercentage = () => {
+  //   const discount = price.amount - compareAtPrice.amount;
+  //   const discountPercentageValue = parseInt((discount / price.amount) * 100);
+  //   setDiscountPercentage(Math.floor(discountPercentageValue.toFixed(2)));
+  // };
+  // useEffect(() => {
+  //   calculateDiscountPercentage();
+  // }, []);
   if (label) {
     cardLabel = label;
   } else if (isDiscounted(price, compareAtPrice)) {
@@ -78,7 +78,7 @@ export function ProductCard({
               <AiOutlineHeart />
             </button>
             <div className="discount_lable absolute p-1 md-only:text-sm md-only:p-[0.001rem] text-red-600 font-semibold bg-white rounded-br-lg  font-xs">
-              {discountPercentage}% <span> OFF</span>
+              {/* {discountPercentage}% <span> OFF</span> */}
             </div>
             <div className="px-1 py-2  w-full">
               <div className="product_card_text flex">

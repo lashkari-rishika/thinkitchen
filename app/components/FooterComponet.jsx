@@ -7,24 +7,21 @@ import {FiChevronDown} from 'react-icons/fi';
 import React, {useState} from 'react';
 
 import ShippingComponent from './ShippingComponent';
+import {Link} from './Link';
 const FooterComponet = ({menu}) => {
-
-  const [isDescriptionVisible, setDescriptionVisible] = useState(true);
-
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(true);
   const [isIconRotated, setIconRotated] = useState(true);
-  const [isShopNowOpen, setShopNowOpen] = useState(false);
+  // const [isShopNowOpen, setShopNowOpen] = useState(false);
   const [isKnowUsOpen, setKnowUsOpen] = useState(false);
   const [isCustomerServiceOpen, setCustomerServiceOpen] = useState(false);
   const [isBrandsOpen, setBrandsOpen] = useState(false);
   // const toggleShopNow = () => setShopNowOpen((prevState) => !prevState);
-  const toggleShopNow = () => {
-    setShopNowOpen((prevState) => !prevState);
-    setIconRotated((prevRotation) => !prevRotation); // Toggling icon rotation
+  const [isShopNowOpen, setIsShopNowOpen] = useState(null);
+
+  const toggleShopNow = (itemId) => {
+    setIsShopNowOpen((prevItemId) => (prevItemId === itemId ? null : itemId));
   };
-  const toggleKnowUs = () => {
-    setKnowUsOpen((prevState) => !prevState);
-    setIconRotated((prevRotation) => !prevRotation); // Toggling icon rotation
-  };
+
   const toggleCustomerService = () => {
     setCustomerServiceOpen((prevState) => !prevState);
     setIconRotated((prevRotation) => !prevRotation);
@@ -39,12 +36,10 @@ const FooterComponet = ({menu}) => {
   //   setDescriptionVisible((prevState) => !prevState);
   // };
 
-
-
   const toggleDescription = () => {
-      setIsDescriptionVisible(!isDescriptionVisible);
-      // Scroll to top when up icon is clicked
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    setDescriptionVisible(!isDescriptionVisible);
+    // Scroll to top when up icon is clicked
+    window.scrollTo({top: 0, behavior: 'smooth'});
   };
   return (
     <div>
@@ -123,22 +118,15 @@ const FooterComponet = ({menu}) => {
 
           <div className="container mx-auto w-4/5">
             <div className="shop-section mx-auto">
-              <div className="grid grid-cols-3 sm:grid-cols-1 gap-8 sm-only:gap-0 pt-4 sm-only:pb-0 pb-12 md:grid-cols-3">
+              <div className="grid grid-cols-3  pb-12 gap-8 sm-only:hidden md:grid-cols-3 ">
                 {(menu?.items || []).map((item, index) => (
                   <>
                     {index !== 3 ? (
                       <div key={item.id} className="w-64 sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4">
                         <div className="shop-now-header ">
-                          <h2 className=" sm:mb-0 font-medium text-gray-900 dark:text-white">
+                          <Link className=" sm:mb-0 font-semibold text-gray-900 dark:text-white">
                             {item.title}
-                          </h2>
-                          <FiChevronDown
-                            size={24}
-                            className={`shop-now-down-icon sm:absolute sm:right-10 ${
-                              isIconRotated ? 'rotate' : ''
-                            }`}
-                            onClick={toggleShopNow}
-                          />
+                          </Link>
                         </div>
                         <ul
                           className={`  ${
@@ -162,17 +150,58 @@ const FooterComponet = ({menu}) => {
                   </>
                 ))}
               </div>
+              <div className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden sm-only:grid-cols-1 sm-only:gap-0  sm-only:pb-0 ">
+                {(menu?.items || []).map((item, index) => (
+                  <div
+                    className="sm-only:w-[100%] w-64 sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4"
+                    key={index}
+                  >
+                    <div className="shop-now-header">
+                      <button
+                        className="sm:mb-0 font-semibold	 text-gray-900 dark:text-white"
+                        onClick={() => toggleShopNow(item.id)}
+                      >
+                        {item.title}
+                      </button>
+                      <FiChevronDown
+                        size={24}
+                        className={`shop-now-down-icon sm:absolute sm:right-10 ${
+                          isIconRotated && isShopNowOpen === item.id
+                            ? 'rotate'
+                            : ''
+                        }`}
+                        onClick={() => toggleShopNow(item.id)}
+                      />
+                    </div>
+                    <ul
+                      className={`${
+                        isShopNowOpen === item.id ? 'block' : 'hidden'
+                      } xl:block sm-only:grid-cols-2 pt-10`}
+                    >
+                      {item?.items?.length > 0 ? (
+                        <ul className="flex_column flex max-h-[160px]">
+                          {item.items.map((subItem) => (
+                            <li key={subItem.id}>
+                              <a href="#">{subItem.title}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* BRANDS */}
-          <div className="border-t brands-section mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0 sm-only:border-t-0">
+          <div className="border-t brands-section sm-only:hidden mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0 sm-only:border-t-0">
             {(menu?.items || []).map((item) => (
               <>
                 {item.title == 'Brands' ? (
                   <div key={item.id} className="container mx-auto w-4/5 pt-8 sm-only:pt-0 sm-ony:pt-15 sm-only:border-b-2 border-gray-300 sm:pb-4">
                     <div className="brands-header">
-                      <h2 className=" mb-4  sm:mb-0  font-medium text-gray-900 dark:text-white">
+                      <h2 className=" mb-4  sm:mb-0  font-semibold	 text-gray-900 dark:text-white">
                         {item.title}
                       </h2>
                       <FiChevronDown
@@ -217,7 +246,9 @@ const FooterComponet = ({menu}) => {
               <img
                 src={up_icon}
                 alt=""
-                className={`h-4 w-4 transform ${isDescriptionVisible ? '' : ''}`}
+                className={`h-4 w-4 transform ${
+                  isDescriptionVisible ? '' : ''
+                }`}
                 onClick={toggleDescription}
               />
             </div>
@@ -225,57 +256,55 @@ const FooterComponet = ({menu}) => {
         </div>
       </section>
       {/* description */}
-      
-        <section>
-          <div className="description pt-6 pb-6 bg-white text-black">
-            <div className="container mx-auto w-4/5">
-              <div className="paragraph-one mt-4">
-                <p>
-                  ThinKitchen aims to empower and encourage families to cook,
-                  eat and live healthy. This begins with your cookware and
-                  kitchen utensils. From waterless cookware to beautiful and
-                  functional kitchen utensil sets, thinKitchen has everything
-                  you would need for a mindful and healthy kitchen.
-                </p>
-              </div>
-              <div className="paragraph-one mt-4">
-                <p>
-                  Dining has never been more elegant and wonderful. Housing
-                  beautiful stoneware and tableware sets, along with surgical
-                  stainless steel cutlery sets, thinKitchen has everything you
-                  require for casual dinners, intimate gatherings or
-                  entertaining large parties.
-                </p>
-              </div>
-              <div className="paragraph-one mt-4 mb-8">
-                <p>
-                  Disclaimer - The information provided by Seeba Lifestyles
-                  Private Limited ("We/Our/Us") on this website is for
-                  informational purposes only. This information shall not be
-                  copied, reproduced, used and/or exploited in any manner by you
-                  or any other third party acting on your behalf, save and
-                  except as approved by Us in writing in advance. We make no
-                  representations or warranties regarding the accuracy or
-                  correctness of such information. We shall not be held liable
-                  for any losses, claims, damages, liabilities, penalties, costs
-                  arising out of your viewing of the website and/or reliance on
-                  the information stated herein. In no event shall you or any
-                  third party acting on your behalf use any of Our logos,
-                  trademarks and/or trade names for any reason whatsoever. You
-                  shall, at all times, be in strict compliance with the
-                  applicable laws and terms and conditions and privacy policy of
-                  Our website. Should there be any links on Our website which
-                  direct you to any third party website, we shall not be
-                  responsible for anything that you view on such third party
-                  websites. You shall, at all times, be in strict compliance
-                  with the terms and conditions and privacy policies of such
-                  third party website.
-                </p>
-              </div>
+
+      <section>
+        <div className="description pt-6 pb-6 bg-white text-black">
+          <div className="container mx-auto w-4/5">
+            <div className="paragraph-one mt-4">
+              <p>
+                ThinKitchen aims to empower and encourage families to cook, eat
+                and live healthy. This begins with your cookware and kitchen
+                utensils. From waterless cookware to beautiful and functional
+                kitchen utensil sets, thinKitchen has everything you would need
+                for a mindful and healthy kitchen.
+              </p>
+            </div>
+            <div className="paragraph-one mt-4">
+              <p>
+                Dining has never been more elegant and wonderful. Housing
+                beautiful stoneware and tableware sets, along with surgical
+                stainless steel cutlery sets, thinKitchen has everything you
+                require for casual dinners, intimate gatherings or entertaining
+                large parties.
+              </p>
+            </div>
+            <div className="paragraph-one mt-4 mb-8">
+              <p>
+                Disclaimer - The information provided by Seeba Lifestyles
+                Private Limited ("We/Our/Us") on this website is for
+                informational purposes only. This information shall not be
+                copied, reproduced, used and/or exploited in any manner by you
+                or any other third party acting on your behalf, save and except
+                as approved by Us in writing in advance. We make no
+                representations or warranties regarding the accuracy or
+                correctness of such information. We shall not be held liable for
+                any losses, claims, damages, liabilities, penalties, costs
+                arising out of your viewing of the website and/or reliance on
+                the information stated herein. In no event shall you or any
+                third party acting on your behalf use any of Our logos,
+                trademarks and/or trade names for any reason whatsoever. You
+                shall, at all times, be in strict compliance with the applicable
+                laws and terms and conditions and privacy policy of Our website.
+                Should there be any links on Our website which direct you to any
+                third party website, we shall not be responsible for anything
+                that you view on such third party websites. You shall, at all
+                times, be in strict compliance with the terms and conditions and
+                privacy policies of such third party website.
+              </p>
             </div>
           </div>
-        </section>
-    
+        </div>
+      </section>
     </div>
   );
 };

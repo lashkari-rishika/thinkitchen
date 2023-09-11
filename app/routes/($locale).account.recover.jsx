@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 import {Link} from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
-import Login_img1 from '../asset/Login_img1.png';
+// import Login_img1 from '../asset/Login_img1.png';
 
 
 export async function loader({context, params}) {
@@ -55,7 +55,7 @@ export default function Recover() {
   return (
     <div className="flex justify-between sm-only:block">
       <div className="w-6/12  sm-only:hidden  ">
-        <img src={Login_img1} alt="" />
+        <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Login_img1.png?v=1693466009"/>
       </div>
 
       <div className="w-1/2	relative sm-only:w-full text-center ">

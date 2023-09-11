@@ -1,5 +1,5 @@
 import React from "react";
-import Bannerdetails_img from "../../../asset/Blogdetails_img.png";
+// import Bannerdetails_img from "../../../asset/Blogdetails_img.png";
 
 const Blogdetails = () => {
     return (
@@ -15,7 +15,7 @@ const Blogdetails = () => {
                                 Top Table Styling Ideas and Tips...
                             </p>
                             <div>
-                                <img src={Bannerdetails_img} alt=''></img>
+                                <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blogdetails_img.png?v=1693465683"/>
                             </div>
                         </div>
 
