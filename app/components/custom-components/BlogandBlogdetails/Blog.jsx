@@ -9,6 +9,7 @@ import Blog_img7 from "../../../asset/Blog_img7.png";
 import Blog_img8 from "../../../asset/Blog_img8.png";
 import Blog_img9 from "../../../asset/Blog_img9.png";
 import Tabs from "./Tabs";
+import Blogdetails from "./Blogdetails";
 
 const Blog = () => {
     return (

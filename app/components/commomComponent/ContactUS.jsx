@@ -9,7 +9,7 @@ import instagram from "../../asset/instagram.png";
 import youtube from "../../asset/youtube.png";
 
 
-const Contactsection = () => {
+const ContactUs = () => {
     return (
         <section>
             <div className="w-full pb-14">
@@ -61,7 +61,7 @@ const Contactsection = () => {
                             <div className="flex">
                                 <img src={facebookicon} alt="" className="w-2 h-4 mr-5"></img>
                                 <img src={instagram} alt="" className="w-4 h-4 mr-5"></img>
-                                <img src={Youtube} alt="" className="w-5 h-4 mr-5"></img>
+                                <img src={youtube} alt="" className="w-5 h-4 mr-5"></img>
                             </div>
                         </div>
 
@@ -120,6 +120,6 @@ const Contactsection = () => {
     );
 };
 
-export default Contactsection;
+export default ContactUs;
 
 

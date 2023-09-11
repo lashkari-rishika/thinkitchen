@@ -106,9 +106,6 @@ export default function Search() {
                   product={item}
                   loading={getImageLoadingPriority(i)}
                 />
-
-                
-
               ));
 
               return (
