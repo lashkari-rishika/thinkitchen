@@ -12,9 +12,9 @@ const VerticalTabs = ({ customer, addresses, orders }) => {
   }, []);
 
   const openCity = (event, cityName) => {
-    const tabcontent = document.getElementsByClassName("tabcontent");
-    for (let i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
+    const tabcontents = document.getElementsByClassName("tabcontents");
+    for (let i = 0; i < tabcontents.length; i++) {
+      tabcontents[i].style.display = "none";
     }
 
     const tablinks = document.getElementsByClassName("tablinks");
@@ -46,9 +46,9 @@ const VerticalTabs = ({ customer, addresses, orders }) => {
           </Form>
         </div>
 
-        <div className="lg:mt-20  bg-[#d3d3d34d] sm-only:flex lg-only:ml-4 xl-only:ml-4">
+        <div className="lg:mt-20  lg:bg-[#d3d3d34d] sm-only:flex lg-only:ml-4 xl-only:ml-4">
           <button
-            className="tablinks block text-left w-full pt-6 pb-4 px-4 xl-only:hover:bg-gray-200 relative"
+            className="tablinks block text-left w-full pt-6 pb-4 px-4 relative"
             onClick={(e) => openCity(e, "London")}
             id="defaultOpen"
           >
@@ -57,7 +57,7 @@ const VerticalTabs = ({ customer, addresses, orders }) => {
           </button>
 
           <button
-            className="tablinks block text-left w-full pt-4 pb-4 px-4 xl-only:marker:hover:bg-gray-200 relative"
+            className="tablinks block text-left w-full pt-4 pb-4 px-4  relative"
             onClick={(e) => openCity(e, "Paris")}
           >
             My Orders
@@ -66,7 +66,7 @@ const VerticalTabs = ({ customer, addresses, orders }) => {
 
           <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
             <button
-              className="tablinks block text-left w-full pt-4 pb-4 px-4 xl-only:hover:bg-gray-200 sm-only:hidden relative"
+              className="tablinks block text-left w-full pt-4 pb-4 px-4  sm-only:hidden relative"
               onClick={(e) => openCity(e, "Tokyo")}
             >
               Logout
@@ -74,29 +74,19 @@ const VerticalTabs = ({ customer, addresses, orders }) => {
             </button>
           </Form>
 
-      </div>
-
-
-
-      <div className="p-2 col-span-4 lg-only:px-10 lg:pt-6 lg:pb-6">
-
-        <div id="London" className="tabcontent hidden">
-          <h3 className="text-lg "><Myaccount customer={customer} addresses={addresses} /> </h3>
-
         </div>
 
-        <div id="Paris" className="tabcontent hidden">
-          <h3 className="text-lg "><Myorder orders={orders} /></h3>
+        <div className="p-2 col-span-4 lg-only:px-10 lg:pt-6 lg:pb-6">
+          <div id="London" className="tabcontents hidden">
+            <h3 className="text-lg "><Myaccount customer={customer} addresses={addresses} /> </h3>
+          </div>
 
+          <div id="Paris" className="tabcontents hidden">
+            <h3 className="text-lg "><Myorder orders={orders} /></h3>
+          </div>
         </div>
-        {/* 
-          <div id="Tokyo" className="tabcontent hidden">
-            <h3 className="text-lg "></h3>
-          </div> */}
 
       </div>
-    </div>
-
     </div >
   );
 };
