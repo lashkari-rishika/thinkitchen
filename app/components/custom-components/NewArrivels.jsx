@@ -84,7 +84,7 @@ const NewArrivels = ({ images, text }) => {
         </Swiper>
 
       </div>
-        <div className="flex justify-center text-4xl my-4 sm-only:hidden gap-6">
+        <div className="flex justify-center text-3xl mb-4 sm-only:hidden gap-6">
           <button className="flex justify-center" onClick={slidePrev}>
             <BsArrowLeft />
           </button>
