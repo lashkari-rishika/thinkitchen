@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
  import '../../../node_modules/swiper/swiper-bundle.css'
  import '../../../node_modules/swiper/swiper-bundle.js'
 import {BsArrowLeft, BsArrowRight} from 'react-icons/bs';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import data from '../../../JSON/db.json';
 
 const FeaturedIn = ({ images, text }) => {
   const [swiper, setSwiper] = useState(null);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   const slidePrev = () => {
     if (swiper) {
@@ -19,18 +21,31 @@ const FeaturedIn = ({ images, text }) => {
       swiper.slideNext();
     }
   };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <div className="category_main_section mt-10 sm-only:px-3 px-10">
+    <div className="featured_in_main mt-10 sm-only:px-3 px-10">
       <div className="text_center">
         <div className="FeaturedIn_heading flex justify-center">
           <h1 className="text-4xl sm-only:text-2xl font-medium pb-4 uppercase">featuredin</h1>
         </div>
 
         <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
           slidesPerView={3}
-          scrollbar={{ draggable: true }}
+          scrollbar={isMobileView ? { draggable: true } : false}
           breakpoints={{
             992: {
               slidesPerView: 5,
@@ -61,7 +76,7 @@ const FeaturedIn = ({ images, text }) => {
         </Swiper>
 
       </div>
-      <div className="flex justify-center text-4xl my-4 sm-only:hidden gap-6">
+      <div className="flex justify-center text-3xl mb-4 sm-only:hidden gap-6">
           <button className="flex justify-center" onClick={slidePrev}>
             <BsArrowLeft />
           </button>

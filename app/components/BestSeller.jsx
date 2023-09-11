@@ -14,12 +14,12 @@ export function BestSeller({
   title = 'Featured Products',
   products = mockProducts,
   count = 12,
-  ...props
+  ...props  
 }) {
   return (
     <>
       <Section
-        className="sm-only:px-3 px-10"
+        className="sm-only:px-3 px-10 mt-10"
         heading={title}
         padding="y"
         {...props}

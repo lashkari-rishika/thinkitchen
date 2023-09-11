@@ -85,7 +85,7 @@ export default function Login() {
 
 
       <div className="w-6/12 sm-only:hidden ">
-        <img src={Login_img1} alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Login_img1.png?v=1693466009"/>
 
       </div>
 

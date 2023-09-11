@@ -45,7 +45,7 @@ export function BestSeller({
   }, []);
 
   return (
-    <Section className="sm-only:px-3 px-10" heading={title} padding="y" {...props}>
+    <Section className="mt-10 sm-only:px-3 px-10" heading={title} padding="y" {...props}>
       <Swiper
        modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
@@ -80,7 +80,7 @@ export function BestSeller({
         ))}
       </div>
       </Swiper>
-      <div className="flex justify-center text-4xl my-4 sm-only:hidden gap-6">
+      <div className="flex justify-center text-3xl mb-4 sm-only:hidden gap-6">
            <button className="flex justify-center" onClick={slidePrev}>
             <BsArrowLeft />
           </button>

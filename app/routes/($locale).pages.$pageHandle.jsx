@@ -9,6 +9,7 @@ import {AboutUS} from '~/components/AboutUS';
 import Blog from '~/components/custom-components/BlogandBlogdetails/Blog'
 import ContactUs from '~/components/commomComponent/ContactUS'
 
+
 export const headers = routeHeaders;
 
 export async function loader({request, params, context}) {
@@ -35,6 +36,7 @@ export default function Page() {
   const pagesWithComponents = ['About us', 'Blog', 'Career with us',];
   return (
     <>
+
         {pagesWithComponents.includes(page.title)  ? (
         // Render specific components based on page title
         <>
@@ -43,8 +45,9 @@ export default function Page() {
           {page.title === 'Career with us' && <ContactUs/>}
         </>
       ) : (
+
           <div
-            dangerouslySetInnerHTML={{__html: page.body}}
+            dangerouslySetInnerHTML={{ __html: page.body }}
             className="prose dark:prose-invert"
           />
         )}

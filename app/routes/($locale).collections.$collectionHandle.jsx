@@ -28,6 +28,8 @@ import {FilterC, PlpFilterUI} from '~/components/custom-components/FilterC';
 import {GrClose} from 'react-icons/gr';
 import {FiSearch} from 'react-icons/fi';
 import '../styles/app.css';
+import { Accordian } from '../components/custom-components/Accordian';
+import { accordian } from '../../JSON/db.json'
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -35,9 +37,9 @@ export async function loader({params, request, context}) {
     pageBy: 8,
   });
   const {collectionHandle} = params;
-
+  
   invariant(collectionHandle, 'Missing collectionHandle param');
-
+  
   const searchParams = new URL(request.url).searchParams;
   const knownFilters = ['productVendor', 'productType'];
   const available = 'available';
@@ -125,6 +127,7 @@ export async function loader({params, request, context}) {
 }
 
 export default function Collection() {
+  const [data, setData] = useState(accordian);
   const {collection, collections, appliedFilters} = useLoaderData();
   const [params] = useSearchParams();
   const location = useLocation();
@@ -350,6 +353,17 @@ export default function Collection() {
           )}
         </Pagination>
         {/* </SortFilter> */}
+        <div className="faq-section my-10 bg-white ">
+          <div className="lg:px-20 sm:px-2 lg:py-6 sm:py-2">
+            <h2 className="faq-title font-bold py-2 text-xl">
+              Faq on thinkitchen products
+            </h2>
+            {data.map((curData) => {
+              const {id} = curData;
+              return <Accordian key={id} {...curData} />;
+            })}
+          </div>
+        </div>
       </div>
     </>
   );

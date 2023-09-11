@@ -3,7 +3,7 @@
     {
       "id": 1,
       "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Rectangle-6003.png?v=1690960123",
-      "name": "Pripware",
+      "name": "Prepware",
       "link": "https://www.google.com/"
     },
     {
@@ -199,7 +199,7 @@
       "name": "DARTINGTON",
       "text1": "Sale upto",
       "text2": "50% OFF",
-      "cartBtn": "Add To Cart",
+      "cartBtn": "shop now",
       "link": "https://www.google.com/"
     },
     {
@@ -209,7 +209,7 @@
       "name": "DENBY",
       "text1": "Festival season",
       "text2": "",
-      "cartBtn": "Add To Cart",
+      "cartBtn": "shop now",
       "link": "https://www.google.com/"
     }
   ],
@@ -322,11 +322,17 @@
     },
     {
       "id": 5,
-      "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/social4.png?v=1690960123",
+      "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/social3.png?v=1690960123",
       "link": "https://www.google.com/"
     }
   ],
   "testimonial": [
+    {
+      "id": 1,
+      "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/CT1.png?v=1690461750",
+      "starimg": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/5star.png?v=1690960122",
+      "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+    },
     {
       "id": 1,
       "imageSrc": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/CT1.png?v=1690461750",
@@ -900,60 +906,51 @@
       "content": "I am using this product from last 60 days. It is very good product."
     }
   ],
-  "blogs": [
+  "email_product": [
+    [
+      {
+        "id": 1,
+        "name": "Amefa Austin Cutlery, Set of 24",
+        "quantity": 1,
+        "price": 4999,
+        "image": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/email_product_img_1.png?v=1692785012"
+      },
+      {
+        "id": 2,
+        "name": "Mikasa Reactive Blue Dinnerware Set, 12 pcs",
+        "quantity": 1,
+        "price": 8399,
+        "image": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/email_product_img-2.png?v=1692785015"
+      }
+    ]
+  ],
+  "email_Customer_addrass":[
     {
-      "id": 1,
-      "img": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer1.png?v=1691572299",
-      "name": "Pankaj Saini",
-      "date": "25/6/2022",
-      "verified": true,
-      "title": "It is a good product for good health. ",
-      "content": "I am using this product from last 60 days. It is very good product."
-    },
-    {
-      "id": 2,
-      "img": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer2.png?v=1691572316",
-      "name": "DP",
-      "date": "15/6/2022",
-      "verified": false,
-      "title": "The best product requires perfect health.",
-      "content": "Looks good."
-    },
-    {
-      "id": 3,
-      "img": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer3.png?v=1691572325",
-      "name": "Amlan Jyoti Das",
-      "date": "10/6/2022",
-      "verified": true,
-      "title": "A healthy body makes for a good product.  ",
-      "content": "I am using this product from last 60 days. It is very good product."
-    },
-    {
-      "id": 4,
-      "img": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer1.png?v=1691572299",
-      "name": "Pankaj Saini",
-      "date": "25/6/2022",
-      "verified": true,
-      "title": "It is a good product for good health. ",
-      "content": "I am using this product from last 60 days. It is very good product."
-    },
-    {
-      "id": 5,
-      "img": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer2.png?v=1691572316",
-      "name": "DP",
-      "date": "15/6/2022",
-      "verified": false,
-      "title": "The best product requires perfect health.",
-      "content": "Looks good."
-    },
-    {
-      "id": 6,
-      "img": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/PdpReviewCustomer3.png?v=1691572325",
-      "name": "Amlan Jyoti Das",
-      "date": "10/6/2022",
-      "verified": true,
-      "title": "A healthy body makes for a good product.  ",
-      "content": "I am using this product from last 60 days. It is very good product."
+      "billingAddress": {
+        "id": "billing",
+        "title": "Billing Address",
+        "name": "Jayesh Khagram",
+        "address": "Mumbai, MH 400078",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400078",
+        "country": "India",
+        "phone": "+91 123456789"
+      },
+      "shippingAddress": {
+        "id": "shipping",
+        "title": "Shipping Address",
+        "name": "Jayesh Khagram",
+        "address": "Mumbai, MH 400078",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400078",
+        "country": "India",
+        "phone": "+91 123456789"
+      }
     }
   ]
+
+
+
 }
