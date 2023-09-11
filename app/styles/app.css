@@ -1190,3 +1190,10 @@ body {font-family: Arial;}
   border-top: none;
 }
 
+.frequently_brought_12{
+  max-width: 200px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  line-height: 1.8;
+}
