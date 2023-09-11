@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Blog = () => {
 
-    const [activeTab, setActiveTab] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState(null);
-
-    // Function to change the active tab
-    const changeTab = (category) => {
-        setActiveTab(category);
-        setSelectedCategory(category);
-        setCurrentPage(1);
-    };
-
+    const [activeTab, setActiveTab] = useState("Kitchen"); // Set "Kitchen" as the default active tab
+    const [selectedCategory, setSelectedCategory] = useState("Kitchen");
+    const [currentPage, setCurrentPage] = useState(1); // Define currentPage state
+    const [displayedItems, setDisplayedItems] = useState([]); // Update displayedItems
+    const ITEMS_PER_PAGE = 3; // Define the number of items per page
 
     const blogItems = [
         {
-
             category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img1.png?v=1693223678",
             Blogheader: 'Top Table Styling Ideas and Tips to Follow...',
@@ -31,8 +25,7 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
-            category: "Food&Drink",
+            category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img3.png?v=1693224243",
             Blogheader: 'Newsroom Odisha | 09/08/2022',
             Blogcontent: 'Essentials for Festive Entertaining',
@@ -40,7 +33,15 @@ const Blog = () => {
         },
         {
 
-            category: "Entertaining",
+            category: "Kitchen",
+            imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img6.png?v=1693224527",
+            Blogheader: 'Always First | 09/08/2022',
+            Blogcontent: 'A Beginners Guide To Choosing The Best Wok To Transform Your Stir-Fry',
+            ReadButton: 'Read More',
+        },
+        {
+
+            category: "Entertaininga",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img4.png?v=1693224435",
             Blogheader: 'Kaumi Marg | 09/08/2022',
             Blogcontent: 'Thoughtful yet effortless gifts for your sibling',
@@ -48,7 +49,7 @@ const Blog = () => {
         },
         {
 
-            category: "Tips&Tricks",
+            category: "Tips&tricks",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
             Blogheader: 'Investment Guru India | 09/08/2022',
             Blogcontent: 'Thoughtful yet effortless gifts for your sibling',
@@ -56,9 +57,9 @@ const Blog = () => {
         },
         {
 
-            category: "Kitchen",
-            imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img6.png?v=1693224527",
-            Blogheader: 'Always First | 09/08/2022',
+            category: "Tips&tricks",
+            imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img8.png?v=1692952969",
+            Blogheader: 'Biz Life News | 07/08/2022',
             Blogcontent: 'A Beginners Guide To Choosing The Best Wok To Transform Your Stir-Fry',
             ReadButton: 'Read More',
         },
@@ -72,7 +73,7 @@ const Blog = () => {
         },
         {
 
-            category: "Kitchen",
+            category: "Inspiration",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img8.png?v=1692952969",
             Blogheader: 'NDTV | 08/08/2022',
             Blogcontent: 'A Beginners Guide To Choosing The Best Wok To Transform Your Stir-Fry',
@@ -80,29 +81,77 @@ const Blog = () => {
         },
         {
 
-            category: "Tips&Tricks",
-            imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img8.png?v=1692952969",
-            Blogheader: 'Biz Life News | 07/08/2022',
-            Blogcontent: 'A Beginners Guide To Choosing The Best Wok To Transform Your Stir-Fry',
+            category: "Food&Drink",
+            imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
+            Blogheader: 'Investment Guru India | 09/08/2022',
+            Blogcontent: 'Thoughtful yet effortless gifts for your sibling',
             ReadButton: 'Read More',
         },
+        {
+
+            category: "Food&Drink",
+            imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
+            Blogheader: 'Investment Guru India | 09/08/2022',
+            Blogcontent: 'Thoughtful yet effortless gifts for your sibling',
+            ReadButton: 'Read More',
+        },
+        {
+
+            category: "Food&Drink",
+            imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
+            Blogheader: 'Investment Guru India | 09/08/2022',
+            Blogcontent: 'Thoughtful yet effortless gifts for your sibling',
+            ReadButton: 'Read More',
+        },
+
     ];
 
-
-    // =========== pagination logic start ============
-
-    const ITEMS_PER_PAGE = 2;
+    // Calculate TOTAL_ITEMS and TOTAL_PAGES outside useEffect
     const filteredItems = blogItems.filter((item) =>
         selectedCategory ? item.category === selectedCategory : true
     );
-    const TOTAL_ITEMS = filteredItems.length;
-    const TOTAL_PAGES = Math.ceil(TOTAL_ITEMS / ITEMS_PER_PAGE);
 
-    const [currentPage, setCurrentPage] = useState(1);
+    // Calculate the total number of items in each category after filtering
+    const TOTAL_ITEMS_BY_CATEGORY = {};
 
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, TOTAL_ITEMS);
-    const displayedItems = filteredItems.slice(startIndex, endIndex);
+    blogItems.forEach((item) => {
+        if (!TOTAL_ITEMS_BY_CATEGORY[item.category]) {
+            TOTAL_ITEMS_BY_CATEGORY[item.category] = 0;
+        }
+        TOTAL_ITEMS_BY_CATEGORY[item.category]++;
+    });
+
+    // Calculate the total number of pages for each category based on items per page (3 items per page)
+    const TOTAL_PAGES_BY_CATEGORY = {};
+
+    Object.keys(TOTAL_ITEMS_BY_CATEGORY).forEach((category) => {
+        TOTAL_PAGES_BY_CATEGORY[category] = Math.ceil(
+            TOTAL_ITEMS_BY_CATEGORY[category] / ITEMS_PER_PAGE
+        );
+    });
+
+    // Function to change the active tab
+    const changeTab = (category) => {
+        setActiveTab(category);
+        setSelectedCategory(category);
+        setCurrentPage(1);
+    };
+
+    // =========== pagination logic start ============
+
+    useEffect(() => {
+        // Calculate the start and end indices for the currently displayed page
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, TOTAL_ITEMS_BY_CATEGORY[selectedCategory]);
+
+        // Filter and set the displayed items for the selected category
+        const selectedCategoryItems = filteredItems
+            .filter(item => item.category === selectedCategory)
+            .slice(startIndex, endIndex);
+
+        // Set the displayed items based on the calculated indices
+        setDisplayedItems(selectedCategoryItems);
+    }, [selectedCategory, currentPage]);
 
     // =========== pagination logic end============
 
@@ -175,8 +224,8 @@ const Blog = () => {
 
                     <div className="tabs-stage lg:grid grid-cols-3 gap-4 ">
 
-                        {displayedItems.map((item) => (
-                            <div key={item.category} className={`w-full h-auto mb-5`}>
+                        {displayedItems.map((item, index) => (
+                            <div key={index} className={`w-full h-auto mb-5`}>
                                 {activeTab === item.category && (
                                     <>
                                         <img src={item.imageUrl} alt="Image Card" />
@@ -210,9 +259,10 @@ const Blog = () => {
 
             {/* ===================start pagination functionality======================= */}
 
+            {/* Pagination */}
             <div className="flex justify-center items-center">
                 <ul className="flex flex-row space-x-2 text-zinc-400">
-                    {Array.from({ length: TOTAL_PAGES }).map((_, index) => (
+                    {Array.from({ length: TOTAL_PAGES_BY_CATEGORY[selectedCategory] }).map((_, index) => (
                         <li
                             key={index}
                             onClick={() => setCurrentPage(index + 1)}
@@ -222,8 +272,10 @@ const Blog = () => {
                             {index + 1}
                         </li>
                     ))}
+
                 </ul>
             </div>
+
 
         </section>
 

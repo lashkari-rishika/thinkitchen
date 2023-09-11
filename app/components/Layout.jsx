@@ -59,8 +59,8 @@ export function Layout({ children, layout }) {
             {children}
             <div />
             <div>
-              {/* <Blog /> */}
-              <Contactsection />
+              <Blog />
+              {/* <Contactsection /> */}
             </div>
 
           </div>
