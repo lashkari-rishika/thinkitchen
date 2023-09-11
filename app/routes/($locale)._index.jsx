@@ -25,6 +25,7 @@ import CustomerTestimonial from '~/components/custom-components/CustomerTestimon
 import Plp from '~/components/custom-components/Plp';
 import Blog from '~/components/custom-components/BlogandBlogdetails/Blog';
 import Blogdetails from '~/components/custom-components/BlogandBlogdetails/Blogdetails';
+import AddToCartPopUp from './../components/custom-components/AddToCartPopUp';
 export const headers = routeHeaders;
 
 export async function loader({params, context}) {
@@ -130,6 +131,7 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
         )}
+
 <Banner/>
       <ShopByCategory />
       <ShopByBrands />
@@ -142,7 +144,7 @@ export default function Homepage() {
               return (
                 <ProductSwimlane
                   products={products}
-                  title="New Arrivals"
+                  title="NEW ARRIVELS"
                   count={4}
                 />
               );
@@ -161,7 +163,7 @@ export default function Homepage() {
               return (
                 <BestSeller
                 products={products}
-                title="BEST SELLER"
+                title="BEST SELLERS"
                 count={4} />
               );
             }}

@@ -1,6 +1,8 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import {Link} from '@remix-run/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { BsArrowUpRight } from 'react-icons/bs'
+// import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import '../../../node_modules/swiper/swiper-bundle.css'
 
 import data from '../../../JSON/db.json';
@@ -8,6 +10,7 @@ import data from '../../../JSON/db.json';
 const OurLatestBlog = () => {
 
   const [swiper, setSwiper] = useState(null);
+  // const [isMobileView, setIsMobileView] = useState(false);
 
   const slidePrev = () => {
     if (swiper) {
@@ -20,6 +23,20 @@ const OurLatestBlog = () => {
       swiper.slideNext();
     }
   };
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobileView(window.innerWidth <= 768);
+  //   };
+
+  //   handleResize();
+  //   window.addEventListener('resize', handleResize);
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
+
   return (
     <div className="blog_main_section mt-10 sm-only:px-3 px-10">
       <div className="flex justify-center relative items-center pb-4">
@@ -28,26 +45,28 @@ const OurLatestBlog = () => {
         </div>
         <Link
           to="#"
-          className="block absolute top-5 right-5 font-semibold ml-auto text-right cursor-pointer underline"
+          className="block absolute top-5 right-5 font-semibold ml-auto text-right cursor-pointer underline sm-max:hidden"
         >
           View All
         </Link>
       </div>
       <Swiper
+        // modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
-          slidesPerView={3} // Display 6 slides in larger screens
+          slidesPerView={3}
+          // scrollbar={isMobileView ? { draggable: true } : false}
           breakpoints={{
             992: {
-              slidesPerView: 3, // Display 4 slides in tab view
+              slidesPerView: 3,
             },
             768: {
-              slidesPerView: 2.5, // Display 4 slides in tab view
+              slidesPerView: 2.5,
             },
             576: {
-              slidesPerView: 2, // Display 4 slides in tab view
+              slidesPerView: 2,
             },
             320: {
-              slidesPerView: 1.5, // Display 4 slides in tab view
+              slidesPerView: 1.5,
             }
           }}
           onSwiper={setSwiper}
@@ -65,13 +84,14 @@ const OurLatestBlog = () => {
                  <div className="px-1 py-2 w-full">
                    <div className="OurBlog_card_text w-full">
                      <div className="font-bold text-sm mb-2">{item.date}</div>
-                     <div className="font-semibold text-base mb-2">
+                     <div className="font-normal text-base mb-2">
                        {item.text}
                      </div>
                    </div>
-                   <div className=" OurBlog_card_button w-1/3">
-                     <button className="add_cart_button rounded text-sm block w-full bg-white-500 font-semibold text-black py-1.5 px-2 border border-solid border-gray-300">
+                   <div className=" OurBlog_card_button max-w-max">
+                     <button className="flex items-center gap-3 text-white add_cart_button rounded text-sm w-full bg-white-500 font-normal py-1.5 px-3 border border-solid border-gray-300 uppercase bg-[#175C8A] ">
                        {item.exploreBtn}
+                       <BsArrowUpRight/>
                      </button>
                    </div>
                  </div>
@@ -81,7 +101,12 @@ const OurLatestBlog = () => {
             </SwiperSlide>
           ))}
       </Swiper>
-    </div>
+      <Link
+          to="#"
+          className="flex justify-center font-semibold cursor-pointer underline md:hidden"
+        >
+          View All
+        </Link>    </div>
   );
 };
 
