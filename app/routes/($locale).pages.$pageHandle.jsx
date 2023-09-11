@@ -6,7 +6,7 @@ import {PageHeader} from '~/components';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
 import {AboutUS} from '~/components/AboutUS';
-
+import Blog from '~/components/custom-components/BlogandBlogdetails/Blog'; 
 export const headers = routeHeaders;
 
 export async function loader({request, params, context}) {
@@ -33,15 +33,13 @@ export default function Page() {
   return (
     <>
       <PageHeader heading={page.title}>
-      {/* <div
-            dangerouslySetInnerHTML={{__html: page.body}}
-            className="prose dark:prose-invert"
-          /> */}
-        {page.title == 'About us' ? (
+        {page.title === 'About Us' ? (
           <AboutUS />
+        ) : page.title === 'Blog' ? (
+          <Blog />
         ) : (
           <div
-            dangerouslySetInnerHTML={{__html: page.body}}
+            dangerouslySetInnerHTML={{ __html: page.body }}
             className="prose dark:prose-invert"
           />
         )}

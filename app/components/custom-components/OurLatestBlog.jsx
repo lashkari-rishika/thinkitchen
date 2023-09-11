@@ -56,7 +56,7 @@ const OurLatestBlog = () => {
             <SwiperSlide key={item.id}>
              <div className="flex flex-col items-center">
              <div className="Our_Blog_csrd relative w-full">
-               <Link href={item.link} className="w-full" target="_blank">
+               <Link href={item.link} className="w-full" >
                  <img
                    src={item.imageSrc}
                    alt="Product"

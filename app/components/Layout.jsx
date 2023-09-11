@@ -1,7 +1,7 @@
-import { useParams, Form, Await, useMatches } from '@remix-run/react';
-import { useWindowScroll } from 'react-use';
-import { Disclosure } from '@headlessui/react';
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import {useParams, Form, Await, useMatches} from '@remix-run/react';
+import {useWindowScroll} from 'react-use';
+import {Disclosure} from '@headlessui/react';
+import {Suspense, useEffect, useMemo, useState} from 'react';
 import {
   Drawer,
   useDrawer,
@@ -21,9 +21,9 @@ import {
   Link,
   FeaturedProducts,
 } from '~/components';
-import { useIsHomePath } from '~/lib/utils';
-import { useIsHydrated } from '~/hooks/useIsHydrated';
-import { useCartFetchers } from '~/hooks/useCartFetchers';
+import {useIsHomePath} from '~/lib/utils';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
+import {useCartFetchers} from '~/hooks/useCartFetchers';
 import FooterComponet from './FooterComponet';
 import accountLogin from '../asset/Icon-feather-user.png';
 import cart from '../asset/cart.png';
@@ -31,17 +31,17 @@ import wishList from '../asset/heart.png';
 import cart_location from '../asset/cart_location.png';
 import header_logo from '../asset/logo.svg';
 import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
-import { CiCircleChevDown } from 'react-icons/ci';
-import { Image } from '@shopify/hydrogen';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
+import {CiCircleChevDown} from 'react-icons/ci';
+import {Image} from '@shopify/hydrogen';
 import Myorder from './Myorder';
 import VerticalTabs from './Verticaltabs';
 import Myorderdetails from './Myorderdetails';
 import EmailComponent from './EmailComponent';
+import ProductDetailPage from './ProductDetailPage';
 
-
-export function Layout({ children, layout }) {
-  const { headerMenu, footerMenu } = layout;
+export function Layout({children, layout}) {
+  const {headerMenu, footerMenu} = layout;
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -55,6 +55,8 @@ export function Layout({ children, layout }) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner">
             {children}
+            {/* <ProductDetailPage /> */}
+            <EmailComponent />
             <div />
           </div>
         </main>
@@ -64,7 +66,7 @@ export function Layout({ children, layout }) {
   );
 }
 
-function Header({ title, menu }) {
+function Header({title, menu}) {
   const isHome = useIsHomePath();
 
   const {
@@ -109,7 +111,7 @@ function Header({ title, menu }) {
   );
 }
 
-function CartDrawer({ isOpen, onClose }) {
+function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
@@ -131,7 +133,7 @@ function CartDrawer({ isOpen, onClose }) {
   );
 }
 
-export function MenuDrawer({ isOpen, onClose, menu }) {
+export function MenuDrawer({isOpen, onClose, menu}) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
@@ -141,12 +143,10 @@ export function MenuDrawer({ isOpen, onClose, menu }) {
   );
 }
 
-
 function MenuMobileNav({menu, onClose}) {
   console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [activeSubMenuId, setActiveSubMenuId] = useState(null);
-
 
   const toggleCategory = (categoryId) => {
     setActiveCategoryId(activeCategoryId === categoryId ? null : categoryId);
@@ -187,7 +187,6 @@ function MenuMobileNav({menu, onClose}) {
             'Tea Accessories',
           ],
         },
-
       ],
     },
     {
@@ -237,7 +236,6 @@ function MenuMobileNav({menu, onClose}) {
                     alt=""
                     className="ml-auto"
                   />
-
                 </li>
               </ul>
             </li>
@@ -247,13 +245,13 @@ function MenuMobileNav({menu, onClose}) {
               <ul className="space-y-2">
                 {(item?.items || []).map((subitem) => (
                   <Link
-                  key={subitem.id}
-                  to={subitem.to}
-                  target={subitem.target}
-                  prefetch="intent"
-                  className="relative"
+                    key={subitem.id}
+                    to={subitem.to}
+                    target={subitem.target}
+                    prefetch="intent"
+                    className="relative"
                   >
-                    {console.log("🚀 ~ file: Layout.jsx:253 ~ item:", item)}
+                    {console.log('🚀 ~ file: Layout.jsx:253 ~ item:', item)}
                     <div className="text-sm font-semibold text-black mb-[10px]">
                       {subitem.title}
                     </div>
@@ -266,14 +264,17 @@ function MenuMobileNav({menu, onClose}) {
                             : ''
                         }`}
                       >
-                        {console.log("🚀 ~ file: Layout.jsx:273 ~ subitem:", subitem?.items?.length )}
-                       
-                          { !subitem?.items?.length == 0 && ( 
-                            <img
-                              src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown_icon_mobile.png?v=1692697923"
-                              alt=""
-                            />
-                          )}
+                        {console.log(
+                          '🚀 ~ file: Layout.jsx:273 ~ subitem:',
+                          subitem?.items?.length,
+                        )}
+
+                        {!subitem?.items?.length == 0 && (
+                          <img
+                            src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown_icon_mobile.png?v=1692697923"
+                            alt=""
+                          />
+                        )}
                       </li>
                     </div>
                     {activeSubMenuId === subitem.id && (
@@ -319,7 +320,7 @@ function MenuMobileNav({menu, onClose}) {
 
 export default MenuMobileNav;
 
-function MobileHeader({ title, isHome, openCart, openMenu }) {
+function MobileHeader({title, isHome, openCart, openMenu}) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -327,8 +328,9 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
   return (
     <header
       role="banner"
-      className={`${isHome ? 'bg-white text-black' : ' text-primary'
-        } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      className={`${
+        isHome ? 'bg-white text-black' : ' text-primary'
+      } flex 2xl-only:hidden xl-only:hidden  lg-only:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start gap-4">
         <button
@@ -347,7 +349,10 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
           className="font-bold text-center leading-none"
           as={isHome ? 'h1' : 'h2'}
         >
-          <img src={header_logo} alt="" />
+          <img
+            src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/logo.svg?v=1693225458"
+            alt=""
+          />
         </Heading>
       </Link>
 
@@ -376,7 +381,6 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
             type="submit"
             className="search-icon flex items-center justify-center h-8 ml-[85%]"
           >
-
             <IconSearch />
           </button>
         </Form>
@@ -385,9 +389,9 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
   );
 }
 
-function DesktopHeader({ isHome, menu, openCart, title }) {
+function DesktopHeader({isHome, menu, openCart, title}) {
   const params = useParams();
-  const { y } = useWindowScroll();
+  const {y} = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
   const [subMenuActive, setSubMenuActive] = useState(false);
   const [currentMenuTitle, setCurrentMenuTitle] = useState('');
@@ -426,18 +430,23 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
   return (
     <header
       role="banner"
-      className={`${isHome
-          ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
+      className={`${
+        isHome
+          ? 'header flex md:hidden sm:hidden bg-[#FFFFFF]  text-contrast dark:text-primary'
           : ' text-primary'
-        } ${!isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } ${
+        !isHome && y > 50 && ' shadow-lightHeader'
+      } hidden h-2 lg:flex opacity-80  shadow-sm bg-[#FFFFFF] items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="header">
         <div className="row v-center">
           <div className="header-item item-left">
             <div className="logo">
               <Link className="font-bold" to="/" prefetch="intent">
-                <img src={header_logo} alt="logo" />
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/logo.svg?v=1693225458"
+                  alt="logo"
+                />
                 {/* {title} */}
               </Link>
             </div>
@@ -455,8 +464,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                 </div>
               </div>
               <ul
-                className={`menu-main flex items-center gap-6 ${subMenuActive ? 'active' : ''
-                  }`}
+                className={`menu-main flex items-center gap-6 ${
+                  subMenuActive ? 'active' : ''
+                }`}
               >
                 {(menu?.items || []).map((item) => (
                   <li className="menu-item-has-children" onClick={showSubMenu}>
@@ -465,13 +475,14 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                       to={item.to}
                       target={item.target}
                       prefetch="intent"
-                      className={({ isActive }) =>
-                        isActive ? 'pb-1  -mb-px' : 'pb-1'
+                      className={({isActive}) =>
+                        isActive ? 'pb-1 -mb-px' : 'pb-1'
                       }
+                      style={{borderBottom: '2px solid transparent'}}
                     >
                       {item.title}
                     </Link>
-                    <div className="sub-menu mega-menu mega-menu-column-4">
+                    <div className="sub-menu mega-menu mega-menu-column-7">
                       {(item?.items || []).map((subitem) => (
                         <>
                           <div className="list-item">
@@ -481,7 +492,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                                 to={subitem.to}
                                 target={subitem.target}
                                 prefetch="intent"
-                                className={({ isActive }) =>
+                                className={({isActive}) =>
                                   isActive ? 'pb-1  -mb-px' : 'pb-1'
                                 }
                               >
@@ -651,10 +662,16 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
               </button>
             </Form>
             <div className="">
-              <img src={cart_location} alt="location" />
+              <img
+                src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/cart_location_d73808c8-d025-4538-8717-350241a6f3fb.png?v=1693225530"
+                alt="location"
+              />
             </div>
             <div className="">
-              <img src={wishList} alt="heart" />
+              <img
+                src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/heart.png?v=1693225585"
+                alt="heart"
+              />
             </div>
             <AccountLink className="relative flex items-center justify-center focus:ring-primary/5 " />
             <CartCount isHome={isHome} openCart={openCart} className="" />
@@ -665,7 +682,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
   );
 }
 
-function AccountLink({ className }) {
+function AccountLink({className}) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -681,7 +698,7 @@ function AccountLink({ className }) {
   );
 }
 
-function CartCount({ isHome, openCart }) {
+function CartCount({isHome, openCart}) {
   const [root] = useMatches();
 
   return (
@@ -699,7 +716,7 @@ function CartCount({ isHome, openCart }) {
   );
 }
 
-function Badge({ openCart, dark, count }) {
+function Badge({openCart, dark, count}) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
@@ -738,7 +755,7 @@ function Badge({ openCart, dark, count }) {
   );
 }
 
-function Footer({ menu }) {
+function Footer({menu}) {
   const isHome = useIsHomePath();
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
@@ -766,7 +783,7 @@ function Footer({ menu }) {
   );
 }
 
-function FooterLink({ item }) {
+function FooterLink({item}) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -782,7 +799,7 @@ function FooterLink({ item }) {
   );
 }
 
-function FooterMenu({ menu }) {
+function FooterMenu({menu}) {
   // const styles = {
   //   section: 'grid gap-4',
   //   nav: 'grid gap-2',

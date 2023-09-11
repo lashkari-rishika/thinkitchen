@@ -47,7 +47,7 @@ const MyCart = () => {
               <div className="border-b border-[#D3D3D3] flex px-5 py-5">
                 <img
                   className="w-[114px] h-[114px]"
-                  src={mycart_order_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/mycart_oreder_img.png?v=1693225257"
                   alt=""
                 />
                 <div className="pl-5">
@@ -93,7 +93,7 @@ const MyCart = () => {
               <div className="flex px-5 py-5">
                 <img
                   className="w-[114px] h-[114px]"
-                  src={mycart_order_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/mycart_oreder_img.png?v=1693225257"
                   alt=""
                 />
                 <div className="pl-5">
@@ -142,7 +142,7 @@ const MyCart = () => {
           <div className="">
             <div className="pr-8 sm-only:px-2">
               <div className="border-t border-b border-[#D3D3D3] flex items-center">
-                <img className="h-5 w-4" src={noun_order_img} alt="" />
+                <img className="h-5 w-4" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/noun-order-img.png?v=1693225327" alt="" />
                 <h1 className="px-4 py-3 text-[13px] font-semibold">
                   Order Summary
                 </h1>
@@ -174,7 +174,7 @@ const MyCart = () => {
                   <p className="text-sm flex">
                     <span>
                       {' '}
-                      <img className="pr-2 h-6" src={mycart_offer_img} alt="" />
+                      <img className="pr-2 h-6" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/noun-order-img.png?v=1693225327" alt="" />
                     </span>{' '}
                     Offer
                   </p>

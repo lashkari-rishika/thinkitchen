@@ -891,5 +891,52 @@
       "title": "A healthy body makes for a good product.  ",
       "content": "I am using this product from last 60 days. It is very good product."
     }
+  ],
+  "email_product": [
+    [
+      {
+        "id": 1,
+        "name": "Amefa Austin Cutlery, Set of 24",
+        "quantity": 1,
+        "price": 4999,
+        "image": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/email_product_img_1.png?v=1692785012"
+      },
+      {
+        "id": 2,
+        "name": "Mikasa Reactive Blue Dinnerware Set, 12 pcs",
+        "quantity": 1,
+        "price": 8399,
+        "image": "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/email_product_img-2.png?v=1692785015"
+      }
+    ]
+  ],
+  "email_Customer_addrass":[
+    {
+      "billingAddress": {
+        "id": "billing",
+        "title": "Billing Address",
+        "name": "Jayesh Khagram",
+        "address": "Mumbai, MH 400078",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400078",
+        "country": "India",
+        "phone": "+91 123456789"
+      },
+      "shippingAddress": {
+        "id": "shipping",
+        "title": "Shipping Address",
+        "name": "Jayesh Khagram",
+        "address": "Mumbai, MH 400078",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400078",
+        "country": "India",
+        "phone": "+91 123456789"
+      }
+    }
   ]
+
+
+
 }
