@@ -99,8 +99,8 @@ const ShopByBrands = () => {
           ))}
         </div>
       </div>
-      <div className="my-2 text-center ">
-        <button className="font-medium underline-offset-8">View All Brands </button>
+      <div className="my-2 text-center">
+        <button className="font-medium underline underline-offset-4 hover:font-semibold">View All Brands </button>
       </div>
     </div>
   );

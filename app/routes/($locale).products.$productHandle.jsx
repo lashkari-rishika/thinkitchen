@@ -664,7 +664,7 @@ export default function Product() {
                   </div>
                   <div className="ml-8 pt-4 flex">
                     <p className="flex items-center">Total: ₹ 1,040</p>
-                    <button class=" text-white text-sm bg-[#003354] ml-4 py-2 pl-5 pr-5 ">
+                    <button className=" text-white text-sm bg-[#003354] ml-4 py-2 pl-5 pr-5 ">
                       Add Both to Cart
                     </button>
                   </div>
@@ -720,7 +720,7 @@ export default function Product() {
                   </button>
                 </div>
                 <div className="ml-4 mt-2">
-                  <button class=" text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-4">
+                  <button classNameName=" text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-4">
                     ADD TO CART
                   </button>
                 </div>
@@ -804,7 +804,7 @@ export function ProductForm() {
       <div className="sm-only:flex sm-only:grid-cols-2 gap-3 sm-only:pb-3 sm-only:border-b border-gray-300">
         {isOutOfStock ? (
           <div className="pt-3">
-            <button class="text-white text-sm bg-[#175C8A] hover:bg-[#003354] py-2 px-10 sm-only:px-12 lg:px-36">
+            <button className="text-white text-sm bg-[#175C8A] hover:bg-[#003354] py-2 px-10 sm-only:px-12 lg:px-36">
               OUT OF STOCK
             </button>
           </div>
@@ -824,7 +824,7 @@ export function ProductForm() {
                 totalValue: parseFloat(productAnalytics.price),
               }}
             >
-              <p class="text-white text-sm bg-[#175C8A] hover:bg-[#003354] py-2 px-10 sm-only:px-12 lg:px-8">
+              <p className="text-white text-sm bg-[#175C8A] hover:bg-[#003354] py-2 px-10 sm-only:px-12 lg:px-8">
                 ADD TO CART{' '}
               </p>
             </AddToCartButton>
@@ -838,7 +838,7 @@ export function ProductForm() {
               storeDomain={storeDomain}
             />
           )}
-          {/* <button class="text-white text-sm bg-[#175C8A] hover:bg-[#003354] sm-only:px-12 py-2 px-12 lg:px-40">
+          {/* <button className="text-white text-sm bg-[#175C8A] hover:bg-[#003354] sm-only:px-12 py-2 px-12 lg:px-40">
             BUY NOW
           </button> */}
         </div>

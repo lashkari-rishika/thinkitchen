@@ -13,9 +13,6 @@ const Myorderdetails = () => {
                 </div>
 
                 <div className="flex mx-32 sm-only:mx-0">
-                    {/* <div className="bg-gray-100 mr-6 sm-only:hidden">
-                        <Myaccounttabs />
-                    </div> */}
 
                     <div className="w-full">
 
@@ -83,7 +80,6 @@ const Myorderdetails = () => {
                             </div>
 
                         </div>
-
                     </div>
                 </div>
 

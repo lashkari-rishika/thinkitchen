@@ -38,10 +38,11 @@ import Myorder from './Myorder';
 import VerticalTabs from './Verticaltabs';
 import Myorderdetails from './Myorderdetails';
 import EmailComponent from './EmailComponent';
-import ProductDetailPage from './ProductDetailPage';
+import Blog from './custom-components/BlogandBlogdetails/Blog';
+import Contactsection from './commomComponent/ContactUS';
 
-export function Layout({children, layout}) {
-  const {headerMenu, footerMenu} = layout;
+export function Layout({ children, layout }) {
+  const { headerMenu, footerMenu } = layout;
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -53,11 +54,17 @@ export function Layout({children, layout}) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
 
         <main role="main" id="mainContent" className="flex-grow ">
+
           <div className="main_video_banner">
             {children}
-            <ProductDetailPage />
+            {/* <ProductDetailPage /> */}
             {/* <EmailComponent /> */}
             <div />
+            <div>
+              {/* <Blog /> */}
+              <Contactsection />
+            </div>
+
           </div>
         </main>
       </div>
@@ -143,7 +150,8 @@ export function MenuDrawer({isOpen, onClose, menu}) {
   );
 }
 
-function MenuMobileNav({menu, onClose}) {
+
+function MenuMobileNav({ menu, onClose }) {
   console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [activeSubMenuId, setActiveSubMenuId] = useState(null);
@@ -227,9 +235,8 @@ function MenuMobileNav({menu, onClose}) {
               <ul className="absolute border-l border-[#DEDEDE] top-0 right-0 transform  -translate-x-2.5">
                 <li
                   onClick={() => toggleCategory(item.id)}
-                  className={`w-8 h-8 transition-transform ${
-                    activeCategoryId === item.id ? 'transform rotate-180' : ''
-                  }`}
+                  className={`w-8 h-8 transition-transform ${activeCategoryId === item.id ? 'transform rotate-180' : ''
+                    }`}
                 >
                   <img
                     src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown-mobile.png?v=1692696964"
@@ -258,16 +265,12 @@ function MenuMobileNav({menu, onClose}) {
                     <div className="absolute top-0 right-0 transform  -translate-x-4">
                       <li
                         onClick={() => toggleSubMenu(subitem.id)}
-                        className={`h-5 w-5 transition-transform ${
-                          activeSubMenuId === subitem.id
+                        className={`h-5 w-5 transition-transform ${activeSubMenuId === subitem.id
                             ? 'transform rotate-180'
                             : ''
-                        }`}
+                          }`}
                       >
-                        {console.log(
-                          '🚀 ~ file: Layout.jsx:273 ~ subitem:',
-                          subitem?.items?.length,
-                        )}
+          
 
                         {!subitem?.items?.length == 0 && (
                           <img
@@ -379,7 +382,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           />
           <button
             type="submit"
-            className="search-icon flex items-center justify-center h-8 ml-[85%]"
+            className="search-icon flex items-center justify-center h-8 ml-auto"
           >
             <IconSearch />
           </button>
@@ -469,9 +472,9 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                 }`}
               >
                 {(menu?.items || []).map((item) => (
-                  <li className="menu-item-has-children" onClick={showSubMenu}>
+                  <li key={item.id}
+                    className="menu-item-has-children" onClick={showSubMenu}>
                     <Link
-                      key={item.id}
                       to={item.to}
                       target={item.target}
                       prefetch="intent"
@@ -485,10 +488,9 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                     <div className="sub-menu mega-menu mega-menu-column-7">
                       {(item?.items || []).map((subitem) => (
                         <>
-                          <div className="list-item">
+                          <div key={subitem.id} className="list-item">
                             <h4 className="title">
                               <Link
-                                key={subitem.id}
                                 to={subitem.to}
                                 target={subitem.target}
                                 prefetch="intent"
@@ -502,13 +504,12 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                             <ul>
                               {(subitem?.items || []).map((subchilditem) => (
                                 <>
-                                  <li>
+                                  <li key={subchilditem.id}>
                                     <Link
-                                      key={subchilditem.id}
                                       to={subchilditem.to}
                                       target={subchilditem.target}
                                       prefetch="intent"
-                                      className={({isActive}) =>
+                                      className={({ isActive }) =>
                                         isActive ? 'pb-1  -mb-px' : 'pb-1'
                                       }
                                     >
@@ -521,7 +522,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                           </div>
                         </>
                       ))}
-                      {/* <div class="list-item">
+                      {/* <div className="list-item">
                           <img src={img2} alt="shop" />
                         </div> */}
                     </div>
@@ -532,9 +533,9 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                   </li> */}
                 {/* <li className="menu-item-has-children" onClick={showSubMenu}>
                     <a href="#">Shop</a>
-                    <div class="sub-menu mega-menu mega-menu-column-4">
-                      <div class="list-item">
-                        <h4 class="title">Men's Fashion</h4>
+                    <div className="sub-menu mega-menu mega-menu-column-4">
+                      <div className="list-item">
+                        <h4 className="title">Men's Fashion</h4>
                         <ul>
                           <li>
                             <a href="#">Product List</a>
@@ -552,40 +553,8 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                             <a href="#">Product List</a>
                           </li>
                         </ul>
-                        <h4 class="title">Beauty</h4>
+                        <h4 className="title">Beauty</h4>
                         <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="list-item">
-                        <h4 class="title">Women's Fashion</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                        <h4 class="title">Furniture</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
                           <li>
                             <a href="#">Product List</a>
                           </li>
@@ -597,8 +566,8 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                           </li>
                         </ul>
                       </div>
-                      <div class="list-item">
-                        <h4 class="title">Home, Kitchen</h4>
+                      <div className="list-item">
+                        <h4 className="title">Women's Fashion</h4>
                         <ul>
                           <li>
                             <a href="#">Product List</a>
@@ -612,9 +581,9 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                           <li>
                             <a href="#">Product List</a>
                           </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
+                        </ul>
+                        <h4 className="title">Furniture</h4>
+                        <ul>
                           <li>
                             <a href="#">Product List</a>
                           </li>
@@ -629,7 +598,39 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                           </li>
                         </ul>
                       </div>
-                      <div class="list-item">
+                      <div className="list-item">
+                        <h4 className="title">Home, Kitchen</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="list-item">
                         <img src={img2} alt="shop" />
                       </div>
                     </div>

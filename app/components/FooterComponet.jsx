@@ -9,8 +9,7 @@ import React, {useState} from 'react';
 import ShippingComponent from './ShippingComponent';
 import {Link} from './Link';
 const FooterComponet = ({menu}) => {
-  const [isDescriptionVisible, setDescriptionVisible] = useState(true);
-
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(true);
   const [isIconRotated, setIconRotated] = useState(true);
   // const [isShopNowOpen, setShopNowOpen] = useState(false);
   const [isKnowUsOpen, setKnowUsOpen] = useState(false);
@@ -85,7 +84,7 @@ const FooterComponet = ({menu}) => {
                     type="text"
                     placeholder="Email id"
                   />
-                  <button class="border-black pl-8 pr-8 py-3.5 bg-black text-white text-sm  md:mt-0">
+                  <button className="border-black pl-8 pr-8 py-3.5 bg-black text-white text-sm  md:mt-0">
                     SIGN UP
                   </button>
                 </div>
@@ -123,7 +122,7 @@ const FooterComponet = ({menu}) => {
                 {(menu?.items || []).map((item, index) => (
                   <>
                     {index !== 3 ? (
-                      <div className="sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4">
+                      <div key={item.id} className="w-64 sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4">
                         <div className="shop-now-header ">
                           <Link className="font-semibold text-gray-900 dark:text-white">
                             {item.title}
@@ -200,7 +199,7 @@ const FooterComponet = ({menu}) => {
             {(menu?.items || []).map((item) => (
               <>
                 {item.title == 'Brands' ? (
-                  <div className="container sm-only:pt-3 mx-auto w-4/5 pt-8  sm-ony:pt-15 sm-only:border-b-2 border-gray-300 sm:pb-4">
+                  <div key={item.id} className="container mx-auto w-4/5 pt-8 sm-only:pt-0 sm-ony:pt-15 sm-only:border-b-2 border-gray-300 sm:pb-4">
                     <div className="brands-header">
                       <h2 className=" mb-4  sm:mb-0  font-semibold	 text-gray-900 dark:text-white">
                         {item.title}

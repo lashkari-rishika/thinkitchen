@@ -1,4 +1,3 @@
-import React from "react";
 import Verticaltabs from "../components/Verticaltabs";
 import Myaccount_img1 from "../asset/Myaccount_img1.png";
 import { Button, Link } from '~/components';
@@ -154,7 +153,6 @@ const Myaccount = ({ customer, addresses }) => {
                                                     <label className="font-medium text-sm px-1 py-1">Phone No</label>
                                                     <p className="text-sm px-1 py-1 text-gray-500">{item?.node?.phone}</p>
                                                 </div>
-
                                             </div>
                                         </>)
                                     })}

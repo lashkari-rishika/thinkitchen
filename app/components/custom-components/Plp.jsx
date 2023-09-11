@@ -243,6 +243,7 @@ const Plp = () => {
   }, [searchQuery]);
 
   const handleOptionSelect = (option) => {
+    console.log("🚀 ~ file: Plp.jsx:246 ~ handleOptionSelect ~ option:", option)
     setSelectedOption(option);
     setIsDropdownOpen(false);
   };
@@ -310,7 +311,7 @@ const Plp = () => {
                   className="hidden"
                 />
                 <span className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center mr-2">
-                  <span className={`w-2 h-2 rounded-full ${selectedOption === 'Bestselling' ? 'bg-blue-500' : 'bg-white'}`}></span>
+                  <span className={`w-2 h-2 rounded-full ${selectedOption === 'New Arrival' ? 'bg-blue-500' : 'bg-white'}`}></span>
                 </span>
                 <span className="text-sm">New Arrival</span>
               </label>
@@ -324,7 +325,7 @@ const Plp = () => {
                   className="hidden"
                 />
                 <span className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center mr-2">
-                  <span className={`w-2 h-2 rounded-full ${selectedOption === 'Bestselling' ? 'bg-blue-500' : 'bg-white'}`}></span>
+                  <span className={`w-2 h-2 rounded-full ${selectedOption === 'Price (low - high)' ? 'bg-blue-500' : 'bg-white'}`}></span>
                 </span>
                 <span className="text-sm">Price (low - high)</span>
               </label>
@@ -338,7 +339,7 @@ const Plp = () => {
                   className="hidden"
                 />
                 <span className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center mr-2">
-                  <span className={`w-2 h-2 rounded-full ${selectedOption === 'Bestselling' ? 'bg-blue-500' : 'bg-white'}`}></span>
+                  <span className={`w-2 h-2 rounded-full ${selectedOption === 'Price (high - low)' ? 'bg-blue-500' : 'bg-white'}`}></span>
                 </span>
                 <span className="text-sm">Price (high - low)</span>
               </label>

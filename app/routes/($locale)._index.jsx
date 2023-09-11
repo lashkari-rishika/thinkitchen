@@ -22,7 +22,9 @@ import FeaturedIn from '~/components/custom-components/FeaturedIn';
 // import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
 import SocialMedia from '~/components/custom-components/SocialMedia';
 import CustomerTestimonial from '~/components/custom-components/CustomerTestimonial';
-import Myaccount from '~/components/Myaccount';
+import Plp from '~/components/custom-components/Plp';
+import Blog from '~/components/custom-components/BlogandBlogdetails/Blog';
+import Blogdetails from '~/components/custom-components/BlogandBlogdetails/Blogdetails';
 export const headers = routeHeaders;
 
 export async function loader({params, context}) {
@@ -127,11 +129,8 @@ export default function Homepage() {
     <>
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
-      )}
-
-      
-      
-      <Banner />
+        )}
+<Banner/>
       <ShopByCategory />
       <ShopByBrands />
 
@@ -160,7 +159,10 @@ export default function Homepage() {
             {({products}) => {
               if (!products?.nodes) return <></>;
               return (
-                <BestSeller products={products} title="BEST SELLER" count={4} />
+                <BestSeller
+                products={products}
+                title="BEST SELLER"
+                count={4} />
               );
             }}
           </Await>
