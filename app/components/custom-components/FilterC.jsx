@@ -261,7 +261,7 @@ export function PlpFilterUI({
               <Link
                 to={to}
                 key={option.id}
-                className={`ml-2 text-xs font-normal my-1 ${
+                className={`flex items-center ml-2 text-xs font-normal my-1 ${
                   selectedSubItems[item.id] &&
                   selectedSubItems[item.id].includes(option)
                     ? 'font-semibold text-black' // Add the font-semibold class when checkbox is checked
@@ -269,7 +269,7 @@ export function PlpFilterUI({
                 }`}
               >
                 <input
-                  className="text-gray h-3 w-3 checked:bg-black cursor-pointer outline-0"
+                  className="text-gray h-3 w-3 checked:bg-black cursor-pointer outline-0 mr-1.5"
                   type="checkbox"
                   checked={
                     selectedSubItems[item.id] &&

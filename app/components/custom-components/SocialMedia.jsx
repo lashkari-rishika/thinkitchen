@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from '@remix-run/react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import '../../../node_modules/swiper/swiper-bundle.css';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import {FaInstagram} from 'react-icons/fa';
 
 import data from '../../../JSON/db.json';
 
 const SocialMedia = () => {
   const [swiper, setSwiper] = useState(null);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   const slidePrev = () => {
     if (swiper) {
@@ -20,6 +22,19 @@ const SocialMedia = () => {
       swiper.slideNext();
     }
   };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="social-media-section my-10 px-3 sm:px-0">
       <div className="social-section-heading">
@@ -28,8 +43,10 @@ const SocialMedia = () => {
         </h1>
       </div>
       <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={0}
         slidesPerView={5}
+        scrollbar={isMobileView ? { draggable: true } : false}
         breakpoints={{
           992: {
             slidesPerView: 5,

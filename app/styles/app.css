@@ -158,7 +158,7 @@ shop-pay-button {
   .absolute-center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
-  #mainContent{
+  #mainContent {
     padding: 0px !important;
   }
   .strike {
@@ -202,7 +202,7 @@ shop-pay-button {
   transform: translate(-50%, -50%);
   font-weight: 400;
 }
-.brands-list{
+.brands-list {
   column-count: 6;
 }
 .brand-section .all-brand-image {
@@ -295,6 +295,10 @@ shop-pay-button {
   opacity: 1;
 }
 
+.social-media-section .swiper-wrapper {
+  gap: 5px;
+}
+
 /* -----------------------------social media end ----------------------------------- */
 
 /* -----------------------------New Arrivel section------------------------------------ */
@@ -324,7 +328,7 @@ shop-pay-button {
   left: 0px;
   width: 100%;
   height: 100%;
-  opacity: 0.20;
+  opacity: 0.2;
   z-index: 1;
 }
 
@@ -338,14 +342,44 @@ shop-pay-button {
     left: 0px;
     width: 100%;
     height: 245%;
-    opacity: 0.20;
+    opacity: 0.2;
     z-index: 1;
   }
-  
 }
 
-
 /* --------------------------------plpfilter-section-end-------------------------------- */
+
+/* ---------------------------- featured_in_section start ---------------------------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .featured_in_main .swiper-wrapper {
+    padding-bottom: 4px;
+  }
+  .blog_main_section .swiper-wrapper {
+    padding-bottom: 20px;
+  }
+  .testimonial-section .swiper-wrapper {
+    padding-bottom: 20px;
+  }
+}
+/* ---------------------------- featured_in_section end ---------------------------- */
+/* ----------------- Featured and offers section button hover start ---------------- */
+.logo1 {
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.text1 {
+  transition: opacity 0.3s ease-in-out;
+}
+.add_cart_button:hover .logo1 {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+.add_cart_button:hover .text1 {
+  opacity: 0;
+}
+
+/* ----------------- Featured and offers section button hover end ---------------- */
 
 /* ------------------------------- testimonial-section-start------------------------------- */
 .testimonial-section {
@@ -382,7 +416,7 @@ shop-pay-button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #175C8A;
+  background-color: #175c8a;
   color: white;
   display: none;
   flex-direction: column;
@@ -428,7 +462,6 @@ body {
   align-content: center;
   /* align-items: center; */
   flex-direction: row;
-  
   justify-content: space-between;
 }
 .v-center {
@@ -484,7 +517,7 @@ a {
 .header {
   display: block;
   width: 100%;
-  
+
   /* position: relative; */
   /* z-index: 99; */
   /* padding:15px; */
@@ -579,7 +612,7 @@ a {
   transform: translateX(-50%);
 }
 .header .menu > ul > li {
-margin-left: 10px;
+  margin-left: 10px;
 }
 
 .header .menu > ul > li .sub-menu.mega-menu-column-4 {
@@ -858,7 +891,6 @@ margin-left: 10px;
   }
 }
 
-
 /* -------------------------------------Header End -------------------------------*/
 .serach-section {
   background-color: #f3f4f6;
@@ -949,16 +981,16 @@ margin-left: 10px;
   display: flex;
   align-items: center;
 }
-.brands-section .brands-header{
+.brands-section .brands-header {
   display: flex;
   align-items: center;
 }
-.shop-section .customer-serive-header{
+.shop-section .customer-serive-header {
   display: flex;
   align-items: center;
 }
 
-.shop-section .know-us-header{
+.shop-section .know-us-header {
   display: flex;
   align-items: center;
 }
@@ -977,7 +1009,7 @@ margin-left: 10px;
   margin-right: 8px;
   transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
 }
-.flex_column{
+.flex_column {
   flex-flow: wrap column;
 }
 
@@ -1015,42 +1047,42 @@ margin-left: 10px;
   .shop-now-header .shop-now-down-icon {
     display: none;
   }
-  .know-us-header .know-us-down-icon{
+  .know-us-header .know-us-down-icon {
     display: none;
   }
-  .brands-header .brands-down-icon{
+  .brands-header .brands-down-icon {
     display: none;
   }
-  .customer-serive-header .customer-service-down-icon{
+  .customer-serive-header .customer-service-down-icon {
     display: none;
   }
-  .shop-now-down-icon{
+  .shop-now-down-icon {
     /* position: absolute; */
     left: 80%;
   }
-  .shop-now-header{
+  .shop-now-header {
     position: absolute;
   }
 }
 @media screen and (max-width: 576px) and (min-width: 337px) {
-  .brand-section{
+  .brand-section {
     background-color: #f3f4f6;
   }
 }
-@media screen and (max-width: 1200px) and (min-width:768){
-.shop-now-list{
-  position: absolute;
+@media screen and (max-width: 1200px) and (min-width: 768) {
+  .shop-now-list {
+    position: absolute;
     margin-top: 35px;
-}
-.brands-header{
-  position: absolute;
-  right: 25px;
-}
+  }
+  .brands-header {
+    position: absolute;
+    right: 25px;
+  }
 }
 .custom-right-45 {
   right: 45%;
 }
-.shop-now-list{
+.shop-now-list {
   column-count: 2;
 }
 /* @media screen and (min-width: 768px) {
@@ -1060,28 +1092,25 @@ margin-left: 10px;
 } */
 
 .main_block_about {
-  padding: 50px; 
- top: 50%;
-  left: 50%; 
+  padding: 50px;
+  top: 50%;
+  left: 50%;
   transform: translate(-45%, -50%) !important;
-  width: 100%; 
+  width: 100%;
 }
 .about_health1 {
   transform: translate(1%, 30%) !important;
 }
 
-
-
-
 /* ..................................... banner............................................. */
-.banner .banner-text h3{
-  font-size:36px;
+.banner .banner-text h3 {
+  font-size: 36px;
   color: #fff;
   opacity: 1;
   font-weight: 300;
 }
 
-.about_health1{
+.about_health1 {
   transform: translate(1%, 30%) !important;
 }
 
@@ -1092,34 +1121,31 @@ margin-left: 10px;
   border: none;
 }
 .tab-buttons button:focus {
-  border-bottom: 2px solid black; 
+  border-bottom: 2px solid black;
 }
 
-
-.banner-logo img{
+.banner-logo img {
   width: 230px;
   height: 50px;
 }
-.banner{
+.banner {
   position: absolute;
 }
-@media only screen and ( max-width:1200px) and ( min-width:1024){
-  .banner .banner-text{
+@media only screen and (max-width: 1200px) and (min-width: 1024) {
+  .banner .banner-text {
     position: absolute;
     top: 83%;
     left: 26%;
   }
-  
 }
-
 
 /* .image_section .swiper .swiper-wrapper .swiper-slide{
   width: 0px;
 } */
 
-
-
-body {font-family: Arial;}
+body {
+  font-family: Arial;
+}
 
 /* Style the tab */
 .tab {
@@ -1150,9 +1176,8 @@ body {font-family: Arial;}
   background-color: #ccc;
 }
 
-
-.collection{
-  margin-top:1px;
+.collection {
+  margin-top: 1px;
 }
 
 /* Style the tab content */
@@ -1162,4 +1187,3 @@ body {font-family: Arial;}
   border: 1px solid #ccc;
   border-top: none;
 }
-
