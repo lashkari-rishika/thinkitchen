@@ -1,7 +1,10 @@
 import React from 'react';
 import {GoDotFill} from 'react-icons/go';
+import data from '../../JSON/db.json';
 
 const EmailComponent = () => {
+  const products = data.email_product; // Assuming your JSON structure has a 'products' array
+  console.log(products);
   return (
     <div className=" bg-white font-ubuntu">
       <div className="px-[22%] sm-only:px-0 sm-only:mt-[34px] md-only:mt-[34px]  lg-only:pl-[16%] lg-only:pr-[16%] md-only:pl-[12%] md-only:pr-[12%]">
@@ -69,32 +72,25 @@ const EmailComponent = () => {
                   </p>
                 </div>
               </div>
-              <div className=" border-[#D3D3D3] border-b py-[15px] flex">
-                <img
-                  className="h-[110px] w-[110px]"
-                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/email_product_img_1.png?v=1692785012"
-                  alt=""
-                />
-                <div className="ml-[18px]">
-                  <p className="font-sm">Amefa Austin Cutlery, Set of 24</p>
-                  <p className="mt-2 font-semibold font-sm">QTY: 1</p>
-                  <p className="mt-2 font-semibold font-sm">₹ 4,999</p>
+              {products.map((item) => (
+                <div
+                  key={item.id}
+                  className="border-[#D3D3D3] border-b py-[15px] flex"
+                >
+                  <img
+                    className="h-[110px] w-[110px]"
+                    src={item.image}
+                    alt={item.name}
+                  />
+                  <div className="ml-[18px]">
+                    <p className="font-sm">{item.name}</p>
+                    <p className="mt-2 font-semibold font-sm">
+                      QTY: {item.quantity}
+                    </p>
+                    <p className="mt-2 font-semibold font-sm">{item.price}</p>
+                  </div>
                 </div>
-              </div>
-              <div className=" border-[#D3D3D3] border-b py-[15px] flex">
-                <img
-                  className="h-[110px] w-[110px]"
-                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/email_product_img-2.png?v=1692785015"
-                  alt=""
-                />
-                <div className="ml-[18px]">
-                  <p className="font-sm">
-                    Mikasa Reactive Blue Dinnerware Set, 12 pcs
-                  </p>
-                  <p className="mt-2 font-semibold font-sm">QTY: 1</p>
-                  <p className="mt-2 font-semibold font-sm">₹ 8,399</p>
-                </div>
-              </div>
+              ))}
               <div className="text-end ">
                 <p className="mt-[10px] ">
                   <span className="text-[#5B5B5B] mr-[20px] ">Subtotal:</span>{' '}
@@ -132,7 +128,7 @@ const EmailComponent = () => {
                     Billing Address
                   </h1>
 
-                  <div >
+                  <div>
                     <h2 className="text-[#000000] font-sm py-4 border-[#D3D3D3] border-t">
                       Jayesh Khagram
                     </h2>
@@ -140,7 +136,10 @@ const EmailComponent = () => {
                       <tbody>
                         <tr className="">
                           <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                            Address<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                            Address
+                            <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                              :
+                            </span>
                           </td>
                           <td className="py-2 pl-4 text-sm text-[#000000]">
                             <span className="sm-only:hidden">:</span>{' '}
@@ -149,47 +148,72 @@ const EmailComponent = () => {
                         </tr>
                         <tr className="">
                           <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                            City<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                            City
+                            <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                              :
+                            </span>
                           </td>
                           <td className="py-2 pl-4 text-sm text-[#000000]">
                             <span className="sm-only:hidden">:</span>{' '}
-                            <span className="ml-[10px] lg-only:ml-0">Mumbai</span>
+                            <span className="ml-[10px] lg-only:ml-0">
+                              Mumbai
+                            </span>
                           </td>
                         </tr>
                         <tr className="">
                           <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                            State<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                            State
+                            <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                              :
+                            </span>
                           </td>
                           <td className="py-2 pl-4 text-sm text-[#000000]">
                             <span className="sm-only:hidden">:</span>{' '}
-                            <span className="ml-[10px] lg-only:ml-0">Maharashtra</span>
+                            <span className="ml-[10px] lg-only:ml-0">
+                              Maharashtra
+                            </span>
                           </td>
                         </tr>
                         <tr className="">
                           <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                            Pincode<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                            Pincode
+                            <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                              :
+                            </span>
                           </td>
                           <td className="py-2 pl-4 text-sm text-[#000000]">
                             <span className="sm-only:hidden">:</span>{' '}
-                            <span className="ml-[10px] lg-only:ml-0">400078</span>
+                            <span className="ml-[10px] lg-only:ml-0">
+                              400078
+                            </span>
                           </td>
                         </tr>
                         <tr className="">
                           <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                            Country<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                            Country
+                            <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                              :
+                            </span>
                           </td>
                           <td className="py-2 pl-4 text-sm text-[#000000]">
                             <span className="sm-only:hidden">:</span>{' '}
-                            <span className="ml-[10px] lg-only:ml-0">India</span>
+                            <span className="ml-[10px] lg-only:ml-0">
+                              India
+                            </span>
                           </td>
                         </tr>
                         <tr className="">
                           <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                            Phone<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                            Phone
+                            <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                              :
+                            </span>
                           </td>
                           <td className="py-2 pl-4 text-sm text-[#000000]">
                             <span className="sm-only:hidden">:</span>{' '}
-                            <span className="ml-[10px] lg-only:ml-0">+91 123456789</span>
+                            <span className="ml-[10px] lg-only:ml-0">
+                              +91 123456789
+                            </span>
                           </td>
                         </tr>
                       </tbody>
@@ -208,16 +232,24 @@ const EmailComponent = () => {
                     <tbody>
                       <tr className="">
                         <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                          Address<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                          Address
+                          <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                            :
+                          </span>
                         </td>
                         <td className="py-2 pl-4 text-sm text-[#000000]">
                           <span className="sm-only:hidden">:</span>{' '}
-                          <span className="ml-[10px] lg-only:ml-0">Mumbai, MH 400078</span>
+                          <span className="ml-[10px] lg-only:ml-0">
+                            Mumbai, MH 400078
+                          </span>
                         </td>
                       </tr>
                       <tr className="">
                         <td className="py-2  text-sm text-[#5B5B5B]">
-                          City<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                          City
+                          <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                            :
+                          </span>
                         </td>
                         <td className="py-2 pl-4 text-sm text-[#000000]">
                           <span className="sm-only:hidden">:</span>{' '}
@@ -226,16 +258,24 @@ const EmailComponent = () => {
                       </tr>
                       <tr className="">
                         <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                          State<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                          State
+                          <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                            :
+                          </span>
                         </td>
                         <td className="py-2 pl-4 text-sm text-[#000000]">
                           <span className="sm-only:hidden">:</span>{' '}
-                          <span className="ml-[10px] lg-only:ml-0">Maharashtra</span>
+                          <span className="ml-[10px] lg-only:ml-0">
+                            Maharashtra
+                          </span>
                         </td>
                       </tr>
                       <tr className="">
                         <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                          Pincode<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                          Pincode
+                          <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                            :
+                          </span>
                         </td>
                         <td className="py-2 pl-4 text-sm text-[#000000]">
                           <span className="sm-only:hidden">:</span>{' '}
@@ -244,7 +284,10 @@ const EmailComponent = () => {
                       </tr>
                       <tr className="">
                         <td className="py-2 pr-4 text-sm text-[#5B5B5B]">
-                          Country <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                          Country{' '}
+                          <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                            :
+                          </span>
                         </td>
                         <td className="py-2 pl-4 text-sm text-[#000000]">
                           <span className="sm-only:hidden">:</span>{' '}
@@ -253,11 +296,16 @@ const EmailComponent = () => {
                       </tr>
                       <tr className="">
                         <td className="py-2 pr-4 text-sm text-[rgb(91,91,91)]">
-                          Phone<span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">:</span>
+                          Phone
+                          <span className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden">
+                            :
+                          </span>
                         </td>
                         <td className="py-2 pl-4 text-sm text-[#000000]">
                           <span className="sm-only:hidden">:</span>{' '}
-                          <span className="ml-[10px] lg-only:ml-0">+91 123456789</span>
+                          <span className="ml-[10px] lg-only:ml-0">
+                            +91 123456789
+                          </span>
                         </td>
                       </tr>
                     </tbody>
@@ -291,16 +339,13 @@ const EmailComponent = () => {
               If you have any questions, get in touch with us
             </p>
             <div className="mt-[15px] text-center text-sm  2xl:flex xl:flex lg:flex md:flex justify-center">
-              
-              <p className="text-center text-sm">
-              us : +91 704522 3344{' '}
-              </p>
-             
+              <p className="text-center text-sm">us : +91 704522 3344 </p>
+
               <p className="text-white px-3 sm-only:hidden">
-                <GoDotFill  />
+                <GoDotFill />
               </p>
               <p className="text-center text-sm sm-only:mt-[15px] ">
-              Email: contact@seebagroup.com
+                Email: contact@seebagroup.com
               </p>
             </div>
           </div>

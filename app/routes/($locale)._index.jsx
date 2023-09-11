@@ -9,6 +9,7 @@ import {
   MEDIA_FRAGMENT,
   PRODUCT_CARD_FRAGMENT,
   BESTSELLER_CARD_FRAGMENT,
+  // OurLatestBlog,
 } from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
@@ -18,7 +19,7 @@ import ShopByCategory from '~/components/custom-components/ShopByCategory';
 import ShopByBrands from '~/components/custom-components/ShopByBrands';
 import LatestOffer from '~/components/custom-components/LatestOffer';
 import FeaturedIn from '~/components/custom-components/FeaturedIn';
-import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
+// import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
 import SocialMedia from '~/components/custom-components/SocialMedia';
 import CustomerTestimonial from '~/components/custom-components/CustomerTestimonial';
 import Plp from '~/components/custom-components/Plp';
@@ -75,6 +76,14 @@ export async function loader({params, context}) {
         language,
       },
     }),
+
+    // ourLatestBlog: context.storefront.query(OUR_LATEST_BLOG_QUERY, {
+    //   variables: {
+    //     // ... (language and country variables)
+    //     country,
+    //     language,
+    //   },
+    // }),
     secondaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
         handle: 'backcountry',
@@ -88,6 +97,7 @@ export async function loader({params, context}) {
         language,
       },
     }),
+
     tertiaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
         handle: 'winter-2022',
@@ -110,6 +120,7 @@ export default function Homepage() {
     featuredCollections,
     featuredProducts,
     bestSeller,
+    // ourLatestBlog,
   } = useLoaderData();
 
   // TODO: skeletons vs placeholders
@@ -161,7 +172,17 @@ export default function Homepage() {
       )}
 
       <FeaturedIn />
-      <OurLatestBlog />
+
+      {/* {ourLatestBlog && (
+        <Await resolve={ourLatestBlog}>
+          {({blogs}) => {
+            if (!blogs?.nodes) return <></>;
+            return <OurLatestBlog blogs={blogs} title="Our Latest Blog" />;
+          }}
+        </Await>
+      )}
+
+      <OurLatestBlog /> */}
       <SocialMedia />
       <CustomerTestimonial />
 
@@ -307,3 +328,20 @@ export const HOMEPAGE_BESTSELLER_PRODUCTS_QUERY = `#graphql
   }
   ${BESTSELLER_CARD_FRAGMENT}
 `;
+
+// FOR LATEST BLOG
+// export const OUR_LATEST_BLOG_QUERY = `#graphql
+//   query ourLatestBlog($country: CountryCode, $language: LanguageCode)
+//   @inContext(country: $country, language: $language) {
+//     blogs(
+//       first: 4,
+//       sortKey: UPDATED_AT
+//     ) {
+//       nodes {
+//         id
+//         title
+//         // ... (other blog properties you need)
+//       }
+//     }
+//   }
+// `;

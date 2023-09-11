@@ -9,7 +9,7 @@ import arrival1 from '../asset/arrival1.png';
 const media = [
   {
     id: 1,
-    imageSrc: arrival1,
+    imageSrc: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964",
     discountTag: '20% OFF',
     heart: 'AiOutlineHeart',
     productName: 'Amefa Austin Cutlery, Set of 24',
@@ -20,7 +20,7 @@ const media = [
   },
   {
     id: 2,
-    imageSrc: arrival1,
+    imageSrc: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964",
     discountTag: '20% OFF',
     heart: 'AiOutlineHeart',
     productName: 'Amefa Austin Cutlery, Set of 24',
@@ -31,7 +31,7 @@ const media = [
   },
   {
     id: 3,
-    imageSrc: arrival1,
+    imageSrc: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964",
     discountTag: '20% OFF',
     heart: 'AiOutlineHeart',
     productName: 'Amefa Austin Cutlery, Set of 24',

@@ -113,23 +113,42 @@ export default function Search() {
 
               return (
                 <div className="p-[35px]">
-                  <div className="flex items-center justify-center mt-6">
-                    <PreviousLink className="inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full">
-                      {isLoading ? 'Loading...' : 'Previous'}
-                    </PreviousLink>
-                  </div>
+                {/* //   <div className="flex items-center justify-center mt-6">
+                //     <PreviousLink className="inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full">
+                //       {isLoading ? 'Loading...' : 'Previous'}
+                //     </PreviousLink>
+                //   </div> */}
                   <Grid data-test="product-grid">{itemsMarkup}</Grid>
-                  <div className="flex items-center justify-center mt-6">
+                  {/* <div className="flex items-center justify-center mt-6">
                     <NextLink className="inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full">
                       {isLoading ? 'Loading...' : 'Next'}
                     </NextLink>
-                  </div>
+                  </div> */}
+                      {/* <div className="flex justify-center mt-4">
+                          {Array.from({length: totalPages}, (_, i) => i + 1).map((page) => (
+                            <Link
+                              key={page}
+                              to={`/?page=${page}`}
+                              className={`mx-1 flex items-center ${
+                                currentPage === page ? ' text-black' : ' text-gray-500'
+                              }`}
+                              onClick={() => handlePageChange(page)}
+                            >
+                              {page}1,2,3
+                            </Link>
+                             ))}   
+                        </div> */}
+
+
                 </div>
               );
             }}
+
+            
           </Pagination>
         </Section>
       )}
+
     </>
   );
 }
