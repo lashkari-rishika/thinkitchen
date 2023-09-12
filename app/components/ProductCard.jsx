@@ -71,8 +71,10 @@ export function ProductCard({
                 data={image}
                 alt={image.altText || `Picture of ${product.title}`}
                 loading={loading}
-              />
-            )}
+                />
+                )} 
+                {/* {console.log("🚀 ~ file: ProductCard.jsx:72 ~ image:", image)} */}
+            
             <button className="absolute top-2 right-2 p-2 bg-white rounded-full ">
               <AiOutlineHeart />
             </button>

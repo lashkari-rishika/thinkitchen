@@ -55,6 +55,7 @@ import { Image } from '@shopify/hydrogen';
 import ProductDetailPage from '../components/ProductDetailPage.js';
 
 
+
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
   return (
@@ -70,8 +71,7 @@ export function Layout({children, layout}) {
         <main role="main" id="mainContent" className="flex-grow ">
           <div className="main_video_banner ">
 
-            <ProductDetailPage />
-
+          <ProductDetailPage />
           {/* <Banner/> */}
             {/* <PlpFilterUI/> */}
              {/* <Plp/> */}
