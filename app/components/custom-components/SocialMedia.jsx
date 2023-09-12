@@ -1,71 +1,90 @@
-import React from 'react'
-import { Link } from '@remix-run/react'
-import { FaInstagram } from 'react-icons/fa'
-// import social1 from '../../asset/social1.png'
-// import social2 from '../../asset/social2.png'
-// import social3 from '../../asset/social3.png'
-// import social4 from '../../asset/social4.png'
-// import social5 from '../../asset/social5.png'
+import React, {useState, useEffect} from 'react';
+import {Link} from '@remix-run/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import '../../../node_modules/swiper/swiper-bundle.css';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import {FaInstagram} from 'react-icons/fa';
 
-import data from '../../../JSON/db.json'
-
-// const media = [
-//     {
-//         id: 1,
-//         imageSrc: social1 ,
-//         link: 'https://www.google.com/',
-//       },
-//       {
-//         id: 2,
-//         imageSrc: social2 ,
-//         link: 'https://www.google.com/',
-//       },
-//       {
-//         id: 3,
-//         imageSrc: social3 ,
-//         link: 'https://www.google.com/',
-//       },
-//       {
-//         id: 4,
-//         imageSrc: social4 ,
-//         link: 'https://www.google.com/',
-//       },
-//       {
-//         id: 5,
-//         imageSrc: social5 ,
-//         link: 'https://www.google.com/',
-//       },
-// ]
+import data from '../../../JSON/db.json';
 
 const SocialMedia = () => {
-  return (
-    <div className='social-media-section my-10 px-3 sm:px-0'>
-        <div className='social-section-heading'>
-            <h1 className='text-4xl text-center font-medium pb-4'>JOIN US ON SOCIAL @THINKITCHEN</h1>
-        </div>
-        <div className='image_section'>
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-1">
-            {data.socialmedia.map((item) => (
-                <div key={item.id} className="flex flex-col items-center">
-                    <div className='social-brand-image'>
-                        <Link href={item.link} className='w-full' target="_blank">
-                        <div className='image-text'>
-                        <img
-                            src={item.imageSrc}
-                            className="w-full object-cover hover_image"
-                        />
-                        <div className='social-hover-logo'>
-                            <FaInstagram color='white'/>
-                        </div>
-                        </div>
-                        </Link>
-                    </div>
-                </div>
-            ))}
-            </div>
-        </div>
-    </div>
-  )
-}
+  const [swiper, setSwiper] = useState(null);
+  const [isMobileView, setIsMobileView] = useState(false);
 
-export default SocialMedia
+  const slidePrev = () => {
+    if (swiper) {
+      swiper.slidePrev();
+    }
+  };
+
+  const slideNext = () => {
+    if (swiper) {
+      swiper.slideNext();
+    }
+  };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+    <div className="social-media-section my-10 px-3 sm:px-0">
+      <div className="social-section-heading">
+        <h1 className="text-4xl sm-only:text-2xl text-center font-medium pb-4">
+          JOIN US ON SOCIAL @THINKITCHEN
+        </h1>
+      </div>
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={0}
+        slidesPerView={5}
+        scrollbar={isMobileView ? { draggable: true } : false}
+        breakpoints={{
+          992: {
+            slidesPerView: 5,
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          576: {
+            slidesPerView: 3,
+          },
+          320: {
+            slidesPerView: 2.5,
+          },
+        }}
+        onSwiper={setSwiper}
+      >
+        {data.socialmedia.map((item) => (
+          <SwiperSlide key={item.id}>
+            <div className="flex flex-col items-center">
+              <div className="social-brand-image w-full">
+                <Link href={item.link} className="w-full" target="_blank">
+                  <div className="image-text">
+                    <img
+                      src={item.imageSrc}
+                      className="w-full object-cover hover_image"
+                    />
+                    <div className="social-hover-logo">
+                      <FaInstagram color="white" />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
+
+export default SocialMedia;

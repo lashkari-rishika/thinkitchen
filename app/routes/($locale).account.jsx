@@ -26,6 +26,7 @@ import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
+import VerticalTabs from '~/components/Verticaltabs';
 
 export const headers = routeHeaders;
 
@@ -108,16 +109,17 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <>
-      <PageHeader heading={heading}>
+      <VerticalTabs customer={customer} addresses={addresses} orders={orders}/>
+      {/* <PageHeader heading={heading}>
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <button type="submit" className="text-primary/50">
             Sign out
           </button>
         </Form>
-      </PageHeader>
+      </PageHeader> */}
       {orders && <AccountOrderHistory orders={orders} />}
-      <AccountDetails customer={customer} />
-      <AccountAddressBook addresses={addresses} customer={customer} />
+      {/* <AccountDetails customer={customer} /> */}
+      {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}
       {!orders.length && (
         <Suspense>
           <Await
@@ -141,14 +143,14 @@ function Account({customer, heading, featuredData}) {
 }
 
 function AccountOrderHistory({orders}) {
-  return (
-    <div className="mt-6">
-      <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h2 className="font-bold text-lead">Order History</h2>
-        {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
-      </div>
-    </div>
-  );
+  // return (
+  //   <div className="mt-6">
+  //     <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
+  //       <h2 className="font-bold text-lead">Order History</h2>
+  //       {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
+  //     </div>
+  //   </div>
+  // );
 }
 
 function EmptyOrders() {
@@ -171,13 +173,13 @@ function EmptyOrders() {
 }
 
 function Orders({orders}) {
-  return (
-    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3">
-      {orders.map((order) => (
-        <OrderCard order={order} key={order.id} />
-      ))}
-    </ul>
-  );
+  // return (
+  //   <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3">
+  //     {orders.map((order) => (
+  //       <OrderCard order={order} key={order.id} />
+  //     ))}
+  //   </ul>
+  // );
 }
 
 const CUSTOMER_QUERY = `#graphql

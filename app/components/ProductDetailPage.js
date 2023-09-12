@@ -115,18 +115,18 @@ const ProductDetailPage = () => {
       <div className="product-deatil-section grid grid-cols-3 sm-only:px-3  sm-only:grid-cols-1 gap-1 px-11 pt-3 sm-only:columns-1  columns-3">
         <div className="product-image-1">
           <div>
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
           <div className="pt-2">
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
         </div>
         <div className="product-image-2">
           <div>
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
           <div className="pt-2">
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
         </div>
 
@@ -160,7 +160,7 @@ const ProductDetailPage = () => {
               <span className="star-image pl-2 pr-2 flex">
                 <img
                   className=" transition duration-300"
-                  src={pdp_star_image}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/5star_25311fa3-5973-48ad-9fe6-0eea7859692e.png?v=1693224095"
                   alt=""
                 />
               </span>
@@ -224,9 +224,9 @@ const ProductDetailPage = () => {
                 shareIconVisible ? 'block' : 'hidden'
               } flex absolute right-[4%] bottom-[45px] bg-white shadow-md`}
             >
-              <img className="p-[5px] w-10" src={pdp_share_facebook} alt="" />
-              <img className="p-[5px] w-10" src={pdp_share_whatsapp} alt="" />
-              <img className="p-[5px] w-10" src={pdp_share_link} alt="" />
+              <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_facebook.png?v=1693224426" alt="" />
+              <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_whatsapp.png?v=1693224439" alt="" />
+              <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_link.png?v=1693224450" alt="" />
             </div>
             <p className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden sm-only:mt-[5px] ">
               Qty:
@@ -257,27 +257,27 @@ const ProductDetailPage = () => {
               <div
                 className={`share-icon flex  shadow-md sm-only:shadow-none 2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden `}
               >
-                <img className="p-[5px] w-10" src={pdp_share_facebook} alt="" />
-                <img className="p-[5px] w-10" src={pdp_share_whatsapp} alt="" />
-                <img className="p-[5px] w-10" src={pdp_share_link} alt="" />
+                <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_facebook.png?v=1693224426" alt="" />
+                <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_whatsapp.png?v=1693224439" alt="" />
+                <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_link.png?v=1693224450" alt="" />
               </div>
             </div>
           </div>
           <div className="sm-only:flex sm-only:grid-cols-2 gap-3 sm-only:pb-3 sm-only:border-b border-gray-300">
             <div className="pt-3 w-[100%]">
-              <button class="text-white text-sm w-[100%] bg-[#175C8A] hover:bg-[#003354] py-2">
+              <button className="text-white text-sm w-[100%] bg-[#175C8A] hover:bg-[#003354] py-2">
                 ADD TO CART
               </button>
             </div>
             <div className="pt-3 w-[100%]">
-              <button class="text-white w-[100%] text-sm bg-[#175C8A] hover:bg-[#003354]  py-2 ">
+              <button className="text-white w-[100%] text-sm bg-[#175C8A] hover:bg-[#003354]  py-2 ">
                 BUY NOW
               </button>
             </div>
           </div>
 
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Description</h3>
+            <h3 className="text-sm font-semibold" onClick={toggleDiscription}>Description</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
@@ -303,7 +303,7 @@ const ProductDetailPage = () => {
 
           <div className=" pb-2 border-b border-gray-300"></div>
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Size & Dimension</h3>
+            <h3 className="text-sm font-semibold" onClick={toggleDimension}>Size & Dimension</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
@@ -329,7 +329,7 @@ const ProductDetailPage = () => {
           <div className=" pb-2 border-b border-gray-300"></div>
 
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Use & Care</h3>
+            <h3 className="text-sm font-semibold"  onClick={toggleUseAndCare}>Use & Care</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
@@ -355,7 +355,7 @@ const ProductDetailPage = () => {
           <div className=" pb-2 border-b border-gray-300"></div>
 
           <div className="color-section pt-2  flex items-center justify-between cursor-pointer">
-            <h3 className="text-sm font-semibold">Additional Info</h3>
+            <h3 className="text-sm font-semibold" onClick={toggleAdditionalInfo}>Additional Info</h3>
             <FiChevronDown
               size={24}
               className={`transition-transform ${
@@ -384,7 +384,7 @@ const ProductDetailPage = () => {
               <p className="text-sm flex">
                 <span>
                   {' '}
-                  <img className="pr-2 h-6" src={pdp_offer_img} alt="" />
+                  <img className="pr-2 h-6" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-page-offer-img.png?v=1693224605" alt="" />
                 </span>{' '}
                 Offer
               </p>
@@ -418,7 +418,7 @@ const ProductDetailPage = () => {
               <div className="border-r border-gray-300 pt-2 sm-only:border-0 ">
                 <img
                   className="h-5 w-6 ml-[32px] md-only:ml-[20px]"
-                  src={pdp_shopping_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-shoping-img.png?v=1693224710"
                   alt=""
                 />
                 <p className="text-[10px] mt-1 md-only:text-center sm-only:text-center">
@@ -428,7 +428,7 @@ const ProductDetailPage = () => {
               <div className="border-r border-gray-300 p-2 sm-only:border-0 lg-only:border-0 md-only:border-0">
                 <img
                   className="h-6 w-4 ml-[30px] md-only:ml-[20px]"
-                  src={pdp_qulity_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-qulity-img.png?v=1693224748"
                   alt=""
                 />
                 <p className="text-[10px] mt-1 md-only:text-center sm-only:text-center">
@@ -439,7 +439,7 @@ const ProductDetailPage = () => {
               <div className="border-r border-gray-300 p-2 sm-only:border-0">
                 <img
                   className="h-5 w-7 ml-[25px] md-only:ml-[20px]"
-                  src={pdp_payment_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-payment-img.png?v=1693224761"
                   alt=""
                 />
                 <p className="text-[10px] mt-2 md-only:text-center sm-only:text-center">
@@ -449,7 +449,7 @@ const ProductDetailPage = () => {
               <div className="p-2">
                 <img
                   className="h-6 w-4 ml-[35px] md-only:ml-[20px]"
-                  src={pdp_cup_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-cup-img.png?v=1693224792"
                   alt=""
                 />
                 <p className="text-[10px] mt-1 md-only:text-center sm-only:text-center">
@@ -463,12 +463,12 @@ const ProductDetailPage = () => {
             <p className="text-[11px]">(Monday - Friday - 10am to 6pm)</p>
             <p className="text-[11px] flex mt-3">
               {' '}
-              <img className="pr-2 w-6 h-4" src={pdp_whatsapp_img} alt="" /> +91
+              <img className="pr-2 w-6 h-4" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-whatsapp-img.png?v=1693224874" alt="" /> +91
               704522 3344
             </p>
             <p className="text-[11px] flex mt-2 md-only:text-[10px]">
               {' '}
-              <img className="pr-2 w-6 h-4" src={pdp_email_img} alt="" />
+              <img className="pr-2 w-6 h-4" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-email-img.png?v=1693224941" alt="" />
               contact@seebagroup.com
             </p>
           </div>
@@ -492,7 +492,7 @@ const ProductDetailPage = () => {
                 </div>
                 <img
                   className="w-[190px] sm-only:w-[130px] sm-only:ml-[10px]"
-                  src={product_image}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_29b8f8c9-cb80-478d-b6fc-93ac50eb185a.png?v=1693224329"
                   alt=""
                 />
                 <div>
@@ -531,7 +531,7 @@ const ProductDetailPage = () => {
                 </div>
                 <img
                   className="w-[190px] sm-only:w-[130px] sm-only:ml-[10px]"
-                  src={product_image}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_29b8f8c9-cb80-478d-b6fc-93ac50eb185a.png?v=1693224329"
                   alt=""
                 />
                 <div>
@@ -621,7 +621,7 @@ const ProductDetailPage = () => {
                   <p className="flex items-center w-[100%] relative justify-center">
                     Total: ₹ 1,040
                   </p>
-                  <button class=" text-white text-sm bg-[#003354] ml-4 py-2 w-[100%] ">
+                  <button className=" text-white text-sm bg-[#003354] ml-4 py-2 w-[100%] ">
                     Add Both to Cart
                   </button>
                 </div>
@@ -640,7 +640,7 @@ const ProductDetailPage = () => {
         <div>
           <img
             className="sm-only:w-[430px] sm-only:h-[320px]"
-            src={pdp_benner_img}
+            src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-benner-img.png?v=1693225036"
             alt=""
           />
         </div>

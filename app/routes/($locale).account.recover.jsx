@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 import {Link} from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
-import Login_img1 from '../asset/Login_img1.png';
+// import Login_img1 from '../asset/Login_img1.png';
 
 
 export async function loader({context, params}) {
@@ -55,7 +55,7 @@ export default function Recover() {
   return (
     <div className="flex justify-between sm-only:block">
       <div className="w-6/12  sm-only:hidden  ">
-        <img src={Login_img1} alt="" />
+        <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Login_img1.png?v=1693466009"/>
       </div>
 
       <div className="w-1/2	relative sm-only:w-full text-center ">
@@ -71,14 +71,18 @@ export default function Recover() {
             </div>
           </>
         ) : (
-          <> */}
-            <div className="sm-only:left-0  relative top-2/4 sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 2xl-only:absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/4 md-only:w-10/12	lg-only:w-10/12">
-              <p className="text-center text-xs text-slate-400 mb-2">
-                Home | Account
-              </p>
-              <h1 className="sm-only:text-center text-xl 2xl-only:text-4xl text-center font-medium">
-                Reset your password
-              </h1>
+
+          <>
+
+            <div className="w-6/12 sm-only:left-0  relative top-2/4 sm-only:transform-none sm-only:w-11/12 sm-only:m-auto 
+            2xl-only:absolute top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+            md-only:w-10/12	
+            lg-only:w-10/12">
+              <p className='text-center text-xs text-slate-400 mb-2'>Home  |  Account</p>
+              <h1 className="sm-only:text-center text-xl 2xl-only:text-4xl text-center font-medium">Reset your password</h1>
+
+    
+
               <p className="mt-4 sm-only:text-xs tracking-wide text-center">
                 We will send you an email to reset your password
               </p>
@@ -153,7 +157,6 @@ export default function Recover() {
           {/* </>
         )} */}
       </div>
-    </div>
   );
 }
 
@@ -168,3 +171,5 @@ const CUSTOMER_RECOVER_MUTATION = `#graphql
     }
   }
 `;
+
+

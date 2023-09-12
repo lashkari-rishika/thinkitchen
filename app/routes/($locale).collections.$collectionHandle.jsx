@@ -1,5 +1,6 @@
+import React, {useState, useEffect} from 'react';
 import {json} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
+import {Link, useLoaderData, useLocation, useSearchParams} from '@remix-run/react';
 import {
   flattenConnection,
   AnalyticsPageType,
@@ -21,7 +22,14 @@ import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
 import {getImageLoadingPriority} from '~/lib/const';
-
+import Plp from '../components/custom-components/Plp';
+import {SortBy} from '~/components/custom-components/SortBy';
+import {FilterC, PlpFilterUI} from '~/components/custom-components/FilterC';
+import {GrClose} from 'react-icons/gr';
+import {FiSearch} from 'react-icons/fi';
+import '../styles/app.css';
+import { Accordian } from '../components/custom-components/Accordian';
+import { accordian } from '../../JSON/db.json'
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -29,9 +37,9 @@ export async function loader({params, request, context}) {
     pageBy: 8,
   });
   const {collectionHandle} = params;
-
+  
   invariant(collectionHandle, 'Missing collectionHandle param');
-
+  
   const searchParams = new URL(request.url).searchParams;
   const knownFilters = ['productVendor', 'productType'];
   const available = 'available';
@@ -119,12 +127,52 @@ export async function loader({params, request, context}) {
 }
 
 export default function Collection() {
+  const [data, setData] = useState(accordian);
   const {collection, collections, appliedFilters} = useLoaderData();
-  console.log("🚀 ~ file: ($locale).collections.$collectionHandle.jsx:123 ~ Collection ~ collection:", collection)
+  const [params] = useSearchParams();
+  const location = useLocation();
+  const [isFilterUIVisible, setIsFilterUIVisible] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+  const handleFilterIconClick = () => {
+    setIsFilterUIVisible(!isFilterUIVisible); // Toggle the visibility of PlpFilterUI on icon click
+  };
+  const handleDropDownIconClick = () => {
+    setIsDropdownOpen(!isDropdownOpen); // Toggle the visibility of PlpFilterUI on icon click
+  };
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setIsDropdownOpen(false);
+  };
 
+  const items = [
+    {label: 'Featured', key: 'featured'},
+    {
+      label: 'Price: Low - High',
+      key: 'price-low-high',
+    },
+    {
+      label: 'Price: High - Low',
+      key: 'price-high-low',
+    },
+    {
+      label: 'Best Selling',
+      key: 'best-selling',
+    },
+    {
+      label: 'Newest',
+      key: 'newest',
+    },
+  ];
+  const activeItem = items.find((item) => item.key === params.get('sort'));
+
+  function getSortLink(sort, params, location) {
+    params.set('sort', sort);
+    return `${location.pathname}?${params.toString()}`;
+  }
   return (
     <>
-      <PageHeader heading={collection.title}>
+      {/* <PageHeader heading={collection.title}>
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
@@ -134,40 +182,189 @@ export default function Collection() {
             </div>
           </div>
         )}
-      </PageHeader>
-      <Section>
-        <SortFilter
+      </PageHeader> */}
+      {/* <Plp /> */}
+
+      {/* --------------------------Mobile view search------------------------- */}
+      <div className=" lg:hidden bg-[#F6F6F6] relative w-full">
+        <input
+          className="bg-[#F6F6F6] text-sm border-0 w-full"
+          type="text"
+          placeholder="Search products"
+        />
+        <FiSearch className="absolute right-2.5 top-[0.7rem]" />
+      </div>
+      {/* --------------------------Mobile view search end------------------------- */}
+      {/* ------------------------Mobile view sort and filter----------------------- */}
+      {isFilterUIVisible && (
+        <PlpFilterUI
           filters={collection.products.filters}
           appliedFilters={appliedFilters}
           collections={collections}
-        >
-          <Pagination connection={collection.products}>
-            {({nodes, isLoading, PreviousLink, NextLink}) => (
-              <>
-                <div className="flex items-center justify-center mb-6">
-                  <Button as={PreviousLink} variant="secondary" width="full">
-                    {isLoading ? 'Loading...' : 'Load previous'}
-                  </Button>
-                </div>
-                <Grid layout="products">
-                  {nodes.map((product, i) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      loading={getImageLoadingPriority(i)}
-                    />
-                  ))}
-                </Grid>
-                <div className="flex items-center justify-center mt-6">
-                  <Button as={NextLink} variant="secondary" width="full">
-                    {isLoading ? 'Loading...' : 'Load more products'}
-                  </Button>
-                </div>
-              </>
-            )}
-          </Pagination>
-        </SortFilter>
-      </Section>
+        />
+      )}
+      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-black text-white z-[100]">
+        <div className="flex justify-between py-4">
+          <div
+            onClick={handleFilterIconClick}
+            className="flex justify-center items-center w-1/2"
+          >
+            FILTER BY
+          </div>
+          <div
+            onClick={() => {
+              handleDropDownIconClick();
+            }}
+            className="flex justify-center items-center w-1/2"
+          >
+            SORT BY
+          </div>
+        </div>
+      </div>
+      {/* {isDropdownOpen && <SortBy/>} */}
+      {isDropdownOpen && (
+        <div className="plp_filter_main">
+          <div className="lg:hidden bg-white p-2 mt-1 rounded shadow-lg w-[75%] min-w-max fixed bottom-12 right-0 z-10">
+            <div className="flex justify-between items-center text-black font-semibold py-5 px-1.5 border-b">
+              <div>SORT BY</div>
+              <div onClick={handleDropDownIconClick} className="">
+                <GrClose />
+              </div>
+            </div>
+            {items.map((item) => {
+              return (
+                <>
+                  <div className="pt-4 pb-6 px-6" key={item.label}>
+                    <label className="mb-[2px] hover:bg-gray-200 py-1.5 rounded cursor-pointer flex items-center">
+                      <input
+                        type="radio"
+                        name="sortingOption"
+                        value="Bestselling"
+                        checked={selectedOption === item.label}
+                        onChange={() => handleOptionSelect(item.label)}
+                        className="hidden"
+                      />
+                      <span className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center mr-2">
+                        <span
+                          className={`w-2 h-2 rounded-full ${
+                            selectedOption === item.label
+                              ? 'bg-blue-500'
+                              : 'bg-white'
+                          }`}
+                        ></span>
+                      </span>
+                      <span className="text-sm">
+                        <Link
+                          className={`px-2 py-1 cursor-pointer hover:bg-gray-200 rounded ${
+                            activeItem?.key === item.key
+                              ? 'font-bold'
+                              : 'font-normal'
+                          }`}
+                          to={getSortLink(item.key, params, location)}
+                        >
+                          {item.label}
+                        </Link>
+                      </span>
+                    </label>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        </div>
+      )}
+      {/* ----------------------Mobile view sort and filter end--------------------- */}
+
+      <div className="bg-[#FBFBFB] plp_main_section sm-only:px-3 px-10 relative">
+        <div className="flex md-max:justify-center text-xs py-2 ">
+          <div className="text-gray-400 mr-1">Home |</div>
+          <div className="text-black">{collection.title}</div>
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex-1 mr-5 font-notmal text-sm md-max:hidden ">
+            <div>{collection.products.nodes.length} Items</div>
+          </div>
+
+          <div className="flex-1 text-center">
+            <div className="plp-section-heading">
+              <h1 className="text-3xl md-max:text-2xl text-[2rem] font-medium pb-1.5">
+                {collection.title}
+              </h1>
+            </div>
+          </div>
+
+          <div className="flex-1 flex justify-end items-center text-sm font-normal md-max:hidden">
+            {/* <SortFilter /> */}
+            {/* <SortFilter
+              filters={collection.products.filters}
+              appliedFilters={appliedFilters}
+              collections={collections}
+            ></SortFilter> */}
+            <SortBy
+              filters={collection.products.filters}
+              appliedFilters={appliedFilters}
+              collections={collections}
+            />
+            <FilterC
+              filters={collection.products.filters}
+              appliedFilters={appliedFilters}
+              collections={collections}
+            />
+          </div>
+        </div>
+        {collection?.description && (
+          <div className="text-center break-all text-sm md-max:text-[0.7rem] mb-5 leading-5 font-normal">
+            {collection.description}
+          </div>
+        )}
+        {/* <SortFilter
+          filters={collection.products.filters}
+          appliedFilters={appliedFilters}
+          collections={collections}
+        > */}
+        <Pagination connection={collection.products}>
+          {({nodes, isLoading, PreviousLink, NextLink}) => (
+            <>
+              <div className="flex items-center justify-center mb-6">
+                <Button as={PreviousLink} variant="secondary" width="full">
+                  {isLoading ? 'Loading...' : 'Load previous'}
+                </Button>
+              </div>
+
+              <div
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-2.5"
+                layout="products"
+              >
+                {nodes.map((product, i) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    loading={getImageLoadingPriority(i)}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center justify-center mt-6">
+                <Button as={NextLink} variant="secondary" width="full">
+                  {isLoading ? 'Loading...' : 'Load more products'}
+                </Button>
+              </div>
+            </>
+          )}
+        </Pagination>
+        {/* </SortFilter> */}
+        <div className="faq-section my-10 bg-white ">
+          <div className="lg:px-20 sm:px-2 lg:py-6 sm:py-2">
+            <h2 className="faq-title font-bold py-2 text-xl">
+              Faq on thinkitchen products
+            </h2>
+            {data.map((curData) => {
+              const {id} = curData;
+              return <Accordian key={id} {...curData} />;
+            })}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

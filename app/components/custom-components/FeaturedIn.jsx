@@ -1,121 +1,91 @@
-import React, { useEffect} from 'react'
-import Swiper from 'swiper'
-import { Link } from '@remix-run/react'
+import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+ import '../../../node_modules/swiper/swiper-bundle.css'
+ import '../../../node_modules/swiper/swiper-bundle.js'
+import {BsArrowLeft, BsArrowRight} from 'react-icons/bs';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import data from '../../../JSON/db.json';
 
-// import featuredin1 from '../../asset/featuredin1.webp'
-// import featuredin2 from '../../asset/featuredin2.webp'
-// import featuredin3 from '../../asset/featuredin3.webp'
-// import featuredin4 from '../../asset/featuredin4.webp'
-// import featuredin5 from '../../asset/featuredin5.webp'
-import data from '../../../JSON/db.json'
+const FeaturedIn = ({ images, text }) => {
+  const [swiper, setSwiper] = useState(null);
+  const [isMobileView, setIsMobileView] = useState(false);
 
-// const item = [
-//     {
-//       id: 1,
-//       imageSrc: featuredin1 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 2,
-//       imageSrc: featuredin2 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 3,
-//       imageSrc: featuredin3 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 4,
-//       imageSrc: featuredin4 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 5,
-//       imageSrc: featuredin5 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 6,
-//       imageSrc: featuredin1 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 7,
-//       imageSrc: featuredin2 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 8,
-//       imageSrc: featuredin3 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 9,
-//       imageSrc: featuredin4 ,
-//       link: 'https://www.google.com/',
-//     },
-//     {
-//       id: 10,
-//       imageSrc: featuredin5 ,
-//       link: 'https://www.google.com/',
-//     },
-//   ];
-const FeaturedIn = () => {
+  const slidePrev = () => {
+    if (swiper) {
+      swiper.slidePrev();
+    }
+  };
 
-    useEffect(() => {
-        if (typeof document !== 'undefined') {
-          const swiper = new Swiper('.swiper', {
-            loop: true,
-            slidesPerView: 5,
-            centeredSlides: true,
-            autoplay: {
-              delay: 5000,
-            },
-            navigation: {
-              nextEl: '.swiper-button-next', // Specify the next arrow element
-              prevEl: '.swiper-button-prev', // Specify the previous arrow element
-            },
-          });
-        }
-      }, []);
+  const slideNext = () => {
+    if (swiper) {
+      swiper.slideNext();
+    }
+  };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <div className="featured-section sm-only:px-3 px-10">
-      <div className="featured-section-heading">
-        <h1 className="text-4xl text-center font-medium pb-4">FEATURED IN</h1>
-      </div>
-      <div className="image_section">
-        <div className="myswiper">
-          <div className="swiper">
-            <div className="swiper-wrapper gap-2.5">
-              {data.featuredin.map((item) => (
-                <div key={item.id} className="swiper-slide">
-                  <div className="card">
-                    <div className="card__image">
-                      <div className="flex flex-col items-center">
-                        <div className="new_arrivel_card relative w-full">
-                          <Link href={item.link} className="w-full" target="_blank">
-                            <img
-                              src={item.imageSrc}
-                              alt="Product"
-                              className="w-full object-cover hover_image"
-                            />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="swiper-button-next">xfb</div>
-            <div className="swiper-button-prev">df</div>
-          </div>
+    <div className="featured_in_main mt-10 sm-only:px-3 px-10">
+      <div className="text_center">
+        <div className="FeaturedIn_heading flex justify-center">
+          <h1 className="text-4xl sm-only:text-2xl font-medium pb-4 uppercase">featuredin</h1>
         </div>
+
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={10}
+          slidesPerView={3}
+          scrollbar={isMobileView ? { draggable: true } : false}
+          breakpoints={{
+            992: {
+              slidesPerView: 5,
+            },
+            768: {
+              slidesPerView: 4,
+            },
+            576: {
+              slidesPerView: 4,
+            },
+            320: {
+              slidesPerView: 3,
+            }
+          }}
+          onSwiper={setSwiper}
+        >
+          {data.featuredin.map((item) => (
+            <SwiperSlide key={item.id}>
+               <div className="new_arrivel_card relative w-full">
+                <img
+                     src={item.imageSrc}
+                     alt="Product"
+                     className="w-full object-cover hover_image"
+                   />
+                </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
       </div>
+      <div className="flex justify-center text-3xl mb-4 sm-only:hidden gap-6">
+          <button className="flex justify-center" onClick={slidePrev}>
+            <BsArrowLeft />
+          </button>
+          <button className="flex justify-center" onClick={slideNext}>
+            <BsArrowRight />
+          </button>
+        </div>
     </div>
   );
 };
 
-export default FeaturedIn
+export default FeaturedIn;

@@ -158,7 +158,7 @@ shop-pay-button {
   .absolute-center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
-  #mainContent{
+  #mainContent {
     padding: 0px !important;
   }
   .strike {
@@ -202,7 +202,7 @@ shop-pay-button {
   transform: translate(-50%, -50%);
   font-weight: 400;
 }
-.brands-list{
+.brands-list {
   column-count: 6;
 }
 .brand-section .all-brand-image {
@@ -237,10 +237,6 @@ shop-pay-button {
   text-align: center;
 }
 
-.brand_hidden_image {
-  display: flex;
-  justify-content: center;
-}
 .all-brand-image:hover .all-brand-hidden {
   opacity: 1;
   transition: all 0.25s;
@@ -299,59 +295,12 @@ shop-pay-button {
   opacity: 1;
 }
 
+.social-media-section .swiper-wrapper {
+  gap: 5px;
+}
+
 /* -----------------------------social media end ----------------------------------- */
 
-/* ---------------------------- category slider css -------------------------------- */
-
-.featured-section .swiper {
-  display: flex;
-  width: 100%;
-}
-.featured-section .swiper-wrapper {
-  display: flex;
-}
-.featured-section .myswiper {
-  position: relative;
-  overflow: hidden;
-}
-img {
-  width: 100%;
-}
-.featured-section .card {
-  /* padding: 0 8px; */
-  overflow: hidden;
-}
-
-.arrivel-section .card {
-  padding: 0;
-}
-
-.arrivel-section .swiper-slide {
-  width: 100%;
-}
-
-.card__title {
-  text-align: center;
-  transition: opacity 0.3s;
-}
-
-.category_main_section .swiper-wrapper {
-  display: flex;
-  width: 100%;
-  gap: 10px;
-}
-
-.category_main_section .swiper {
-  overflow: hidden;
-  width: 200%;
-}
-.category_main_section .text-center {
-  overflow: hidden;
-}
-/* .category_heading .swiper-wrapper{
-  gap: 10px;
-} */
-/* ---------------------------- category slider css end-------------------------------- */
 /* -----------------------------New Arrivel section------------------------------------ */
 
 .discount_lable {
@@ -379,7 +328,7 @@ img {
   left: 0px;
   width: 100%;
   height: 100%;
-  opacity: 0.20;
+  opacity: 0.2;
   z-index: 1;
 }
 
@@ -393,50 +342,44 @@ img {
     left: 0px;
     width: 100%;
     height: 245%;
-    opacity: 0.20;
+    opacity: 0.2;
     z-index: 1;
   }
-  
 }
+
 /* --------------------------------plpfilter-section-end-------------------------------- */
 
+/* ---------------------------- featured_in_section start ---------------------------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .featured_in_main .swiper-wrapper {
+    padding-bottom: 4px;
+  }
+  .blog_main_section .swiper-wrapper {
+    padding-bottom: 20px;
+  }
+  .testimonial-section .swiper-wrapper {
+    padding-bottom: 20px;
+  }
+}
+/* ---------------------------- featured_in_section end ---------------------------- */
+/* ----------------- Featured and offers section button hover start ---------------- */
+.logo1 {
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.text1 {
+  transition: opacity 0.3s ease-in-out;
+}
+.add_cart_button:hover .logo1 {
+  opacity: 1;
+  transform: translateX(100%);
+}
 
-/* -------------------------------- Latest offer --------------------------------------- */
-/* .leatestOffer_banner {
-min-width: 50%;} */
+.add_cart_button:hover .text1 {
+  opacity: 0;
+}
 
-/* @media only screen and (min-device-width: 320px) and (max-device-width: 576px) {
-  .leatestOffer_banner{
-    bottom: 86px;
-  }
- 
- }*/
-/* @media only screen and (min-device-width: 576px) and (max-device-width: 768px) {
-  .leatestOffer_banner{
-    bottom: 90px;
-  }
- 
- } */
-/* @media only screen and (min-device-width: 768px) and (max-device-width: 992px) {
-  .leatestOffer_banner{
-    bottom: 86px;
-  }
- 
- } */
-/* @media only screen and (min-device-width: 992px) and (max-device-width: 1200px) {
-  .leatestOffer_banner{
-    width: 48%;
-  }
- 
- } */
-/* @media only screen and (min-device-width: 1200px) and (max-device-width: 1400px) {
-  .leatestOffer_banner{
-    bottom: 86px;
-  }
- 
- } */
-
-/* -------------------------------- Latest offer end------------------------------------- */
+/* ----------------- Featured and offers section button hover end ---------------- */
 
 /* ------------------------------- testimonial-section-start------------------------------- */
 .testimonial-section {
@@ -461,8 +404,37 @@ min-width: 50%;} */
   display: block;
   margin-left: auto;
 }
-/* ------------------------------- testimonial-section-end------------------------------- *
+/* ------------------------------- testimonial-section-end------------------------------- */
+.Brand_Suggetion > div {
+  position: relative;
+  transition: transform 0.3s;
+}
 
+.Brand_Suggetion .hover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #175c8a;
+  color: white;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.Brand_Suggetion > div:hover {
+  transform: scale(1.05);
+}
+.Brand_Suggetion > div:hover .hover-content {
+  display: flex;
+  opacity: 1;
+}
 /* -------------------------------------Header Start -----------------------------*/
 
 /* header */
@@ -490,7 +462,6 @@ body {
   align-content: center;
   /* align-items: center; */
   flex-direction: row;
-  
   justify-content: space-between;
 }
 .v-center {
@@ -546,7 +517,7 @@ a {
 .header {
   display: block;
   width: 100%;
-  
+
   /* position: relative; */
   /* z-index: 99; */
   /* padding:15px; */
@@ -580,7 +551,7 @@ a {
 }
 .header .menu > ul > li {
   display: inline-block;
-  line-height: 50px;
+  line-height: 64px;
   margin-left: 50px;
 }
 .header .menu > ul > li > a {
@@ -641,21 +612,21 @@ a {
   transform: translateX(-50%);
 }
 .header .menu > ul > li {
-margin-left: 10px;
+  margin-left: 10px;
 }
 
-.header .menu > ul > li .sub-menu.mega-menu-column-4 {
-  max-width: fit-content;
-  width: 100%;
+.header .menu > ul > li .sub-menu.mega-menu-column-7 {
+  /* max-width: fit-content; */
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   padding: 20px 15px;
 }
-.header .menu > ul > li .sub-menu.mega-menu-column-4 > .list-item {
-  flex: 0 0 25%;
+.header .menu > ul > li .sub-menu.mega-menu-column-7 > .list-item {
+  flex: 1 0 13.5%; /* 100% / 8 */
   padding: 0 15px;
 }
-.header .menu > ul > li .sub-menu.mega-menu-column-4 > .list-item .title {
+.header .menu > ul > li .sub-menu.mega-menu-column-7 > .list-item .title {
   font-size: 14px;
   color: #000000;
   font-weight: 600;
@@ -666,17 +637,18 @@ margin-left: 10px;
   .menu
   > ul
   > li
-  .sub-menu.mega-menu-column-4
+  .sub-menu.mega-menu-column-7
   > .list-item.text-center
   .title {
   text-align: center;
 }
-.header .menu > ul > li .sub-menu.mega-menu-column-4 > .list-item img {
+.header .menu > ul > li .sub-menu.mega-menu-column-7 > .list-item img {
   max-width: 100%;
   width: 100%;
   vertical-align: middle;
   margin-top: 10px;
 }
+
 .header .menu > ul > li .sub-menu.mega-menu > .list-item > ul > li > a:hover,
 .header .menu > ul > li .sub-menu > ul > li > a:hover,
 .header .item-right a:hover,
@@ -920,7 +892,6 @@ margin-left: 10px;
   }
 }
 
-
 /* -------------------------------------Header End -------------------------------*/
 .serach-section {
   background-color: #f3f4f6;
@@ -1011,16 +982,16 @@ margin-left: 10px;
   display: flex;
   align-items: center;
 }
-.brands-section .brands-header{
+.brands-section .brands-header {
   display: flex;
   align-items: center;
 }
-.shop-section .customer-serive-header{
+.shop-section .customer-serive-header {
   display: flex;
   align-items: center;
 }
 
-.shop-section .know-us-header{
+.shop-section .know-us-header {
   display: flex;
   align-items: center;
 }
@@ -1039,7 +1010,7 @@ margin-left: 10px;
   margin-right: 8px;
   transition: transform 0.3s ease; /* Adding a transition for smooth rotation */
 }
-.flex_column{
+.flex_column {
   flex-flow: wrap column;
 }
 
@@ -1077,42 +1048,42 @@ margin-left: 10px;
   .shop-now-header .shop-now-down-icon {
     display: none;
   }
-  .know-us-header .know-us-down-icon{
+  .know-us-header .know-us-down-icon {
     display: none;
   }
-  .brands-header .brands-down-icon{
+  .brands-header .brands-down-icon {
     display: none;
   }
-  .customer-serive-header .customer-service-down-icon{
+  .customer-serive-header .customer-service-down-icon {
     display: none;
   }
-  .shop-now-down-icon{
+  .shop-now-down-icon {
     /* position: absolute; */
     left: 80%;
   }
-  .shop-now-header{
+  .shop-now-header {
     position: absolute;
   }
 }
 @media screen and (max-width: 576px) and (min-width: 337px) {
-  .brand-section{
+  .brand-section {
     background-color: #f3f4f6;
   }
 }
-@media screen and (max-width: 1200px) and (min-width:768){
-.shop-now-list{
-  position: absolute;
+@media screen and (max-width: 1200px) and (min-width: 768) {
+  .shop-now-list {
+    position: absolute;
     margin-top: 35px;
-}
-.brands-header{
-  position: absolute;
-  right: 25px;
-}
+  }
+  .brands-header {
+    position: absolute;
+    right: 25px;
+  }
 }
 .custom-right-45 {
   right: 45%;
 }
-.shop-now-list{
+.shop-now-list {
   column-count: 2;
 }
 /* @media screen and (min-width: 768px) {
@@ -1125,65 +1096,104 @@ margin-left: 10px;
   padding: 50px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) !important;
   transform: translate(-45%, -50%) !important;
   width: 100%;
 }
-.about_health1 {
-  transform: translate(1%, 30%) !important;
-}
-
-
 
 
 /* ..................................... banner............................................. */
-.banner .banner-text h3{
-  font-size:36px;
+
+.banner .banner-text h3 {
+  font-size: 36px;
   color: #fff;
   opacity: 1;
   font-weight: 300;
 }
 
-.about_health1{
+.about_health1 {
   transform: translate(1%, 30%) !important;
+/* start Custom CSS to hide scroll bars */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+/* end Custom CSS to hide scroll bars */
 
-/* tabs----css--start--here---komal */
+
 
 .tab-buttons button {
   padding: 10px 10px;
   border: none;
 }
 .tab-buttons button:focus {
-  border-bottom: 2px solid black; 
+  border-bottom: 2px solid black;
 }
 
 
-.banner-logo img{
+.banner-logo img {
   width: 230px;
   height: 50px;
 }
-.banner{
+.banner {
   position: absolute;
 }
-@media only screen and ( max-width:1200px) and ( min-width:1024){
-  .banner .banner-text{
+@media only screen and (max-width: 1200px) and (min-width: 1024) {
+  .banner .banner-text {
     position: absolute;
     top: 83%;
     left: 26%;
   }
-  
 }
 
-/*----------- account login start css------------- */
+body {font-family: Arial;}
 
-.home_account_login{
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
 
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
 
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
 
+/* Create an active/current tablink class */
+.tab button .active {
+  background-color: #ccc;
+}
 
+.collection {
+  margin-top: 1px;
+}
 
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.frequently_brought_12{
+  max-width: 200px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  line-height: 1.8;
+}

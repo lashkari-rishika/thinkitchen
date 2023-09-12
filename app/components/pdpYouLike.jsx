@@ -82,9 +82,22 @@ const PdpYouLike = ({
                   alt="Product"
                   className="w-full object-cover hover_image"
                 />
-                <button className="absolute top-2 right-2 p-2 bg-white rounded-full ">
-                  <AiOutlineHeart/>
+                <button
+                  className="absolute top-2 right-2 p-2 rounded-full"
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    backgroundColor:
+                      hoveredIndex === index ? 'transparent' : 'white',
+                  }}
+                >
+                  {hoveredIndex === index ? (
+                    <BsHeartFill className="text-[#fa55d6]" />
+                  ) : (
+                    <AiOutlineHeart className="text-black" />
+                  )}
                 </button>
+
                 <div className="discount_lable absolute p-2 md-only:text-sm md-only:p-[0.1rem] text-red-600 bg-white rounded-br-lg  font-xs">
                   {media.discountTag}
                 </div>

@@ -74,7 +74,7 @@ export default function Search() {
 
   return (
     <>
-      <PageHeader>
+      {/* <PageHeader>
         <Heading as="h1" size="copy">
           Search
         </Heading>
@@ -90,7 +90,7 @@ export default function Search() {
             Go
           </button>
         </Form>
-      </PageHeader>
+      </PageHeader> */}
       {!searchTerm || noResults ? (
         <NoResults
           noResults={noResults}
@@ -98,35 +98,54 @@ export default function Search() {
         />
       ) : (
         <Section>
-          <Pagination connection={products}>
+          <Pagination connection={item}>
             {({nodes, isLoading, NextLink, PreviousLink}) => {
-              const itemsMarkup = nodes.map((product, i) => (
+              const itemsMarkup = nodes.map((item, i) => (
                 <ProductCard
-                  key={product.id}
-                  product={product}
+                  key={item.id}
+                  product={item}
                   loading={getImageLoadingPriority(i)}
                 />
               ));
 
               return (
-                <>
-                  <div className="flex items-center justify-center mt-6">
-                    <PreviousLink className="inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full">
-                      {isLoading ? 'Loading...' : 'Previous'}
-                    </PreviousLink>
-                  </div>
+                <div className="p-[35px]">
+                {/* //   <div className="flex items-center justify-center mt-6">
+                //     <PreviousLink className="inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full">
+                //       {isLoading ? 'Loading...' : 'Previous'}
+                //     </PreviousLink>
+                //   </div> */}
                   <Grid data-test="product-grid">{itemsMarkup}</Grid>
-                  <div className="flex items-center justify-center mt-6">
+                  {/* <div className="flex items-center justify-center mt-6">
                     <NextLink className="inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full">
                       {isLoading ? 'Loading...' : 'Next'}
                     </NextLink>
-                  </div>
-                </>
+                  </div> */}
+                      {/* <div className="flex justify-center mt-4">
+                          {Array.from({length: totalPages}, (_, i) => i + 1).map((page) => (
+                            <Link
+                              key={page}
+                              to={`/?page=${page}`}
+                              className={`mx-1 flex items-center ${
+                                currentPage === page ? ' text-black' : ' text-gray-500'
+                              }`}
+                              onClick={() => handlePageChange(page)}
+                            >
+                              {page}1,2,3
+                            </Link>
+                             ))}   
+                        </div> */}
+
+
+                </div>
               );
             }}
+
+            
           </Pagination>
         </Section>
       )}
+
     </>
   );
 }
@@ -134,37 +153,41 @@ export default function Search() {
 function NoResults({noResults, recommendations}) {
   return (
     <>
-      {noResults && (
-        <Section padding="x">
-          <Text className="opacity-50">
-            No results, try a different search.
-          </Text>
-        </Section>
-      )}
-      <Suspense>
-        <Await
-          errorElement="There was a problem loading related products"
-          resolve={recommendations}
-        >
-          {(result) => {
-            if (!result) return null;
-            const {featuredCollections, featuredProducts} = result;
+      <div>
+        {noResults && (
+          <Section padding="x">
+            <Text className="opacity-50">
+              No results, try a different search.
+            </Text>
+          </Section>
+        )}
+        <Suspense>
+          <Await
+            errorElement="There was a problem loading related products"
+            resolve={recommendations}
+          >
+            {(result) => {
+              if (!result) return null;
+              const {featuredCollections, featuredProducts} = result;
 
-            return (
-              <>
-                <FeaturedCollections
-                  title="Trending Collections"
-                  collections={featuredCollections}
-                />
-                <ProductSwimlane
-                  title="Trending Products"
-                  products={featuredProducts}
-                />
-              </>
-            );
-          }}
-        </Await>
-      </Suspense>
+              return (
+                <>
+                  <FeaturedCollections
+                    title="Trending Collections"
+                    collections={featuredCollections}
+                  />
+                  <div>
+                    <ProductSwimlane
+                      title="Trending Products"
+                      products={featuredProducts}
+                    />
+                  </div>
+                </>
+              );
+            }}
+          </Await>
+        </Suspense>
+      </div>
     </>
   );
 }

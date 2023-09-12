@@ -30,19 +30,19 @@ export function CartDetails({layout, cart}) {
   // @todo: get optimistic cart cost
   const cartHasItems = !!cart && cart.totalQuantity > 0;
   const container = {
-    drawer: 'grid grid-cols-1 h-screen-no-nav grid-rows-[1fr_auto]',
+    drawer: 'grid grid-cols-1 h-screen-no-nav grid-rows-[1fr_auto] h-[18rem]',
     page: 'w-full pb-12 grid md:grid-cols-2 md:items-start gap-8 md:gap-8 lg:gap-12',
   };
 
   return (
     <div className={container[layout]}>
       <CartLines lines={cart?.lines} layout={layout} />
-      {cartHasItems && (
+      {/* {cartHasItems && (
         <CartSummary cost={cart.cost} layout={layout}>
           <CartDiscounts discountCodes={cart.discountCodes} />
           <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
         </CartSummary>
-      )}
+      )} */}
     </div>
   );
 }
@@ -121,7 +121,7 @@ function CartLines({layout = 'drawer', lines: cartLines}) {
     y > 0 ? 'border-t' : '',
     layout === 'page'
       ? 'flex-grow md:translate-y-4'
-      : 'px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12',
+      : 'px-8 pb-6 sm-max:pt-2 overflow-auto transition h-[10rem]',
   ]);
 
   return (
@@ -134,7 +134,23 @@ function CartLines({layout = 'drawer', lines: cartLines}) {
         {currentLines.map((line) => (
           <CartLineItem key={line.id} line={line} />
         ))}
+        <div className="fixed right-0 py-5 w-full bottom-0 items-center grid gap-y-1.5 text-sm bg-white">
+          <button className="h-9 mx-10 items-center border border-[E1E1E1] hover:bg-[#175C8A] hover:text-white">
+            View My Cart (2)
+          </button>
+          <button className="h-9 mx-10 items-center border border-[E1E1E1] bg-[#175C8A] text-white hover:text-white">
+            Checkout
+          </button>
+          <button className="h-9 mx-10 items-center border border-[E1E1E1] hover:bg-[#175C8A] hover:text-white">
+            Continue Shopping
+          </button>
+        </div>
       </ul>
+      {/* <ul className="grid gap-6 md:gap-10">
+        {currentLines.map((line) => (
+          <CartLineItem key={line.id} line={line} />
+        ))}
+      </ul> */}
     </section>
   );
 }
@@ -190,51 +206,85 @@ function CartLineItem({line}) {
   if (typeof quantity === 'undefined' || !merchandise?.product) return null;
 
   return (
-    <li key={id} className="flex gap-4">
-      <div className="flex-shrink">
-        {merchandise.image && (
-          <Image
-            width={110}
-            height={110}
-            data={merchandise.image}
-            className="object-cover object-center w-24 h-24 border rounded md:w-28 md:h-28"
-            alt={merchandise.title}
-          />
-        )}
-      </div>
-
-      <div className="flex justify-between flex-grow">
-        <div className="grid gap-2">
-          <Heading as="h3" size="copy">
-            {merchandise?.product?.handle ? (
-              <Link to={`/products/${merchandise.product.handle}`}>
-                {merchandise?.product?.title || ''}
-              </Link>
-            ) : (
-              <Text>{merchandise?.product?.title || ''}</Text>
+    <>
+      <div key={id} className="gap-4">
+        <div className="flex gap-4">
+          <div className="max-w-[4.5rem]">
+            {merchandise.image && (
+              <>
+                <Image
+                  width={110}
+                  height={110}
+                  data={merchandise.image}
+                  alt={merchandise.title}
+                />
+              </>
             )}
-          </Heading>
-
-          <div className="grid pb-2">
-            {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="subtle" key={option.name}>
-                {option.name}: {option.value}
-              </Text>
-            ))}
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="flex justify-start text-copy">
-              <CartLineQuantityAdjust line={line} />
-            </div>
-            <ItemRemoveButton lineIds={[id]} />
+          <div className=" text-base">
+            <Heading as="h3" size="copy">
+              {merchandise?.product?.handle ? (
+                <>
+                  <Link to={`/products/${merchandise.product.handle}`}>
+                    {merchandise?.product?.title || ''}
+                  </Link>
+                  <div>$5000</div>
+                </>
+              ) : (
+                <Text>{merchandise?.product?.title || ''}</Text>
+              )}
+            </Heading>
           </div>
         </div>
-        <Text>
-          <CartLinePrice line={line} as="span" />
-        </Text>
+        <ItemRemoveButton lineIds={[id]} />
       </div>
-    </li>
+      {/* <li key={id} className="flex gap-4">
+        <div className="flex-shrink">
+          {merchandise.image && (
+            <Image
+              width={110}
+              height={110}
+              data={merchandise.image}
+              className="object-cover object-center w-24 h-24 border rounded md:w-28 md:h-28"
+              alt={merchandise.title}
+            />
+          )}
+        </div>
+
+        <div className="flex justify-between flex-grow">
+          <div className="grid gap-2">
+            <Heading as="h3" size="copy">
+              {merchandise?.product?.handle ? (
+                <Link to={`/products/${merchandise.product.handle}`}>
+                  {merchandise?.product?.title || ''}
+                </Link>
+              ) : (
+                <Text>{merchandise?.product?.title || ''}</Text>
+              )}
+            </Heading>
+
+            <div className="grid pb-2">
+              {(merchandise?.selectedOptions || []).map((option) => (
+                <Text color="subtle" key={option.name}>
+                  {option.name}: {option.value}
+                </Text>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <div className="flex justify-start text-copy">
+                <CartLineQuantityAdjust line={line} />
+              </div>
+              <ItemRemoveButton lineIds={[id]} />
+            </div>
+          </div>
+          <Text>
+            <CartLinePrice line={line} as="span" />
+          </Text>
+        </div>
+      </li> */}
+    </>
   );
 }
 
@@ -250,7 +300,7 @@ function ItemRemoveButton({lineIds}) {
       />
       <input type="hidden" name="linesIds" value={JSON.stringify(lineIds)} />
       <button
-        className="flex items-center justify-center w-10 h-10 border rounded"
+        className="flex items-center justify-center w-full h-9 mt-1.5 border rounded hover:outline-black bg-red-500 text-white  "
         type="submit"
       >
         <span className="sr-only">Remove</span>
@@ -356,7 +406,7 @@ export function CartEmpty({hidden = false, layout = 'drawer', onClose}) {
           <Button onClick={onClose}>Continue shopping</Button>
         </div>
       </section>
-      <section className="grid gap-8 pt-16">
+      {/* <section className="grid gap-8 pt-16">
         <FeaturedProducts
           count={4}
           heading="Shop Best Sellers"
@@ -364,7 +414,7 @@ export function CartEmpty({hidden = false, layout = 'drawer', onClose}) {
           onClose={onClose}
           sortKey="BEST_SELLING"
         />
-      </section>
+      </section> */}
     </div>
   );
 }
