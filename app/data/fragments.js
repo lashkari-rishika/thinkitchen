@@ -87,3 +87,39 @@ export const FEATURED_COLLECTION_FRAGMENT = `#graphql
     }
   }
 `;
+export const BESTSELLER_CARD_FRAGMENT = `#graphql
+  fragment BestSellerCard on Product {
+    id
+    title
+    publishedAt
+    handle
+    vendor
+    variants(first: 1) {
+      nodes {
+        id
+        image {
+          url
+          altText
+          width
+          height
+        }
+        price {
+          amount
+          currencyCode
+        }
+        compareAtPrice {
+          amount
+          currencyCode
+        }
+        selectedOptions {
+          name
+          value
+        }
+        product {
+          handle
+          title
+        }
+      }
+    }
+  }
+`;

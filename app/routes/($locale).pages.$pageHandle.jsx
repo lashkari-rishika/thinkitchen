@@ -5,6 +5,10 @@ import invariant from 'tiny-invariant';
 import {PageHeader} from '~/components';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
+import {AboutUS} from '~/components/AboutUS';
+import Blog from '~/components/custom-components/BlogandBlogdetails/Blog'
+import ContactUs from '~/components/commomComponent/ContactUS'
+
 
 export const headers = routeHeaders;
 
@@ -29,15 +33,24 @@ export async function loader({request, params, context}) {
 
 export default function Page() {
   const {page} = useLoaderData();
-
+  const pagesWithComponents = ['About us', 'Blog', 'Career with us',];
   return (
     <>
-      <PageHeader heading={page.title}>
-        <div
-          dangerouslySetInnerHTML={{__html: page.body}}
-          className="prose dark:prose-invert"
-        />
-      </PageHeader>
+
+        {pagesWithComponents.includes(page.title)  ? (
+        // Render specific components based on page title
+        <>
+          {page.title === 'About us' && <AboutUS />}
+          {page.title === 'Blog' && <Blog />}
+          {page.title === 'Career with us' && <ContactUs/>}
+        </>
+      ) : (
+
+          <div
+            dangerouslySetInnerHTML={{ __html: page.body }}
+            className="prose dark:prose-invert"
+          />
+        )}
     </>
   );
 }

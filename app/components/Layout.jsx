@@ -1,7 +1,7 @@
 import {useParams, Form, Await, useMatches} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo} from 'react';
+import {Suspense, useEffect, useMemo, useState} from 'react';
 import {
   Drawer,
   useDrawer,
@@ -19,13 +19,30 @@ import {
   Cart,
   CartLoading,
   Link,
+  FeaturedProducts,
 } from '~/components';
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+import FooterComponet from './FooterComponet';
+import accountLogin from '../asset/Icon-feather-user.png';
+import cart from '../asset/cart.png';
+import wishList from '../asset/heart.png';
+import cart_location from '../asset/cart_location.png';
+import header_logo from '../asset/logo.svg';
+import dropdownImageMoblie from '../asset/dropdown-mobile.png';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
+import {CiCircleChevDown} from 'react-icons/ci';
+import {Image} from '@shopify/hydrogen';
+import Myorder from './Myorder';
+import VerticalTabs from './Verticaltabs';
+import Myorderdetails from './Myorderdetails';
+import EmailComponent from './EmailComponent';
+import Blog from './custom-components/BlogandBlogdetails/Blog';
+import Contactsection from './commomComponent/ContactUS';
 
-export function Layout({children, layout}) {
-  const {headerMenu, footerMenu} = layout;
+export function Layout({ children, layout }) {
+  const { headerMenu, footerMenu } = layout;
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -35,8 +52,20 @@ export function Layout({children, layout}) {
           </a>
         </div>
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
-        <main role="main" id="mainContent" className="flex-grow">
-          {children}
+
+        <main role="main" id="mainContent" className="flex-grow ">
+
+          <div className="main_video_banner">
+            {children}
+            {/* <ProductDetailPage /> */}
+            {/* <EmailComponent /> */}
+            <div />
+            <div>
+              {/* <Blog /> */}
+              {/* <Contactsection /> */}
+            </div>
+
+          </div>
         </main>
       </div>
       {footerMenu && <Footer menu={footerMenu} />}
@@ -93,7 +122,13 @@ function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
+    <Drawer
+      open={isOpen}
+      onClose={onClose}
+      heading="Cart"
+      openFrom="right"
+      className="text-2xl"
+    >
       <div className="grid">
         <Suspense fallback={<CartLoading />}>
           <Await resolve={root.data?.cart}>
@@ -115,29 +150,178 @@ export function MenuDrawer({isOpen, onClose, menu}) {
   );
 }
 
-function MenuMobileNav({menu, onClose}) {
+
+function MenuMobileNav({ menu, onClose }) {
+  console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
+  const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [activeSubMenuId, setActiveSubMenuId] = useState(null);
+
+  const toggleCategory = (categoryId) => {
+    setActiveCategoryId(activeCategoryId === categoryId ? null : categoryId);
+    setActiveSubMenuId(null); // Close any active sub-menu
+  };
+
+  const toggleSubMenu = (subMenuId) => {
+    setActiveSubMenuId(activeSubMenuId === subMenuId ? null : subMenuId);
+  };
+
+  const data = [
+    {
+      id: 'category',
+      title: 'Shop by Category',
+      icon: dropdownImageMoblie,
+      subMenus: [
+        {
+          id: 'prepware',
+          title: 'Prepware',
+          icon: dropdown_icon_moblie,
+          options: [
+            'Prepware Accessories',
+            'Knife & Knife Sets',
+            'Cooking Accessories',
+            'Serving Accessories',
+          ],
+        },
+        {
+          id: 'drinkware',
+          title: 'Drinkware',
+          icon: dropdown_icon_moblie,
+          options: [
+            'Cups & Mugs',
+            'Bottles',
+            'On-the-Go',
+            'Tea Pots',
+            'Coffee Makers',
+            'Tea Accessories',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'brands',
+      title: 'Shop by Brands',
+      icon: dropdownImageMoblie,
+      options: [
+        'View All Brands',
+        'BergHOFF',
+        'Amefa',
+        'Brabantia',
+        'Burleigh',
+        'Cole & Mason',
+      ],
+    },
+    {
+      id: 'know-us',
+      title: 'Know Us',
+      icon: dropdownImageMoblie,
+      options: ['About Us', 'Career'],
+    },
+  ];
   return (
-    <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      {/* Top level menu items */}
+    <nav className="grid bg-white gap-4 p-6 sm-only:gap-4 sm:px-12 sm:py-8">
       {(menu?.items || []).map((item) => (
-        <span key={item.id} className="block">
-          <Link
-            to={item.to}
-            target={item.target}
-            onClick={onClose}
-            className={({isActive}) =>
-              isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-            }
-          >
-            <Text as="span" size="copy">
-              {item.title}
-            </Text>
-          </Link>
-        </span>
+        <div key={item.id} className="block border-b-2">
+          <ul className="space-y-2 mb-[12px]">
+            <li className="relative">
+              <Link
+                key={item.id}
+                to={item.to}
+                target={item.target}
+                prefetch="intent"
+                className="text-base"
+              >
+                {item.title}
+              </Link>
+              <ul className="absolute border-l border-[#DEDEDE] top-0 right-0 transform  -translate-x-2.5">
+                <li
+                  onClick={() => toggleCategory(item.id)}
+                  className={`w-8 h-8 transition-transform ${activeCategoryId === item.id ? 'transform rotate-180' : ''
+                    }`}
+                >
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown-mobile.png?v=1692696964"
+                    alt=""
+                    className="ml-auto"
+                  />
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {activeCategoryId === item.id && (
+            <ul className="max-h-60 overflow-y-scroll">
+              <ul className="space-y-2">
+                {(item?.items || []).map((subitem) => (
+                  <Link
+                    key={subitem.id}
+                    to={subitem.to}
+                    target={subitem.target}
+                    prefetch="intent"
+                    className="relative"
+                  >
+                    {console.log('🚀 ~ file: Layout.jsx:253 ~ item:', item)}
+                    <div className="text-sm font-semibold text-black mb-[10px]">
+                      {subitem.title}
+                    </div>
+                    <div className="absolute top-0 right-0 transform  -translate-x-4">
+                      <li
+                        onClick={() => toggleSubMenu(subitem.id)}
+                        className={`h-5 w-5 transition-transform ${activeSubMenuId === subitem.id
+                            ? 'transform rotate-180'
+                            : ''
+                          }`}
+                      >
+          
+
+                        {!subitem?.items?.length == 0 && (
+                          <img
+                            src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown_icon_mobile.png?v=1692697923"
+                            alt=""
+                          />
+                        )}
+                      </li>
+                    </div>
+                    {activeSubMenuId === subitem.id && (
+                      <ul className="space-y-2 grid">
+                        {(subitem?.items || []).map((subchilditem) => (
+                          <Link
+                            key={subchilditem.id}
+                            to={subchilditem.to}
+                            target={subchilditem.target}
+                            prefetch="intent"
+                            className="mt-3 text-sm font-medium text-black"
+                          >
+                            {subchilditem.title}
+                          </Link>
+                        ))}
+                      </ul>
+                    )}
+                  </Link>
+                ))}
+                {/* {!category.subitem && category.subitem && (
+                  <ul className="space-y-2">
+                     {(item?.items || []).map((subitem) => (
+                      <li
+                      key={subitem.id}
+                      to={subitem.to}
+                      target={subitem.target}
+                      prefetch="intent"
+                        className="mt-3 mb-3 text-sm font-medium text-black"
+                      >
+                        {subitem.title}
+                      </li>
+                    ))}
+                  </ul>
+                )} */}
+              </ul>
+            </ul>
+          )}
+        </div>
       ))}
     </nav>
   );
 }
+
+export default MenuMobileNav;
 
 function MobileHeader({title, isHome, openCart, openMenu}) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
@@ -148,58 +332,61 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
     <header
       role="banner"
       className={`${
-        isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+        isHome ? 'bg-white text-black' : ' text-primary'
+      } flex 2xl-only:hidden xl-only:hidden  lg-only:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
-      <div className="flex items-center justify-start w-full gap-4">
+      <div className="flex items-center justify-start gap-4">
         <button
           onClick={openMenu}
-          className="relative flex items-center justify-center w-8 h-8"
+          className="relative flex items-center justify-center h-8 "
         >
           <IconMenu />
         </button>
-        <Form
-          method="get"
-          action={params.locale ? `/${params.locale}/search` : '/search'}
-          className="items-center gap-2 sm:flex"
-        >
-          <button
-            type="submit"
-            className="relative flex items-center justify-center w-8 h-8"
-          >
-            <IconSearch />
-          </button>
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-        </Form>
       </div>
 
       <Link
-        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
+        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center w-full h-full"
         to="/"
       >
         <Heading
           className="font-bold text-center leading-none"
           as={isHome ? 'h1' : 'h2'}
         >
-          {title}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/logo.svg?v=1693225458"
+            alt=""
+          />
         </Heading>
       </Link>
 
       <div className="flex items-center justify-end w-full gap-4">
-        <AccountLink className="relative flex items-center justify-center w-8 h-8" />
+        <AccountLink className="relative flex items-center justify-center  h-8" />
         <CartCount isHome={isHome} openCart={openCart} />
+      </div>
+      <div>
+        <Form
+          method="get"
+          action={params.locale ? `/${params.locale}/search` : '/search'}
+          className="search-section items-center gap-2 shadow-sm sm:flex absolute top-full bg-gray-100 w-full left-0"
+        >
+          <Input
+            className={
+              isHome
+                ? 'focus:border-contrast/20 absolute left-0 text-center dark:focus:border-primary/20'
+                : 'focus:border-primary/20'
+            }
+            type="search"
+            variant="minisearch"
+            placeholder="Search Product"
+            name="q"
+          />
+          <button
+            type="submit"
+            className="search-icon flex items-center justify-center h-8 ml-auto"
+          >
+            <IconSearch />
+          </button>
+        </Form>
       </div>
     </header>
   );
@@ -208,64 +395,289 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 function DesktopHeader({isHome, menu, openCart, title}) {
   const params = useParams();
   const {y} = useWindowScroll();
+  const [menuActive, setMenuActive] = useState(false);
+  const [subMenuActive, setSubMenuActive] = useState(false);
+  const [currentMenuTitle, setCurrentMenuTitle] = useState('');
+
+  const toggleMenu = () => {
+    setMenuActive((prevMenuActive) => !prevMenuActive);
+  };
+
+  const showSubMenu = (event) => {
+    const hasChildren = event.target.closest('.menu-item-has-children');
+    const menuTitle =
+      hasChildren.querySelector('i').parentNode.childNodes[0].textContent;
+
+    setSubMenuActive(true);
+    setCurrentMenuTitle(menuTitle);
+  };
+
+  const hideSubMenu = () => {
+    setSubMenuActive(false);
+    setCurrentMenuTitle('');
+  };
+
+  const handleWindowResize = () => {
+    if (window.innerWidth > 991 && menuActive) {
+      toggleMenu();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [menuActive]);
   return (
     <header
       role="banner"
       className={`${
         isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
+          ? 'header flex md:hidden sm:hidden bg-[#FFFFFF]  text-contrast dark:text-primary'
+          : ' text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      } hidden h-2 lg:flex opacity-80  shadow-sm bg-[#FFFFFF] items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
-      <div className="flex gap-12">
-        <Link className="font-bold" to="/" prefetch="intent">
-          {title}
-        </Link>
-        <nav className="flex gap-8">
-          {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link
-              key={item.id}
-              to={item.to}
-              target={item.target}
-              prefetch="intent"
-              className={({isActive}) =>
-                isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-              }
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-      </div>
-      <div className="flex items-center gap-1">
-        <Form
-          method="get"
-          action={params.locale ? `/${params.locale}/search` : '/search'}
-          className="flex items-center gap-2"
-        >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-          <button
-            type="submit"
-            className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+      <div className="header">
+        <div className="row v-center">
+          <div className="header-item item-left">
+            <div className="logo">
+              <Link className="font-bold" to="/" prefetch="intent">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/logo.svg?v=1693225458"
+                  alt="logo"
+                />
+                {/* {title} */}
+              </Link>
+            </div>
+          </div>
+          <div
+            className={`header-item item-center ${menuActive ? 'active' : ''}`}
           >
-            <IconSearch />
-          </button>
-        </Form>
-        <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" />
-        <CartCount isHome={isHome} openCart={openCart} />
+            <div className="menu-overlay" onClick={toggleMenu}></div>
+            <nav className={`menu ${menuActive ? 'active' : ''}`}>
+              <div className="mobile-menu-head">
+                <div className="go-back" onClick={hideSubMenu}></div>
+                <div className="current-menu-title">{currentMenuTitle}</div>
+                <div className="mobile-menu-close" onClick={toggleMenu}>
+                  &times;
+                </div>
+              </div>
+              <ul
+                className={`menu-main flex items-center gap-6 ${
+                  subMenuActive ? 'active' : ''
+                }`}
+              >
+                {(menu?.items || []).map((item) => (
+                  <li key={item.id}
+                    className="menu-item-has-children" onClick={showSubMenu}>
+                    <Link
+                      to={item.to}
+                      target={item.target}
+                      prefetch="intent"
+                      className={({isActive}) =>
+                        isActive ? 'pb-1 -mb-px' : 'pb-1'
+                      }
+                      style={{borderBottom: '2px solid transparent'}}
+                    >
+                      {item.title}
+                    </Link>
+                    <div className="sub-menu mega-menu mega-menu-column-7">
+                      {(item?.items || []).map((subitem) => (
+                        <>
+                          <div key={subitem.id} className="list-item">
+                            <h4 className="title">
+                              <Link
+                                to={subitem.to}
+                                target={subitem.target}
+                                prefetch="intent"
+                                className={({isActive}) =>
+                                  isActive ? 'pb-1  -mb-px' : 'pb-1'
+                                }
+                              >
+                                {subitem.title}
+                              </Link>
+                            </h4>
+                            <ul>
+                              {(subitem?.items || []).map((subchilditem) => (
+                                <>
+                                  <li key={subchilditem.id}>
+                                    <Link
+                                      to={subchilditem.to}
+                                      target={subchilditem.target}
+                                      prefetch="intent"
+                                      className={({ isActive }) =>
+                                        isActive ? 'pb-1  -mb-px' : 'pb-1'
+                                      }
+                                    >
+                                      {subchilditem.title}
+                                    </Link>
+                                  </li>
+                                </>
+                              ))}
+                            </ul>
+                          </div>
+                        </>
+                      ))}
+                      {/* <div className="list-item">
+                          <img src={img2} alt="shop" />
+                        </div> */}
+                    </div>
+                  </li>
+                ))}
+                {/* <li>
+                    <a href="#">Home</a>
+                  </li> */}
+                {/* <li className="menu-item-has-children" onClick={showSubMenu}>
+                    <a href="#">Shop</a>
+                    <div className="sub-menu mega-menu mega-menu-column-4">
+                      <div className="list-item">
+                        <h4 className="title">Men's Fashion</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                        <h4 className="title">Beauty</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="list-item">
+                        <h4 className="title">Women's Fashion</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                        <h4 className="title">Furniture</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="list-item">
+                        <h4 className="title">Home, Kitchen</h4>
+                        <ul>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                          <li>
+                            <a href="#">Product List</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="list-item">
+                        <img src={img2} alt="shop" />
+                      </div>
+                    </div>
+                  </li> */}
+              </ul>
+            </nav>
+          </div>
+          <div className="flex items-center gap-5">
+            <Form
+              method="get"
+              action={params.locale ? `/${params.locale}/search` : '/search'}
+              className="flex items-center gap-2 bg-white rounded-md drop-shadow-md text-black"
+            >
+              <Input
+                className={
+                  isHome
+                    ? 'focus:border-contrast/20 dark:focus:border-primary/20 text-black'
+                    : 'focus:border-primary/20 text-black'
+                }
+                type="search"
+                variant="minisearch"
+                placeholder="Search"
+                name="q"
+              />
+              <button
+                type="submit"
+                className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+              >
+                <IconSearch />
+              </button>
+            </Form>
+            <div className="">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/cart_location_d73808c8-d025-4538-8717-350241a6f3fb.png?v=1693225530"
+                alt="location"
+              />
+            </div>
+            <div className="">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/heart.png?v=1693225585"
+                alt="heart"
+              />
+            </div>
+            <AccountLink className="relative flex items-center justify-center focus:ring-primary/5 " />
+            <CartCount isHome={isHome} openCart={openCart} className="" />
+          </div>
+        </div>
       </div>
     </header>
   );
@@ -276,11 +688,13 @@ function AccountLink({className}) {
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
     <Link to="/account" className={className}>
-      <IconAccount />
+      <img src={accountLogin} alt="login" />
+      {/* <IconAccount /> */}
     </Link>
   ) : (
     <Link to="/account/login" className={className}>
-      <IconLogin />
+      <img src={accountLogin} alt="login" />
+      {/* <IconLogin /> */}
     </Link>
   );
 }
@@ -309,7 +723,8 @@ function Badge({openCart, dark, count}) {
   const BadgeCounter = useMemo(
     () => (
       <>
-        <IconBag />
+        <img src={cart} alt="cart" />
+        {/* <IconBag />
         <div
           className={`${
             dark
@@ -318,7 +733,7 @@ function Badge({openCart, dark, count}) {
           } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
-        </div>
+        </div> */}
       </>
     ),
     [count, dark],
@@ -354,17 +769,17 @@ function Footer({menu}) {
       divider={isHome ? 'none' : 'top'}
       as="footer"
       role="contentinfo"
-      className={`grid min-h-[25rem] items-start grid-flow-row w-full gap-6 py-8 px-6 md:px-8 lg:px-12 md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-${itemsCount}
-        bg-primary dark:bg-contrast dark:text-primary text-contrast overflow-hidden`}
+      className="foooter w-full gap-4  grid  border-none  min-h-[25rem] items-start grid-flow-row grid-cols-1 md:grid-cols-1 lg:grid-cols-bg-primary  text-black mb-0.5 light:text-primary overflow-hidden bg-slate-100"
     >
-      <FooterMenu menu={menu} />
+      {/* <FooterMenu menu={menu} />
       <CountrySelector />
       <div
         className={`self-end pt-8 opacity-50 md:col-span-2 lg:col-span-${itemsCount}`}
       >
         &copy; {new Date().getFullYear()} / Shopify, Inc. Hydrogen is an MIT
         Licensed Open Source project.
-      </div>
+      </div> */}
+      <FooterComponet menu={menu} />
     </Section>
   );
 }
@@ -386,17 +801,17 @@ function FooterLink({item}) {
 }
 
 function FooterMenu({menu}) {
-  const styles = {
-    section: 'grid gap-4',
-    nav: 'grid gap-2 pb-6',
-  };
+  // const styles = {
+  //   section: 'grid gap-4',
+  //   nav: 'grid gap-2',
+  // };
 
   return (
     <>
-      {(menu?.items || []).map((item) => (
+      {/* {(menu?.items || []).map((item) => (
         <section key={item.id} className={styles.section}>
           <Disclosure>
-            {({open}) => (
+            {({ open }) => (
               <>
                 <Disclosure.Button className="text-left md:cursor-default">
                   <Heading className="flex justify-between" size="lead" as="h3">
@@ -410,9 +825,8 @@ function FooterMenu({menu}) {
                 </Disclosure.Button>
                 {item?.items?.length > 0 ? (
                   <div
-                    className={`${
-                      open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                    } overflow-hidden transition-all duration-300`}
+                    className={`${open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                      } overflow-hidden transition-all duration-300`}
                   >
                     <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
                       <Disclosure.Panel static>
@@ -429,7 +843,7 @@ function FooterMenu({menu}) {
             )}
           </Disclosure>
         </section>
-      ))}
+      ))} */}
     </>
   );
 }

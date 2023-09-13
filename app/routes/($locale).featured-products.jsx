@@ -2,8 +2,9 @@ import {json} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
 
 import {
-  PRODUCT_CARD_FRAGMENT,
+  PRODUCT_CARD_FRAGMENT, 
   FEATURED_COLLECTION_FRAGMENT,
+  BESTSELLER_CARD_FRAGMENT,
 } from '~/data/fragments';
 
 export async function loader({context: {storefront}}) {
@@ -41,8 +42,14 @@ export const FEATURED_ITEMS_QUERY = `#graphql
         ...ProductCard
       }
     }
+    // featuredBestSeller: products(first: $pageBy) {
+    //   nodes {
+    //     ...BestSellerCard
+    //   }
+    // }
   }
 
   ${PRODUCT_CARD_FRAGMENT}
   ${FEATURED_COLLECTION_FRAGMENT}
+  ${BESTSELLER_CARD_FRAGMENT}
 `;

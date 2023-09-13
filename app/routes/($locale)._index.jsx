@@ -4,11 +4,28 @@ import {Await, useLoaderData} from '@remix-run/react';
 import {AnalyticsPageType} from '@shopify/hydrogen';
 
 import {ProductSwimlane, FeaturedCollections, Hero} from '~/components';
-import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {BestSeller} from '~/components/custom-components/BestSeller';
+import {
+  MEDIA_FRAGMENT,
+  PRODUCT_CARD_FRAGMENT,
+  BESTSELLER_CARD_FRAGMENT,
+  // OurLatestBlog,
+} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-
+import Banner from '~/components/Banner';
+import ShopByCategory from '~/components/custom-components/ShopByCategory';
+import ShopByBrands from '~/components/custom-components/ShopByBrands';
+import LatestOffer from '~/components/custom-components/LatestOffer';
+import FeaturedIn from '~/components/custom-components/FeaturedIn';
+// import OurLatestBlog from '~/components/custom-components/OurLatestBlog';
+import SocialMedia from '~/components/custom-components/SocialMedia';
+import CustomerTestimonial from '~/components/custom-components/CustomerTestimonial';
+import Plp from '~/components/custom-components/Plp';
+import Blog from '~/components/custom-components/BlogandBlogdetails/Blog';
+import Blogdetails from '~/components/custom-components/BlogandBlogdetails/Blogdetails';
+import AddToCartPopUp from './../components/custom-components/AddToCartPopUp';
 export const headers = routeHeaders;
 
 export async function loader({params, context}) {
@@ -48,6 +65,25 @@ export async function loader({params, context}) {
         },
       },
     ),
+    bestSeller: context.storefront.query(HOMEPAGE_BESTSELLER_PRODUCTS_QUERY, {
+      variables: {
+        /**
+         * Country and language properties are automatically injected
+         * into all queries. Passing them is unnecessary unless you
+         * want to override them from the following default:
+         */
+        country,
+        language,
+      },
+    }),
+
+    // ourLatestBlog: context.storefront.query(OUR_LATEST_BLOG_QUERY, {
+    //   variables: {
+    //     // ... (language and country variables)
+    //     country,
+    //     language,
+    //   },
+    // }),
     secondaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
         handle: 'backcountry',
@@ -61,6 +97,7 @@ export async function loader({params, context}) {
         language,
       },
     }),
+
     tertiaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
         handle: 'winter-2022',
@@ -82,6 +119,8 @@ export default function Homepage() {
     tertiaryHero,
     featuredCollections,
     featuredProducts,
+    bestSeller,
+    // ourLatestBlog,
   } = useLoaderData();
 
   // TODO: skeletons vs placeholders
@@ -91,7 +130,11 @@ export default function Homepage() {
     <>
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
-      )}
+        )}
+
+<Banner/>
+      <ShopByCategory />
+      <ShopByBrands />
 
       {featuredProducts && (
         <Suspense>
@@ -101,7 +144,7 @@ export default function Homepage() {
               return (
                 <ProductSwimlane
                   products={products}
-                  title="Featured Products"
+                  title="NEW ARRIVELS"
                   count={4}
                 />
               );
@@ -109,6 +152,39 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
+
+      <LatestOffer />
+
+      {bestSeller && (
+        <Suspense>
+          <Await resolve={bestSeller}>
+            {({products}) => {
+              if (!products?.nodes) return <></>;
+              return (
+                <BestSeller
+                products={products}
+                title="BEST SELLERS"
+                count={4} />
+              );
+            }}
+          </Await>
+        </Suspense>
+      )}
+
+      <FeaturedIn />
+
+      {/* {ourLatestBlog && (
+        <Await resolve={ourLatestBlog}>
+          {({blogs}) => {
+            if (!blogs?.nodes) return <></>;
+            return <OurLatestBlog blogs={blogs} title="Our Latest Blog" />;
+          }}
+        </Await>
+      )}
+
+      <OurLatestBlog /> */}
+      <SocialMedia />
+      <CustomerTestimonial />
 
       {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
@@ -121,7 +197,7 @@ export default function Homepage() {
         </Suspense>
       )}
 
-      {featuredCollections && (
+      {/* {featuredCollections && (
         <Suspense>
           <Await resolve={featuredCollections}>
             {({collections}) => {
@@ -135,7 +211,7 @@ export default function Homepage() {
             }}
           </Await>
         </Suspense>
-      )}
+      )} */}
 
       {tertiaryHero && (
         <Suspense fallback={<Hero {...skeletons[2]} />}>
@@ -239,3 +315,33 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
     }
   }
 `;
+
+// @see: https://shopify.dev/api/storefront/2023-04/queries/products
+export const HOMEPAGE_BESTSELLER_PRODUCTS_QUERY = `#graphql
+  query homepageBestSeller($country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    products(first: 8) {
+      nodes {
+        ...BestSellerCard
+      }
+    }
+  }
+  ${BESTSELLER_CARD_FRAGMENT}
+`;
+
+// FOR LATEST BLOG
+// export const OUR_LATEST_BLOG_QUERY = `#graphql
+//   query ourLatestBlog($country: CountryCode, $language: LanguageCode)
+//   @inContext(country: $country, language: $language) {
+//     blogs(
+//       first: 4,
+//       sortKey: UPDATED_AT
+//     ) {
+//       nodes {
+//         id
+//         title
+//         // ... (other blog properties you need)
+//       }
+//     }
+//   }
+// `;
