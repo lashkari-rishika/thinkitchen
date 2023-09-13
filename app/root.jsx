@@ -12,7 +12,6 @@ import {
 } from '@remix-run/react';
 import {ShopifySalesChannel, Seo} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
-import productDetailStyle from '../app/styles/productDetailStyle.css'
 import {seoPayload} from '~/lib/seo.server';
 import {Layout} from '~/components';
 
