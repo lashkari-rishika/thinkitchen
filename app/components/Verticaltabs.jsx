@@ -55,7 +55,7 @@ const VerticalTabs = ({ customer, addresses, orders }) => {
         </div>
 
         <div className="sm-only:bg-[#d3d3d34d] md-only:bg-[#d3d3d34d] sm-only:flex md-only:flex lg:mt-20 lg:bg-[#d3d3d34d] lg-only:ml-4 xl-only:ml-4">
-          <div className="sm-only:w-[70%] sm-only:flex sm-only:py-1 md md-only:w-[70%] md-only:py-1 lg-only:w-full">
+          <div className="sm-only:w-[70%] sm-only:flex sm-only:py-1  md-only:w-[70%] md-only:py-1 lg-only:w-full">
             <button
               className={`tablinks font-bold block text-left w-full pt-6 pb-4 px-4 relative sm-only: sm-only:pt-0 sm-only:pb-0 ${activeTab === "Profile" ? "text-black sm-only:border-b-2 sm-only:border-black" : "text-gray-500"}`}
               onClick={(e) => { openCity(e, "Profile"); setActiveTab("Profile"); }}

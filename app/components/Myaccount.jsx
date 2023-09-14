@@ -162,7 +162,7 @@ const Myaccount = ({ customer, addresses }) => {
                                             <div className=" flex">
                                                 <Link
                                                     to={`/account/address/${encodeURIComponent(item.id)}`}
-                                                    className="bg-sky-600 text-white px-4 py-2 my-3 text-sm w-32 h-10"
+                                                    className="bg-sky-600 text-white px-4 py-2 my-3 text-xs w-32 h-10 flex justify-center items-center"
                                                     prefetch="intent"
                                                 >
                                                     Edit Address
@@ -170,7 +170,7 @@ const Myaccount = ({ customer, addresses }) => {
 
                                                 <Link
                                                     to={`/account/address/${encodeURIComponent(item.id)}`}
-                                                    className="bg-sky-600 text-white px-4 py-2 my-3 text-sm ml-3 w-32 h-10 text-center">
+                                                    className="bg-sky-600 text-white text-xs px-4 py-2 my-3  ml-3 w-32 h-10 text-center flex justify-center items-center">
                                                     Remove
                                                 </Link>
                                             </div>
@@ -180,7 +180,7 @@ const Myaccount = ({ customer, addresses }) => {
                                     <div>
                                         <Button type="button"
                                             to="address/add"
-                                            className="bg-sky-600 text-white  py-2 my-3 text-xs w-32 h-10 text-center "
+                                            className="bg-sky-600 text-white  py-2 my-3 text-xs w-32 h-10 text-center flex justify-center items-center"
                                             variant="secondary"
                                         >
                                             + Add New Address
@@ -237,7 +237,7 @@ const Myaccount = ({ customer, addresses }) => {
                                             <div className=" flex">
                                                 <Link
                                                     to={`/account/address/${encodeURIComponent(item.id)}`}
-                                                    className="bg-black text-white px-4 py-2 my-3 text-sm w-32 h-10"
+                                                    className="bg-black text-white px-4 py-2 my-3 text-xs w-32 h-10 flex justify-center items-center"
                                                     prefetch="intent"
                                                 >
                                                     Edit Address
@@ -245,7 +245,7 @@ const Myaccount = ({ customer, addresses }) => {
 
                                                 <Link
                                                     to={`/account/address/${encodeURIComponent(item.id)}`}
-                                                    className="bg-black text-white px-4 py-2 my-3 text-sm ml-3 w-32 h-10 text-center">
+                                                    className="bg-black text-white px-4 py-2 my-3 text-xs ml-3 w-32 h-10 text-center flex justify-center items-center">
                                                     Remove
                                                 </Link>
                                             </div>

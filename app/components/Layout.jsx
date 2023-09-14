@@ -455,7 +455,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             </div>
           </div>
           <div
-            className={`header-item item-center ${menuActive ? 'active' : ''}`}
+            className={`header-item item-center${menuActive ? 'active' : ''}`}
           >
             <div className="menu-overlay" onClick={toggleMenu}></div>
             <nav className={`menu ${menuActive ? 'active' : ''}`}>
