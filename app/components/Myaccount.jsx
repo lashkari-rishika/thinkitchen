@@ -11,20 +11,20 @@ const Myaccount = ({ customer, addresses }) => {
         <section>
 
             <div>
-                <div className="xl:text-center xl:mt-7 sm-only:hidden   ">
+                <div className="sm:hidden lg:block lg:text-center lg:mt-7">
                     <p className="text-zinc-400 text-xs "> Home | Account</p>
-                    <h1 className="text-2xl">My account</h1>
+                    <h1 className="text-2xl lg-only:text-lg">My account</h1>
                 </div>
 
-                <div className="xl-only:flex">
-                    <div className=" grid-rows-12">
-                        <p className="font-semibold sm-only:hidden">My Profile Details</p>
+                <div className="lg:flex">
+                    <div className="grid-rows-12 ">
+                        <p className="sm:hidden md:hidden lg:block font-semibold lg:text-base">My Profile Details</p>
 
                         <div className="grid-rows-1 gap-4 border-b-2">
 
-                            <div className="flex mb-5 mt-3 sm-only:hidden">
+                            <div className="sm:hidden md:hidden lg:flex lg:mb-5 lg:mt-3 ">
                                 <div className="w-16">
-                                    <img src={Myaccount_img1} alt='' />
+                                    <img src={Myaccount_img1} />
                                 </div>
 
                                 <div className="w-2/5 mt-2 ml-2.5">
@@ -33,12 +33,12 @@ const Myaccount = ({ customer, addresses }) => {
                                 </div>
 
 
-                                <div className="w-2/5 mt-2">
+                                <div className="w-2/5 mt-2 ml-2.5">
                                     <p className="text-gray-400 text-sm">Email Id:</p>
                                     <p className="font-semibold text-sm">{customer && customer?.email}</p>
                                 </div>
 
-                                <div className="w-2/5 mt-2">
+                                <div className="w-2/5 mt-2 ml-2.5">
                                     <p className="text-gray-400 text-sm">Mobile:</p>
                                     <p className="font-semibold text-sm">{customer && customer?.phone}</p>
                                 </div>
@@ -50,7 +50,7 @@ const Myaccount = ({ customer, addresses }) => {
                             <p>Select Delivery Address</p>
                         </div>
 
-                        <div className=" my-4 border-b-2 sm-only:hidden">
+                        <div className="sm-only:hidden md:hidden lg:block my-4 border-b-2 ">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="mr-4 text-gray-400 text-sm">DEFAULT ADDRESS</p>
@@ -110,7 +110,7 @@ const Myaccount = ({ customer, addresses }) => {
 
                         {/* ------start mobile view UI----- */}
 
-                        <div className="xl:hidden" >
+                        <div className="lg:hidden" >
                             <div className="border-b-2">
                                 <p className="py-3 text-sm">DEFAULT ADDRESS</p>
 
@@ -180,7 +180,7 @@ const Myaccount = ({ customer, addresses }) => {
                                     <div>
                                         <Button type="button"
                                             to="address/add"
-                                            className="bg-sky-600 text-white  py-2 my-3 text-sm w-32 h-10"
+                                            className="bg-sky-600 text-white  py-2 my-3 text-xs w-32 h-10 text-center "
                                             variant="secondary"
                                         >
                                             + Add New Address
@@ -257,7 +257,7 @@ const Myaccount = ({ customer, addresses }) => {
 
                         {/* ------end mobile view UI----- */}
 
-                        <div className=" my-4 sm-only:hidden">
+                        <div className="sm-only:hidden md:hidden lg:block my-4  ">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="mr-4 text-gray-400 text-sm">OTHER ADDRESS</p>
@@ -275,7 +275,7 @@ const Myaccount = ({ customer, addresses }) => {
                                             <label htmlFor="city" className="text-gray-400 w-1/5 text-base">City</label>
                                             <p className="w-2/3 text-base">:{item?.node?.city}</p>
 
-                                            <label htmlFor="html" className="text-gray-400 w-1/5 text-base ">Pincode</label>
+                                            <label htmlFor="html" className="text-gray-400 w-1/5 text-base">Pincode</label>
                                             <p className="w-2/3 text-base">:{item?.node?.zip}</p>
 
                                             <label htmlFor="html" className="text-gray-400 w-1/5 text-base">Mobile</label>
