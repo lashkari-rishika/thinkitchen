@@ -1,58 +1,70 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from '@remix-run/react';
 import '../styles/app.css';
 import {AiOutlineHeart} from 'react-icons/ai';
-import {BsHeartFill} from 'react-icons/bs';
-
 import arrival1 from '../asset/arrival1.png';
+import {ProductCard, Section} from '~/components';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Scrollbar, } from 'swiper/modules';
 
-const media = [
-  {
-    id: 1,
-    imageSrc: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964",
-    discountTag: '20% OFF',
-    heart: 'AiOutlineHeart',
-    productName: 'Amefa Austin Cutlery, Set of 24',
-    price: '₹ 4,999',
-    discountedPrice: '₹ 5,999',
-    cartButton: 'Add To Cart',
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 2,
-    imageSrc: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964",
-    discountTag: '20% OFF',
-    heart: 'AiOutlineHeart',
-    productName: 'Amefa Austin Cutlery, Set of 24',
-    price: '₹ 4,999',
-    discountedPrice: '₹ 5,999',
-    cartButton: 'Add To Cart',
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 3,
-    imageSrc: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964",
-    discountTag: '20% OFF',
-    heart: 'AiOutlineHeart',
-    productName: 'Amefa Austin Cutlery, Set of 24',
-    price: '₹ 4,999',
-    discountedPrice: '₹ 5,999',
-    cartButton: 'Add To Cart',
-    link: 'https://www.google.com/',
-  },
-];
+const mockProducts = {
+  nodes: new Array(12).fill(''),
+};
+// const media = [
+//   {
+//     id: 1,
+//     imageSrc: arrival1,
+//     discountTag: '20% OFF',
+//     heart: AiOutlineHeart,
+//     productName: 'Amefa Austin Cutlery, Set of 24',
+//     price: '₹ 4,999',
+//     discountedPrice: '₹ 5,999',
+//     cartButton: 'Add To Cart',
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 2,
+//     imageSrc: arrival1,
+//     discountTag: '20% OFF',
+//     heart: AiOutlineHeart,
+//     productName: 'Amefa Austin Cutlery, Set of 24',
+//     price: '₹ 4,999',
+//     discountedPrice: '₹ 5,999',
+//     cartButton: 'Add To Cart',
+//     link: 'https://www.google.com/',
+//   },
+//   {
+//     id: 3,
+//     imageSrc: arrival1,
+//     discountTag: '20% OFF',
+//     heart: AiOutlineHeart,
+//     productName: 'Amefa Austin Cutlery, Set of 24',
+//     price: '₹ 4,999',
+//     discountedPrice: '₹ 5,999',
+//     cartButton: 'Add To Cart',
+//     link: 'https://www.google.com/',
+//   },
+// ]
 
-const PdpYouLike = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+const PdpYouLike = ({
+  title = '',
+  products = mockProducts,
+  count = 12,
+  ...props
+}) => {
+  // const [isMobileView, setIsMobileView] = useState(false);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobileView(window.innerWidth <= 768);
+  //   };
 
-  const handleMouseEnter = (index) => {
-    setHoveredIndex(index);
-  };
+  //   handleResize();
+  //   window.addEventListener('resize', handleResize);
 
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-  };
-
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
   return (
     <div className="mt-10 sm-only:px-3 px-10">
       <div className="arrivel-section-heading">
@@ -61,10 +73,9 @@ const PdpYouLike = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2.5">
-        {media.map((media, index) => (
-          <div key={media.id} className="flex flex-col items-center">
-            <div className="new_arrivel_card relative w-full">
+      {/* {media.map((media) => (
+          <div key={media.id} className="flex flex-col items-center"> */}
+      {/* <div className="new_arrivel_card relative w-full">
               <Link href={media.link} className="w-full" target="_blank">
                 <img
                   src={media.imageSrc}
@@ -109,10 +120,50 @@ const PdpYouLike = () => {
                   </div>
                 </div>
               </Link>
-            </div>
+            </div> */}
+
+      {/* ))}
+      </div> */}
+      <Section
+        className="sm-only:px-3 "
+        heading={title}
+        padding="y"
+        {...props}
+      >
+        <Swiper
+          modules={[Scrollbar, ]}
+          spaceBetween={10}
+          slidesPerView={3}
+          scrollbar={{draggable: true}}
+          breakpoints={{
+            992: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 2.5,
+            },
+            576: {
+              slidesPerView: 2,
+            },
+            320: {
+              slidesPerView: 1.5,
+            },
+          }}
+          // className="!overflow-hidden swimlane hiddenScroll"
+        >
+          <div>
+            {products.nodes.map((product) => (
+              <SwiperSlide key={product.id}>
+                <ProductCard
+                  product={product}
+                  key={product.id}
+                  className="snap-start w-80"
+                  />
+              </SwiperSlide>
+            ))}
           </div>
-        ))}
-      </div>
+        </Swiper>
+      </Section>
     </div>
   );
 };

@@ -41,8 +41,15 @@ import EmailComponent from './EmailComponent';
 import Blog from './custom-components/BlogandBlogdetails/Blog';
 import Contactsection from './commomComponent/ContactUS';
 
-export function Layout({ children, layout }) {
-  const { headerMenu, footerMenu } = layout;
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
+import { CiCircleChevDown } from 'react-icons/ci';
+import { Image } from '@shopify/hydrogen';
+import ProductDetailPage from '../components/ProductDetailPage.js';
+
+
+
+export function Layout({children, layout}) {
+  const {headerMenu, footerMenu} = layout;
   return (
     <>
       <div className="flex flex-col min-h-screen">
