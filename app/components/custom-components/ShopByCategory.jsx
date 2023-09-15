@@ -13,7 +13,7 @@ const ShopByCategory = ({images, text}) => {
     <div className="category_main_section mt-10 sm-only:px-3 px-10">
       <div className="text_center">
         <div className="category_heading flex justify-center">
-          <h1 className="text-4xl sm-only:text-2xl font-medium pb-4 uppercase">
+          <h1 className="text-4xl sm-only:text-2xl md-only:text-3xl text-center font-medium pb-4 uppercase">
             shop by category
           </h1>
         </div>

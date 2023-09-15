@@ -2,6 +2,27 @@ import {useParams, Form, Await, useMatches} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
+import {CiCircleChevDown} from 'react-icons/ci';
+import {Image} from '@shopify/hydrogen';
+
+import accountLogin from '../asset/Icon-feather-user.png';
+import cart from '../asset/cart.png';
+import wishList from '../asset/heart.png';
+import cart_location from '../asset/cart_location.png';
+import header_logo from '../asset/logo.svg';
+import dropdownImageMoblie from '../asset/dropdown-mobile.png';
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
+
+import FooterComponet from './FooterComponet';
+import Myorder from './Myorder';
+import VerticalTabs from './Verticaltabs';
+import Myorderdetails from './Myorderdetails';
+import EmailComponent from './EmailComponent';
+
+import {useCartFetchers} from '~/hooks/useCartFetchers';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
+import {useIsHomePath} from '~/lib/utils';
+
 import {
   Drawer,
   useDrawer,
@@ -21,25 +42,6 @@ import {
   Link,
   FeaturedProducts,
 } from '~/components';
-import {useIsHomePath} from '~/lib/utils';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useCartFetchers} from '~/hooks/useCartFetchers';
-import FooterComponet from './FooterComponet';
-import accountLogin from '../asset/Icon-feather-user.png';
-import cart from '../asset/cart.png';
-import wishList from '../asset/heart.png';
-import cart_location from '../asset/cart_location.png';
-import header_logo from '../asset/logo.svg';
-import dropdownImageMoblie from '../asset/dropdown-mobile.png';
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png';
-import {CiCircleChevDown} from 'react-icons/ci';
-import {Image} from '@shopify/hydrogen';
-import Myorder from './Myorder';
-import VerticalTabs from './Verticaltabs';
-import Myorderdetails from './Myorderdetails';
-import EmailComponent from './EmailComponent';
-import Blog from './custom-components/BlogandBlogdetails/Blog';
-import Contactsection from './commomComponent/ContactUS';
 
 import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
 import { CiCircleChevDown } from 'react-icons/ci';
@@ -134,6 +136,7 @@ function CartDrawer({isOpen, onClose}) {
       onClose={onClose}
       heading="Cart"
       openFrom="right"
+      drawerType="cart" // Specify the drawer type as 'cart'
       className="text-2xl"
     >
       <div className="grid">
@@ -149,7 +152,7 @@ function CartDrawer({isOpen, onClose}) {
 
 export function MenuDrawer({isOpen, onClose, menu}) {
   return (
-    <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
+    <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu" drawerType="menu">
       <div className="grid">
         <MenuMobileNav menu={menu} onClose={onClose} />
       </div>
@@ -338,9 +341,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   return (
     <header
       role="banner"
-      className={`${
-        isHome ? 'bg-white text-black' : ' text-primary'
-      } flex 2xl-only:hidden xl-only:hidden  lg-only:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      className={`${isHome ? 'bg-white text-black' : ' text-primary'
+      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start gap-4">
         <button
@@ -440,6 +442,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   return (
     <header
       role="banner"
+
       className={`${
         isHome
           ? 'header flex md:hidden sm:hidden bg-[#FFFFFF]  text-contrast dark:text-primary'
@@ -447,6 +450,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
       } hidden h-2 lg:flex opacity-80  shadow-sm bg-[#FFFFFF] items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+
     >
       <div className="header">
         <div className="row v-center">
@@ -474,8 +478,10 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                 </div>
               </div>
               <ul
+
                 className={`menu-main flex items-center gap-6 ${
                   subMenuActive ? 'active' : ''
+
                 }`}
               >
                 {(menu?.items || []).map((item) => (
@@ -529,119 +535,9 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                           </div>
                         </>
                       ))}
-                      {/* <div className="list-item">
-                          <img src={img2} alt="shop" />
-                        </div> */}
                     </div>
                   </li>
                 ))}
-                {/* <li>
-                    <a href="#">Home</a>
-                  </li> */}
-                {/* <li className="menu-item-has-children" onClick={showSubMenu}>
-                    <a href="#">Shop</a>
-                    <div className="sub-menu mega-menu mega-menu-column-4">
-                      <div className="list-item">
-                        <h4 className="title">Men's Fashion</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                        <h4 className="title">Beauty</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="list-item">
-                        <h4 className="title">Women's Fashion</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                        <h4 className="title">Furniture</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="list-item">
-                        <h4 className="title">Home, Kitchen</h4>
-                        <ul>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                          <li>
-                            <a href="#">Product List</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="list-item">
-                        <img src={img2} alt="shop" />
-                      </div>
-                    </div>
-                  </li> */}
               </ul>
             </nav>
           </div>

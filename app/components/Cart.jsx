@@ -131,19 +131,22 @@ function CartLines({layout = 'drawer', lines: cartLines}) {
       className={className}
     >
       <ul className="grid gap-6 md:gap-10">
-        {currentLines.map((line) => (
-          <CartLineItem key={line.id} line={line} />
-        ))}
+        {currentLines.length > 0 && (
+          <CartLineItem
+            key={currentLines[currentLines.length - 1].id}
+            line={currentLines[currentLines.length - 1]}
+          />
+        )}
         <div className="fixed right-0 py-5 w-full bottom-0 items-center grid gap-y-1.5 text-sm bg-white">
           <button className="h-9 mx-10 items-center border border-[E1E1E1] hover:bg-[#175C8A] hover:text-white">
-            View My Cart (2)
+            View My Cart ({currentLines.length})
           </button>
           <button className="h-9 mx-10 items-center border border-[E1E1E1] bg-[#175C8A] text-white hover:text-white">
             Checkout
           </button>
-          <button className="h-9 mx-10 items-center border border-[E1E1E1] hover:bg-[#175C8A] hover:text-white">
+          <Button className="h-9 mx-10 items-center border border-[E1E1E1] hover:bg-[#175C8A] hover:text-white">
             Continue Shopping
-          </button>
+          </Button>
         </div>
       </ul>
       {/* <ul className="grid gap-6 md:gap-10">
@@ -202,6 +205,7 @@ function CartLineItem({line}) {
   if (!line?.id) return null;
 
   const {id, quantity, merchandise} = line;
+  console.log("🚀 ~ file: Cart.jsx:216 ~ CartLineItem ~ merchandise:", merchandise)
 
   if (typeof quantity === 'undefined' || !merchandise?.product) return null;
 
@@ -229,7 +233,10 @@ function CartLineItem({line}) {
                   <Link to={`/products/${merchandise.product.handle}`}>
                     {merchandise?.product?.title || ''}
                   </Link>
-                  <div>$5000</div>
+                  <div className='flex gap-2'>
+                  {/* <div>{merchandise.price.amount}</div> */}
+                  <div>{merchandise.compareAtPrice.amount}</div>
+                  </div>
                 </>
               ) : (
                 <Text>{merchandise?.product?.title || ''}</Text>

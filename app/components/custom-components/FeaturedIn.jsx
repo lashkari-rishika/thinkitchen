@@ -38,7 +38,7 @@ const FeaturedIn = ({ images, text }) => {
     <div className="featured_in_main mt-10 sm-only:px-3 px-10">
       <div className="text_center">
         <div className="FeaturedIn_heading flex justify-center">
-          <h1 className="text-4xl sm-only:text-2xl font-medium pb-4 uppercase">featuredin</h1>
+          <h1 className="text-4xl sm-only:text-2xl md-only:text-3xl text-center font-medium pb-4 uppercase">featuredin</h1>
         </div>
 
         <Swiper
