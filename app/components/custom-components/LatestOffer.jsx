@@ -17,8 +17,8 @@ const LatestOffer = () => {
   return (
     <div className="latest-offer-section sm-only:px-3 pt-10 px-10">
       <div className="latest-offer-heading">
-        <h1 className="text-4xl sm-only:text-2xl text-center font-medium pb-4 xs-only:text-2xl">
-          LATEST OFFERS
+        <h1 className="text-4xl sm-only:text-2xl md-only:text-3xl text-center font-medium pb-4 uppercase">
+          latest offers
         </h1>
       </div>
       <div className="image_section">
@@ -32,7 +32,7 @@ const LatestOffer = () => {
                   target="_blank"
                 >
                   <img src={item.imageSrc} className="w-full object-cover" />
-                  <div className="leatestOffer_banner absolute left-1/2 transform -translate-x-1/2 lg:text-2xl bg-black bg-opacity-50 text-center text-white py-1 px-2 text-2xl md-max:text-sm  xl:leading-7 md-only:leading-6 lg-only:text-lg min-w-max bottom-1.5 ">
+                  <div className="leatestOffer_banner absolute left-1/2 transform -translate-x-1/2 lg:text-2xl bg-black bg-opacity-50 text-center text-white py-2 px-2 text-2xl md-max:text-sm  xl:leading-7 md-only:leading-6 lg-only:text-lg min-w-max bottom-1.5 ">
                     <h1>{item.tag}</h1>
                   </div>
                 </Link>

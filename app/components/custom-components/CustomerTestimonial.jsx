@@ -38,8 +38,8 @@ const CustomerTestimonial = () => {
   return (
     <div className="testimonial-section mt-10 mb-14 md-max:px-3 px-10">
       <div className="testimonial-section-heading">
-        <h1 className="text-4xl md-max:text-2xl text-center font-medium pb-4">
-          CUSTOMER TESTIMONIALS
+        <h1 className="text-4xl sm-only:text-2xl md-only:text-3xl text-center font-medium pb-4 uppercase">
+          customer testimonials
         </h1>
       </div>
       <Swiper

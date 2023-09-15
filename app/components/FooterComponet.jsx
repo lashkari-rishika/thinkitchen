@@ -42,7 +42,7 @@ const FooterComponet = ({menu}) => {
 
 
   const toggleDescription = () => {
-      setIsDescriptionVisible(!isDescriptionVisible);
+    setDescriptionVisible(!isDescriptionVisible);
       // Scroll to top when up icon is clicked
       window.scrollTo({ top: 0, behavior: 'smooth' });
   };

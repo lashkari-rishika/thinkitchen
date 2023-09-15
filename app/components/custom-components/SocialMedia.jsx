@@ -38,8 +38,8 @@ const SocialMedia = () => {
   return (
     <div className="social-media-section my-10 px-3 sm:px-0">
       <div className="social-section-heading">
-        <h1 className="text-4xl sm-only:text-2xl text-center font-medium pb-4">
-          JOIN US ON SOCIAL @THINKITCHEN
+        <h1 className="text-4xl sm-only:text-2xl md-only:text-3xl text-center font-medium pb-4 uppercase">
+          join us on social @thinkitchen
         </h1>
       </div>
       <Swiper
