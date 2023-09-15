@@ -16,7 +16,7 @@ export function PdpYouLike({
   ...props 
 }) {
 
-  const [swiper, setSwiper] = useState(null);
+  const [Swiper, setSwiper] = useState(null);
   const [isMobileView, setIsMobileView] = useState(false);
 
 

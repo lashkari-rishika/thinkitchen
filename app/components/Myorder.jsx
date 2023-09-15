@@ -1,12 +1,9 @@
-import Verticaltabs from "../components/Verticaltabs";
-import Myorderdetails from "../components/Myorderdetails";
-import React, { useState } from "react";
 import { Text, Link } from '~/components';
 
 const Myorder = ({ orders }) => {
     console.log("🚀 ~ file: Myorder.jsx:5 ~ Myorder ~ ̥:", orders);
 
-    return (
+     return (
         <section>
             <div className="text-center sm-only:mt-12 sm-only:hidden">
                 <p className="text-zinc-400 text-xs "> Home | My Order</p>
@@ -39,7 +36,6 @@ const Myorder = ({ orders }) => {
                                             <div className="font-semibold">{item.currentTotalPrice.amount}</div>
                                         </div>
                                     </div>
-
 
                                     <div className="lg:hidden sm:block mt-3 text-sm ">
                                         <Link
@@ -81,6 +77,14 @@ const Myorder = ({ orders }) => {
                                         </table>
 
                                         <div className="ml-auto my-auto">
+                                            {/* <button
+                                                type="button"
+                                                className="bg-sky-600 text-white px-6 py-2 text-sm"
+                                                onClick={handleOrderDetailClick}
+                                            >
+                                                <Text>Order Detail</Text>
+                                            </button> */}
+
                                             <Link
                                                 className="bg-sky-600 text-white px-6 py-2 text-sm"
                                                 to={`/account/orders/${legacyOrderId}?${key}`}
@@ -98,6 +102,7 @@ const Myorder = ({ orders }) => {
                         );
                     })}
                 </div>
+
             </div>
         </section>
     );

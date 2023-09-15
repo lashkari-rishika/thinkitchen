@@ -238,7 +238,7 @@ const FooterComponet = ({menu}) => {
           </div>
 
           {/* BRANDS */}
-          <div className="border-t brands-section sm-only:hidden mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0 sm-only:border-t-0">
+          <div className="border-t brands-section mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0 sm-only:border-t-0">
             {(menu?.items || []).map((item) => (
               <>
                 {item.title == 'Brands' ? (

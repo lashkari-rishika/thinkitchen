@@ -1,5 +1,5 @@
 
-
+import React, { useState, useEffect } from "react";
 import Blog_img1 from "../../../asset/Blog_img1.png";
 import Blog_img2 from "../../../asset/Blog_img2.png";
 import Blog_img3 from "../../../asset/Blog_img3.png";
@@ -11,7 +11,6 @@ import Blog_img8 from "../../../asset/Blog_img8.png";
 import Blog_img9 from "../../../asset/Blog_img9.png";
 import Tabs from "./Tabs";
 import Blogdetails from "./Blogdetails";
-import React, { useState, useEffect } from "react";
 
 
 const Blog = () => {
