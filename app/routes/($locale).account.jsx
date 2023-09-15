@@ -117,7 +117,7 @@ function Account({customer, heading, featuredData}) {
           </button>
         </Form>
       </PageHeader> */}
-      {orders && <AccountOrderHistory orders={orders} />}
+      {/* {orders && <AccountOrderHistory orders={orders} />} */}
       {/* <AccountDetails customer={customer} /> */}
       {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}
       {!orders.length && (
@@ -142,16 +142,16 @@ function Account({customer, heading, featuredData}) {
   );
 }
 
-function AccountOrderHistory({orders}) {
-  // return (
-  //   <div className="mt-6">
-  //     <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-  //       <h2 className="font-bold text-lead">Order History</h2>
-  //       {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
-  //     </div>
-  //   </div>
-  // );
-}
+// function AccountOrderHistory({orders}) {
+//   return (
+//     <div className="mt-6">
+//       <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
+//         <h2 className="font-bold text-lead">Order History</h2>
+//         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
+//       </div>
+//     </div>
+//   );
+// }
 
 function EmptyOrders() {
   return (

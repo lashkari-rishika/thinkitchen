@@ -5,7 +5,8 @@ import { useLoaderData } from '@remix-run/react';
 import { Money, Image, flattenConnection } from '@shopify/hydrogen';
 import { statusMessage } from '~/lib/utils';
 import { Link, Heading, PageHeader, Text } from '~/components';
-import VerticalTabs from '~/components/Verticaltabs';
+import Myorder from '~/components/Myorder';
+
 
 export const meta = ({ data }) => {
   return [{ title: `Order ${data?.order?.name}` }];
@@ -71,16 +72,23 @@ export default function OrderRoute() {
         </Link>
       </PageHeader>
 
+      {/* <Myorder /> */}
+
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">
 
         <div className="items-center justify-between flex">
           <p className="font-semibold sm-only:hidden">My Order</p>
-          <button type="button" className="bg-sky-600 text-white py-0.5 px-3.5">Back to order</button>
+
+          <Link to="/Myorder"> {/* Use Remix link to navigate */}
+            <Text className="bg-sky-600 text-white py-0.5 px-3.5">
+              Back to Orders
+            </Text>
+          </Link>
         </div>
 
-        <div className="bg-neutral-100 flex items-center justify-between mt-3 mb-3">
-          <p className="py-2.5 pl-3 font-semibold">Order: {order.name}</p>
-          <p className="pr-3 font-semibold">Date: {new Date(order.processedAt).toDateString()}</p>
+        <div className=" bg-neutral-100 lg:flex items-center justify-between mt-3 mb-3 ">
+          <p className="py-2.5 pl-3 font-semibold sm-only:text-sm">Order: {order.name}</p>
+          <p className="pr-3 font-semibold sm-only:text-sm sm-only:pl-3 md-only:pl-3">Date: {new Date(order.processedAt).toDateString()}</p>
         </div>
 
         <div>
@@ -90,7 +98,7 @@ export default function OrderRoute() {
             <Text className="mt-2" as="p">
               Placed on {new Date(order.processedAt).toDateString()}
             </Text> */}
-          <div className="grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200">
+          <div className="sm-only:overflow-x-scroll grid items-start gap-12 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200">
             <table className="min-w-full my-8 divide-y divide-gray-300 md:col-span-3">
               <thead>
                 <tr className="align-baseline ">
@@ -98,14 +106,14 @@ export default function OrderRoute() {
                     scope="col"
                     className="pb-4 pl-0  font-semibold text-left"
                   >
-                    Product
+                    Products
                   </th>
-                  {/* <th
+                  <th
                     scope="col"
                     className="pb-4 pl-0 font-semibold text-left"
                   >
-                    Product Title
-                  </th> */}
+                    ProductTitle
+                  </th>
 
                   <th
                     scope="col"
@@ -115,7 +123,7 @@ export default function OrderRoute() {
                   </th>
                   <th
                     scope="col"
-                    className="hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell"
+                    className="hidden w-[11%]   px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell"
                   >
                     Price/Qty
                   </th>
@@ -136,6 +144,7 @@ export default function OrderRoute() {
               <tbody className="divide-y divide-gray-200">
                 {lineItems.map((lineItem) => (
                   <tr key={lineItem.variant.id}>
+
                     <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
                       <div className="flex gap-6">
                         <Link
@@ -151,12 +160,22 @@ export default function OrderRoute() {
                             </div>
                           )}
                         </Link>
-                        <div className="flex-col justify-center hidden lg:flex">
-                          <Text as="p">{lineItem.title}</Text>
-                          <Text size="fine" className="mt-1" as="p">
-                            {lineItem.variant.title}
-                          </Text>
-                        </div>
+                      </div>
+                    </td>
+
+                    <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
+
+                      <div className="flex gap-3">
+
+                        <dd>
+                          <div className="flex-col justify-center hidden lg:flex">
+                            <Text as="p">{lineItem.title}</Text>
+                            <Text size="fine" className="mt-1" as="p">
+                              {lineItem.variant.title}
+                            </Text>
+                          </div>
+                        </dd>
+
                         <dl className="grid">
                           <dt className="sr-only">Product</dt>
                           <dd className="truncate lg:hidden">
@@ -174,6 +193,7 @@ export default function OrderRoute() {
                               <Money data={lineItem.variant.price} />
                             </Text>
                           </dd>
+
                           <dt className="sr-only">Quantity</dt>
                           <dd className="truncate sm:hidden">
                             <Text className="mt-1" size="fine">
@@ -182,7 +202,9 @@ export default function OrderRoute() {
                           </dd>
 
                         </dl>
+
                       </div>
+
                     </td>
 
                     <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
@@ -212,24 +234,25 @@ export default function OrderRoute() {
                   </tr>
                 ))}
               </tbody>
+
               <tfoot>
                 {((discountValue && discountValue.amount) ||
                   discountPercentage) && (
                     <tr>
-                      <th
+                      {/* <th
                         scope="row"
                         colSpan={3}
                         className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                       >
                         <Text>Discounts</Text>
-                      </th>
-                      <th
+                      </th> */}
+                      {/* <th
                         scope="row"
                         className="pt-6 pr-3 font-normal text-left sm:hidden"
                       >
                         <Text>Discounts</Text>
-                      </th>
-                      <td className="pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3">
+                      </th> */}
+                      {/* <td className="pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3">
                         {discountPercentage ? (
                           <span className="text-sm">
                             -{discountPercentage}% OFF
@@ -237,62 +260,64 @@ export default function OrderRoute() {
                         ) : (
                           discountValue && <Money data={discountValue} />
                         )}
-                      </td>
+                      </td> */}
                     </tr>
                   )}
                 <tr>
+                  <td></td>
                   <th
                     scope="row"
                     colSpan={3}
                     className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
-                  >
-                    <Text>Subtotal</Text>
-                  </th>
-                  <th
-                    scope="row"
-                    className="pt-6 pr-3 font-normal text-left sm:hidden"
                   >
                     <Text>Subtotal:</Text>
                   </th>
                   <td className="pt-6 pl-3 pr-4 text-right md:pr-3">
                     <Money data={order.subtotalPriceV2} />
                   </td>
+
                 </tr>
+
+
                 <tr>
+                  <td></td>
                   <th
                     scope="row"
                     colSpan={3}
-                    className="hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
+                    className="hidden pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
                     Shipping (Standard):
                   </th>
-                  <th
+                  {/* <th
                     scope="row"
                     className="pt-4 pr-3 font-normal text-left sm:hidden"
                   >
                     <Text>Tax</Text>
-                  </th>
+                  </th> */}
 
-                  <td className="pt-4 pl-3 pr-4 text-right md:pr-3">
+                  <td className=" pl-3 pr-4 text-right md:pr-3">
                     <Money data={order.totalTaxV2} />
                   </td>
                 </tr>
 
-                <tr >
+                <tr className=''>
+                  <td></td>
+
                   <th
                     scope="row"
                     colSpan={3}
-                    className="hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
+                    className="hidden pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
                     <Text>Delivery: </Text>
                   </th>
 
-                  <td className="pt-4 pl-3 pr-4 text-right md:pr-3 ">
+                  <td className=" pl-3 pr-4 text-right md:pr-3 border-b border-gray-300">
                     <Text>FREE</Text>
                   </td>
-                </tr> 
+                </tr>
 
                 <tr>
+                  <td></td>
                   <th
                     scope="row"
                     colSpan={3}
@@ -300,16 +325,17 @@ export default function OrderRoute() {
                   >
                     Total
                   </th>
-                  <th
+                  {/* <th
                     scope="row"
                     className="pt-4 pr-3 font-semibold text-left sm:hidden"
                   >
                     <Text>Total</Text>
-                  </th>
+                  </th> */}
                   <td className="pt-4 pl-3 pr-4 font-semibold text-right md:pr-3">
                     <Money data={order.totalPriceV2} />
                   </td>
                 </tr>
+
               </tfoot>
             </table>
             <div className="sticky border-none top-nav md:my-8">
@@ -356,8 +382,8 @@ export default function OrderRoute() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 
