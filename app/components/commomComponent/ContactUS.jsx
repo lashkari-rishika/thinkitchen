@@ -9,7 +9,7 @@ import React from "react";
 // import youtube from "../../asset/youtube.png";
 
 
-const Contactsection = () => {
+const ContactUs = () => {
     return (
         <section>
             <div className="w-full xl:pb-14 sm:pb-8">
@@ -62,10 +62,12 @@ const Contactsection = () => {
                                     <h1 className="font-bold lg:text-lg sm:text-sm sm-only:mt-1.5 sm-only:ml-1 md-only:text-base md-only:ml-3 md-only:mt-1.5">Social Media</h1>
                                 </div>
                             </div>
+
                             <div className="flex sm-only:pt-2 md-only:pt-2">
                                 <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/facebook_icon_17be1079-5eb5-4782-91c1-73a90bc75c19.png?v=1693464284" className="w-2 h-4 mr-5" />
                                 <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/instagram_3ecaa9b5-1674-4476-afa2-25db802f71cb.png?v=1693464800" className="w-4 h-4 mr-5" />
                                 <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/youtube_8a3c0428-2006-4c9a-99b4-71e4111211a9.png?v=1693464930" className="w-5 h-4 mr-5" />
+
                             </div>
                         </div>
 
@@ -125,6 +127,6 @@ const Contactsection = () => {
     );
 };
 
-export default Contactsection;
+export default ContactUs;
 
 

@@ -37,7 +37,7 @@ const FooterComponet = ({menu}) => {
   // };
 
   const toggleDescription = () => {
-    setDescriptionVisible(!isDescriptionVisible);
+    setIsDescriptionVisible(!isDescriptionVisible);
     // Scroll to top when up icon is clicked
     window.scrollTo({top: 0, behavior: 'smooth'});
   };
@@ -104,13 +104,13 @@ const FooterComponet = ({menu}) => {
             <div className="follow-us">
               <div className="follow-us-icon mt-5 mb-7 ml-4 text-xl text-left font-medium flex items-center">
                 <div className="icon mr-5">
-                  <img src={footer_facebook_icon} alt="" />
+                  <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-facebook.png?v=1693223836" alt="" />
                 </div>
                 <div className="icon mr-5">
-                  <img src={footer_instagram_icon} alt="" />
+                  <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-instagram.png?v=1693223841" alt="" />
                 </div>
                 <div className="icon">
-                  <img src={footer_youtube_icon} alt="" />
+                  <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-youtube.png?v=1693223850" alt="" />
                 </div>
               </div>
             </div>
@@ -118,23 +118,23 @@ const FooterComponet = ({menu}) => {
 
           <div className="container mx-auto w-4/5">
             <div className="shop-section mx-auto">
-              <div className="grid grid-cols-3  pb-12 gap-8 sm-only:hidden md:grid-cols-3 ">
+              <div className="grid grid-cols-3  pb-12 gap-8 sm-only:hidden ">
                 {(menu?.items || []).map((item, index) => (
                   <>
                     {index !== 3 ? (
                       <div key={item.id} className="w-64 sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4">
                         <div className="shop-now-header ">
-                          <Link className=" sm:mb-0 font-semibold text-gray-900 dark:text-white">
+                          <Link className="font-semibold text-gray-900 dark:text-white">
                             {item.title}
                           </Link>
                         </div>
                         <ul
                           className={`  ${
-                            isShopNowOpen ? 'block' : 'hidden'
+                            isShopNowOpen ? 'block' : ''
                           } xl:block sm-only:grid-cols-2 pt-10 `}
                         >
                           {item?.items?.length > 0 ? (
-                            <ul className="flex_column flex max-h-[160px]">
+                            <ul className="flex_column flex max-h-[185px]">
                               {item.items.map((subItem) => (
                                 <li key={subItem.id}>
                                   <a href="#">{subItem.title}</a>
@@ -195,7 +195,7 @@ const FooterComponet = ({menu}) => {
           </div>
 
           {/* BRANDS */}
-          <div className="border-t brands-section sm-only:hidden mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0 sm-only:border-t-0">
+          <div className="border-t brands-section mx-auto sm-only:bg-gray-100 bg-white text-black border-b-2 border-gray-300 sm-only:border-b-0 sm-only:border-t-0">
             {(menu?.items || []).map((item) => (
               <>
                 {item.title == 'Brands' ? (
@@ -214,8 +214,8 @@ const FooterComponet = ({menu}) => {
                     </div>
                     <div
                       className={` ${
-                        isBrandsOpen ? 'block' : 'hidden'
-                      } xl:block  md:mt-0 grid gap-8 pt-6 pb-6 md:grid-cols-2 sm:grid-cols-2`}
+                        isBrandsOpen ? 'block' : ''
+                      } xl:block  md:mt-0 grid gap-8 pt-6 pb-6 `}
                     >
                       {item?.items?.length > 0 ? (
                         <ul className="flex_column flex max-h-[160px]">
@@ -244,7 +244,7 @@ const FooterComponet = ({menu}) => {
               onClick={toggleDescription}
             >
               <img
-                src={up_icon}
+                src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/up-icon_699bad98-102f-4260-83f0-b749241255bb.png?v=1693223276"
                 alt=""
                 className={`h-4 w-4 transform ${
                   isDescriptionVisible ? '' : ''

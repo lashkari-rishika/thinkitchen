@@ -8,7 +8,7 @@ const ShippingComponent = () => {
   return (
     <div className="bg-white">
       <div className="container mx-auto py-10 w-4/5 sm-only:py-6 sm-only:w-[84%]">
-        <div className="grid grid-cols-1 sm-only:px-0 sm-only:gap-0 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-8 sm:gap-12 lg:gap-16 xl:gap-16 2xl:gap-16 px-5">
+        <div className="grid grid-cols-1 sm-only:px-0 sm-only:gap-0 sm-only:grid-cols-4 md-only:grid-cols-4 lg-only:grid-cols-4 xl-only:grid-cols-4 2xl-only:grid-cols-4   xl-only:gap-16 2xl-only:gap-16 px-5">
           {/* first */}
           <div className="p-4 sm-only:p-0">
             <div className="flex justify-center">

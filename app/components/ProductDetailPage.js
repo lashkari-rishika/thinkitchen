@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import product_image from '../asset/product-detail-page-image.png';
 
 import '../../node_modules/swiper/swiper-bundle.css';
 
 import {Link} from './Link';
-import {BsHeart,BsHeartFill} from 'react-icons/bs';
+import {BsHeart, BsHeartFill} from 'react-icons/bs';
 import {GrShare} from 'react-icons/gr';
 import pdp_star_image from '../asset/pdp-star-img.svg';
 import {FiChevronDown} from 'react-icons/fi';
@@ -81,6 +81,27 @@ const ProductDetailPage = () => {
     setLiked(!liked);
   };
 
+  const [showFooter, setShowFooter] = useState(true);
+
+  useEffect(() => {
+    function handleScroll() {
+      clearTimeout(scrollTimer);
+
+      if (window.scrollY > 3000) {
+        setShowFooter(false);
+      } else {
+        setShowFooter(true);
+      }
+    }
+
+    let scrollTimer;
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <div className="pdp-section sm-only:mt-10 md-only:mt-10 bg-white sm-only:bg-[#FBFBFB]">
       <div className="px-11 sm-only:px-2">
@@ -94,18 +115,18 @@ const ProductDetailPage = () => {
       <div className="product-deatil-section grid grid-cols-3 sm-only:px-3  sm-only:grid-cols-1 gap-1 px-11 pt-3 sm-only:columns-1  columns-3">
         <div className="product-image-1">
           <div>
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
           <div className="pt-2">
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
         </div>
         <div className="product-image-2">
           <div>
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
           <div className="pt-2">
-            <img src={product_image} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_d2794317-8f6f-485a-9ffb-d41a4880eb94.png?v=1693223964" alt="" />
           </div>
         </div>
 
@@ -123,14 +144,14 @@ const ProductDetailPage = () => {
               Amefa Austin Cutlery, Set of 24
             </h2>
             <div className="heart-icon md-only:ml-[115px] flex sm-only:pl-[160px] justify-end pl-24 md-only:pl-0 lg-only:pl-0">
-            <a href="#" onClick={handleLikeClick}>
+              <a href="#" onClick={handleLikeClick}>
                 {liked ? (
-                    <BsHeartFill className="text-[#fa55d6]" />
+                  <BsHeartFill className="text-[#fa55d6]" />
                 ) : (
-                    <BsHeart className="text-black" />
+                  <BsHeart className="text-black" />
                 )}
-            </a>
-        </div>
+              </a>
+            </div>
           </div>
           {/* REVIEW SECTION */}
           <div className="review-section">
@@ -139,7 +160,7 @@ const ProductDetailPage = () => {
               <span className="star-image pl-2 pr-2 flex">
                 <img
                   className=" transition duration-300"
-                  src={pdp_star_image}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/5star_25311fa3-5973-48ad-9fe6-0eea7859692e.png?v=1693224095"
                   alt=""
                 />
               </span>
@@ -203,9 +224,9 @@ const ProductDetailPage = () => {
                 shareIconVisible ? 'block' : 'hidden'
               } flex absolute right-[4%] bottom-[45px] bg-white shadow-md`}
             >
-              <img className="p-[5px] w-10" src={pdp_share_facebook} alt="" />
-              <img className="p-[5px] w-10" src={pdp_share_whatsapp} alt="" />
-              <img className="p-[5px] w-10" src={pdp_share_link} alt="" />
+              <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_facebook.png?v=1693224426" alt="" />
+              <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_whatsapp.png?v=1693224439" alt="" />
+              <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_link.png?v=1693224450" alt="" />
             </div>
             <p className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden sm-only:mt-[5px] ">
               Qty:
@@ -236,9 +257,9 @@ const ProductDetailPage = () => {
               <div
                 className={`share-icon flex  shadow-md sm-only:shadow-none 2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden `}
               >
-                <img className="p-[5px] w-10" src={pdp_share_facebook} alt="" />
-                <img className="p-[5px] w-10" src={pdp_share_whatsapp} alt="" />
-                <img className="p-[5px] w-10" src={pdp_share_link} alt="" />
+                <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_facebook.png?v=1693224426" alt="" />
+                <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_whatsapp.png?v=1693224439" alt="" />
+                <img className="p-[5px] w-10" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp_share_link.png?v=1693224450" alt="" />
               </div>
             </div>
           </div>
@@ -363,7 +384,7 @@ const ProductDetailPage = () => {
               <p className="text-sm flex">
                 <span>
                   {' '}
-                  <img className="pr-2 h-6" src={pdp_offer_img} alt="" />
+                  <img className="pr-2 h-6" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-page-offer-img.png?v=1693224605" alt="" />
                 </span>{' '}
                 Offer
               </p>
@@ -397,7 +418,7 @@ const ProductDetailPage = () => {
               <div className="border-r border-gray-300 pt-2 sm-only:border-0 ">
                 <img
                   className="h-5 w-6 ml-[32px] md-only:ml-[20px]"
-                  src={pdp_shopping_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-shoping-img.png?v=1693224710"
                   alt=""
                 />
                 <p className="text-[10px] mt-1 md-only:text-center sm-only:text-center">
@@ -407,7 +428,7 @@ const ProductDetailPage = () => {
               <div className="border-r border-gray-300 p-2 sm-only:border-0 lg-only:border-0 md-only:border-0">
                 <img
                   className="h-6 w-4 ml-[30px] md-only:ml-[20px]"
-                  src={pdp_qulity_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-qulity-img.png?v=1693224748"
                   alt=""
                 />
                 <p className="text-[10px] mt-1 md-only:text-center sm-only:text-center">
@@ -418,7 +439,7 @@ const ProductDetailPage = () => {
               <div className="border-r border-gray-300 p-2 sm-only:border-0">
                 <img
                   className="h-5 w-7 ml-[25px] md-only:ml-[20px]"
-                  src={pdp_payment_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-payment-img.png?v=1693224761"
                   alt=""
                 />
                 <p className="text-[10px] mt-2 md-only:text-center sm-only:text-center">
@@ -428,7 +449,7 @@ const ProductDetailPage = () => {
               <div className="p-2">
                 <img
                   className="h-6 w-4 ml-[35px] md-only:ml-[20px]"
-                  src={pdp_cup_img}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-cup-img.png?v=1693224792"
                   alt=""
                 />
                 <p className="text-[10px] mt-1 md-only:text-center sm-only:text-center">
@@ -442,12 +463,12 @@ const ProductDetailPage = () => {
             <p className="text-[11px]">(Monday - Friday - 10am to 6pm)</p>
             <p className="text-[11px] flex mt-3">
               {' '}
-              <img className="pr-2 w-6 h-4" src={pdp_whatsapp_img} alt="" /> +91
+              <img className="pr-2 w-6 h-4" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-whatsapp-img.png?v=1693224874" alt="" /> +91
               704522 3344
             </p>
             <p className="text-[11px] flex mt-2 md-only:text-[10px]">
               {' '}
-              <img className="pr-2 w-6 h-4" src={pdp_email_img} alt="" />
+              <img className="pr-2 w-6 h-4" src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-email-img.png?v=1693224941" alt="" />
               contact@seebagroup.com
             </p>
           </div>
@@ -471,7 +492,7 @@ const ProductDetailPage = () => {
                 </div>
                 <img
                   className="w-[190px] sm-only:w-[130px] sm-only:ml-[10px]"
-                  src={product_image}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_29b8f8c9-cb80-478d-b6fc-93ac50eb185a.png?v=1693224329"
                   alt=""
                 />
                 <div>
@@ -510,7 +531,7 @@ const ProductDetailPage = () => {
                 </div>
                 <img
                   className="w-[190px] sm-only:w-[130px] sm-only:ml-[10px]"
-                  src={product_image}
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/arrival1_29b8f8c9-cb80-478d-b6fc-93ac50eb185a.png?v=1693224329"
                   alt=""
                 />
                 <div>
@@ -619,7 +640,7 @@ const ProductDetailPage = () => {
         <div>
           <img
             className="sm-only:w-[430px] sm-only:h-[320px]"
-            src={pdp_benner_img}
+            src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-benner-img.png?v=1693225036"
             alt=""
           />
         </div>
@@ -627,62 +648,73 @@ const ProductDetailPage = () => {
 
       <CustomerReview />
 
-      <div className="pdp-footer md-only:grid-cols-1 md-only:flex sticky sm-only:px-1 flex shadow-[0px -5px 6px #0000000] sm-only:pt-0 pt-3 sm-only:pb-1  px-11 pb-3 bg-white bottom-0 grid grid-cols-2">
-        <div className="flex sm-only:hidden">
-          <h2 className="text-2xl text-black font-medium flex items-center md-only:text-[15px] lg-only:text-[15px]">
-            Amefa Austin Cutlery, Set of 24
-          </h2>
-        </div>
-        <div className="flex   ">
-          <div>
-            <p className="flex sm-only:px-2 items-center sm-only:hidden">
-              <span className="text-[#969696] text-xs line-through lg-only:text-[11px]">
-                MRP.₹5999
-              </span>
-              <span className="pl-2 pr-2 lg-only:text-[15px] text-xl text-[#E91111] font-semibold">
-                ₹4,999
-              </span>
-              <span className="text-xs lg-only:text-[10px] bg-[#E91111] text-white p-2 rounded-2xl">
-                20% OFF
-              </span>
-            </p>
-            <p className="text-[#969696] text-xs sm-only:hidden sm-only:ml-[10px] sm-only:text-[10px]">
-              (inclusive of all taxes)
-            </p>
-          </div>
-          <div className="pl-3 lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden">
-            <p className="flex items-center ">
-              <span className="pl-2 pr-2 text-xl text-[#E91111] font-semibold sm-only:text-[15px]">
-                ₹4,999
-              </span>
-              <span className="text-[#969696] text-xs line-through sm-only:pl-[10px]">
-                MRP.₹5999
-              </span>
-            </p>
-            <p className="text-[#969696] text-xs sm-only:ml-[10px] sm-only:text-[10px]">
-              (inclusive of all taxes)
-            </p>
-          </div>
+      {/* pdp footer */}
 
-          <div className="pl-5  flex ">
-            <div className=" product-counter h-[50px] sm-only:hidden flex w-36 border border-[#E6E6E6] ">
-              <button className="text-base  px-7 " onClick={decrement}>
-                -
-              </button>
-              <p className="flex text-lg font-semibold items-center">{count}</p>
-              <button className="text-base px-7 " onClick={increment}>
-                +
-              </button>
-            </div>
+      {showFooter && (
+        <div
+          className="pdp-footer md-only:grid-cols-1 md-only:flex sticky sm-only:px-1 flex shadow-[0px -5px 6px #0000000] sm-only:pt-0 pt-3 sm-only:pb-1  px-11 pb-3 bg-white bottom-0 grid grid-cols-2"
+          // onMouseEnter={handleHover}
+          // onMouseLeave={handleMouseLeave}
+        >
+          <div className="flex sm-only:hidden">
+            <h2 className="text-2xl text-black font-medium flex items-center md-only:text-[15px] lg-only:text-[15px]">
+              Amefa Austin Cutlery, Set of 24
+            </h2>
           </div>
-          <button className=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
+          <div className="flex   ">
+            <div>
+              <p className="flex sm-only:px-2 items-center sm-only:hidden">
+                <span className="text-[#969696] text-xs line-through lg-only:text-[11px]">
+                  MRP.₹5999
+                </span>
+                <span className="pl-2 pr-2 lg-only:text-[15px] text-xl text-[#E91111] font-semibold">
+                  ₹4,999
+                </span>
+                <span className="text-xs lg-only:text-[10px] bg-[#E91111] text-white p-2 rounded-2xl">
+                  20% OFF
+                </span>
+              </p>
+              <p className="text-[#969696] text-xs sm-only:hidden sm-only:ml-[10px] sm-only:text-[10px]">
+                (inclusive of all taxes)
+              </p>
+            </div>
+            <div className="pl-3 lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden">
+              <p className="flex items-center ">
+                <span className="pl-2 pr-2 text-xl text-[#E91111] font-semibold sm-only:text-[15px]">
+                  ₹4,999
+                </span>
+                <span className="text-[#969696] text-xs line-through sm-only:pl-[10px]">
+                  MRP.₹5999
+                </span>
+              </p>
+              <p className="text-[#969696] text-xs sm-only:ml-[10px] sm-only:text-[10px]">
+                (inclusive of all taxes)
+              </p>
+            </div>
+
+            <div className="pl-5  flex ">
+              <div className=" product-counter h-[50px] sm-only:hidden flex w-36 border border-[#E6E6E6] ">
+                <button className="text-base  px-7 " onClick={decrement}>
+                  -
+                </button>
+                <p className="flex text-lg font-semibold items-center">
+                  {count}
+                </p>
+                <button className="text-base px-7 " onClick={increment}>
+                  +
+                </button>
+              </div>
+            </div>
+            <button class=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
+              ADD TO CART
+            </button>
+          </div>
+          <button class="lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-10">
             ADD TO CART
           </button>
         </div>
-        <button className="lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-10">
-          ADD TO CART
-        </button>
-      </div>
+      )}
+      {/* <pdpfooter /> */}
     </div>
   );
 };

@@ -126,9 +126,13 @@ export default function Product() {
   const [shareIconVisible, setShareIconVisible] = useState(false);
   const [discountPercentage, setDiscountPercentage] = useState(0);
   const {product, shop, recommended} = useLoaderData();
+  console.log(
+    '🚀 ~ file: ($locale).products.$productHandle.jsx:129 ~ Product ~ product:',
+    product,
+  );
   const [currentSearchParams] = useSearchParams();
   const {location} = useNavigation();
-  const {media, title, vendor, descriptionHtml} = product;
+  const {media, title, vendor, description} = product;
   const {shippingPolicy, refundPolicy} = shop;
   const increment = () => {
     setCount(count + 1);
@@ -209,18 +213,25 @@ export default function Product() {
   useEffect(() => {
     calculateDiscountPercentage();
   }, []);
+
+  const [showFullText, setShowFullText] = useState(false);
+
+  const toggleText = () => {
+    setShowFullText(!showFullText);
+  };
+
   return (
     <>
       <div className="pdp-section sm-only:mt-10 md-only:mt-10 bg-white sm-only:bg-[#FBFBFB]">
         <div className="py-8 px-11 sm-only:px-2">
           <div>
             <p className="text-xs font-semibold">
-              <span className="text-slate-300	">Home | Knives |</span>Amefa
-              Austin Cutlery, Set of 24
+              <span className="text-slate-300	">Home | Knives |</span>
+              {title}
             </p>
           </div>
         </div>
-        <div className="product-deatil-section grid grid-cols-2 sm-only:px-3  sm-only:grid-cols-1 gap-1 px-11 pt-3 sm-only:columns-1  columns-3">
+        <div className="sticky product-deatil-section grid grid-cols-2 sm-only:px-3  sm-only:grid-cols-1 gap-1 px-11 pt-3 sm-only:columns-1  columns-3 hiddenScroll md:overflow-y-scroll">
           <div className="product-image-1">
             <ProductGallery
               media={media.nodes}
@@ -228,7 +239,7 @@ export default function Product() {
             />
           </div>
 
-          <div className="sticky product-contant pl-3 md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
+          <div className=" product-contant pl-3 md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav ">
             {/* <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0"> */}
             <div>
               {vendor && (
@@ -267,16 +278,17 @@ export default function Product() {
             </div>
 
             <div className="pt-4 mb-4  border-t border-gray-300">
-              {descriptionHtml && (
-                <p className="text-sm">{descriptionHtml}...Read More</p>
+              {showFullText ? (
+                <p className="text-sm">{description}</p>
+              ) : (
+                <p className="text-sm">{description.slice(0, 150)}...</p>
               )}
-              {/* <p className="text-xs">
-                Refined and elegant design with a contemporary feel, the Austin
-                pattern has perfect lines and elegant shapes. Made of
-                high-quality stainless steel this cutlery set is designed for
-                superior durability{' '}
-                <span className="text-slate-300">...Read More</span>
-              </p> */}
+
+              {description.length > 150 && (
+                <span onClick={toggleText}>
+                  {showFullText ? 'Read Less' : 'Read More'}
+                </span>
+              )}
             </div>
             <div className="pt-4 border-t border-gray-300">
               <p className="flex items-center">
@@ -303,7 +315,8 @@ export default function Product() {
             <div className="sm-only:hidden color-section pt-4 border-t border-gray-300">
               <p className="text-sm	font-semibold">
                 Select Colour:{' '}
-                {product.selectedVariant && product.selectedVariant.selectedOptions[0].value}
+                {product.selectedVariant &&
+                  product.selectedVariant.selectedOptions[0].value}
               </p>
               <div className="mr-3 py-3">
                 <ProductOptions
@@ -601,8 +614,10 @@ export default function Product() {
               <div className="pt-4 flex">
                 <div>
                   <img className="w-[190px]" src={product_image} alt="" />
-                  <p className="text-[14px] mt-2">Amefa Austin </p>
-                  <p className="text-[14px] mt-2">Cutlery, Set of 24</p>
+                  <p className="text-[14px] mt-2 frequently_brought_12">
+                    {title}{' '}
+                  </p>
+                  {/* <p className="text-[14px] mt-2">Cutlery, Set of 24</p> */}
                 </div>
 
                 <div>
@@ -623,20 +638,33 @@ export default function Product() {
                         {isFirstChecked && <MdDone className="text-black" />}
                       </div>
                       <span className="pl-3 pr-1">Current items</span>
-                      <span className="text-gray-500">
-                        {' '}
-                        Amefa Austin Cutlery, Set of 24
-                      </span>
+                      <span className="text-gray-500"> {title}</span>
                     </p>
                     <p>
                       {' '}
                       <span className="text-[#E91111] mr-2 text-[14px]">
-                        ₹4,999
+                        {isOnSale && (
+                          <Money
+                            withoutTrailingZeros
+                            data={selectedVariant?.compareAtPrice}
+                            as="span"
+                            className="text-[#E91111] mr-2 text-[14px]"
+                          />
+                        )}
                       </span>{' '}
                       <span className="text-slate-300 text-xs line-through text-[10px]">
-                        MRP. ₹ 5,999{' '}
+                        MRP{' '}
+                        <Money
+                          withoutTrailingZeros
+                          data={selectedVariant?.price}
+                          as="span"
+                          className="text-slate-300 text-xs line-through text-[10px]"
+                        />{' '}
                       </span>{' '}
-                      <span className="ml-4 text-[14px]"> 20% OFF</span>{' '}
+                      <span className="ml-4 text-[14px]">
+                        {' '}
+                        {discountPercentage} % OFF
+                      </span>{' '}
                     </p>
                   </div>
                   <div className="pt-4 pb-4 border-b border-gray-200">
@@ -677,7 +705,7 @@ export default function Product() {
           <PdpYouLike />
           {/* <NewArrivels/> */}
         </div>
-         <div className="mt-16  px-11">
+        <div className="mt-16  px-11">
           <div>
             <img src={pdp_benner_img} alt="" />
           </div>
@@ -688,27 +716,40 @@ export default function Product() {
         <div className="pdp-footer sticky sm-only:col-span-1 shadow-[0px -5px 6px #0000000] pt-3 px-4 md:px-11 pb-3 bg-white bottom-0 grid md:grid-cols-2">
           <div className="flex md-only:hidden sm-only:hidden">
             <h2 className="text-2xl text-black font-medium flex items-center">
-              Amefa Austin Cutlery, Set of 24
+              {title}
             </h2>
           </div>
           <div className="flex md-only:flex md-only:ml-4 mt-3 md-only:mt-0 md-only:items-end">
             <div className="md:pl-5">
               <p className="flex items-center">
                 <span className="text-[#969696] text-xs line-through">
-                  MRP.₹5999
+                  MRP.
+                  <Money
+                    withoutTrailingZeros
+                    data={selectedVariant?.price}
+                    as="span"
+                    className="text-[#969696] text-xs line-through"
+                  />
                 </span>
                 <span className="pl-2 pr-2 text-xl text-[#E91111] font-semibold">
-                  ₹4,999
+                  {isOnSale && (
+                    <Money
+                      withoutTrailingZeros
+                      data={selectedVariant?.compareAtPrice}
+                      as="span"
+                      className="pl-2 pr-2 text-xl text-[#E91111] font-semibold"
+                    />
+                  )}
                 </span>
                 <span className="text-xs bg-[#E91111] text-white p-2 rounded-2xl">
-                  20% OFF
+                {discountPercentage} % OFF
                 </span>
               </p>
               <p className="text-[#969696] text-xs">(inclusive of all taxes)</p>
             </div>
-            <div className="mt-3 md:mt-4">
+            <div className="ml-4">
               <div className="flex">
-                <div className="md-only:hidden product-counter flex w-36 border border-[#E6E6E6] ">
+                <div className="md-only:hidden product-counter flex w-24 border border-[#E6E6E6] ">
                   <button className="text-base px-4" onClick={decrement}>
                     -
                   </button>
@@ -719,8 +760,8 @@ export default function Product() {
                     +
                   </button>
                 </div>
-                <div className="ml-4 mt-2">
-                  <button classNameName=" text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-4">
+                <div className="ml-4">
+                  <button className=" text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-4">
                     ADD TO CART
                   </button>
                 </div>
@@ -728,7 +769,6 @@ export default function Product() {
             </div>
           </div>
         </div>
-        
       </div>
       {/* <Suspense fallback={<Skeleton className="h-32" />}>
         <Await
@@ -919,10 +959,6 @@ function ProductOptions({options, searchParamsWithDefaults}) {
                                     }}
                                   >
                                     {value}
-                                    {console.log(
-                                      '🚀 ~ file: ($locale).products.$productHandle.jsx:788 ~ ProductOptions ~ value:',
-                                      value,
-                                    )}
                                     {searchParamsWithDefaults.get(
                                       option.name,
                                     ) === value && (

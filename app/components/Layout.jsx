@@ -22,6 +22,7 @@ import EmailComponent from './EmailComponent';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useIsHomePath} from '~/lib/utils';
+
 import {
   Drawer,
   useDrawer,
@@ -42,8 +43,15 @@ import {
   FeaturedProducts,
 } from '~/components';
 
-export function Layout({ children, layout }) {
-  const { headerMenu, footerMenu } = layout;
+import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
+import { CiCircleChevDown } from 'react-icons/ci';
+import { Image } from '@shopify/hydrogen';
+import ProductDetailPage from '../components/ProductDetailPage.js';
+
+
+
+export function Layout({children, layout}) {
+  const {headerMenu, footerMenu} = layout;
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -58,6 +66,8 @@ export function Layout({ children, layout }) {
 
           <div className="main_video_banner">
             {children}
+            {/* <ProductDetailPage /> */}
+            {/* <EmailComponent /> */}
             <div />
             <div>
               {/* <Blog /> */}
@@ -117,7 +127,7 @@ function Header({title, menu}) {
   );
 }
 
-function CartDrawer({ isOpen, onClose }) {
+function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
@@ -140,7 +150,7 @@ function CartDrawer({ isOpen, onClose }) {
   );
 }
 
-export function MenuDrawer({ isOpen, onClose, menu }) {
+export function MenuDrawer({isOpen, onClose, menu}) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu" drawerType="menu">
       <div className="grid">
@@ -155,7 +165,6 @@ function MenuMobileNav({ menu, onClose }) {
   console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [activeSubMenuId, setActiveSubMenuId] = useState(null);
-
 
   const toggleCategory = (categoryId) => {
     setActiveCategoryId(activeCategoryId === categoryId ? null : categoryId);
@@ -196,7 +205,6 @@ function MenuMobileNav({ menu, onClose }) {
             'Tea Accessories',
           ],
         },
-
       ],
     },
     {
@@ -245,7 +253,6 @@ function MenuMobileNav({ menu, onClose }) {
                     alt=""
                     className="ml-auto"
                   />
-
                 </li>
               </ul>
             </li>
@@ -261,7 +268,7 @@ function MenuMobileNav({ menu, onClose }) {
                     prefetch="intent"
                     className="relative"
                   >
-                    {console.log("🚀 ~ file: Layout.jsx:253 ~ item:", item)}
+                    {console.log('🚀 ~ file: Layout.jsx:253 ~ item:', item)}
                     <div className="text-sm font-semibold text-black mb-[10px]">
                       {subitem.title}
                     </div>
@@ -273,7 +280,7 @@ function MenuMobileNav({ menu, onClose }) {
                             : ''
                           }`}
                       >
-                        {console.log("🚀 ~ file: Layout.jsx:273 ~ subitem:", subitem?.items?.length)}
+          
 
                         {!subitem?.items?.length == 0 && (
                           <img
@@ -326,7 +333,7 @@ function MenuMobileNav({ menu, onClose }) {
 
 export default MenuMobileNav;
 
-function MobileHeader({ title, isHome, openCart, openMenu }) {
+function MobileHeader({title, isHome, openCart, openMenu}) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -354,7 +361,10 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
           className="font-bold text-center leading-none"
           as={isHome ? 'h1' : 'h2'}
         >
-          <img src={header_logo} alt="" />
+          <img
+            src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/logo.svg?v=1693225458"
+            alt=""
+          />
         </Heading>
       </Link>
 
@@ -383,7 +393,6 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
             type="submit"
             className="search-icon flex items-center justify-center h-8 ml-auto"
           >
-
             <IconSearch />
           </button>
         </Form>
@@ -392,9 +401,9 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
   );
 }
 
-function DesktopHeader({ isHome, menu, openCart, title }) {
+function DesktopHeader({isHome, menu, openCart, title}) {
   const params = useParams();
-  const { y } = useWindowScroll();
+  const {y} = useWindowScroll();
   const [menuActive, setMenuActive] = useState(false);
   const [subMenuActive, setSubMenuActive] = useState(false);
   const [currentMenuTitle, setCurrentMenuTitle] = useState('');
@@ -433,18 +442,25 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
   return (
     <header
       role="banner"
-      className={`${isHome
-        ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
-        : ' text-primary'
-        } ${!isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+
+      className={`${
+        isHome
+          ? 'header flex md:hidden sm:hidden bg-[#FFFFFF]  text-contrast dark:text-primary'
+          : ' text-primary'
+      } ${
+        !isHome && y > 50 && ' shadow-lightHeader'
+      } hidden h-2 lg:flex opacity-80  shadow-sm bg-[#FFFFFF] items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+
     >
       <div className="header">
         <div className="row v-center">
           <div className="header-item item-left">
             <div className="logo">
               <Link className="font-bold" to="/" prefetch="intent">
-                <img src={header_logo} alt="logo" />
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/logo.svg?v=1693225458"
+                  alt="logo"
+                />
                 {/* {title} */}
               </Link>
             </div>
@@ -462,7 +478,10 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                 </div>
               </div>
               <ul
-                className={`menu-main flex items-center gap-6 ${subMenuActive ? 'active' : ''
+
+                className={`menu-main flex items-center gap-6 ${
+                  subMenuActive ? 'active' : ''
+
                 }`}
               >
                 {(menu?.items || []).map((item) => (
@@ -472,13 +491,14 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                       to={item.to}
                       target={item.target}
                       prefetch="intent"
-                      className={({ isActive }) =>
-                        isActive ? 'pb-1  -mb-px' : 'pb-1'
+                      className={({isActive}) =>
+                        isActive ? 'pb-1 -mb-px' : 'pb-1'
                       }
+                      style={{borderBottom: '2px solid transparent'}}
                     >
                       {item.title}
                     </Link>
-                    <div className="sub-menu mega-menu mega-menu-column-4">
+                    <div className="sub-menu mega-menu mega-menu-column-7">
                       {(item?.items || []).map((subitem) => (
                         <>
                           <div key={subitem.id} className="list-item">
@@ -487,7 +507,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                                 to={subitem.to}
                                 target={subitem.target}
                                 prefetch="intent"
-                                className={({ isActive }) =>
+                                className={({isActive}) =>
                                   isActive ? 'pb-1  -mb-px' : 'pb-1'
                                 }
                               >
@@ -546,10 +566,16 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
               </button>
             </Form>
             <div className="">
-              <img src={cart_location} alt="location" />
+              <img
+                src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/cart_location_d73808c8-d025-4538-8717-350241a6f3fb.png?v=1693225530"
+                alt="location"
+              />
             </div>
             <div className="">
-              <img src={wishList} alt="heart" />
+              <img
+                src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/heart.png?v=1693225585"
+                alt="heart"
+              />
             </div>
             <AccountLink className="relative flex items-center justify-center focus:ring-primary/5 " />
             <CartCount isHome={isHome} openCart={openCart} className="" />
@@ -560,7 +586,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
   );
 }
 
-function AccountLink({ className }) {
+function AccountLink({className}) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -576,7 +602,7 @@ function AccountLink({ className }) {
   );
 }
 
-function CartCount({ isHome, openCart }) {
+function CartCount({isHome, openCart}) {
   const [root] = useMatches();
 
   return (
@@ -594,7 +620,7 @@ function CartCount({ isHome, openCart }) {
   );
 }
 
-function Badge({ openCart, dark, count }) {
+function Badge({openCart, dark, count}) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
@@ -633,7 +659,7 @@ function Badge({ openCart, dark, count }) {
   );
 }
 
-function Footer({ menu }) {
+function Footer({menu}) {
   const isHome = useIsHomePath();
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
@@ -661,7 +687,7 @@ function Footer({ menu }) {
   );
 }
 
-function FooterLink({ item }) {
+function FooterLink({item}) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -677,7 +703,7 @@ function FooterLink({ item }) {
   );
 }
 
-function FooterMenu({ menu }) {
+function FooterMenu({menu}) {
   // const styles = {
   //   section: 'grid gap-4',
   //   nav: 'grid gap-2',
