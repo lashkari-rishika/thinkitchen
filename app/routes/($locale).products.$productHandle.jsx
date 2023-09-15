@@ -11,7 +11,7 @@ import {
 import {AnalyticsPageType, Money, ShopPayButton} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 import clsx from 'clsx';
-
+// import {Await, useLoaderData} from '@remix-run/react';
 import {
   Heading,
   IconCaret,
@@ -36,7 +36,7 @@ import {FiChevronDown} from 'react-icons/fi';
 import {MdDone, MdVerified} from 'react-icons/md';
 import {AiFillStar} from 'react-icons/ai';
 import {BiStar} from 'react-icons/bi';
-import PdpYouLike from '~/components/pdpYouLike';
+import {PdpYouLike} from '~/components/PdpYouLike'; // Import the PdpYouLike component
 import pdp_star_image from '../asset/pdp-star-img.svg';
 import pdp_offer_img from '../asset/pdp-page-offer-img.png';
 import pdp_shopping_img from '../asset/pdp-shoping-img.png';
@@ -54,6 +54,8 @@ import CustomerReview from '~/components/CustomerReview';
 import pdp_share_facebook from '../asset/pdp_share_facebook.png';
 import pdp_share_whatsapp from '../asset/pdp_share_whatsapp.png';
 import pdp_share_link from '../asset/pdp_share_link.png';
+// import { RECOMMENDED_PRODUCTS_QUERY } from './path-to-your-graphql-queries'; // Update with the correct path
+// import Skeleton from './Skeleton'; // Import your Skeleton component if needed
 
 export const headers = routeHeaders;
 
@@ -126,10 +128,6 @@ export default function Product() {
   const [shareIconVisible, setShareIconVisible] = useState(false);
   const [discountPercentage, setDiscountPercentage] = useState(0);
   const {product, shop, recommended} = useLoaderData();
-  console.log(
-    '🚀 ~ file: ($locale).products.$productHandle.jsx:129 ~ Product ~ product:',
-    product,
-  );
   const [currentSearchParams] = useSearchParams();
   const {location} = useNavigation();
   const {media, title, vendor, description} = product;
@@ -219,6 +217,22 @@ export default function Product() {
   const toggleText = () => {
     setShowFullText(!showFullText);
   };
+  const { data, loading, error } = useQuery(RECOMMENDED_PRODUCTS_QUERY, {
+    variables: {
+      productId: 'your-product-id', // Replace with the actual product ID
+      count: 12, // Number of recommended products to fetch
+    },
+  });
+
+  if (loading) {
+    return <Skeleton className="h-32" />; // You can use a loading skeleton or spinner component
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  const recommendedProducts = data.recommended;
 
   return (
     <>
@@ -702,16 +716,36 @@ export default function Product() {
           </div>
         </div>
         <div className="mt-16">
-          <PdpYouLike />
+          {/* <PdpYouLike />
+          <Suspense fallback={<Skeleton className="h-32" />}>
+            <Await
+              errorElement="There was a problem loading related products"
+              resolve={recommended}
+            >
+              {(products) => (
+                // <ProductSwimlane title="Related Products" products={products} />
+                <PdpYouLike title="Related Products" products={products} />
+              )}
+            </Await>
+          </Suspense> */}
+          <Await
+          errorElement="There was a problem loading related products"
+          resolve={recommended}
+        >
+          {recommendedProducts.map((product)  => (
+                // <ProductSwimlane title="Related Products" products={products} />
+                <PdpYouLike title="Related Products" products={products} />
+              ))}
+        </Await>
           {/* <NewArrivels/> */}
         </div>
         <div className="mt-16  px-11">
           <div>
-            <img src={pdp_benner_img} alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/pdp-benner-img_67824131-3db2-4599-ac86-523dd007c367.png?v=1694772967" alt="" />
           </div>
         </div>
 
-        {/* <CustomerReview /> */}
+        <CustomerReview />
 
         <div className="pdp-footer sticky sm-only:col-span-1 shadow-[0px -5px 6px #0000000] pt-3 px-4 md:px-11 pb-3 bg-white bottom-0 grid md:grid-cols-2">
           <div className="flex md-only:hidden sm-only:hidden">
@@ -742,7 +776,7 @@ export default function Product() {
                   )}
                 </span>
                 <span className="text-xs bg-[#E91111] text-white p-2 rounded-2xl">
-                {discountPercentage} % OFF
+                  {discountPercentage} % OFF
                 </span>
               </p>
               <p className="text-[#969696] text-xs">(inclusive of all taxes)</p>
@@ -769,6 +803,7 @@ export default function Product() {
             </div>
           </div>
         </div>
+      
       </div>
       {/* <Suspense fallback={<Skeleton className="h-32" />}>
         <Await

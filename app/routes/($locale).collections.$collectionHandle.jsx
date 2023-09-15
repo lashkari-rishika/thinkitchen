@@ -27,7 +27,7 @@ import {SortBy} from '~/components/custom-components/SortBy';
 import {FilterC, PlpFilterUI} from '~/components/custom-components/FilterC';
 import {GrClose} from 'react-icons/gr';
 import {FiSearch} from 'react-icons/fi';
-import '../styles/app.css';
+import "../styles/app.css";
 import { Accordian } from '../components/custom-components/Accordian';
 import { accordian } from '../../JSON/db.json'
 export const headers = routeHeaders;

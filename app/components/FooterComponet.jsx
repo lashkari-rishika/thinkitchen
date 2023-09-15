@@ -36,10 +36,16 @@ const FooterComponet = ({menu}) => {
   //   setDescriptionVisible((prevState) => !prevState);
   // };
 
+  // const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+
   const toggleDescription = () => {
     setIsDescriptionVisible(!isDescriptionVisible);
-    // Scroll to top when up icon is clicked
-    window.scrollTo({top: 0, behavior: 'smooth'});
+
+    // Scroll to the top of the page when the icon is clicked
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // For smooth scrolling animation
+    });
   };
   return (
     <div>
@@ -48,7 +54,7 @@ const FooterComponet = ({menu}) => {
         <ShippingComponent />
 
         <div className="search-section mx-auto pt-6 pb-6 text-black border-b-2 border-gray-300">
-          <div className="container mx-auto w-4/5">
+          <div className="container mx-auto w-[82%] sm-only:w-[87%]">
             <h2 className="font-medium mb-1">POPULAR SEARCHES</h2>
             <p className="leading-5 font-medium">
               Air Tight Dry Fruit Jar | Luxury Cutlery | Bathroom Set |
@@ -62,69 +68,25 @@ const FooterComponet = ({menu}) => {
         </div>
       </section>
 
-      {/* SUBSCRIBE SECTION */}
-      <section>
-        <div className="subcribe-section border-b-2 border-gray-300 pb-6 mx-auto text-black">
-          <div className="container mx-auto w-4/5">
-            <div className="">
-              {' '}
-              <h2 className=" mt-5 mb-7 text-center font-medium">
-                SUBSCRIBE TO OUR NEWSLETTER
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 mb-2">
-                <div className="leading-5 font-medium">
-                  <p className="text-base mt-2">
-                    Be the first to know our new collections, collaborations,
-                    and more! Sign up here
-                  </p>
-                </div>
-                <div className="flex ">
-                  <input
-                    className="pr-64 pt-0 pb-0 bg-whit text-sm sm:pr-12 w-full"
-                    type="text"
-                    placeholder="Email id"
-                  />
-                  <button className="border-black pl-8 pr-8 py-3.5 bg-black text-white text-sm  md:mt-0">
-                    SIGN UP
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* FOLLOW US SECTION */}
       <section>
         <div className="follow-us-section mx-auto pt-4 text-black">
-          <div className="follow-us-header flex justify-center w-full">
-            <h2 className="pt-5.5 pb-7  text-right font-medium ">
-              FOLLOW US ON
-            </h2>
-            <div className="follow-us">
-              <div className="follow-us-icon mt-5 mb-7 ml-4 text-xl text-left font-medium flex items-center">
-                <div className="icon mr-5">
-                  <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-facebook.png?v=1693223836" alt="" />
-                </div>
-                <div className="icon mr-5">
-                  <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-instagram.png?v=1693223841" alt="" />
-                </div>
-                <div className="icon">
-                  <img src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-youtube.png?v=1693223850" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
+          
 
-          <div className="container mx-auto w-4/5">
+          <div className="container mx-auto w-[82%] sm-only:w-[87%]">
             <div className="shop-section mx-auto">
-              <div className="grid grid-cols-3  pb-12 gap-8 sm-only:hidden ">
+              <div className="grid grid-cols-4 md-only:grid-cols-2 pb-12  sm-only:hidden ">
                 {(menu?.items || []).map((item, index) => (
                   <>
                     {index !== 3 ? (
-                      <div key={item.id} className="w-64 sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4">
+                      <div
+                        key={item.id}
+                        className="w-[13rem]  lg-only:w-[9rem] sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4"
+                      >
                         <div className="shop-now-header ">
-                          <Link className="font-semibold text-gray-900 dark:text-white">
+                          <Link className="font-semibold text-gray-900  dark:text-white">
                             {item.title}
                           </Link>
                         </div>
@@ -134,9 +96,9 @@ const FooterComponet = ({menu}) => {
                           } xl:block sm-only:grid-cols-2 pt-10 `}
                         >
                           {item?.items?.length > 0 ? (
-                            <ul className="flex_column flex max-h-[185px]">
+                            <ul className="flex_column flex max-h-[180px]">
                               {item.items.map((subItem) => (
-                                <li key={subItem.id}>
+                                <li className='2xl-only:w-[50%]' key={subItem.id}>
                                   <a href="#">{subItem.title}</a>
                                 </li>
                               ))}
@@ -149,8 +111,61 @@ const FooterComponet = ({menu}) => {
                     )}
                   </>
                 ))}
+                <div className="max-w-max lg-only:w-[114%] xl-only:w-[114%] sm-only:w-[19rem]">
+                  <h2 className="mb-4 text-left font-[16px]">
+                    SUBSCRIBE TO OUR NEWSLETTER
+                  </h2>
+                  <div className="flex flex-row mb-4 sm-only:flex-row">
+                    <input
+                      className=" sm-omly:mb-0 pr-0 lg-only:w-[150%] xl-only:w-[150%] lg-only:text-[12px] lg-only:pl-[5px]  pt-0 pb-0 bg-white text-sm"
+                      type="text"
+                      placeholder="Email id"
+                    />
+                    <button className="w-[100%] lg-only:text-[10px] lg-only:h-[32px] sm-only:w-auto h-[40px] bg-[#175C8A] text-[#FFFFFF] text-[12px] md:mt-0">
+                      SIGN UP
+                    </button>
+                  </div>
+                  <h2 className="pt-5.5 pb-[10px] text-left font-medium">
+                    FOLLOW US ON
+                  </h2>
+                  <div className="follow-us">
+                    <div className="follow-us-icon mb-7 text-xl text-left font-medium flex items-center">
+                      <div className="icon mr-5">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-facebook.png?v=1693223836"
+                          alt=""
+                        />
+                      </div>
+                      <div className="icon mr-5">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-instagram.png?v=1693223841"
+                          alt=""
+                        />
+                      </div>
+                      <div className="icon">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-youtube.png?v=1693223850"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="2xl-only:hidden xl-only:hidden lg-only:hidden md-only:hidden sm-only:grid-cols-1 sm-only:gap-0  sm-only:pb-0 ">
+                <h2 className="mb-4 text-left font-[16px]">
+                  SUBSCRIBE TO OUR NEWSLETTER
+                </h2>
+                <div className="flex flex-row mb-4 sm-only:flex-row">
+                  <input
+                    className=" sm-omly:mb-0 pr-0  pt-0 pb-0 bg-white text-sm sm-only:w-[135%]"
+                    type="text"
+                    placeholder="Email id"
+                  />
+                  <button className="w-[100%] sm-only:w-[100%] h-[44px] bg-[#175C8A] text-[#FFFFFF] text-[12px] md:mt-0">
+                    SIGN UP
+                  </button>
+                </div>
                 {(menu?.items || []).map((item, index) => (
                   <div
                     className="sm-only:w-[100%] w-64 sm-only:border-b-2 sm-only:pt-3 border-gray-300 sm:pb-4"
@@ -181,7 +196,7 @@ const FooterComponet = ({menu}) => {
                       {item?.items?.length > 0 ? (
                         <ul className="flex_column flex max-h-[160px]">
                           {item.items.map((subItem) => (
-                            <li key={subItem.id}>
+                            <li className='sm-only' key={subItem.id}>
                               <a href="#">{subItem.title}</a>
                             </li>
                           ))}
@@ -190,6 +205,34 @@ const FooterComponet = ({menu}) => {
                     </ul>
                   </div>
                 ))}
+
+                <div className='sm-only:border-b-2 border-gray-300 mt-[20px]'>
+                  <h2 className="pt-5.5 pb-[15px] text-left font-medium">
+                    FOLLOW US ON
+                  </h2>
+                  <div className="follow-us">
+                    <div className="follow-us-icon mb-7 text-xl text-left font-medium flex items-center">
+                      <div className="icon mr-5">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-facebook.png?v=1693223836"
+                          alt=""
+                        />
+                      </div>
+                      <div className="icon mr-5">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-instagram.png?v=1693223841"
+                          alt=""
+                        />
+                      </div>
+                      <div className="icon">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/footer-youtube.png?v=1693223850"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -199,7 +242,10 @@ const FooterComponet = ({menu}) => {
             {(menu?.items || []).map((item) => (
               <>
                 {item.title == 'Brands' ? (
-                  <div key={item.id} className="container mx-auto w-4/5 pt-8 sm-only:pt-0 sm-ony:pt-15 sm-only:border-b-2 border-gray-300 sm:pb-4">
+                  <div
+                    key={item.id}
+                    className="container mx-auto w-[82%] sm-only:w-[87%] pt-8 sm-only:pt-0 sm-ony:pt-15 sm-only:border-b-2 border-gray-300 sm:pb-4"
+                  >
                     <div className="brands-header">
                       <h2 className=" mb-4  sm:mb-0  font-semibold	 text-gray-900 dark:text-white">
                         {item.title}
@@ -236,7 +282,7 @@ const FooterComponet = ({menu}) => {
           </div>
 
           <div className="relative mx-auto px-20  text-black border-b-2 border-gray-300">
-            <div className="copy-right text-center mx-8 mt-16 mb-16">
+            <div className="copy-right text-center  mt-16 mb-16 sm-only:mt-6 sm-only:mb-10">
               <p>© 2023 Seeba Industries Pvt Ltd.</p>
             </div>
             <div
@@ -259,7 +305,7 @@ const FooterComponet = ({menu}) => {
 
       <section>
         <div className="description pt-6 pb-6 bg-white text-black">
-          <div className="container mx-auto w-4/5">
+          <div className="container mx-auto w-[82%] sm-only:w-[87%]">
             <div className="paragraph-one mt-4">
               <p>
                 ThinKitchen aims to empower and encourage families to cook, eat
