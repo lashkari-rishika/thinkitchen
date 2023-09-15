@@ -218,7 +218,7 @@ export default function OrderRoute() {
                         {lineItem.quantity}
                       </td> */}
 
-                    <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                    <td className="hidden pl-3 py-4 text-right align-top sm:align-middle sm:table-cell">
                       <Text>
                         <div className='flex'>
                           <Money data={lineItem.variant.price} /> x {lineItem.quantity}

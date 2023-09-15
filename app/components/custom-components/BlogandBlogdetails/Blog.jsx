@@ -1,16 +1,4 @@
-import React, { useState, useEffect } from "react";     
-import Blog_img1 from "../../../asset/Blog_img1.png";
-import Blog_img2 from "../../../asset/Blog_img2.png";
-import Blog_img3 from "../../../asset/Blog_img3.png";
-import Blog_img4 from "../../../asset/Blog_img4.png";
-import Blog_img5 from "../../../asset/Blog_img5.png";
-import Blog_img6 from "../../../asset/Blog_img6.png";
-import Blog_img7 from "../../../asset/Blog_img7.png";
-import Blog_img8 from "../../../asset/Blog_img8.png";
-import Blog_img9 from "../../../asset/Blog_img9.png";
-import Tabs from "./Tabs";
-import Blogdetails from "./Blogdetails";
-
+import React, { useState, useEffect } from "react";
 
 const Blog = () => {
 
@@ -29,7 +17,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img2.png?v=1692952922",
             Blogheader: "Social News XYZ | 09/08/2022",
@@ -44,7 +31,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Kitchen",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img6.png?v=1693224527",
             Blogheader: 'Always First | 09/08/2022',
@@ -52,7 +38,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Entertaininga",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img4.png?v=1693224435",
             Blogheader: 'Kaumi Marg | 09/08/2022',
@@ -60,7 +45,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Tips&tricks",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
             Blogheader: 'Investment Guru India | 09/08/2022',
@@ -68,7 +52,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Tips&tricks",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img8.png?v=1692952969",
             Blogheader: 'Biz Life News | 07/08/2022',
@@ -76,7 +59,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Inspiration",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img7.png?v=1693224557",
             Blogheader: 'The Reporting Today | 08/08/2022',
@@ -84,7 +66,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Inspiration",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img8.png?v=1692952969",
             Blogheader: 'NDTV | 08/08/2022',
@@ -92,7 +73,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Food&Drink",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
             Blogheader: 'Investment Guru India | 09/08/2022',
@@ -100,7 +80,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Food&Drink",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
             Blogheader: 'Investment Guru India | 09/08/2022',
@@ -108,7 +87,6 @@ const Blog = () => {
             ReadButton: 'Read More',
         },
         {
-
             category: "Food&Drink",
             imageUrl: "https://cdn.shopify.com/s/files/1/0293/6448/6192/files/Blog_img5.png?v=1693224450",
             Blogheader: 'Investment Guru India | 09/08/2022',
@@ -118,7 +96,7 @@ const Blog = () => {
 
     ];
 
-    // Calculate TOTAL_ITEMS and TOTAL_PAGES outside useEffect
+    //If selectedCategory is not specified, it returns all items; otherwise, it filters by category.
     const filteredItems = blogItems.filter((item) =>
         selectedCategory ? item.category === selectedCategory : true
     );
@@ -172,7 +150,7 @@ const Blog = () => {
 
             {/* ============Tabs Functionality================= */}
 
-            <div className=" bg-neutral-100 p-2.5 fixed w-full top-16 sm-only:overflow-x-scroll  sm-only:top-20 hide-scrollbar md-only:overflow-x-scroll md-only:top-24">
+            <div className=" bg-neutral-100 pt-2.5 fixed w-full top-16 sm-only:overflow-x-scroll sm-only:top-20 md-only:overflow-x-scroll md-only:top-24 lg-only:top-16 ">
                 <ul className="tabs-nav flex  lg:flex-row lg:space-x-4 md:justify-end xl:mr-[10%]">
                     <li>
                         <button
@@ -182,7 +160,6 @@ const Blog = () => {
                             Kitchen
                         </button>
                     </li>
-
 
                     <li>
                         <button
@@ -227,8 +204,8 @@ const Blog = () => {
 
             <div className=" px-10 pb-10 sm-only:px-3">
                 <div>
-                    <div className="hidden md:block lg:block xl:block 2xl:block">
-                        <p className="text-center text-gray-500 mt-1.5 mb-1.5 text-xs">Home | Blogs</p>
+                    <div className="hidden lg:block xl:block 2xl:block">
+                        <p className="text-center text-gray-500 mt-20 mb-1.5 text-xs">Home | Blogs</p>
                         <h1 className="text-center text-3xl font-semibold pb-8">Blogs</h1>
                     </div>
                 </div>
@@ -237,12 +214,12 @@ const Blog = () => {
                     <div className="tabs-stage lg:grid grid-cols-3 gap-4 ">
 
                         {displayedItems.map((item, index) => (
-                            <div key={index} className={`w-full h-auto mb-5`}>
+                            <div key={index} className={` w-full h-auto mb-5`}>
                                 {activeTab === item.category && (
                                     <>
                                         <img src={item.imageUrl} alt="Image Card" />
                                         <div p-4 className="card-content border border-gray-200 p-4">
-                                            <h2 className="font-semibold border-b border-gray-300 text-xl pb-2 sm-only:hidden">
+                                            <h2 className="font-semibold border-b border-gray-300 text-xl pb-2 sm-only:hidden lg-only:text-base">
                                                 {item.Blogheader}
                                             </h2>
 
@@ -252,7 +229,7 @@ const Blog = () => {
                                                 </h2>
                                             </div>
 
-                                            <p className="font-medium py-3 text-black whitespace-normal lg:only:text-justify">
+                                            <p className="font-medium py-3 text-black lg-only:text-sm">
                                                 {item.Blogcontent}
                                             </p>
                                             <button className="px-8 border border-gray-300 py-2 text-black-500 hover:bg-indigo-800 hover:text-gray-300 sm-only:text-black-500 font-bold text-sm">
@@ -263,7 +240,7 @@ const Blog = () => {
                                 )}
 
                             </div>
-                        ))}
+                        ))} 
 
                     </div>
                 </div>
@@ -284,13 +261,10 @@ const Blog = () => {
                             {index + 1}
                         </li>
                     ))}
-
                 </ul>
             </div>
 
-
         </section>
-
     );
 }
 

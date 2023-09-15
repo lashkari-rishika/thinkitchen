@@ -3,7 +3,7 @@ import { Text, Link } from '~/components';
 const Myorder = ({ orders }) => {
     console.log("🚀 ~ file: Myorder.jsx:5 ~ Myorder ~ ̥:", orders);
 
-     return (
+    return (
         <section>
             <div className="text-center sm-only:mt-12 sm-only:hidden">
                 <p className="text-zinc-400 text-xs "> Home | My Order</p>
