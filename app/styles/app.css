@@ -1098,9 +1098,7 @@ a {
   transform: translate(-45%, -50%) !important;
   width: 100%;
 }
-.about_health1 {
-  transform: translate(1%, 30%) !important;
-}
+
 
 /* ..................................... banner............................................. */
 .banner .banner-text h3 {
@@ -1110,12 +1108,6 @@ a {
   font-weight: 300;
 }
 
-.about_health1 {
-  transform: translate(1%, 30%) !important;
-}
-
-/* tabs----css--start--here---komal */
-
 .tab-buttons button {
   padding: 10px 10px;
   border: none;
@@ -1123,6 +1115,7 @@ a {
 .tab-buttons button:focus {
   border-bottom: 2px solid black;
 }
+
 
 .banner-logo img {
   width: 230px;
@@ -1139,13 +1132,7 @@ a {
   }
 }
 
-/* .image_section .swiper .swiper-wrapper .swiper-slide{
-  width: 0px;
-} */
-
-body {
-  font-family: Arial;
-}
+body {font-family: Arial;}
 
 /* Style the tab */
 .tab {

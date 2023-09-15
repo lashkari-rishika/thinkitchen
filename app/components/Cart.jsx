@@ -138,7 +138,7 @@ function CartLines({layout = 'drawer', lines: cartLines}) {
           />
         )}
         <div className="fixed right-0 py-5 w-full bottom-0 items-center grid gap-y-1.5 text-sm bg-white">
-          <button className="h-9 mx-10 items-center border border-[E1E1E1] hover:bg-[#175C8A] hover:text-white" onClick={toggleMyCart}>
+          <button className="h-9 mx-10 items-center border border-[E1E1E1] hover:bg-[#175C8A] hover:text-white">
             View My Cart ({currentLines.length})
           </button>
           <button className="h-9 mx-10 items-center border border-[E1E1E1] bg-[#175C8A] text-white hover:text-white">

@@ -120,7 +120,8 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
         )}
-      <AddToCartPopUp/>
+
+<Banner/>
       <ShopByCategory />
       <ShopByBrands />
 

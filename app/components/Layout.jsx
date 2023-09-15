@@ -42,7 +42,6 @@ import {
   FeaturedProducts,
 } from '~/components';
 
-
 export function Layout({ children, layout }) {
   const { headerMenu, footerMenu } = layout;
   return (
@@ -56,9 +55,15 @@ export function Layout({ children, layout }) {
         {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
 
         <main role="main" id="mainContent" className="flex-grow ">
-          <div className="main_video_banner ">
+
+          <div className="main_video_banner">
             {children}
             <div />
+            <div>
+              {/* <Blog /> */}
+              {/* <Contactsection /> */}
+            </div>
+
           </div>
         </main>
       </div>
@@ -146,7 +151,7 @@ export function MenuDrawer({ isOpen, onClose, menu }) {
 }
 
 
-function MenuMobileNav({menu, onClose}) {
+function MenuMobileNav({ menu, onClose }) {
   console.log('🚀 ~ file: Layout.jsx:156 ~ MenuMobileNav ~ menu:', menu);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [activeSubMenuId, setActiveSubMenuId] = useState(null);
@@ -232,9 +237,8 @@ function MenuMobileNav({menu, onClose}) {
               <ul className="absolute border-l border-[#DEDEDE] top-0 right-0 transform  -translate-x-2.5">
                 <li
                   onClick={() => toggleCategory(item.id)}
-                  className={`w-8 h-8 transition-transform ${
-                    activeCategoryId === item.id ? 'transform rotate-180' : ''
-                  }`}
+                  className={`w-8 h-8 transition-transform ${activeCategoryId === item.id ? 'transform rotate-180' : ''
+                    }`}
                 >
                   <img
                     src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown-mobile.png?v=1692696964"
@@ -264,15 +268,14 @@ function MenuMobileNav({menu, onClose}) {
                     <div className="absolute top-0 right-0 transform  -translate-x-4">
                       <li
                         onClick={() => toggleSubMenu(subitem.id)}
-                        className={`h-5 w-5 transition-transform ${
-                          activeSubMenuId === subitem.id
+                        className={`h-5 w-5 transition-transform ${activeSubMenuId === subitem.id
                             ? 'transform rotate-180'
                             : ''
-                        }`}
+                          }`}
                       >
-                        {console.log("🚀 ~ file: Layout.jsx:273 ~ subitem:", subitem?.items?.length )}
+                        {console.log("🚀 ~ file: Layout.jsx:273 ~ subitem:", subitem?.items?.length)}
 
-                          { !subitem?.items?.length == 0 && (
+                        {!subitem?.items?.length == 0 && (
                           <img
                             src="https://cdn.shopify.com/s/files/1/0293/6448/6192/files/dropdown_icon_mobile.png?v=1692697923"
                             alt=""
@@ -431,8 +434,8 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
     <header
       role="banner"
       className={`${isHome
-          ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
-          : ' text-primary'
+        ? 'header flex md:hidden sm:hidden bg-gray-100 bg-contrast/60 text-contrast dark:text-primary'
+        : ' text-primary'
         } ${!isHome && y > 50 && ' shadow-lightHeader'
       } hidden h-2 lg:flex opacity-80  shadow-sm bg-gray-100 items-center sticky transition duration-300  z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
@@ -464,7 +467,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
               >
                 {(menu?.items || []).map((item) => (
                   <li key={item.id}
-                  className="menu-item-has-children" onClick={showSubMenu}>
+                    className="menu-item-has-children" onClick={showSubMenu}>
                     <Link
                       to={item.to}
                       target={item.target}
@@ -499,7 +502,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                                       to={subchilditem.to}
                                       target={subchilditem.target}
                                       prefetch="intent"
-                                      className={({isActive}) =>
+                                      className={({ isActive }) =>
                                         isActive ? 'pb-1  -mb-px' : 'pb-1'
                                       }
                                     >
