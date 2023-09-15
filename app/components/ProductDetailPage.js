@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import product_image from '../asset/product-detail-page-image.png';
 
 import '../../node_modules/swiper/swiper-bundle.css';
 
 import {Link} from './Link';
-import {BsHeart,BsHeartFill} from 'react-icons/bs';
+import {BsHeart, BsHeartFill} from 'react-icons/bs';
 import {GrShare} from 'react-icons/gr';
 import pdp_star_image from '../asset/pdp-star-img.svg';
 import {FiChevronDown} from 'react-icons/fi';
@@ -81,6 +81,27 @@ const ProductDetailPage = () => {
     setLiked(!liked);
   };
 
+  const [showFooter, setShowFooter] = useState(true);
+
+  useEffect(() => {
+    function handleScroll() {
+      clearTimeout(scrollTimer);
+
+      if (window.scrollY > 3000) {
+        setShowFooter(false);
+      } else {
+        setShowFooter(true);
+      }
+    }
+
+    let scrollTimer;
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <div className="pdp-section sm-only:mt-10 md-only:mt-10 bg-white sm-only:bg-[#FBFBFB]">
       <div className="px-11 sm-only:px-2">
@@ -123,14 +144,14 @@ const ProductDetailPage = () => {
               Amefa Austin Cutlery, Set of 24
             </h2>
             <div className="heart-icon md-only:ml-[115px] flex sm-only:pl-[160px] justify-end pl-24 md-only:pl-0 lg-only:pl-0">
-            <a href="#" onClick={handleLikeClick}>
+              <a href="#" onClick={handleLikeClick}>
                 {liked ? (
-                    <BsHeartFill className="text-[#fa55d6]" />
+                  <BsHeartFill className="text-[#fa55d6]" />
                 ) : (
-                    <BsHeart className="text-black" />
+                  <BsHeart className="text-black" />
                 )}
-            </a>
-        </div>
+              </a>
+            </div>
           </div>
           {/* REVIEW SECTION */}
           <div className="review-section">
@@ -627,62 +648,73 @@ const ProductDetailPage = () => {
 
       <CustomerReview />
 
-      <div className="pdp-footer md-only:grid-cols-1 md-only:flex sticky sm-only:px-1 flex shadow-[0px -5px 6px #0000000] sm-only:pt-0 pt-3 sm-only:pb-1  px-11 pb-3 bg-white bottom-0 grid grid-cols-2">
-        <div className="flex sm-only:hidden">
-          <h2 className="text-2xl text-black font-medium flex items-center md-only:text-[15px] lg-only:text-[15px]">
-            Amefa Austin Cutlery, Set of 24
-          </h2>
-        </div>
-        <div className="flex   ">
-          <div>
-            <p className="flex sm-only:px-2 items-center sm-only:hidden">
-              <span className="text-[#969696] text-xs line-through lg-only:text-[11px]">
-                MRP.₹5999
-              </span>
-              <span className="pl-2 pr-2 lg-only:text-[15px] text-xl text-[#E91111] font-semibold">
-                ₹4,999
-              </span>
-              <span className="text-xs lg-only:text-[10px] bg-[#E91111] text-white p-2 rounded-2xl">
-                20% OFF
-              </span>
-            </p>
-            <p className="text-[#969696] text-xs sm-only:hidden sm-only:ml-[10px] sm-only:text-[10px]">
-              (inclusive of all taxes)
-            </p>
-          </div>
-          <div className="pl-3 lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden">
-            <p className="flex items-center ">
-              <span className="pl-2 pr-2 text-xl text-[#E91111] font-semibold sm-only:text-[15px]">
-                ₹4,999
-              </span>
-              <span className="text-[#969696] text-xs line-through sm-only:pl-[10px]">
-                MRP.₹5999
-              </span>
-            </p>
-            <p className="text-[#969696] text-xs sm-only:ml-[10px] sm-only:text-[10px]">
-              (inclusive of all taxes)
-            </p>
-          </div>
+      {/* pdp footer */}
 
-          <div className="pl-5  flex ">
-            <div className=" product-counter h-[50px] sm-only:hidden flex w-36 border border-[#E6E6E6] ">
-              <button className="text-base  px-7 " onClick={decrement}>
-                -
-              </button>
-              <p className="flex text-lg font-semibold items-center">{count}</p>
-              <button className="text-base px-7 " onClick={increment}>
-                +
-              </button>
-            </div>
+      {showFooter && (
+        <div
+          className="pdp-footer md-only:grid-cols-1 md-only:flex sticky sm-only:px-1 flex shadow-[0px -5px 6px #0000000] sm-only:pt-0 pt-3 sm-only:pb-1  px-11 pb-3 bg-white bottom-0 grid grid-cols-2"
+          // onMouseEnter={handleHover}
+          // onMouseLeave={handleMouseLeave}
+        >
+          <div className="flex sm-only:hidden">
+            <h2 className="text-2xl text-black font-medium flex items-center md-only:text-[15px] lg-only:text-[15px]">
+              Amefa Austin Cutlery, Set of 24
+            </h2>
           </div>
-          <button className=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
+          <div className="flex   ">
+            <div>
+              <p className="flex sm-only:px-2 items-center sm-only:hidden">
+                <span className="text-[#969696] text-xs line-through lg-only:text-[11px]">
+                  MRP.₹5999
+                </span>
+                <span className="pl-2 pr-2 lg-only:text-[15px] text-xl text-[#E91111] font-semibold">
+                  ₹4,999
+                </span>
+                <span className="text-xs lg-only:text-[10px] bg-[#E91111] text-white p-2 rounded-2xl">
+                  20% OFF
+                </span>
+              </p>
+              <p className="text-[#969696] text-xs sm-only:hidden sm-only:ml-[10px] sm-only:text-[10px]">
+                (inclusive of all taxes)
+              </p>
+            </div>
+            <div className="pl-3 lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden">
+              <p className="flex items-center ">
+                <span className="pl-2 pr-2 text-xl text-[#E91111] font-semibold sm-only:text-[15px]">
+                  ₹4,999
+                </span>
+                <span className="text-[#969696] text-xs line-through sm-only:pl-[10px]">
+                  MRP.₹5999
+                </span>
+              </p>
+              <p className="text-[#969696] text-xs sm-only:ml-[10px] sm-only:text-[10px]">
+                (inclusive of all taxes)
+              </p>
+            </div>
+
+            <div className="pl-5  flex ">
+              <div className=" product-counter h-[50px] sm-only:hidden flex w-36 border border-[#E6E6E6] ">
+                <button className="text-base  px-7 " onClick={decrement}>
+                  -
+                </button>
+                <p className="flex text-lg font-semibold items-center">
+                  {count}
+                </p>
+                <button className="text-base px-7 " onClick={increment}>
+                  +
+                </button>
+              </div>
+            </div>
+            <button class=" sm-only:hidden ml-[15px] h-[50px] text-white w-[100%] text-[10px] bg-[#175C8A] hover:bg-[#003354] py-3">
+              ADD TO CART
+            </button>
+          </div>
+          <button class="lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-10">
             ADD TO CART
           </button>
         </div>
-        <button className="lg-only:hidden md-only:hidden xl-only:hidden 2xl-only:hidden text-white text-[10px] bg-[#175C8A] hover:bg-[#003354] py-2 px-10">
-          ADD TO CART
-        </button>
-      </div>
+      )}
+      {/* <pdpfooter /> */}
     </div>
   );
 };

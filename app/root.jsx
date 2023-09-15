@@ -23,6 +23,14 @@ import styles from './styles/app.css';
 // import swiperStyle from './components/custom-components/swiper.css'
 import {DEFAULT_LOCALE, parseMenu, getCartId} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
+<<<<<<< HEAD
+import 'swiper/css';
+import swiperScrollbar from 'swiper/css/scrollbar';
+import swiperssStyle from  '../node_modules/swiper/swiper-bundle.css'
+import '../node_modules/swiper/swiper-bundle.js'
+import '../node_modules/swiper/swiper-bundle.min.js'
+import '../node_modules/swiper/swiper.css'
+=======
 
 import swiperssStyle from  '../node_modules/swiper/swiper-bundle.css'
 import '../node_modules/swiper/swiper-bundle.min.css'
@@ -34,8 +42,11 @@ import swiperPagination from 'swiper/css/pagination';
 import swiperScrollbar from 'swiper/css/scrollbar';
 
 
+>>>>>>> 449741bb3aebcdefdfc47dd10233c0a9644a89ed
 export const links = () => {
   return [
+    {rel:'stylesheet', href:swiperssStyle},
+    {rel:'stylesheet', href:swiperScrollbar},
     {rel: 'stylesheet', href: styles},
     {rel:'stylesheet', href:swiperssStyle},
     {rel:'stylesheet', href:swiperNavigation},
