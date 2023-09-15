@@ -948,7 +948,7 @@ a {
   margin-top: 25px;
 }
 .follow-us-section h2 {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
 }
 .follow-us-icon .icon img {
@@ -1110,12 +1110,6 @@ a {
   font-weight: 300;
 }
 
-.about_health1 {
-  transform: translate(1%, 30%) !important;
-/* start Custom CSS to hide scroll bars */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 .hide-scrollbar {
   scrollbar-width: none;
 }

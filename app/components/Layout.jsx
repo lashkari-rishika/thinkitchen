@@ -61,7 +61,7 @@ export function Layout({ children, layout }) {
             {/* <EmailComponent /> */}
             <div />
             <div>
-              <Blog />
+              {/* <Blog /> */}
               {/* <Contactsection /> */}
             </div>
 
