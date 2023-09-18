@@ -1,5 +1,4 @@
 import React from "react";
-// import Bannerdetails_img from "../../../asset/Blogdetails_img.png";
 
 const Blogdetails = () => {
     return (

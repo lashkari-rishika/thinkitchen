@@ -40,10 +40,6 @@ import Myorderdetails from './Myorderdetails';
 import EmailComponent from './EmailComponent';
 import Blog from './custom-components/BlogandBlogdetails/Blog';
 import Contactsection from './commomComponent/ContactUS';
-
-import dropdown_icon_moblie from '../asset/dropdown_icon_mobile.png'
-import { CiCircleChevDown } from 'react-icons/ci';
-import { Image } from '@shopify/hydrogen';
 import ProductDetailPage from '../components/ProductDetailPage.js';
 
 

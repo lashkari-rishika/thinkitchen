@@ -36,7 +36,7 @@ import {FiChevronDown} from 'react-icons/fi';
 import {MdDone, MdVerified} from 'react-icons/md';
 import {AiFillStar} from 'react-icons/ai';
 import {BiStar} from 'react-icons/bi';
-import {PdpYouLike} from '~/components/PdpYouLike'; // Import the PdpYouLike component
+// import {PdpYouLike} from '~/components/PdpYouLike'; // Import the PdpYouLike component
 import pdp_star_image from '../asset/pdp-star-img.svg';
 import pdp_offer_img from '../asset/pdp-page-offer-img.png';
 import pdp_shopping_img from '../asset/pdp-shoping-img.png';
@@ -716,8 +716,8 @@ export default function Product() {
           </div>
         </div>
         <div className="mt-16">
-          {/* <PdpYouLike />
-          <Suspense fallback={<Skeleton className="h-32" />}>
+          <PdpYouLike />
+          {/*<Suspense fallback={<Skeleton className="h-32" />}>
             <Await
               errorElement="There was a problem loading related products"
               resolve={recommended}
